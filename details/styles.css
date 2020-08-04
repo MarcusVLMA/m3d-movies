@@ -1,0 +1,139 @@
+html,
+body {
+  background-color: #ffffff;
+  margin: 0;
+  height: 100%;
+}
+
+header {
+  height: 60px;
+  background-color: blue;
+}
+
+main {
+  width: 100%;
+  height: 100%;
+}
+
+.content-wrapper {
+  background-image: url("https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/n6bUvigpRFqSwmPp1m2YADdbRBc.jpg");
+}
+
+.content {
+  background-image: linear-gradient(
+    to right,
+    rgba(13.73%, 18.04%, 14.9%, 1) 150px,
+    rgba(21.96%, 23.53%, 22.35%, 0.84) 100%
+  );
+  margin: 15px 0px 15px 0px;
+  padding: 30px 60px 30px 60px;
+  display: flex;
+  flex-direction: row;
+  align-items: "center";
+}
+
+.poster {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.poster img {
+  width: 300px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.details {
+  margin: 0px 30px 0px 30px;
+}
+
+.details-title {
+  color: #ffffff;
+  font-family: "Source Sans Pro", sans-serif;
+  margin-bottom: 0px;
+}
+
+.details-subtitle {
+  color: #ffffff;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 16px;
+}
+
+.details-subtitle-age {
+  border: 1px solid #ffffff;
+}
+
+.details-actions {
+  display: flex;
+  flex-direction: row;
+  margin: 20px 0px 20px 0px;
+}
+
+.details-actions-rating {
+  display: flex;
+  flex-direction: row;
+}
+
+.details-phrase {
+  color: #ffffff;
+  font-family: "Source Sans Pro", sans-serif;
+  font-style: italic;
+  font-size: 16px;
+}
+
+.details-sinopsis {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.details-sinopsis-title {
+  color: #ffffff;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 800;
+  margin: 0px;
+}
+
+.details-sinopsis-text {
+  color: #ffffff;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 14px;
+  margin: 4px 0px 4px 0px;
+  flex-wrap: wrap;
+}
+
+.details-cast {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  margin-right: 120px;
+}
+
+.details-cast-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.details-cast-item {
+  display: flex;
+  flex-direction: column;
+  width: 33%;
+}
+
+.details-cast-item-name {
+  color: #ffffff;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.details-cast-item-jobs {
+  color: #ffffff;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+}
