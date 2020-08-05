@@ -24,7 +24,9 @@ footer {
 fieldset {
   border: none;
 }
-
+form label {
+  color: #3f4040;
+}
 .content {
   display: flex;
   flex-direction: row;
