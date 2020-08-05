@@ -365,7 +365,7 @@ footer {
 .new-comment-container form textarea {
   resize: none;
   height: 100px;
-  border: 1px solid #21d07a;
+  border: 1px solid #032541;
   border-radius: 8px;
   padding: 10px;
   font-family: "Source Sans Pro", sans-serif;
@@ -375,7 +375,7 @@ footer {
 
 .new-comment-container button {
   max-width: 100px;
-  background-color: #21d07a;
+  background-color: #032541;
   color: #ffffff;
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 700;
@@ -387,6 +387,6 @@ footer {
 }
 
 .new-comment-container button:hover {
-  background-color: #109954;
+  background-color: #010f1c;
   cursor: pointer;
 }
