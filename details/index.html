@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Coringa - 2019</title>
+    <title>M3D Movies - Coringa - 2019</title>
     <link rel="stylesheet" type="text/css" href="./styles.css" />
     <link
-      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,800"
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap"
       rel="stylesheet"
-      type="text/css"
     />
+    <script
+      src="https://kit.fontawesome.com/9652765516.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <header></header>
@@ -20,25 +23,96 @@
             />
           </div>
           <div class="details">
-            <h1 class="details-title"><b>Coringa</b> (2019)</h1>
+            <h1 class="details-title">Coringa <span>(2019)</span></h1>
             <span class="details-subtitle">
-              <span class="details-subtitle-age"> 16 </span>&nbsp; 03/10/2019
-              (BR) &nbsp; &bull; &nbsp; Crime, Thriller, Drama &nbsp; &bull;
-              &nbsp; 2h2m
+              <span class="details-subtitle-age">&nbsp;16&nbsp;</span>&nbsp;
+              03/10/2019 (BR) &nbsp; &bull; &nbsp; Crime, Thriller, Drama &nbsp;
+              &bull; &nbsp; 2h2m
             </span>
             <div class="details-actions">
               <div class="details-actions-rating">
-                <div class="details-actions-rating-indicator">
-                  82%
-                </div>
-                <div class="details-actions-rating-text-">
-                  Avaliação dos usuários
+                <svg width="84" height="84">
+                  <circle fill="#081C22" r="40" cx="42" cy="42" />
+                  <circle
+                    stroke="#1C4027"
+                    stroke-width="4"
+                    fill="transparent"
+                    r="32"
+                    cx="42"
+                    cy="42"
+                  />
+                  <circle
+                    class="progress-ring"
+                    stroke="#21D07A"
+                    stroke-width="4"
+                    fill="transparent"
+                    r="32"
+                    cx="42"
+                    cy="42"
+                  />
+                  <text
+                    x="38"
+                    y="49"
+                    text-anchor="middle"
+                    stroke="#ffffff"
+                    stroke-width="2px"
+                    fill="#ffffff"
+                    font-family="Source Sans Pro, sans-serif"
+                    font-size="24px"
+                  >
+                    82
+                  </text>
+                  <text
+                    x="56"
+                    y="40"
+                    text-anchor="middle"
+                    stroke="#ffffff"
+                    stroke-width="1px"
+                    fill="#ffffff"
+                    font-family="Source Sans Pro, sans-serif"
+                    font-size="10px"
+                  >
+                    %
+                  </text>
+                </svg>
+                <div class="details-actions-rating-text">
+                  Avaliação<br />
+                  dos<br />
+                  usuários
                 </div>
               </div>
-              <div class="details-actions-galery"></div>
-              <div class="details-actions-favorites"></div>
+              <div class="details-actions-button">
+                <i class="fas fa-list"></i>
+                <div class="details-actions-button-tooltip-gallery">
+                  Adicionar à galeria
+                </div>
+              </div>
+              <div class="details-actions-button">
+                <i class="fas fa-star"></i>
+                <div class="details-actions-button-tooltip-favorites">
+                  <span>70%</span>
+                  <svg width="180" height="10">
+                    <line
+                      x1="0"
+                      y1="5"
+                      x2="180"
+                      y2="5"
+                      stroke-width="6"
+                      stroke="#a2a2a2"
+                    />
+                    <line
+                      x1="0"
+                      y1="5"
+                      x2="126"
+                      y2="5"
+                      stroke-width="6"
+                      stroke="#ffffff"
+                    />
+                  </svg>
+                </div>
+              </div>
               <div class="details-actions-trailer">
-                > Reproduzir trailer
+                <i class="fas fa-play"></i>Reproduzir trailer
               </div>
             </div>
             <p class="details-phrase">
@@ -105,5 +179,6 @@
         </div>
       </div>
     </main>
+    <footer></footer>
   </body>
 </html>

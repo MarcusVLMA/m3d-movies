@@ -12,7 +12,12 @@ header {
 
 main {
   width: 100%;
-  height: 100%;
+  height: auto;
+}
+
+footer {
+  height: 100px;
+  background-color: blue;
 }
 
 .content-wrapper {
@@ -54,6 +59,11 @@ main {
   margin-bottom: 0px;
 }
 
+.details-title span {
+  color: #c2c2c2;
+  font-weight: 400;
+}
+
 .details-subtitle {
   color: #ffffff;
   font-family: "Source Sans Pro", sans-serif;
@@ -67,19 +77,138 @@ main {
 .details-actions {
   display: flex;
   flex-direction: row;
+  align-items: center;
   margin: 20px 0px 20px 0px;
 }
 
 .details-actions-rating {
   display: flex;
   flex-direction: row;
+  align-items: center;
+}
+
+.details-actions-rating-text {
+  color: #ffffff;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  margin-left: 6px;
+  line-height: 20px;
+}
+
+.details-actions-button {
+  margin-left: 20px;
+  background-color: #032541;
+  width: 54px;
+  height: 54px;
+  border-radius: 27px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.details-actions-button-tooltip-gallery::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  bottom: 100%;
+  left: 50%;
+  border: 0.75rem solid transparent;
+  border-top: none;
+  border-bottom-color: #fff;
+  filter: drop-shadow(0 -0.0425rem 0.0425rem rgba(0, 0, 0, 0.1));
+}
+
+.details-actions-button-tooltip-gallery {
+  visibility: hidden;
+  position: absolute;
+  margin-top: 110px;
+  z-index: 1;
+  background-color: #ffffff;
+  color: #000000;
+  text-align: center;
+  padding: 5px 10px 5px 10px;
+  border-radius: 4px;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 14px;
+}
+
+.details-actions-button:hover .details-actions-button-tooltip-gallery {
+  visibility: visible;
+}
+
+.details-actions-button-tooltip-favorites::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  bottom: 100%;
+  left: 50%;
+  border: 0.75rem solid transparent;
+  border-top: none;
+  border-bottom-color: #032541;
+  filter: drop-shadow(0 -0.0425rem 0.0425rem rgba(0, 0, 0, 0.1));
+}
+
+.details-actions-button-tooltip-favorites {
+  visibility: hidden;
+  position: absolute;
+  margin-top: 140px;
+  z-index: 1;
+  background-color: #032541;
+  color: #ffffff;
+  text-align: center;
+  padding: 5px 10px 15px 10px;
+  border-radius: 4px;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 27px;
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.details-actions-button:hover .details-actions-button-tooltip-favorites {
+  visibility: visible;
+}
+
+.details-actions-button i {
+  color: #ffffff;
+  font-size: 20px;
+}
+
+.details-actions-trailer {
+  color: #ffffff;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin-left: 40px;
+}
+
+.details-actions-trailer:hover {
+  color: #c2c2c2;
+  cursor: pointer;
+}
+
+.details-actions-trailer i {
+  margin-right: 9px;
+}
+
+.progress-ring {
+  stroke-dasharray: 201.06 201.06;
+  stroke-dashoffset: 36.19;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
 }
 
 .details-phrase {
-  color: #ffffff;
+  color: #c2c2c2;
   font-family: "Source Sans Pro", sans-serif;
   font-style: italic;
   font-size: 16px;
+  margin: 15px 0px 10px 0px;
 }
 
 .details-sinopsis {
@@ -91,7 +220,7 @@ main {
 .details-sinopsis-title {
   color: #ffffff;
   font-family: "Source Sans Pro", sans-serif;
-  font-weight: 800;
+  font-weight: 700;
   margin: 0px;
 }
 
