@@ -266,3 +266,127 @@ footer {
   font-size: 12px;
   font-weight: 400;
 }
+
+.comments {
+  padding: 0px 20px 40px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.comments h2 {
+  color: #000000;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 800;
+}
+
+.comment-container {
+  box-shadow: 2px 2px 2px 2px #c2c2c255;
+  border: 0.5px solid #c2c2c255;
+  border-radius: 10px;
+  padding: 20px 10px 5px 10px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.comment-photo {
+  height: 80px;
+  width: 80px;
+}
+
+.comment-photo img {
+  height: 80px;
+  width: 80px;
+  border-radius: 40px;
+  object-fit: cover;
+}
+
+.comment-content {
+  margin-left: 20px;
+  padding-right: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-content h3 {
+  color: #000000;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 800;
+  margin: 0;
+}
+
+.comment-content span {
+  color: #a2a2a2;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.comment-content p {
+  color: #000000;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.comment-content i {
+  position: absolute;
+  right: 5px;
+  color: #292b2c;
+  cursor: pointer;
+}
+
+.comment-content i:hover {
+  color: #a2a2a2;
+  cursor: pointer;
+}
+
+.new-comment-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.new-comment-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.new-comment-container form label {
+  color: #000000;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.new-comment-container form textarea {
+  resize: none;
+  height: 100px;
+  border: 1px solid #21d07a;
+  border-radius: 8px;
+  padding: 10px;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.new-comment-container button {
+  max-width: 100px;
+  background-color: #21d07a;
+  color: #ffffff;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 6px;
+  border: none;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.new-comment-container button:hover {
+  background-color: #109954;
+  cursor: pointer;
+}
