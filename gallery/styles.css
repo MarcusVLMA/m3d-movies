@@ -27,12 +27,13 @@ aside {
   border: 1px solid #c2c2c2;
   border-radius: 10px;
   margin-bottom: auto;
+  width: 280px;
 }
 
 .filters-header {
   background-color: #01b4e4;
   border-radius: 10px 10px 0 0;
-  padding: 12px 8px 12px 8px;
+  padding: 5px;
 }
 
 .filters-input {
