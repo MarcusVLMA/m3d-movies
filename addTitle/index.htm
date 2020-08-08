@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <title>Adicionar  Título - M3D Filmes</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,600,700">
+  </head>
+  <body>
+    <header></header>
+    <main>
+      <div class="content">
+        <aside>
+          <div class="information-header"></div>
+          <div class="information-container">
+            <h3>Informações</h3>
+            <div class="information">
+              <p>A inclusão de conteúdo no M3D é feita de forma fácil e rápida. Para isso basta preencher o formulário ao lado e aguardar o processamento do pedido por nossa equipe.</p>
+              <p>Se não houver nenhum problema, este conteúdo estará disponível o mais breve possível, em nossa plataforma.</p>
+            </div>
+          </div>
+        </aside>
+        <div class="content-form">
+          <div class="title-container">
+            <h1 class="title">Adicionar novo título</h1>
+          </div>          
+          <form method="post">
+            <fieldset>
+              <div class="field-container">
+                <label for="title">Título original</label>
+                <input type="text" minlength="4" maxlength="50" name="title" id="title" />
+              </div>
+              <div class="field-container genre-content-type">
+                <div class="field-genre">
+                  <label for="genre">Gênero</label><br>
+                  <select name="genre" id="genre">
+                    <option value="">-</option>
+                    <option value="Ação">Ação</option>
+                    <option value="Animação">Animação</option>
+                    <option value="Aventura">Aventura</option>
+                    <option value="Comédia">Comédia</option>
+                    <option value="Documentário">Documentário</option>
+                    <option value="Fantasia">Fantasia</option>
+                    <option value="Faroeste – Western">Faroeste – Western</option>
+                    <option value="Ficção científica">Ficção científica</option>
+                    <option value="Guerra">Guerra</option>
+                    <option value="Romance">Romance</option>
+                    <option value="Suspense">Suspense</option>
+                    <option value="Terror">Terror</option>
+                    <option value="Tragédia/Drama">Tragédia/Drama</option>
+                  </select>
+                </div>
+                <div class="field-content-type">
+                  <label for="content-type">Tipo de conteúdo</label>
+                  <div class="radio-container">
+                    <input type="radio" id="content-type" name="content-type" value="filme">
+                    <label for="filme">Filme</label>
+                    <input type="radio" id="serie" name="content-type" value="serie">
+                    <label for="serie">Série</label>
+                    <input type="radio" id="animacao" name="content-type" value="animacao">
+                    <label for="animacao">Animação</label>
+                  </div>
+                </div>
+              </div>
+              <div class="field-container">
+                <label for="general-view">Visão geral sobre o título</label>
+                <textarea id="general-view" name="general-view" minlength="20" rows="8"></textarea>
+              </div>
+              <div class="field-container running-time-premiere-date">
+                <div class="field-running-time">
+                  <label for="running-time">Tempo de duração</label><br>
+                  <input type="time" name="running-time" id="running-time">
+                </div>
+                <div class="field-premiere-date">
+                  <label for="premiere-date">Data de estreia</label><br>
+                  <input type="date" name="premiere-date" id="premiere-date">
+                </div>              
+              </div>
+              <div class="field-container">
+                <label for="trailer-link">Link para o trailer</label>
+                <input type="text" minlength="10" name="trailer-link" id="trailer-link" />
+              </div>
+            </fieldset>
+            <input class="btn-submit" type="submit" value="Enviar">
+          </form>
+        </div>
+      </div>
+    </main>
+    <footer></footer>
+  </body>
+</html>
