@@ -1,0 +1,146 @@
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
+article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}
+ol,ul{list-style:none;margin:0;padding:0;}
+blockquote,q{quotes:none;}
+blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
+table{border-collapse:collapse;border-spacing:0;}
+a{text-decoration:none;}
+.txt-rt{text-align:right;}/* text align right */
+.txt-lt{text-align:left;}/* text align left */
+.txt-center{text-align:center;}/* text align center */
+.float-rt{float:right;}/* float right */
+.float-lt{float:left;}/* float left */
+.clear{clear:both;}/* clear float */
+.pos-relative{position:relative;}/* Position Relative */
+.pos-absolute{position:absolute;}/* Position Absolute */
+.vertical-base{	vertical-align:baseline;}/* vertical align baseline */
+.vertical-top{	vertical-align:top;}/* vertical align top */
+.underline{	padding-bottom:5px;	border-bottom: 1px solid #eee; margin:0 0 20px 0;}/* Add 5px bottom padding and a underline */
+nav.vertical ul li{	display:block;}/* vertical menu */
+nav.horizontal ul li{	display: inline-block;}/* horizontal menu */
+img{max-width:100%;}
+body { 
+   font-family: "Source Sans Pro", sans-serif;
+   font-size: 100%;
+   display: flex;
+   flex-direction: column;
+   min-height: 100%;
+   height: auto;
+   background-color: black;
+   font-display: auto;
+   -ms-overflow-style: -ms-autohiding-scrollbar;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+}
+header {
+    height: 60px;
+    background-color: rgba(8, 8, 8, 0.712);
+}
+footer {
+    height: 100px;
+    background-color: rgb(3, 3, 3);
+}
+main {
+    width: 100%;
+    height: auto;
+}
+.title {
+    align-items: flex-start;
+    align-content: flex-start;
+    margin: 0em 2em 0em 2em;
+    padding: 3em 3em 3em 3em; 
+}
+.title h2 {
+    color: rgb(255, 255, 255);
+    font-size: 3em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+.title h3 {
+    color: rgb(255, 255, 255);
+    font-size: 2em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 6px;
+    font-weight: bold;
+}
+.content-wrapper {
+    background-image: url("./images/7.jpg");
+    background-size: cover;
+    border-radius: 30px 30px 30px 30px;
+    margin: 3em 0em 3em 0em;
+}
+  
+.content {
+    background-image: linear-gradient(
+        to right,
+        rgba(13.73%, 18.04%, 14.9%, 1) 150px,
+        rgba(21.96%, 23.53%, 22.35%, 0.84) 100%
+    );
+    padding: 30px 60px 30px 60px;
+    flex-direction: row;
+    border-radius: 30px 30px 30px 30px;
+}
+
+.search {
+    text-align: center;
+    margin: 0em 0em 0em 0em;
+    padding: 0em 0em 1em 0em;   
+}
+.search span {
+    font-size: smaller;
+    font-weight: 400;
+    color: #fff;
+}
+.search span a {
+    font-size: 1em;
+    font-weight: 400;
+    color: #fff;
+    text-decoration:none;
+}
+.search span a:hover {
+    color: royalblue;
+    text-decoration: underline;
+}
+.s-bar {
+    width: 90%;
+    margin: 0 auto;
+    padding: 0.5em 0em 0.5em 0em;
+}
+.s-bar span {
+    font-size: small;
+    color: white;
+}
+.s-bar input[type="text"] {
+    font-size: 1em;
+    font-weight: 600;
+    color: rgba(37, 37, 37, 0.863);
+    padding: 1.3em 1em 1.3em 1.5em;
+    width: 70%;
+    border-radius: 50px 50px 50px 50px;
+    background: rgba(255, 255, 255, 0.863);
+    border: none;
+    outline: none;
+}
+.s-bar input[type="submit"]{
+    font-size: 1em;
+    font-weight: 600;
+    color: #fff;
+    padding: 1.3em 0.5em;
+    width: 22%;
+    text-align: center;
+    border-radius: 50px 50px 50px 50px;
+    margin: 0px 0px 0px -40px;
+    background:#213c97;
+    cursor:pointer;
+    border: none;
+    outline: none;
+} 
+.s-bar input[type="submit"]:hover{
+    background: black;
+    transition: all 0.3s ease;
+}
