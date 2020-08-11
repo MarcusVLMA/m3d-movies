@@ -1,10 +1,3 @@
-:root {
-  --n-clic: white;
-  --clic: rgb(240, 196, 0);
-  --clic-seg:rgb(226, 211, 2);
-  --back: black;
-  --atention: rgb(221, 11, 11);
-}
 
 * { 
   margin: 0em; 
@@ -14,7 +7,7 @@
 html, body {
   font-family: "Source Sans Pro", sans-serif;
   font-size: 100%;
-  background-color: var(--back);
+  background-color: rgb(0, 0, 0);
   margin: 0;
 }
 
@@ -39,7 +32,7 @@ fieldset {
 }
 
 form label {
-  color: var(--n-clic);
+  color: #fff;
 }
 
 aside {
@@ -55,8 +48,9 @@ aside {
   width: 250px;
   width: 15.625rem;
 }
+
 select {
-  background-color: var(--back);
+  background-color: rgb(0, 0, 0);
 }
 
 textarea {
@@ -75,7 +69,7 @@ textarea {
   font-family: "Source Sans Pro", sans-serif;
   font-size: 18px;
   font-size: 1.125rem;
-  color: var(--n-clic);
+  color: #fff;
   padding: 8px;
   padding: 0.5rem;
   margin-top: 5px;
@@ -85,12 +79,12 @@ textarea {
   border-width: 2px;
   border-width: 0.1250rem;
   border-style: solid;
-  border-color: var(--clic);
-  background-color: var(--back);
+  border-color: rgb(240, 196, 0);
+  background-color: rgb(0, 0, 0);
 }
 
 .information-header {
-  background-color: var(--n-clic);
+  background-color: #fff;
   border-radius: 10px 10px 0 0;
   border-radius: 0.625rem 0.625rem 0 0;
   padding: 5px;
@@ -98,7 +92,7 @@ textarea {
 }
 
 .information-container {
-  color: var(--n-clic);
+  color: #fff;
   padding: 20px 15px 20px 15px;
   padding: 1.25rem 0.9375rem 1.25rem 0.9375rem;
 }
@@ -141,7 +135,7 @@ textarea {
 }
 
 .field-container input:hover, select:hover {
-  border-color: var(--clic-seg);
+  border-color: rgb(226, 211, 2);
 }
 
 .field-genre + .field-content-type, .field-running-time + .field-premiere-date {
@@ -150,7 +144,7 @@ textarea {
 }
 
 input[type="radio"], input[type="radio"] + label{
-  color: var(--clic);
+  color: rgb(240, 196, 0);
   margin-right: 10px;
   margin-right: 0.625rem;
   font-size: 18px;
@@ -163,7 +157,7 @@ input[type="radio"], input[type="radio"] + label{
 }
 
 .field-container + .field-container, .title-container, .title-container h1 + p{
-  color: var(--n-clic);
+  color: #fff;
   margin-top: 10px;
   margin-top: 0.625rem;
 }
@@ -194,18 +188,18 @@ input[type="submit"] {
   border-radius: 6px;
   border-radius: .375rem;
   color: #fff;
-  border-color: var(--clic);  
-  background-color: var(--back);
+  border-color: rgb(240, 196, 0);  
+  background-color: rgb(0, 0, 0);
 }
 
 .btn-submit {
   color: #fff;
-  border-color: var(--clic);  
-  background-color: var(--back);
+  border-color: rgb(240, 196, 0);  
+  background-color: rgb(0, 0, 0);
 }
 
 .btn-submit:hover {
   color: #fff;
-  border-color: var(--clic-seg);  
-  background-color: var(--back);
+  border-color: rgb(226, 211, 2);  
+  background-color: rgb(0, 0, 0);
 }
