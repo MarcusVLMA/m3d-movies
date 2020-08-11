@@ -34,7 +34,6 @@ footer {
   padding: 30px 60px 30px 60px;
   display: flex;
   flex-direction: row;
-  align-items: "center";
 }
 
 .poster {

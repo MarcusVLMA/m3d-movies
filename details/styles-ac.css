@@ -1,14 +1,7 @@
-:root {
-  --n-clic: white;
-  --clic: rgb(240, 196, 0);
-  --clic-seg:rgb(226, 211, 2);
-  --back: black;
-  --atention: rgb(221, 11, 11);
-}
 
 html,
 body {
-  background-color: var(--back);
+  background-color: #000;
   margin: 0;
   height: 100%;
 }
@@ -29,8 +22,8 @@ footer {
 }
 
 .content-wrapper {
-  background-color: var(--back);
-  border-bottom: 2px solid var(--n-clic);
+  background-color: #000;
+  border-bottom: 2px solid #fff;
 }
 
 .content {
@@ -38,7 +31,6 @@ footer {
   padding: 30px 60px 30px 60px;
   display: flex;
   flex-direction: row;
-  align-items: "center";
 }
 
 .poster {
@@ -102,7 +94,7 @@ footer {
 
 .details-actions-button {
   margin-left: 20px;
-  background-color: var(--clic);
+  background-color: rgb(240, 196, 0);
   width: 54px;
   height: 54px;
   border-radius: 27px;
@@ -161,7 +153,7 @@ footer {
   position: absolute;
   margin-top: 140px;
   z-index: 1;
-  background-color: var(--back);
+  background-color: #000;
   color: #ffffff;
   text-align: center;
   padding: 5px 10px 15px 10px;
@@ -175,7 +167,7 @@ footer {
   align-items: flex-start;
 }
 .details-actions-button-tooltip-favorites svg line#fav {
-  stroke: var(--clic);
+  stroke: rgb(240, 196, 0);
 }
 
 .details-actions-button:hover .details-actions-button-tooltip-favorites {
@@ -189,7 +181,7 @@ footer {
 
 .details-actions-trailer {
   color: #ffffff;
-  background-color: var(--clic);
+  background-color: rgb(240, 196, 0);
   font-family: "Source Sans Pro", sans-serif;
   font-size: 16px;
   font-weight: 600;
@@ -197,11 +189,11 @@ footer {
   padding: 15px 20px 15px 20px;
   border: 3px;
   border-radius: 30px 30px 30px 30px;
-  border-color: var(--clic);
+  border-color: rgb(240, 196, 0);
 }
 
 .details-actions-trailer:hover {
-  background-color: var(--clic-seg);
+  background-color: rgb(226, 211, 2);
   cursor: pointer;
 }
 
@@ -210,7 +202,7 @@ footer {
 }
 
 .progress-ring {
-  stroke: var(--n-clic);
+  stroke: #fff;
   stroke-dasharray: 201.06 201.06;
   stroke-dashoffset: 36.19;
   transform: rotate(-90deg);
@@ -218,7 +210,7 @@ footer {
 }
 
 .ring {
-  stroke: var(--back);
+  stroke: #000;
 }
 
 .details-phrase {
@@ -292,7 +284,7 @@ footer {
 }
 
 .comments h2 {
-  color: var(--n-clic);
+  color: #fff;
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 800;
 }
@@ -329,21 +321,21 @@ footer {
 }
 
 .comment-content h3 {
-  color: var(--n-clic);
+  color: #fff;
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 800;
   margin: 0;
 }
 
 .comment-content span {
-  color: var(--n-clic);
+  color: #fff;
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 400;
   font-size: 14px;
 }
 
 .comment-content p {
-  color: var(--n-clic);
+  color: #fff;
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 400;
   font-size: 16px;
@@ -352,12 +344,12 @@ footer {
 .comment-content i {
   position: absolute;
   right: 5px;
-  color: var(--clic);
+  color: rgb(240, 196, 0);
   cursor: pointer;
 }
 
 .comment-content i:hover {
-  color: var(--clic-seg);
+  color: rgb(226, 211, 2);
   cursor: pointer;
 }
 
@@ -373,7 +365,7 @@ footer {
 }
 
 .new-comment-container form label {
-  color: var(--n-clic);
+  color: #fff;
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 400;
   font-size: 16px;
@@ -384,10 +376,10 @@ footer {
   color: #ffffff;
   resize: none;
   height: 100px;
-  background-color: var(--back);
+  background-color: #000;
   border-width: 2px;
   border-style: solid;
-  border-color: var(--clic);
+  border-color: rgb(240, 196, 0);
   border-radius: 8px;
   padding: 10px;
   font-family: "Source Sans Pro", sans-serif;
@@ -397,7 +389,7 @@ footer {
 
 .new-comment-container button {
   max-width: 100px;
-  background-color: var(--clic);
+  background-color: rgb(240, 196, 0);
   color: #ffffff;
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 700;
@@ -409,6 +401,6 @@ footer {
 }
 
 .new-comment-container button:hover {
-  background-color: var(--clic-seg);
+  background-color: rgb(226, 211, 2);
   cursor: pointer;
 }
