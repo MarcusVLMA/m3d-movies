@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>M3D User - Edit Profile</title>
-    <link rel="stylesheet" type="text/css" href="./styles.css" />
+    <link rel="stylesheet" type="text/css" href="./styles-ac.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap"
       rel="stylesheet"
@@ -13,7 +13,33 @@
     ></script>
   </head>
   <body>
-    <header></header>
+    <header>
+      <div class="header-bg">
+        <h1 class="logo"><span class="logo-middle">M</span>3D</h1>
+        <h1 class="menu">Filmes</h1>
+        <h1 class="menu">Séries</h1>
+        <h1 class="menu">Animes</h1>
+        <input class="header-input" type="text" name="search" placeholder="Buscar...">
+        <img class="header-img" src="contrast.png" />
+        <img class="header-img2" src="increase-font.png" />
+        <img class="header-img2" src="decrease-font.png" />
+        <div class="custom-select"  style="height:fit-content; width: fit-content;">
+          <nav>
+           <ul>
+            <li><a href="#">User Perfil</a>
+            <!-- First Tier Drop Down -->
+            <ul>
+                <li><a href="#">Editar Perfil</a></li>
+                <li><a href="#">Minha Galeria</a></li>
+                <li><a href="#">Sugerir Conteúdo</a></li>
+                <li><a href="#">Sair</a></li>
+            </ul>        
+            </li>
+        </ul>
+    </nav>
+        </div>
+      </div>
+    </header>
     <main>
       <div>
        <div class="info">
@@ -75,14 +101,14 @@
                 </svg>
         </div>
           <text class="user-avaliation1">
-            AvaliaÃ§Ã£o MÃ©dia
-          </text>
-          <text class="user-avaliation2">
-            de Filmes
-          </text>
-          <text class="user-avaliation3">
-            |
-          </text>
+                    Avaliação Média
+                  </text>
+                  <text class="user-avaliation2">
+                    de Filmes
+                  </text>
+                  <text class="user-avaliation3">
+                    |
+                  </text>
         <div class="avaliation-percentage2">
             <svg width="42" height="42">
             <circle fill="#081C22" r="20" cx="21" cy="21" />
@@ -123,10 +149,10 @@
                 </svg>
         </div>
           <text class="user-avaliation1">
-                    AvaliaÃ§Ã£o MÃ©dia
+                    Avaliação Média
                   </text>
                   <text class="user-avaliation2">
-                    de SÃ©ries
+                    de Séries
                   </text>
                   <text class="user-avaliation3">
                     |
@@ -171,27 +197,31 @@
                 </svg>
         </div>
           <text class="user-avaliation1">
-            AvaliaÃ§Ã£o MÃ©dia
-          </text>
-          <text class="user-avaliation2">
-            de Animes
-          </text>
+                    Avaliação Média
+                  </text>
+                  <text class="user-avaliation2">
+                    de Animes
+                  </text>
        </div>
        <div>
-         <h1 class="form-head">Alterar InformaÃ§Ãµes</h1>
-         <h1 class="form-preface">Nome de usuÃ¡rio</h1>
-         <input type="text" id="lname" name="uname" /> 
-         <h1 class="form-preface">Nova senha (9 caracteres no mÃ­nimo)</h1>
-         <input type="text" id="lname" name="nsenha" /> 
+         <h1 class="form-head">Alterar Informações</h1>
+         <h1 class="form-preface">Nome de usuário</h1>
+         <input class="form-box" type="text" id="lname" name="uname" /> 
+         <h1 class="form-preface">Nova senha (9 caractéres no mínimo)</h1>
+         <input class="form-box" type="text" id="lname" name="nsenha" /> 
          <h1 class="form-preface">Confirmar senha</h1>
-         <input type="text" id="lname" name="csenha" /> 
+         <input class="form-box" type="text" id="lname" name="csenha" /> 
          <h1 class="form-preface">E-mail</h1>
-         <input type="text" id="lname" name="email" /> 
-         <h1/>
+         <input class="form-box" type="text" id="lname" name="email" />
+         <h1 />
          <button type="button" class="button">Atualizar</button>
        </div>
       </div>
     </main>
-    <footer></footer>
+    <footer>
+      <div class="footer-bg">
+        <h1 class="footer-text">© Copyright 2020 M3D Filmes</h1>
+      </div>
+    </footer>
   </body>
 </html>
