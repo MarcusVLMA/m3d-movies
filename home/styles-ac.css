@@ -1,3 +1,4 @@
+
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
 article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}
 ol,ul{list-style:none;margin:0;padding:0;}
@@ -19,14 +20,6 @@ a{text-decoration:none;}
 nav.vertical ul li{	display:block;}/* vertical menu */
 nav.horizontal ul li{	display: inline-block;}/* horizontal menu */
 
-:root {
-    --n-clic: white;
-    --clic: rgb(255, 208, 0);
-    --clic-seg:rgb(238, 255, 0);
-    --back: black;
-    --atention: rgb(221, 11, 11);
-}
-
 img{max-width:100%;}
 body { 
    font-family: "Source Sans Pro", sans-serif;
@@ -36,7 +29,6 @@ body {
    min-height: 100%;
    height: auto;
    background-color: black;
-   font-display: auto;
    -ms-overflow-style: -ms-autohiding-scrollbar;
    -webkit-font-smoothing: antialiased;
    -moz-osx-font-smoothing: grayscale;
@@ -62,23 +54,15 @@ main {
 .title h2 {
     color: rgb(255, 255, 255);
     font-size: 3em;
-    margin-block-start: 0.83em;
-    margin-block-end: 0.83em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
     font-weight: bold;
 }
 .title h3 {
     color: rgb(255, 255, 255);
     font-size: 2em;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 6px;
     font-weight: bold;
 }
 .content-wrapper {
-    background-color: var(--back);
+    background-color: #000;
     background-size: cover;
     border-radius: 30px 30px 30px 30px;
     margin: 3em 0em 3em 0em;
@@ -98,16 +82,16 @@ main {
 .search span {
     font-size: smaller;
     font-weight: 400;
-    color:var(--n-clic);
+    color:#fff;
 }
 .search span a {
     font-size: 1em;
     font-weight: 400;
-    color:var(--clic);
+    color:rgb(255, 208, 0);
     text-decoration:none;
 }
 .search span a:hover {
-    color: var(--clic-seg);
+    color: rgb(238, 255, 0);
     text-decoration: underline;
 }
 .s-bar {
@@ -139,12 +123,12 @@ main {
     text-align: center;
     border-radius: 50px 50px 50px 50px;
     margin: 0px 0px 0px -40px;
-    background: var(--clic);
+    background: rgb(255, 208, 0);
     cursor:pointer;
     border: none;
     outline: none;
 } 
 .s-bar input[type="submit"]:hover{
-    background: var(--clic-seg);
+    background: rgb(238, 255, 0);
     transition: all 0.3s ease;
 }
