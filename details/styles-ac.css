@@ -1,6 +1,7 @@
+
 html,
 body {
-  background-color: #ffffff;
+  background-color: #000;
   margin: 0;
   height: 100%;
 }
@@ -21,15 +22,11 @@ footer {
 }
 
 .content-wrapper {
-  background-image: url("https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/n6bUvigpRFqSwmPp1m2YADdbRBc.jpg");
+  background-color: #000;
+  border-bottom: 2px solid #fff;
 }
 
 .content {
-  background-image: linear-gradient(
-    to right,
-    rgba(13.73%, 18.04%, 14.9%, 1) 150px,
-    rgba(21.96%, 23.53%, 22.35%, 0.84) 100%
-  );
   margin: 15px 0px 15px 0px;
   padding: 30px 60px 30px 60px;
   display: flex;
@@ -97,7 +94,7 @@ footer {
 
 .details-actions-button {
   margin-left: 20px;
-  background-color: #032541;
+  background-color: rgb(240, 196, 0);
   width: 54px;
   height: 54px;
   border-radius: 27px;
@@ -147,7 +144,7 @@ footer {
   left: 50%;
   border: 0.75rem solid transparent;
   border-top: none;
-  border-bottom-color: #032541;
+  border-bottom-color: white;
   filter: drop-shadow(0 -0.0425rem 0.0425rem rgba(0, 0, 0, 0.1));
 }
 
@@ -156,17 +153,21 @@ footer {
   position: absolute;
   margin-top: 140px;
   z-index: 1;
-  background-color: #032541;
+  background-color: #000;
   color: #ffffff;
   text-align: center;
   padding: 5px 10px 15px 10px;
   border-radius: 4px;
+  border: 2px solid #ffffff;
   font-family: "Source Sans Pro", sans-serif;
   font-size: 27px;
   font-weight: 700;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+.details-actions-button-tooltip-favorites svg line#fav {
+  stroke: rgb(240, 196, 0);
 }
 
 .details-actions-button:hover .details-actions-button-tooltip-favorites {
@@ -180,14 +181,19 @@ footer {
 
 .details-actions-trailer {
   color: #ffffff;
+  background-color: rgb(240, 196, 0);
   font-family: "Source Sans Pro", sans-serif;
   font-size: 16px;
   font-weight: 600;
   margin-left: 40px;
+  padding: 15px 20px 15px 20px;
+  border: 3px;
+  border-radius: 30px 30px 30px 30px;
+  border-color: rgb(240, 196, 0);
 }
 
 .details-actions-trailer:hover {
-  color: #c2c2c2;
+  background-color: rgb(226, 211, 2);
   cursor: pointer;
 }
 
@@ -196,14 +202,19 @@ footer {
 }
 
 .progress-ring {
+  stroke: #fff;
   stroke-dasharray: 201.06 201.06;
   stroke-dashoffset: 36.19;
   transform: rotate(-90deg);
   transform-origin: 50% 50%;
 }
 
+.ring {
+  stroke: #000;
+}
+
 .details-phrase {
-  color: #c2c2c2;
+  color: #fff;
   font-family: "Source Sans Pro", sans-serif;
   font-style: italic;
   font-size: 16px;
@@ -273,14 +284,14 @@ footer {
 }
 
 .comments h2 {
-  color: #000000;
+  color: #fff;
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 800;
 }
 
 .comment-container {
-  box-shadow: 2px 2px 2px 2px #c2c2c255;
-  border: 0.5px solid #c2c2c255;
+  box-shadow: 2px 2px 2px 2px #fff;
+  border: 0.5px solid #fff;
   border-radius: 10px;
   padding: 20px 10px 5px 10px;
   margin-bottom: 20px;
@@ -310,21 +321,21 @@ footer {
 }
 
 .comment-content h3 {
-  color: #000000;
+  color: #fff;
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 800;
   margin: 0;
 }
 
 .comment-content span {
-  color: #a2a2a2;
+  color: #fff;
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 400;
   font-size: 14px;
 }
 
 .comment-content p {
-  color: #000000;
+  color: #fff;
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 400;
   font-size: 16px;
@@ -333,12 +344,12 @@ footer {
 .comment-content i {
   position: absolute;
   right: 5px;
-  color: #292b2c;
+  color: rgb(240, 196, 0);
   cursor: pointer;
 }
 
 .comment-content i:hover {
-  color: #a2a2a2;
+  color: rgb(226, 211, 2);
   cursor: pointer;
 }
 
@@ -354,7 +365,7 @@ footer {
 }
 
 .new-comment-container form label {
-  color: #000000;
+  color: #fff;
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 400;
   font-size: 16px;
@@ -362,9 +373,13 @@ footer {
 }
 
 .new-comment-container form textarea {
+  color: #ffffff;
   resize: none;
   height: 100px;
-  border: 1px solid #032541;
+  background-color: #000;
+  border-width: 2px;
+  border-style: solid;
+  border-color: rgb(240, 196, 0);
   border-radius: 8px;
   padding: 10px;
   font-family: "Source Sans Pro", sans-serif;
@@ -374,7 +389,7 @@ footer {
 
 .new-comment-container button {
   max-width: 100px;
-  background-color: #032541;
+  background-color: rgb(240, 196, 0);
   color: #ffffff;
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 700;
@@ -386,6 +401,6 @@ footer {
 }
 
 .new-comment-container button:hover {
-  background-color: #010f1c;
+  background-color: rgb(226, 211, 2);
   cursor: pointer;
 }
