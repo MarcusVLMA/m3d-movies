@@ -174,7 +174,7 @@ footer {
   border-radius: 20px;
   font-size: 16px;
   background-color: white;
-  background-image: url('icon.png');
+  background-image: url('./images/icon.png');
   background-size: 35px 35px;
   background-position: 0px -5px; 
   background-repeat: no-repeat;
