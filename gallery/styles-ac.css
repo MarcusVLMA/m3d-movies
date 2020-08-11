@@ -8,7 +8,7 @@
 
 html,
 body {
-  background-color: var(--back);
+  background-color: #000;
   margin: 0;
   height: 100%;
   font-family: "Source Sans Pro", sans-serif;
@@ -39,7 +39,7 @@ aside {
 }
 
 .filters-header {
-  background-color: var(--n-clic);
+  background-color: #fff;
   border-radius: 10px 10px 0 0;
   padding: 5px;
 }
@@ -71,7 +71,7 @@ aside {
 }
 
 .filters-container h3 {
-  color: var(--n-clic);
+  color: #fff;
   margin-bottom: 6px;
   display: flex;
   flex-direction: column;
@@ -87,7 +87,7 @@ aside {
 
 .filter {
   width: 100%;
-  color: var(--n-clic);
+  color: #fff;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -95,7 +95,7 @@ aside {
 }
 
 .filter i {
-  color: var(--clic);
+  color: rgb(240, 196, 0);
 }
 
 .filter-button-wrapper {
@@ -107,7 +107,7 @@ aside {
 }
 
 .filter-button-wrapper button {
-  background-color: var(--clic);
+  background-color: rgb(240, 196, 0);
   color: #ffffff;
   font-weight: 700;
   font-size: 14px;
@@ -118,7 +118,7 @@ aside {
 }
 
 .filter-button-wrapper button:hover {
-  background-color: var(--clic-seg);
+  background-color: rgb(226, 211, 2);
   cursor: pointer;
 }
 
@@ -135,16 +135,16 @@ aside {
 }
 
 .content-header span {
-  color: var(--n-clic);
+  color: #fff;
   font-size: 14px;
 }
 
 .content-header select {
-  background-color: var(--clic);
+  background-color: rgb(240, 196, 0);
 }
 
 .content-header select option {
-  background-color: var(--n-clic);
+  background-color: #fff;
 }
 
 .movie-container {
@@ -179,7 +179,7 @@ aside {
 }
 
 .movie-content h3 {
-  color: var(--clic);
+  color: rgb(240, 196, 0);
   font-weight: 800;
   margin: 0;
 }
@@ -191,7 +191,7 @@ aside {
 }
 
 .movie-content p {
-  color: var(--n-clic);
+  color: #fff;
   font-weight: 400;
   font-size: 16px;
 }
@@ -204,7 +204,7 @@ aside {
 }
 
 .content-pagination span {
-  color: var(--clic);
+  color: rgb(240, 196, 0);
   font-size: 16px;
   font-weight: 700;
   margin: 0px 8px 0px 8px;
@@ -215,7 +215,7 @@ aside {
 }
 
 .content-pagination .first {
-  border: 1px solid var(--n-clic);
+  border: 1px solid #fff;
   padding: 0px 4px 0px 4px;
 }
 
