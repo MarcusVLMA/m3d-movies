@@ -204,12 +204,14 @@ footer {
 nav {
 	margin-left: 37px;
 	margin-top: -30px;
-	background-color: #706bbb;
+	background-color: transparent;
 	height:50px;
-	width: 140px;
+	width: 138px;
 	align-items:center;
 	justify-content:center;
-}
+	
+}            
+
 
 nav ul {
 	padding: 0;
@@ -220,26 +222,35 @@ nav ul {
 	
 nav ul li {
 	display:inline-block;
-	background-color: #706bbb;
+	background-color: #FFF;
 	}
 
 nav a {
 	display:block;
 	padding:0 10px;	
-	color:#FFF;
+	color:#3f4040;
 	font-size: 18px;
 	font-family: "Source Sans Pro", sans-serif;
 	line-height: 60px;
 	text-decoration:none;
 	text-align: center;
 	height:50px;
-	width: 140px;
+	width: 138px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	border: 1px solid rgb(8, 51, 71);
+	border-bottom: none;
+	border-top: none;
+}
+nav ul li:hover:last-of-type{
+	border-bottom: 1px solid rgb(8, 51, 71);
+	border-radius: 0px;
 }
 
 nav a:hover { 
-	background-color: #ffffff; 
-	width: 140px;
-	color: #706bbb;
+	background-color: #01b4e4; 
+	width: 138px;
+	color: #FFF;
 }
 
 /* Hide Dropdowns by Default */
@@ -269,6 +280,10 @@ nav ul ul ul li {
 	left:170px;
 }
 
+.position-user-img{
+	margin-left: -20px;
+	margin-top: 14px;
+}
 	
 /* Change this in order to change the Dropdown symbol */
 li > a:after { content:  ' '; }
