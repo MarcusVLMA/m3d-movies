@@ -1,10 +1,3 @@
-:root {
-  --n-clic: white;
-  --clic: rgb(240, 196, 0);
-  --clic-seg:rgb(226, 211, 2);
-  --back: black;
-  --atention: rgb(221, 11, 11);
-}
 
 * { 
   margin: 0em; 
@@ -19,7 +12,7 @@ html, body {
 }
 
 body {
-  background-color: var(--back) ;
+  background-color: #000;
 }
 
 header {
@@ -41,7 +34,7 @@ form label {
   color: #3f4040;
 }
 p {
-  color: var(--n-clic);
+  color: #fff;
 }
 .content {
   display: flex;
@@ -73,7 +66,7 @@ p {
 }
 
 .slider label {
-  background-color: var(--clic);
+  background-color: rgb(240, 196, 0);
   bottom: 10px;
   bottom: 0.625rem;
   cursor: pointer;
@@ -124,14 +117,14 @@ p {
 }
 
 .field-container label {
-  color: var(--n-clic);
+  color: #fff;
 }
 
 .field-container input {
   width: 100%;
   font-size: 18px;
   font-size: 1.125rem;
-  color: var(--n-clic);
+  color: #fff;
   padding: 8px;
   padding: 0.5rem;
   margin-top: 5px;
@@ -140,12 +133,12 @@ p {
   border-radius: .25rem;
   border-width: 1px;
   border-style: solid;
-  border-color: var(--clic);
-  background-color: var(--back);
+  border-color: rgb(240, 196, 0);
+  background-color: #000;
 }
 
 .field-container input:hover {
-  border-color: var(--clic-seg);  
+  border-color: rgb(226, 211, 2);  
 }
 
 form .field-container, .title-container, .title-container h1 + p{
@@ -154,7 +147,7 @@ form .field-container, .title-container, .title-container h1 + p{
 }
 
 .title-container {
-  color: var(--n-clic);
+  color: #fff;
   margin-bottom: 10px;
   margin-bottom: 0.625rem;
 }
@@ -180,22 +173,21 @@ input[type="submit"], button {
   border-radius: 6px;
   border-radius: .375rem;
 }
+
 .btn-submit {
   color: #fff;
-  border-color: var(--clic);  
-  background-color: var(--clic);
+  border-color: rgb(240, 196, 0);  
+  background-color: rgb(240, 196, 0);
 }
 
 .btn-submit:hover {
   color: #fff;
-  border-color: var(--clic-seg);  
-  background-color: var(--clic-seg);  
-  ;
+  border-color: rgb(226, 211, 2);  
+  background-color: rgb(226, 211, 2);
 }
 
 .btn-submit:focus {
   color: #fff;
   border-color: #031f38;  
-  background-color: #031f38;  
-  ;
+  background-color: #031f38;
 }
