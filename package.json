@@ -1,11 +1,11 @@
 {
-  "name": "m3d-movies",
+  "name": "m3dserver",
   "version": "0.0.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
     "devstart": "nodemon ./bin/www",
-    "serverstart": "DEBUG=m3d-movies:* npm run devstart"
+    "serverstart": "DEBUG=m3dserver:* npm run devstart"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
