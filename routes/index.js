@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const titleController = require('../controllers/titleController');
 
 // Solicitação GET para a página principal
-router.get('/', titleController.index_teste);
+router.get('/', function(req, res) {
+  res.send('Solicitação GET para a página principal');
+});
 
 // Solicitação GET para a página de cadastro.
 router.get('/registration', function(req, res) {
