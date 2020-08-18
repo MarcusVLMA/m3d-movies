@@ -44,6 +44,28 @@ main {
     width: 100%;
     height: auto;
 }
+.common {
+    --back-image: url("./images/7.jpg");
+    --back-gradiente: linear-gradient(
+        to right,
+        rgba(13.73%, 18.04%, 14.9%, 1) 150px,
+        rgba(21.96%, 23.53%, 22.35%, 0.84) 100%
+    );
+    --btn-submit: #213c97;
+    --text-link: royalblue;
+    --clic: rgba(255, 255, 0, 0);
+    --clic-sec: rgba(255, 255, 0, 0);
+    --error: #f00;
+}
+.high-contrast {
+    --back-image: #000;
+    --back-gradiente: #000;
+    --btn-submit: #000;
+    --text-link: #ff0;
+    --clic: #ff0;
+    --clic-sec: rgb(179, 179, 0);
+    --error: #f00;
+}
 .title {
     align-items: flex-start;
     align-content: flex-start;
@@ -61,18 +83,14 @@ main {
     font-weight: bold;
 }
 .content-wrapper {
-    background-image: url("./images/7.jpg");
+    background-image: var(--back-image);
     background-size: cover;
     border-radius: 30px 30px 30px 30px;
     margin: 3em 0em 3em 0em;
 }
   
 .content {
-    background-image: linear-gradient(
-        to right,
-        rgba(13.73%, 18.04%, 14.9%, 1) 150px,
-        rgba(21.96%, 23.53%, 22.35%, 0.84) 100%
-    );
+    background-image: var(--back-gradiente);
     padding: 30px 60px 30px 60px;
     flex-direction: row;
     border-radius: 30px 30px 30px 30px;
@@ -95,7 +113,7 @@ main {
     text-decoration:none;
 }
 .search span a:hover {
-    color: royalblue;
+    color: var(--text-link);
     text-decoration: underline;
 }
 .s-bar {
@@ -127,12 +145,14 @@ main {
     text-align: center;
     border-radius: 50px 50px 50px 50px;
     margin: 0px 0px 0px -40px;
-    background:#213c97;
+    background: var(--btn-submit);
     cursor:pointer;
     border: none;
     outline: none;
+    border: 4px solid var(--clic)
 } 
 .s-bar input[type="submit"]:hover{
     background: black;
+    border: 4px solid var(--clic-sec);
     transition: all 0.3s ease;
 }

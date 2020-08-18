@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="common">
   <head>
     <meta charset="utf-8">
     <title>M3D Movies - Home</title>
@@ -36,5 +36,27 @@
 			</div>
 		</main>
     <footer></footer>
+    <!-- parte de troca do tema -->
+    <button id="switch" onclick="toggleTheme()"> Toggle Theme </button>
+    <script>
+      function setTheme(themeName) {
+          localStorage.setItem('theme', themeName);
+          document.documentElement.className = themeName;
+      }
+      function toggleTheme() {
+          if (localStorage.getItem('theme') === 'high-contrast') {
+              setTheme('common');
+          } else {
+              setTheme('high-contrast');
+          }
+      }
+      (function () {
+          if (localStorage.getItem('theme') === 'high-contrast') {
+              setTheme('high-contrast');
+          } else {
+              setTheme('common');
+          }
+      })();
+  </script>
   </body>
 </html>
