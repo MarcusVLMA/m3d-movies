@@ -1,3 +1,29 @@
+
+.common {
+  --back: #fff;
+  --kcab: #000;
+  --back-btn: #032541;
+  --border: #032541;
+  --bolinha: #c2c2c2;
+  --text-gray: #4c4d4d;
+  --hover-blue: #028cb3; 
+  --clic: rgba(255, 255, 0, 0);
+  --clic-sec: rgba(255, 255, 0, 0);
+  --error: #f00;
+}
+.high-contrast {
+  --back: #000;
+  --kcab: #fff;
+  --back-btn: #000;
+  --border: white;
+  --bolinha: #ff0;
+  --text-gray: #fff;
+  --hover-blue: rgb(179, 179, 0);
+  --clic: #ff0;
+  --clic-sec: rgb(179, 179, 0);
+  --error: #f00;
+}
+
 * { 
   margin: 0em; 
   padding: 0em; 
@@ -14,6 +40,9 @@ header {
   height: 64px;
   height: 4rem;  
 }
+body {
+  background-color: var(--back);
+}
 
 footer {
   background-color: #032541;
@@ -25,8 +54,12 @@ fieldset {
   border: none;
 }
 form label {
-  color: #3f4040;
+  color: var(--text-gray);
 }
+p {
+  color: var(--kcab);
+}
+
 .content {
   display: flex;
   flex-direction: row;
@@ -57,7 +90,7 @@ form label {
 }
 
 .slider label {
-  background-color: #ffffff6e;
+  background-color: var(--bolinha);
   bottom: 10px;
   bottom: 0.625rem;
   cursor: pointer;
@@ -111,7 +144,7 @@ form label {
   width: 100%;
   font-size: 18px;
   font-size: 1.125rem;
-  color: #4c4d4d;
+  color: var(--text-gray);
   padding: 8px;
   padding: 0.5rem;
   margin-top: 5px;
@@ -120,7 +153,8 @@ form label {
   border-radius: .25rem;
   border-width: 1px;
   border-style: solid;
-  border-color: #bdbfbf;
+  border-color: var(--bolinha);
+  background-color: var(--back);
 }
 
 .field-container input:hover {
@@ -133,6 +167,7 @@ form .field-container, .title-container, .title-container h1 + p{
 }
 
 .title-container {
+  color: var(--kcab);
   margin-bottom: 10px;
   margin-bottom: 0.625rem;
 }
@@ -160,20 +195,17 @@ input[type="submit"], button {
 }
 .btn-submit {
   color: #fff;
-  border-color: #01b4e4;  
-  background-color: #01b4e4;
+  background-color: var(--back-btn);
+  border: 1px solid var(--clic);
 }
 
 .btn-submit:hover {
   color: #fff;
-  border-color: #028cb3;  
-  background-color: #028cb3;  
-  ;
+  border-color: var(--hover-blue);
 }
 
 .btn-submit:focus {
   color: #fff;
   border-color: #031f38;  
   background-color: #031f38;  
-  ;
 }

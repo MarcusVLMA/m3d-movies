@@ -1,4 +1,27 @@
 
+.common {
+    --back-image: url("./images/7.jpg");
+    --back-gradiente: linear-gradient(
+        to right,
+        rgba(13.73%, 18.04%, 14.9%, 1) 150px,
+        rgba(21.96%, 23.53%, 22.35%, 0.84) 100%
+    );
+    --btn-submit: #213c97;
+    --text-link: royalblue;
+    --clic: rgba(255, 255, 0, 0);
+    --clic-sec: rgba(255, 255, 0, 0);
+    --error: #f00;
+}
+.high-contrast {
+    --back-image: #000;
+    --back-gradiente: #000;
+    --btn-submit: #000;
+    --text-link: #ff0;
+    --clic: #ff0;
+    --clic-sec: rgb(179, 179, 0);
+    --error: #f00;
+}
+
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
 article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}
 ol,ul{list-style:none;margin:0;padding:0;}
@@ -43,28 +66,6 @@ footer {
 main {
     width: 100%;
     height: auto;
-}
-.common {
-    --back-image: url("./images/7.jpg");
-    --back-gradiente: linear-gradient(
-        to right,
-        rgba(13.73%, 18.04%, 14.9%, 1) 150px,
-        rgba(21.96%, 23.53%, 22.35%, 0.84) 100%
-    );
-    --btn-submit: #213c97;
-    --text-link: royalblue;
-    --clic: rgba(255, 255, 0, 0);
-    --clic-sec: rgba(255, 255, 0, 0);
-    --error: #f00;
-}
-.high-contrast {
-    --back-image: #000;
-    --back-gradiente: #000;
-    --btn-submit: #000;
-    --text-link: #ff0;
-    --clic: #ff0;
-    --clic-sec: rgb(179, 179, 0);
-    --error: #f00;
 }
 .title {
     align-items: flex-start;

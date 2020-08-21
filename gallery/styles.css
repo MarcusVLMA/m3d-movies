@@ -1,4 +1,25 @@
 
+.common {
+  --back: #fff;
+  --filter-header: #01b4e4;
+  --text: #000;
+  --text-link: #000;
+  --btn-filter: #01b4e4;
+  --btn-filter-hover: #032541;
+  --clic: rgba(255, 255, 0, 0);
+  --clic-sec: rgba(255, 255, 0, 0);
+}
+.high-contrast {
+  --back: #000;
+  --filter-header: #fff;
+  --text: #fff;
+  --text-link: #ff0;
+  --btn-filter: #000;
+  --btn-filter-hover: #000;
+  --clic: #ff0;
+  --clic-sec: rgb(179, 179, 0);
+}
+
 html,
 body {
   background-color: var(--back);
@@ -15,30 +36,6 @@ header {
 main {
   width: 100%;
   height: auto;
-}
-
-.common {
-  --back: #fff;
-  --filter-header: #01b4e4;
-  --text: #000;
-  --text-link: #000;
-  --btn-filter: #01b4e4;
-  --btn-filter-hover: #032541;
-  
-  --clic: rgba(255, 255, 0, 0);
-  --clic-sec: rgba(255, 255, 0, 0);
-}
-.high-contrast {
-  --back: #000;
-  --filter-header: #fff;
-  --text: #fff;
-  --text-link: #ff0;
-  --btn-filter: #000;
-  --btn-filter-hover: #000;
-
-
-  --clic: #ff0;
-  --clic-sec: rgb(179, 179, 0);
 }
 
 .main-wrapper {
