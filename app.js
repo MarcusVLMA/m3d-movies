@@ -1,20 +1,22 @@
-var createError = require("http-errors");
-var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
+const createError = require("http-errors");
+const express = require("express");
+const expressLayouts = require('express-ejs-layouts');
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
 
-var indexRouter = require("./routes/index");
-var adminRouter = require("./routes/admin");
-var userRouter = require("./routes/user");
+const defaultRouter = require("./routes/default");
+const adminRouter = require("./routes/admin");
+const userRouter = require("./routes/user");
 
-var db = require("./database");
+const db = require("./database").default;
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
+app.use(expressLayouts);
 
 app.use(logger("dev"));
 app.use(express.json());
@@ -22,7 +24,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRouter);
+app.use("/", defaultRouter);
 app.use("/admin", adminRouter);
 app.use("/user", userRouter);
 

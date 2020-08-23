@@ -1,11 +1,27 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
-</html>
+<%- contentFor('style') %>
+<link rel="stylesheet" type="text/css" href="/stylesheets/index_style.css" />
+
+<%- defineContent('navbar') %>   
+
+<%- contentFor('main') %>
+<div class="content-wrapper">
+  <div class="content">
+    <div class="title">
+      <h2>Seja Bem-Vindo(a)!</h2>
+      <h3>Muitas informações de filmes,<br> séries e animes.<br>Explore!</h3>
+    </div>
+    <div class="search">
+      <div class="s-bar">
+        <form>
+          <input type="text" value="Buscar por um filme, série ou anime..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Qual filme você gostaria de saber mais?';}">
+          <input type="submit"  value="Pesquisar"/>
+        </form>
+      </div>
+      <span>Exemplo: 
+        <a href="#" target="_blank">Forrest Gump</a>, 
+        <a href="#" target="_blank">Vingadores</a>, 
+        <a href="#" target="_blank">Liga da Justiça</a>
+      </span>
+    </div>
+  </div>
+</div>
