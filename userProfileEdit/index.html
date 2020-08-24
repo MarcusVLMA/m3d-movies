@@ -15,23 +15,16 @@
   </head>
   <body>
     <header>
-      <div class="header-bg">
-        <h1 class="logo"><span class="logo-middle">M</span>3D</h1>
-        <h1 class="menu">Filmes</h1>
-        <h1 class="menu">Séries</h1>
-        <h1 class="menu">Animes</h1>
-        <input class="header-input" type="text" name="search" placeholder="Buscar...">
-        <img class="header-img" alt="alto contraste" src="./images/contrast.png" />
-        <img class="header-img2" alt="aumentar fonte" src="./images/increase-font.png" />
-        <img class="header-img2" alt="diminuir fonte" src="./images/decrease-font.png" />
-        <div class="custom-select"  style="height:fit-content; width: fit-content;">
-          <nav>
-           <ul>
-            <li><a href="#">
-              <svg width="24" height="30" class="position-user-img">
-	            <circle fill="rgb(8, 51, 71)" r="12" cx="12" cy="16" />
+          <ul>
+              <li><a class="logo"><span class="logo-middle">M</span>3D</a></li>
+              <li><a class="menu">Filmes</a></li>
+              <li><a class="menu">Séries</a></li>
+              <li><a class="menu">Animes</a></li>
+              <li class="dropdown" style="float:right"><a href="#" class="dropbtn">
+              <svg width="28" height="30" class="position-user-img">
+	            <circle fill="#706bbd" r="14" cx="14" cy="16"/>
 	            <text
-	                    x="12"
+	                    x="14"
 	                    y="22"
 	                    text-anchor="middle"
 	                    stroke="#ffffff"
@@ -42,184 +35,169 @@
 	             >
 	             D
 	             </text>
-	          </svg>
-            dw2020</a>
-            <!-- First Tier Drop Down -->
-            <ul>
-                <li><a href="#">Editar Perfil</a></li>
-                <li><a href="#">Minha Galeria</a></li>
-                <li><a href="#">Sugerir Conteúdo</a></li>
-                <li><a href="#">Sair</a></li>
-            </ul>        
+	          </svg></a>
+                  <div class="dropdown-content">
+               <a href="#">Editar Perfil</a>
+                <a href="#">Minha Galeria</a>
+                <a href="#">Sugerir Conteúdo</a>
+                <a href="#">Sair</a>
+            </div>
             </li>
+              <li style="float:right"><a><img class="header-img2" alt="diminuir fonte" src="./images/decrease-font.png" /></a></li>
+              <li style="float:right"><a><img class="header-img2" alt="aumentar fonte" src="./images/increase-font.png" /></a></li>
+              <li style="float:right"><a><img class="header-img" alt="alto contraste" src="./images/contrast.png" /></a></li>
+              <li style="float:right"><a style="padding-top: 5px"><input class="header-input" type="text" name="search" placeholder="Buscar..."></a></li>
         </ul>
-    </nav>
-        </div>
-      </div>
+      </ul>
     </header>
     <main>
+        <div class="info-bg">
        <div class="info">
-        <svg width="84" height="84">
-            <circle fill="#02b4df" r="40" cx="42" cy="42" />
+        <svg width="104" height="104" style="padding: 20px 10px">
+            <circle fill="#02b4df" r="50" cx="52" cy="52" />
             <text
-                    x="48"
-                    y="54"
+                    x="54"
+                    y="68"
                     text-anchor="middle"
                     stroke="#ffffff"
                     stroke-width="1.5px"
                     fill="#ffffff"
                     font-family="Source Sans Pro, sans-serif"
-                    font-size="36px"
+                    font-size="48px"
              >
              D
              </text>
         </svg>
-        <h1 class="user-name">dw2020<span class="user-date">Membro desde agosto de 2020</span></h1>
-        <div class="avaliation-percentage1">
-          <svg width="42" height="42">
-            <circle fill="#081C22" r="20" cx="21" cy="21" />
-            <circle stroke="#1C4027" stroke-width="4" fill="transparent" r="16" cx="21" cy="21"/>
+           <div class="info-block">
+           <h1 class="font-user-name">dw2020<span class="font-user-date">Membro desde agosto de 2020</span></h1>
+           <div class="avaliation">
+               <div class="container-avaliation">
+          <svg width="48" height="48">
+            <circle fill="#081C22" r="24" cx="24" cy="24" />
+            <circle stroke="#1C4027" stroke-width="4" fill="transparent" r="22" cx="24" cy="24"/>
                   <circle
                     class="progress-ring"
                     stroke="#21D07A"
                     stroke-width="2"
                     fill="transparent"
-                    r="16"
-                    cx="21"
-                    cy="21"
+                    r="22"
+                    cx="24"
+                    cy="24"
                   />
                   <text
-                    x="19"
-                    y="24"
+                    x="21"
+                    y="27"
                     text-anchor="middle"
                     stroke="#ffffff"
                     stroke-width="1px"
                     fill="#ffffff"
                     font-family="Source Sans Pro, sans-serif"
-                    font-size="12px"
+                    font-size="16px"
                   >
                     100
                   </text>
                   <text
-                    x="30"
-                    y="20"
+                    x="37"
+                    y="25"
                     text-anchor="middle"
                     stroke="#ffffff"
                     stroke-width="0.5px"
                     fill="#ffffff"
                     font-family="Source Sans Pro, sans-serif"
-                    font-size="5px"
-                  >
-                    %
-                  </text>
-                  
-                  
-                </svg>
-        </div>
-          <h1 class="user-avaliation1">
-                    Avaliação Média
-                  </h1>
-                  <h1 class="user-avaliation2">
-                    de Filmes
-                  </h1>
-                  <h1 class="user-avaliation3">
-                    |
-                  </h1>
-        <div class="avaliation-percentage2">
-            <svg width="42" height="42">
-            <circle fill="#081C22" r="20" cx="21" cy="21" />
-            <circle stroke="#1C4027" stroke-width="4" fill="transparent" r="16" cx="21" cy="21"/>
-                  <circle
-                    class="progress-ring"
-                    stroke="#21D07A"
-                    stroke-width="2"
-                    fill="transparent"
-                    r="16"
-                    cx="21"
-                    cy="21"
-                  />
-                  <text
-                    x="19"
-                    y="24"
-                    text-anchor="middle"
-                    stroke="#ffffff"
-                    stroke-width="1px"
-                    fill="#ffffff"
-                    font-family="Source Sans Pro, sans-serif"
-                    font-size="12px"
-                  >
-                    100
-                  </text>
-                  <text
-                    x="30"
-                    y="20"
-                    text-anchor="middle"
-                    stroke="#ffffff"
-                    stroke-width="0.5px"
-                    fill="#ffffff"
-                    font-family="Source Sans Pro, sans-serif"
-                    font-size="5px"
+                    font-size="8px"
                   >
                     %
                   </text>
                 </svg>
-        </div>
-          <h1 class="user-avaliation1">
-                    Avaliação Média
+                   <h1 class="font-user-avaliation">
+                    Avaliação Média de Filmes
                   </h1>
-                  <h1 class="user-avaliation2">
-                    de Séries
-                  </h1>
-                  <h1 class="user-avaliation3">
-                    |
-                  </h1>
-        <div class="avaliation-percentage3">
-            <svg width="42" height="42">
-            <circle fill="#081C22" r="20" cx="21" cy="21" />
-            <circle stroke="#1C4027" stroke-width="4" fill="transparent" r="16" cx="21" cy="21"/>
-                  <circle
-                    class="progress-ring"
-                    stroke="#21D07A"
-                    stroke-width="2"
-                    fill="transparent"
-                    r="16"
-                    cx="21"
-                    cy="21"
-                  />
-                  <text
-                    x="19"
-                    y="24"
-                    text-anchor="middle"
-                    stroke="#ffffff"
-                    stroke-width="1px"
-                    fill="#ffffff"
-                    font-family="Source Sans Pro, sans-serif"
-                    font-size="12px"
-                  >
-                    100
-                  </text>
-                  <text
-                    x="30"
-                    y="20"
-                    text-anchor="middle"
-                    stroke="#ffffff"
-                    stroke-width="0.5px"
-                    fill="#ffffff"
-                    font-family="Source Sans Pro, sans-serif"
-                    font-size="5px"
-                  >
-                    %
-                  </text>
-                </svg>
-        </div>
-          <h1 class="user-avaliation1">
-                    Avaliação Média
-                  </h1>
-                  <h1 class="user-avaliation2">
-                    de Animes
-                  </h1>
+               </div>
+               <div class="container-avaliation">
+               <svg width="48" height="48">
+                   <circle fill="#081C22" r="24" cx="24" cy="24" />
+                   <circle stroke="#1C4027" stroke-width="4" fill="transparent" r="22" cx="24" cy="24"/>
+                   <circle
+                           class="progress-ring"
+                           stroke="#21D07A"
+                           stroke-width="2"
+                           fill="transparent"
+                           r="22"
+                           cx="24"
+                           cy="24"
+                   />
+                   <text
+                           x="21"
+                           y="27"
+                           text-anchor="middle"
+                           stroke="#ffffff"
+                           stroke-width="1px"
+                           fill="#ffffff"
+                           font-family="Source Sans Pro, sans-serif"
+                           font-size="16px"
+                   >
+                       100
+                   </text>
+                   <text
+                           x="37"
+                           y="25"
+                           text-anchor="middle"
+                           stroke="#ffffff"
+                           stroke-width="0.5px"
+                           fill="#ffffff"
+                           font-family="Source Sans Pro, sans-serif"
+                           font-size="8px"
+                   >
+                       %
+                   </text>
+               </svg>
+          <h1 class="font-user-avaliation">Avaliação Média de Séries</h1>
+               </div>
+               <div class="container-avaliation" style="border: none">
+               <svg width="48" height="48">
+                   <circle fill="#081C22" r="24" cx="24" cy="24" />
+                   <circle stroke="#1C4027" stroke-width="4" fill="transparent" r="22" cx="24" cy="24"/>
+                   <circle
+                           class="progress-ring"
+                           stroke="#21D07A"
+                           stroke-width="2"
+                           fill="transparent"
+                           r="22"
+                           cx="24"
+                           cy="24"
+                   />
+                   <text
+                           x="21"
+                           y="27"
+                           text-anchor="middle"
+                           stroke="#ffffff"
+                           stroke-width="1px"
+                           fill="#ffffff"
+                           font-family="Source Sans Pro, sans-serif"
+                           font-size="16px"
+                   >
+                       100
+                   </text>
+                   <text
+                           x="37"
+                           y="25"
+                           text-anchor="middle"
+                           stroke="#ffffff"
+                           stroke-width="0.5px"
+                           fill="#ffffff"
+                           font-family="Source Sans Pro, sans-serif"
+                           font-size="8px"
+                   >
+                       %
+                   </text>
+               </svg>
+          <h1 class="font-user-avaliation">Avaliação Média de Animes</h1>
+               </div>
+           </div>
+           </div>
        </div>
-       <div>
+        </div>
+       <div class="form-container">
          <h1 class="form-head">Alterar Informações</h1>
          <h1 class="form-preface">Nome de usuário</h1>
          <input class="form-box" type="text" name="uname" /> 
@@ -232,12 +210,9 @@
          <br><br>
          <button type="button" class="button">Atualizar</button>
        </div>
-      
     </main>
     <footer>
-      <div class="footer-bg">
-        <h1 class="footer-text">© Copyright 2020 M3D Filmes</h1>
-      </div>
+      <label id="footer">© Copyright 2020 M3D</label>
     </footer>
   </body>
 </html>
