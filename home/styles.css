@@ -45,7 +45,7 @@ nav.horizontal ul li{	display: inline-block;}/* horizontal menu */
 img{max-width:100%;}
 body { 
    font-family: "Source Sans Pro", sans-serif;
-   font-size: 100%;
+   font-size: 20px;
    display: flex;
    flex-direction: column;
    min-height: 100%;
