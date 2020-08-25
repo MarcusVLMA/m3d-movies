@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR" class="common">
   <head>
     <meta charset="utf-8">
-    <title>Adicionar  Título - M3D Filmes</title>
+    <title>M3D Filmes - Adicionar  Título </title>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,600,700">
   </head>
-  <body>
+  <body class="acessibilidade">
     <header></header>
     <main>
       <div class="content">
@@ -87,5 +87,12 @@
       </div>
     </main>
     <footer></footer>
+    <!-- parte de troca do tema -->
+    <button id="switch" onclick="toggleTheme()"> Toggle Theme </button>
+    <button onClick="fonte('aPlus');">A+</button>
+    <button onClick="fonte('aMinus');">A-</button>
+    <script type="text/javascript" src="../home/script/toggle-theme.js"></script>
+    <script src="../home/script/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="../home/script/fonte.js"></script> 
   </body>
 </html>

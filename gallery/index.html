@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="common">
   <head>
+    <meta charset="utf-8">
     <title>M3D Movies - Galeria</title>
     <link rel="stylesheet" type="text/css" href="./styles.css" />
     <link
@@ -12,7 +13,7 @@
       crossorigin="anonymous"
     ></script>
   </head>
-  <body>
+  <body class="acessibilidade">
     <header></header>
     <main>
       <div class="main-wrapper">
@@ -132,5 +133,12 @@
       </div>
     </main>
     <footer></footer>
+    <!-- parte de troca do tema -->
+    <button id="switch" onclick="toggleTheme()"> Toggle Theme </button>
+    <button onClick="fonte('aPlus');">A+</button>
+    <button onClick="fonte('aMinus');">A-</button>
+    <script type="text/javascript" src="../home/script/toggle-theme.js"></script>
+    <script src="../home/script/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="../home/script/fonte.js"></script> 
   </body>
 </html>

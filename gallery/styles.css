@@ -1,6 +1,28 @@
+
+.common {
+  --back: #fff;
+  --filter-header: #01b4e4;
+  --text: #000;
+  --text-link: #000;
+  --btn-filter: #01b4e4;
+  --btn-filter-hover: #032541;
+  --clic: rgba(255, 255, 0, 0);
+  --clic-sec: rgba(255, 255, 0, 0);
+}
+.high-contrast {
+  --back: #000;
+  --filter-header: #fff;
+  --text: #fff;
+  --text-link: #ff0;
+  --btn-filter: #000;
+  --btn-filter-hover: #000;
+  --clic: #ff0;
+  --clic-sec: rgb(179, 179, 0);
+}
+
 html,
 body {
-  background-color: #ffffff;
+  background-color: var(--back);
   margin: 0;
   height: 100%;
   font-family: "Source Sans Pro", sans-serif;
@@ -31,7 +53,7 @@ aside {
 }
 
 .filters-header {
-  background-color: #01b4e4;
+  background-color: var(--filter-header);
   border-radius: 10px 10px 0 0;
   padding: 5px;
 }
@@ -63,6 +85,7 @@ aside {
 }
 
 .filters-container h3 {
+  color: var(--text);
   margin-bottom: 6px;
   display: flex;
   flex-direction: column;
@@ -78,10 +101,15 @@ aside {
 
 .filter {
   width: 100%;
+  color: var(--text);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: 16px;
+}
+
+.filter i {
+  color: var(--clic);
 }
 
 .filter-button-wrapper {
@@ -93,7 +121,7 @@ aside {
 }
 
 .filter-button-wrapper button {
-  background-color: #01b4e4;
+  background-color: var(--btn-filter);
   color: #ffffff;
   font-weight: 700;
   font-size: 14px;
@@ -101,11 +129,13 @@ aside {
   border: none;
   border-radius: 8px;
   align-self: flex-end;
+  border: 2px solid var(--clic);
 }
 
 .filter-button-wrapper button:hover {
-  background-color: #032541;
+  background-color: var(--btn-filter-hover);
   cursor: pointer;
+  border: 2px solid var(--clic-sec);
 }
 
 .content {
@@ -121,7 +151,12 @@ aside {
 }
 
 .content-header span {
+  color: var(--text);
   font-size: 14px;
+}
+
+.content-header select {
+  background-color: var(--clic);
 }
 
 .movie-container {
@@ -156,7 +191,7 @@ aside {
 }
 
 .movie-content h3 {
-  color: #000000;
+  color: var(--text-link);
   font-weight: 800;
   margin: 0;
 }
@@ -168,7 +203,7 @@ aside {
 }
 
 .movie-content p {
-  color: #000000;
+  color: var(--text);
   font-weight: 400;
   font-size: 16px;
 }
@@ -181,6 +216,7 @@ aside {
 }
 
 .content-pagination span {
+  color: var(--text-link);
   font-size: 16px;
   font-weight: 700;
   margin: 0px 8px 0px 8px;
@@ -191,7 +227,7 @@ aside {
 }
 
 .content-pagination .first {
-  border: 1px solid #000000;
+  border: 1px solid var(--text);
   padding: 0px 4px 0px 4px;
 }
 
