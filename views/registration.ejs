@@ -1,0 +1,56 @@
+<%- contentFor('style') %>
+<link rel="stylesheet" type="text/css" href="/stylesheets/registration.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/navbar.css" />
+
+<%- contentFor('navbar') %>
+
+<%- contentFor('main') %>
+<div class="content">
+  <div class="content-slider">
+    <ul class="slider">
+      <li>
+        <input type="radio" id="slide1" name="slide" checked>
+        <label for="slide1"></label>
+        <img src="/images/slide1.png" alt="Avalie filmes e séries">
+        </li>
+      <li>
+        <input type="radio" id="slide2" name="slide">
+        <label for="slide2"></label>
+        <img src="/images/slide2.png" alt="Armazene seus filmes favoritos em sua galeria" />
+        </li>
+        <li>
+          <input type="radio" id="slide3" name="slide">
+          <label for="slide3"></label>
+          <img src="/images/slide3.png" alt="Dê sua opinião sobre os títulos"/>
+        </li>
+      </ul>
+  </div>
+  <div class="content-form">
+    <div class="title-container">
+      <h1 class="title">Crie uma conta</h1>
+      <p>Criar uma conta é fácil e gratuito. Comece preenchendo o formulário abaixo.</p>
+    </div>          
+    <form method="post">
+      <fieldset>
+        <div class="field-container">
+          <label for="name">Nome de usuário</label>
+          <input type="text" minlength="4" maxlength="50" name="user_name" id="name" />
+        </div>
+        <div class="field-container">
+          <label for="password">Senha (8 caractéres no mínimo)</label>
+          <input type="password" minlength="8" maxlength="50" name="user_password" id="password" />
+        </div>
+        <div class="field-container">
+          <label for="password-confirm">Confirme sua senha</label>
+          <input type="password" minlength="8" maxlength="50" name="user_password_confirm" id="password-confirm" />
+        </div>
+        <div class="field-container">
+          <label for="email">E-mail</label>
+          <input type="email" name="user_email" id="email" placeholder="seuemail@exemplo.com"/>
+        </div>
+      </fieldset>
+      <p>Ao clicar no botão "Registrar" abaixo, concordo com os termos de uso e a política de privacidade do M3D Filmes.</p>
+      <input class="btn-submit" type="submit" value="Registrar">
+    </form>
+  </div>
+</div>

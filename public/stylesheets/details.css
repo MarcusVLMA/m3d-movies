@@ -1,0 +1,433 @@
+.common {
+  --back: #fff;
+  --kcab: #000;
+  --back-image: url("https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/n6bUvigpRFqSwmPp1m2YADdbRBc.jpg");
+  --back-gradiente: linear-gradient(
+      to right,
+      rgba(13.73%, 18.04%, 14.9%, 1) 150px,
+      rgba(21.96%, 23.53%, 22.35%, 0.84) 100%
+  );
+  --back-btn: #032541;
+  --border: #032541;
+  --mini-btn: #032541;
+  --text-link: royalblue;
+  --clic: rgba(255, 255, 0, 0);
+  --clic-sec: rgba(255, 255, 0, 0);
+  --error: #f00;
+}
+
+.high-contrast {
+  --back: #000;
+  --kcab: #fff;
+  --back-image: #000;
+  --back-btn: rgb(240, 196, 0);
+  --border: white;
+  --mini-btn: #000;
+  --back-gradiente: #000;
+  --text-link: #ff0;
+  --clic: #ff0;
+  --clic-sec: rgb(179, 179, 0);
+  --error: #f00;
+}
+
+html,
+body {
+  background-color: var(--back);
+  margin: 0;
+  height: 100%;
+}
+
+header {
+  height: 60px;
+  background-color: blue;
+}
+
+main {
+  width: 100%;
+  height: auto;
+}
+
+footer {
+  height: 100px;
+  background-color: blue;
+}
+
+.content-wrapper {
+  background-image: var(--back-image);
+}
+
+.content {
+  background-image: var(--back-gradiente);
+  margin: 15px 0px 15px 0px;
+  padding: 30px 60px 30px 60px;
+  display: flex;
+  flex-direction: row;
+}
+
+.poster {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.poster img {
+  width: 300px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.details {
+  margin: 0px 30px 0px 30px;
+}
+
+.details-title {
+  color: #ffffff;
+  font-family: "Source Sans Pro", sans-serif;
+  margin-bottom: 0px;
+}
+
+.details-title span {
+  color: #c2c2c2;
+  font-weight: 400;
+}
+
+.details-subtitle {
+  color: #ffffff;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 16px;
+}
+
+.details-subtitle-age {
+  border: 1px solid #ffffff;
+}
+
+.details-actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 20px 0px 20px 0px;
+}
+
+.details-actions-rating {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.details-actions-rating-text {
+  color: #ffffff;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  margin-left: 6px;
+  line-height: 20px;
+}
+
+.details-actions-button {
+  margin-left: 20px;
+  background-color: var(--back-btn);
+  width: 54px;
+  height: 54px;
+  border-radius: 27px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.details-actions-button-tooltip-gallery::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  bottom: 100%;
+  left: 50%;
+  border: 0.75rem solid transparent;
+  border-top: none;
+  border-bottom-color: #fff;
+  filter: drop-shadow(0 -0.0425rem 0.0425rem rgba(0, 0, 0, 0.1));
+}
+
+.details-actions-button-tooltip-gallery {
+  visibility: hidden;
+  position: absolute;
+  margin-top: 110px;
+  z-index: 1;
+  background-color: #ffffff;
+  color: #000000;
+  text-align: center;
+  padding: 5px 10px 5px 10px;
+  border-radius: 4px;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 14px;
+}
+
+.details-actions-button:hover .details-actions-button-tooltip-gallery {
+  visibility: visible;
+}
+
+.details-actions-button-tooltip-favorites::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  bottom: 100%;
+  left: 50%;
+  border: 0.75rem solid transparent;
+  border-top: none;
+  border-bottom-color: var(--border);
+  filter: drop-shadow(0 -0.0425rem 0.0425rem rgba(0, 0, 0, 0.1));
+}
+
+.details-actions-button-tooltip-favorites {
+  visibility: hidden;
+  position: absolute;
+  margin-top: 140px;
+  z-index: 1;
+  background-color: var(--mini-btn);
+  color: #ffffff;
+  text-align: center;
+  padding: 5px 10px 15px 10px;
+  border-radius: 4px;
+  border: 2px solid var(--clic);
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 27px;
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.details-actions-button-tooltip-favorites svg line#fav {
+  stroke: var(--clic);
+}
+
+.details-actions-button:hover .details-actions-button-tooltip-favorites {
+  visibility: visible;
+}
+
+.details-actions-button i {
+  color: #ffffff;
+  font-size: 20px;
+}
+
+.details-actions-trailer {
+  color: #ffffff;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin-left: 40px;
+  padding: 15px 20px 15px 20px;
+  border-radius: 30px 30px 30px 30px;
+  border: 1px solid var(--clic);
+}
+
+.details-actions-trailer:hover {
+  color: #c2c2c2;
+  cursor: pointer;
+}
+
+.details-actions-trailer i {
+  margin-right: 9px;
+}
+
+.progress-ring {
+  stroke: var(--text-link);
+  stroke-dasharray: 201.06 201.06;
+  stroke-dashoffset: 36.19;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+.ring {
+  stroke: #000;
+}
+
+.details-phrase {
+  color: #c2c2c2;
+  font-family: "Source Sans Pro", sans-serif;
+  font-style: italic;
+  font-size: 16px;
+  margin: 15px 0px 10px 0px;
+}
+
+.details-sinopsis {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.details-sinopsis-title {
+  color: #ffffff;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 700;
+  margin: 0px;
+}
+
+.details-sinopsis-text {
+  color: #ffffff;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 14px;
+  margin: 4px 0px 4px 0px;
+  flex-wrap: wrap;
+}
+
+.details-cast {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  margin-right: 120px;
+}
+
+.details-cast-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.details-cast-item {
+  display: flex;
+  flex-direction: column;
+  width: 33%;
+}
+
+.details-cast-item-name {
+  color: #ffffff;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.details-cast-item-jobs {
+  color: #ffffff;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.comments {
+  padding: 0px 20px 40px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.comments h2 {
+  color: var(--kcab);
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 800;
+}
+
+.comment-container {
+  box-shadow: 2px 2px 2px 2px #c2c2c255;
+  border: 0.5px solid #c2c2c255;
+  border-radius: 10px;
+  padding: 20px 10px 5px 10px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.comment-photo {
+  height: 80px;
+  width: 80px;
+}
+
+.comment-photo img {
+  height: 80px;
+  width: 80px;
+  border-radius: 40px;
+  object-fit: cover;
+}
+
+.comment-content {
+  margin-left: 20px;
+  padding-right: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-content h3 {
+  color: var(--kcab);
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 800;
+  margin: 0;
+}
+
+.comment-content span {
+  color: #a2a2a2;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.comment-content p {
+  color: var(--kcab);
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.comment-content i {
+  position: absolute;
+  right: 5px;
+  color: var(--back-btn);
+  cursor: pointer;
+}
+
+.comment-content i:hover {
+  color: #a2a2a2;
+  cursor: pointer;
+}
+
+.new-comment-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.new-comment-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.new-comment-container form label {
+  color: var(--kcab);
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.new-comment-container form textarea {
+  color: #000;
+  resize: none;
+  height: 100px;
+  border: 2px solid var(--back-btn);
+  border-radius: 8px;
+  padding: 10px;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.new-comment-container button {
+  max-width: 100px;
+  background-color: #000;
+  color: #ffffff;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 6px;
+  border: 2px solid var(--clic);
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.new-comment-container button:hover {
+  background-color: #010f1c;
+  cursor: pointer;
+  border: 2px solid var(--clic);
+}

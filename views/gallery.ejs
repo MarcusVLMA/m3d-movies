@@ -1,0 +1,122 @@
+<%- contentFor('style') %>
+<link rel="stylesheet" type="text/css" href="/stylesheets/gallery.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/navbar.css" />
+
+<%- contentFor('navbar') %>
+
+<%- contentFor('main') %>
+<div class="main-wrapper">
+  <aside>
+    <div class="filters-header"></div>
+    <div class="filters-container">
+      <h3>Filtros</h3>
+      <div class="filters">
+        <div class="filter">
+          <span>Gênero</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="filter">
+          <span>Tipos de Mídia</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="filter">
+          <span>Data de Lançamento</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="filter">
+          <span>Idioma</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="filter">
+          <span>Avaliação</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+      </div>
+      <div class="filter-button-wrapper">
+        <button type="submit" value="Submit">
+          Aplicar
+        </button>
+      </div>
+    </div>
+  </aside>
+  <div class="content">
+    <div class="content-header">
+      <span>214342 resultados encontrados</span>
+      <select name="cars" id="cars">
+        <option value="a-z">Título A-Z</option>
+        <option value="z-a">Título Z-A</option>
+        <option value="avaliation">Avaliação</option>
+        <option value="release">Lançamento</option>
+      </select>
+    </div>
+    <div class="content-movies">
+      <div class="movie-container">
+        <div class="movie-photo">
+          <img
+            alt="Capa Dois Homens e Meio"
+            src="https://upload.wikimedia.org/wikipedia/pt/thumb/f/f2/Two_and_a_Half_Men_%281%C2%AA_temporada%29.jpg/280px-Two_and_a_Half_Men_%281%C2%AA_temporada%29.jpg"
+          />
+        </div>
+        <div class="movie-content">
+          <h3>Dois Homens e Meio</h3>
+          <span>21 de setembro de 2003</span>
+          <p>
+            A vida mulherenga do solteirão Charlie é afetada quando seu
+            irmão divorciado e seu sobrinho de língua afiada vão morar com
+            ele.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="content-movies">
+      <div class="movie-container">
+        <div class="movie-photo">
+          <img
+            alt="Capa Vis a Vis"
+            src="https://br.web.img3.acsta.net/pictures/16/03/10/09/39/100264.jpg"
+          />
+        </div>
+        <div class="movie-content">
+          <h3>Vis a Vis</h3>
+          <span>20 de abril de 2015</span>
+          <p>
+            Manipulada pelo homem por quem se apaixonou, essa moça cometeu
+            um crime. Condenada à prisão, ela agora deve aprender a viver
+            num ambiente hostial e impiedoso.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="content-movies">
+      <div class="movie-container">
+        <div class="movie-photo">
+          <img
+            alt="Capa Esquadrão Classe A"
+            src="https://samideivis.files.wordpress.com/2012/03/b3953-esquadrao-classe-a-1c2aa-temporada-completa-capa.jpg"
+          />
+        </div>
+        <div class="movie-content">
+          <h3>Esquadrão Classe A</h3>
+          <span>23 de janeiro de 1983</span>
+          <p>
+            Esquadrão Classe A é uma série de televisão americana de ação
+            e aventura, que vai de 1983 a 1987, sobre um grupo fictício de
+            ex-Forças Especiais do Exército dos Estados Unidos.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="content-pagination">
+      <span class="first">1</span>
+      <span>2</span>
+      <span>3</span>
+      <span>4</span>
+      <span>5</span>
+      <span>...</span>
+      <span>236</span>
+      <span>237</span>
+      <span>238</span>
+      <span>Próxima -></span>
+    </div>
+  </div>
+</div>
