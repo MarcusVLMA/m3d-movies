@@ -1,5 +1,4 @@
 const db = require("./config");
-//const { all } = require("../route");
 
 function createUser(userInfo) {
   const userExists = findUser({ email: userInfo.email });
