@@ -1,5 +1,6 @@
-exports.index = (req, res) => {
-    res.render('userProfileEdit', {
-        title: 'userProfileEdit'
-    })
+// Renderiza a HOME
+exports.home = (req, res) => {
+    res.render('home', {
+        title: 'Home'
+    });
 } 
