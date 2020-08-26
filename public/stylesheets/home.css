@@ -1,4 +1,3 @@
-
 .common {
   --back-image: url("/images/7.jpg");
   --back-gradiente: linear-gradient(
@@ -11,6 +10,7 @@
   --clic: rgba(255, 255, 0, 0);
   --clic-sec: rgba(255, 255, 0, 0);
   --error: #f00;
+  --s-bar: #fff 2px solid;
 }
 .high-contrast {
   --back-image: #000;
@@ -20,7 +20,9 @@
   --clic: #ff0;
   --clic-sec: rgb(179, 179, 0);
   --error: #f00;
+  --s-bar: none;
 }
+
 
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
 article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}
@@ -45,7 +47,7 @@ nav.horizontal ul li{	display: inline-block;}/* horizontal menu */
 img{max-width:100%;}
 body { 
  font-family: "Source Sans Pro", sans-serif;
- font-size: 100%;
+ font-size: 16px;
  display: flex;
  flex-direction: column;
  min-height: 100%;
@@ -55,23 +57,7 @@ body {
  -webkit-font-smoothing: antialiased;
  -moz-osx-font-smoothing: grayscale;
 }
-header {
-  height: 60px;
-  background-color: rgba(8, 8, 8, 0.712);
-}
-footer {
-  background: var(--btn-submit);;
-  color: #fff;
-  height: 120px;
-  height: 7.5rem;
-  margin-top: 20px;
-  margin-top: 1.25rem;
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-}
+
 main {
   width: 100%;
   height: auto;
@@ -109,7 +95,10 @@ main {
 .search {
   text-align: center;
   margin: 0em 0em 0em 0em;
-  padding: 0em 0em 1em 0em;   
+  padding: 0em 0em 1em 0em;  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .search span {
   font-size: smaller;
@@ -127,9 +116,10 @@ main {
   text-decoration: underline;
 }
 .s-bar {
-  width: 90%;
-  margin: 0 auto;
-  padding: 0.5em 0em 0.5em 0em;
+  width: 80%;
+  background:#fff;
+  border-radius: 50px;
+  border: var(--s-bar);
 }
 .s-bar span {
   font-size: small;
@@ -139,12 +129,13 @@ main {
   font-size: 1em;
   font-weight: 600;
   color: rgba(37, 37, 37, 0.863);
-  padding: 1.3em 1em 1.3em 1.5em;
-  width: 70%;
-  border-radius: 50px 50px 50px 50px;
+  padding: 1.5em 1em 1.3em 1.5em;
+  width: 74%;
+  border-radius: 50px 0 0 50px;
   background: rgba(255, 255, 255, 0.863);
   border: none;
   outline: none;
+  float: left;
 }
 .s-bar input[type="submit"]{
   font-size: 1em;
@@ -159,8 +150,10 @@ main {
   cursor:pointer;
   border: none;
   outline: none;
-  border: 4px solid var(--clic)
+  border: 4px solid var(--clic);
+  float: right;
 } 
+
 .s-bar input[type="submit"]:hover{
   background: black;
   border: 4px solid var(--clic-sec);
