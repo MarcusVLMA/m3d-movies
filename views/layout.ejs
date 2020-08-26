@@ -3,27 +3,32 @@
   <head>
     <meta charset="utf-8">
     <title>M3D | <%= title %> </title>
-    <%- defineContent('style') %>    
+    <%# Insere as tags os estilos css %>
+    <%- defineContent('style') %>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/bars.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
+    <script src="/javascripts/jquery-3.5.1.min.js"></script>
     <link rel="icon" type="imagem/png" href="/images/ic.png">
   </head>
-  <body>
+  <body class="accessibility">
     <header>
-      <%- defineContent('navbar') %>    
+      <%# Inclui a Barra de Navegação %>
+      <%- include('header'); -%>  
     </header>
     <main>
-        <%- defineContent('main') %>
+      <%- defineContent('main') %>
   	</main>
     <footer>
       <label id="footer">© Copyright 2020 M3D</label>
     </footer>
-    
-    <%/* parte de troca do tema */%>
-    <button id="switch" onclick="toggleTheme()"> Toggle Theme </button>
-    <script type="text/javascript" src="/javascripts/toggle-theme.js"></script>
+
+    <%# Script de troca de tema %>
+    <script type="text/javascript" src="/javascripts/accessibility.js"></script>
+
+    <%# Insere os Scripts das Outras Views%>
     <%- script %>
   </body>
 </html>

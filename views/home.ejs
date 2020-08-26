@@ -1,10 +1,14 @@
 <%- contentFor('style') %>
-<link rel="stylesheet" type="text/css" href="/stylesheets/index.css" />
-<link rel="stylesheet" type="text/css" href="/stylesheets/navbar.css" />
-
-<%- contentFor('navbar') %>
+<link rel="stylesheet" type="text/css" href="/stylesheets/home.css" />
 
 <%- contentFor('main') %>
+<script type="text/javascript">
+  $("form#search").submit(function()
+    {
+      $('form#search').attr('action', '/search/'+$("input#query").val()); 
+    }
+  );
+</script>
 <div class="content-wrapper">
   <div class="content">
     <div class="title">
@@ -13,8 +17,8 @@
     </div>
     <div class="search">
       <div class="s-bar">
-        <form>
-          <input type="text" value="Buscar por um filme, série ou anime..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Qual filme você gostaria de saber mais?';}">
+        <form id="search" action="/search" method="get">
+          <input type="text" id="query" placeholder="Buscar por um filme, série ou anime...">
           <input type="submit"  value="Pesquisar"/>
         </form>
       </div>

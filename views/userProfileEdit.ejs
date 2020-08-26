@@ -1,43 +1,8 @@
+<%# CSS da Página %>
 <%- contentFor('style') %>
 <link rel="stylesheet" type="text/css" href="/stylesheets/userProfileEdit.css" />
-<link rel="stylesheet" type="text/css" href="/stylesheets/navbar.css" />
 
-<%- contentFor('navbar') %>
-<ul>
-  <li><a class="logo"><span class="logo-middle">M</span>3D</a></li>
-  <li><a class="menu">Filmes</a></li>
-  <li><a class="menu">Séries</a></li>
-  <li><a class="menu">Animes</a></li>
-  <li class="dropdown" style="float:right"><a href="#" class="dropbtn">
-  <svg width="28" height="30" class="position-user-img">
-  <circle fill="#706bbd" r="14" cx="14" cy="16"/>
-  <text
-          x="14"
-          y="22"
-          text-anchor="middle"
-          stroke="#ffffff"
-          stroke-width="0.5px"
-          fill="#ffffff"
-          font-family="Source Sans Pro, sans-serif"
-          font-size="18px"
-   >
-   D
-   </text>
-</svg></a>
-      <div class="dropdown-content">
-   <a href="#">Editar Perfil</a>
-    <a href="#">Minha Galeria</a>
-    <a href="#">Sugerir Conteúdo</a>
-    <a href="#">Sair</a>
-</div>
-</li>
-  <li style="float:right"><a><img class="header-img2" alt="diminuir fonte" src="/images/decrease-font.png" /></a></li>
-  <li style="float:right"><a><img class="header-img2" alt="aumentar fonte" src="/images/increase-font.png" /></a></li>
-  <li style="float:right"><a><img class="header-img" alt="alto contraste" src="/images/contrast.png" /></a></li>
-  <li style="float:right"><a style="padding-top: 5px"><input class="header-input" type="text" name="search" placeholder="Buscar..."></a></li>
-</ul>
-</ul>
-
+<%# Corpo da Página %>
 <%- contentFor('main') %>
 <div class="info-bg">
   <div class="info">
