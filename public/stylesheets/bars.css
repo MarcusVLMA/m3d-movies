@@ -5,11 +5,11 @@
   --back-cli: #032541;
   --clic-login: #706bbd;
   --clic-border: #706bbd;
-  --clic-cancel: red;
   --clic: rgba(255, 255, 0, 0);
   --clic-sec: rgba(255, 255, 0, 0);
   --clic-menu: rgba(0, 0, 0, 0.33);
   --clic-icon: invert(53%) sepia(88%) saturate(359%) hue-rotate(140deg) brightness(94%) contrast(93%);
+  --input-border: 1px solid #2cafc3;
 }
 
 .high-contrast {
@@ -19,11 +19,11 @@
   --back-cli: #ff0;
   --clic-login: #000;
   --clic-border: #ff0;
-  --clic-cancel: #000;
   --clic: #ff0;
   --clic-sec: rgb(179, 179, 0);
   --clic-menu: #ff0;
   --clic-icon: invert(91%) sepia(72%) saturate(5067%) hue-rotate(355deg) brightness(106%) contrast(105%);
+  --input-border: none:
 }
 
 /* nav bar */
@@ -175,26 +175,28 @@ footer {
   justify-content: center;
 }
 
-/* Testando Popup de Login */
-
 /* Button used to open the contact form - fixed at the bottom of the page */
 .open-button {
   background-color: var(--clic-login);
   color: white;
-  border: 1.5px solid var(--clic-border);
-  border-radius: 15px;
+  border: 2px solid var(--clic-border);
+  border-radius: 55px;
+  padding: 4px 10px 4px 10px ;
   cursor: pointer;
   opacity: 0.8;
   position: relative;
-  width: 80px;
-  height: 30px;
-  margin-right: 5px
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 500;
 }
 
 header .icon2 {
   filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(234deg) brightness(108%) contrast(106%);
-  width: 15px;
-  height: 15px;
+  width: 20px;
+  height: 20px;
+  margin-right: 4px;
 }
 
 /* The popup form - hidden by default */
@@ -232,14 +234,9 @@ header .icon2 {
   width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
-  border: 1px solid #2cafc3;
-  background: var(--kcab);
-}
-
-/* When the inputs get focus, do something */
-.form-container input[type=text]:focus, .form-container input[type=password]:focus {
-  background-color: var(--kcab);
-  outline: none;
+  border: var(--input-border);
+  color: #000;
+  background: #fff;
 }
 
 /* Set a style for the submit/login button */
@@ -253,12 +250,6 @@ header .icon2 {
   width: 100%;
   margin-bottom:10px;
   opacity: 0.8;
-}
-
-/* Add a red background color to the cancel button */
-.form-container .cancel {
-  background-color: var(--clic-cancel);
-  border: 1.5px solid var(--clic);
 }
 
 /* Add some hover effects to buttons */

@@ -33,7 +33,7 @@
 
 <button class="open-button" onclick="openForm()"><img class="icon2" alt="aumentar fonte" src="/images/account.svg" />Entrar</button>
 
-<div class="form-popup" id="myForm">
+<div class="form-popup" id="loginForm-wrapper">
   <form action="/action_page.php" class="form-container">
     <h1 class="form-title">Entrar</h1>
 
@@ -44,18 +44,21 @@
     <input type="password" placeholder="Digite a Senha" name="psw" required>
 
     <button type="submit" class="btn">Login</button>
-    <button type="button" class="btn cancel" onclick="closeForm()">Fechar</button>
   </form>
 </div>
 
 </div>
 
 <script>
-  function openForm() {
-    document.getElementById("myForm").style.display = "block";
-  }
-
-  function closeForm() {
-    document.getElementById("myForm").style.display = "none";
-  }
+  // Abre meu de login
+  $("button.open-button").click(() => {
+      $("div#loginForm-wrapper").show();
+    }
+  );
+  // Fecha menu de login
+  $(document).mouseup((e) => { 
+    if ($(e.target).closest("div#loginForm-wrapper").length === 0) { 
+      $("div#loginForm-wrapper").hide(); 
+    } 
+  }); 
 </script>
