@@ -1,0 +1,61 @@
+<%# Barra de Navegação %>
+<div class="logo">
+  <span class="logo-middle">M</span>3D
+</div>
+<nav>
+  <ul>
+    <li>
+      <a class="menu" href="#">Filmes</a>
+    </li>
+    <li>
+      <a class="menu" href="#">Séries</a>
+    </li>
+    <li>
+      <a class="menu" href="#">Animes</a>
+    </li>
+  </ul>
+  </ul>
+</nav>
+<div class="search-wrapper">
+  <input class="header-input" type="text" name="search" placeholder="Buscar...">
+</div>
+<div class="accessibility-wrapper">
+  <a class="contrast" href="#">
+    <img class="icon" alt="alto contraste" src="/images/contrast.svg" />
+  </a>
+  <a class="font-size-increase" href="#">
+    <img class="icon" alt="aumentar fonte" src="/images/font-size-increase.svg" />
+  </a>
+  <a class="font-size-decrease" href="#">
+    <img class="icon" alt="diminuir fonte" src="/images/font-size-decrease.svg" />
+  </a>
+</div>
+
+<button class="open-button" onclick="openForm()"><img class="icon2" alt="aumentar fonte" src="/images/account.svg" />Entrar</button>
+
+<div class="form-popup" id="myForm">
+  <form action="/action_page.php" class="form-container">
+    <h1 class="form-title">Entrar</h1>
+
+    <label class="form-label" for="email"><b>Nome de Usuário</b></label>
+    <input type="text" placeholder="Digite o Nome" name="email" required>
+
+    <label class="form-label" for="psw"><b>Senha</b></label>
+    <input type="password" placeholder="Digite a Senha" name="psw" required>
+
+    <button type="submit" class="btn">Login</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Fechar</button>
+  </form>
+</div>
+
+</div>
+
+<script>
+  function openForm() {
+    document.getElementById("myForm").style.display = "block";
+  }
+
+  function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+  }
+</script>
