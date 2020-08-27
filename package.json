@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "devstart": "nodemon ./bin/www --ignore './database/data'",
+    "devstart": "nodemon ./bin/www --ignore database/data",
     "serverstart": "DEBUG=m3d-movies:* npm run devstart"
   },
   "dependencies": {
