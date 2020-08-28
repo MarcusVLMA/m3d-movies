@@ -31,7 +31,10 @@
   </a>
 </div>
 
-<button class="open-button" <img class="icon2" alt="aumentar fonte" src="/images/account.svg" />Entrar</button>
+<button class="open-button"> 
+  <img class="icon2" alt="entrar" src="/images/account.svg" />
+  <label>Entrar</label>
+</button>
 
 <div class="form-popup" id="loginForm-wrapper">
   <form action="/action_page.php" class="form-container">
@@ -44,21 +47,25 @@
     <input type="password" placeholder="Digite a Senha" name="psw" required>
 
     <button type="submit" class="btn">Login</button>
+    <p>
+      <a href="registration">Ainda não tem conta? Cadastre-se aqui</a>
+    </p>
   </form>
 </div>
 
 </div>
 
 <script>
-  // Abre meu de login
-  $("button.open-button").click(() => {
-      $("div#loginForm-wrapper").show();
-    }
-  );
+  // Abre menu de login
+  document.querySelector('button.open-button').addEventListener('click', () => {
+    document.querySelector('div#loginForm-wrapper').style.display = 'block';
+  });
+
   // Fecha menu de login
-  $(document).mouseup((e) => { 
-    if ($(e.target).closest("div#loginForm-wrapper").length === 0) { 
-      $("div#loginForm-wrapper").hide(); 
-    } 
-  }); 
+  document.addEventListener('click', (e) => {
+    const loginWrapper = document.querySelector('div#loginForm-wrapper');
+    if (!loginWrapper.contains(e.target) && !document.querySelector('button.open-button').contains(e.target)){
+      loginWrapper.style.display = 'none';
+    }
+  });
 </script>

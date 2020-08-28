@@ -3,11 +3,10 @@
 
 <%- contentFor('main') %>
 <script type="text/javascript">
-  $("form#search").submit(function()
-    {
-      $('form#search').attr('action', '/search/'+$("input#query").val()); 
-    }
-  );
+  const search = document.querySelector('form#search');
+  search.addEventListener('submit', () => {
+    search.action = '/search/' + document.querySelector('input#query').value;
+  });
 </script>
 <div class="content-wrapper">
   <div class="content">
