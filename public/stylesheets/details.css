@@ -1,11 +1,10 @@
 .common {
   --back: #fff;
   --kcab: #000;
-  --back-image: url("https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/n6bUvigpRFqSwmPp1m2YADdbRBc.jpg");
   --back-gradiente: linear-gradient(
-      to right,
-      rgba(13.73%, 18.04%, 14.9%, 1) 150px,
-      rgba(21.96%, 23.53%, 22.35%, 0.84) 100%
+    to right,
+    rgba(13.73%, 18.04%, 14.9%, 1) 150px,
+    rgba(21.96%, 23.53%, 22.35%, 0.84) 100%
   );
   --back-btn: #032541;
   --border: #032541;
@@ -19,8 +18,8 @@
 .high-contrast {
   --back: #000;
   --kcab: #fff;
-  --back-image: #000;
   --back-btn: rgb(240, 196, 0);
+  --back-image: #000;
   --border: white;
   --mini-btn: #000;
   --back-gradiente: #000;
@@ -71,7 +70,7 @@ footer {
 }
 
 .poster img {
-  width: 300px;
+  width: 260px;
   height: auto;
   border-radius: 10px;
 }
@@ -233,7 +232,6 @@ footer {
 .progress-ring {
   stroke: var(--text-link);
   stroke-dasharray: 201.06 201.06;
-  stroke-dashoffset: 36.19;
   transform: rotate(-90deg);
   transform-origin: 50% 50%;
 }
@@ -254,6 +252,7 @@ footer {
   display: flex;
   flex-direction: column;
   width: 100%;
+  padding-top: 16px;
 }
 
 .details-sinopsis-title {
@@ -266,7 +265,7 @@ footer {
 .details-sinopsis-text {
   color: #ffffff;
   font-family: "Source Sans Pro", sans-serif;
-  font-size: 14px;
+  font-size: 18px;
   margin: 4px 0px 4px 0px;
   flex-wrap: wrap;
 }

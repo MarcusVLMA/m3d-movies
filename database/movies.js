@@ -17,17 +17,46 @@ function createMovie(movieInfo) {
   }
 }
 
+function getCommentaries(movie_id) {
+  const commentaries = db
+    .get("movie_commentaries")
+    .filter({ movie_id })
+    .value();
+
+  const commentariesWithProfiles = [];
+
+  commentaries.forEach((commentary) => {
+    const profile = db
+      .get("profiles")
+      .find({ id: commentary.profile_id })
+      .value();
+    commentariesWithProfiles.push({
+      ...commentary,
+      profile,
+    });
+  });
+  return commentariesWithProfiles;
+}
+
 function getMovie(id) {
   const movie = db.get("movies").find({ id }).value();
+  const commentaries = getCommentaries(movie.id);
 
-  return movie;
+  return {
+    ...movie,
+    commentaries,
+  };
 }
 
 function findMovie(searchParams) {
   if (searchParams) {
     const movie = db.get("movies").find(searchParams).value();
+    const commentaries = getCommentaries(movie.id);
 
-    return movie;
+    return {
+      ...movie,
+      commentaries,
+    };
   } else {
     const allMovies = db.get("movies").value();
 

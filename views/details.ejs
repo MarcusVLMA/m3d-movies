@@ -2,23 +2,20 @@
 <link rel="stylesheet" type="text/css" href="/stylesheets/details.css" />
 
 <%- contentFor('main') %>
-<div class="content-wrapper">
+<div class="content-wrapper" style="<%= backdrop_style %>">
   <div class="content">
     <div class="poster">
-      <img
-        alt="Capa Coringa 2019"
-        src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/xLxgVxFWvb9hhUyCDDXxRPPnFck.jpg"
-      />
+      <img alt="Capa Coringa 2019" src="<%= poster_path %>" />
     </div>
     <div class="details">
-      <h1 class="details-title">Coringa <span>(2019)</span></h1>
+      <h1 class="details-title">
+        <%= title %> <span>(<%= release_year %>)</span>
+      </h1>
       <span class="details-subtitle">
-        <span class="details-subtitle-age">&nbsp;16&nbsp;</span>&nbsp;
-        03/10/2019 (BR) &nbsp; &bull; &nbsp; Crime, Thriller, Drama &nbsp;
-        &bull; &nbsp; 2h2m
+        <%= release_date %> (BR) &nbsp; &bull; &nbsp; <%= genre %>
       </span>
       <div class="details-actions">
-        <div class="details-actions-rating">
+        <div class="details-actions-rating" style="<%= rating_style %>">
           <svg width="84" height="84">
             <circle fill="#081C22" r="40" cx="42" cy="42" />
             <circle
@@ -40,7 +37,7 @@
               cy="42"
             />
             <text
-              x="38"
+              x="42"
               y="49"
               text-anchor="middle"
               stroke="#ffffff"
@@ -49,19 +46,7 @@
               font-family="Source Sans Pro, sans-serif"
               font-size="24px"
             >
-              82
-            </text>
-            <text
-              x="56"
-              y="40"
-              text-anchor="middle"
-              stroke="#ffffff"
-              stroke-width="1px"
-              fill="#ffffff"
-              font-family="Source Sans Pro, sans-serif"
-              font-size="10px"
-            >
-              %
+              <%= vote_average %>
             </text>
           </svg>
           <div class="details-actions-rating-text">
@@ -105,65 +90,9 @@
           <i class="fas fa-play"></i>Reproduzir trailer
         </div>
       </div>
-      <p class="details-phrase">
-        Coloque um sorriso nessa cara.
-      </p>
       <div class="details-sinopsis">
         <h2 class="details-sinopsis-title">Sinopse</h2>
-        <p class="details-sinopsis-text">
-          Arthur Fleck trabalha como palhaço para uma agência de talentos
-          e, toda semana, precisa comparecer a uma agente social, devido
-          aos seus conhecidos problemas mentais. Após ser demitido, Fleck
-          reage mal à gozação de três homens em pleno metrô e os mata. Os
-          assassinatos iniciam um movimento popular contra a elite de
-          Gotham City, da qual Thomas Wayne é seu maior representante.
-        </p>
-      </div>
-      <div class="details-cast">
-        <div class="details-cast-row">
-          <div class="details-cast-item">
-            <div class="details-cast-item-name">
-              Todd Phillips
-            </div>
-            <div class="details-cast-item-jobs">
-              Director, Writer
-            </div>
-          </div>
-          <div class="details-cast-item">
-            <div class="details-cast-item-name">
-              Jerry Robbinson
-            </div>
-            <div class="details-cast-item-jobs">
-              Characters
-            </div>
-          </div>
-          <div class="details-cast-item">
-            <div class="details-cast-item-name">
-              Bob Kane
-            </div>
-            <div class="details-cast-item-jobs">
-              Characters
-            </div>
-          </div>
-        </div>
-        <div class="details-cast-row">
-          <div class="details-cast-item">
-            <div class="details-cast-item-name">
-              Bill Finger
-            </div>
-            <div class="details-cast-item-jobs">
-              Characters
-            </div>
-          </div>
-          <div class="details-cast-item">
-            <div class="details-cast-item-name">
-              Scott Silver
-            </div>
-            <div class="details-cast-item-jobs">
-              Writer
-            </div>
-          </div>
-        </div>
+        <p class="details-sinopsis-text"><%= description %></p>
       </div>
     </div>
   </div>
@@ -179,50 +108,15 @@
         placeholder="O que achou desse filme?"
       ></textarea>
     </form>
-    <button type="submit" form="new-comment-form" value="Submit">
-      Enviar
-    </button>
+    <button type="submit" form="new-comment-form" value="Submit">Enviar</button>
   </div>
+  <% for(var i=0; i < commentaries.length; i++) { %>
   <div class="comment-container">
-    <div class="comment-photo">
-      <img
-        alt="Foto Wesley Oliveira da Silva"
-        src="https://cdn-ofuxico.akamaized.net/img/upload/noticias/2018/12/07/wesley_safadao_spotify_reproducao_instagram_336768_36.jpg"
-      />
-    </div>
     <div class="comment-content">
-      <h3>Wesley Oliveira da Silva</h3>
-      <span>13 de Dezembro de 2019</span>
-      <p>
-        Um filme impactante. Ao mesmo nível de Clube de Luta! No qual a
-        classe não tão afortunada se revolta com contra a classe
-        opressora. Interessante notar a luta de classe. O filme poderia
-        influenciar um pequena revolta contudo se tornou mero
-        entretenimento porém fugindo ao padrão MCM.
-      </p>
-      <i class="fas fa-trash"></i>
+      <h3><%= commentaries[i].profile.name %></h3>
+      <span><%= commentaries[i].date %></span>
+      <p><%= commentaries[i].text %></p>
     </div>
   </div>
-  <div class="comment-container">
-    <div class="comment-photo">
-      <img
-        alt="Foto Fernanda Adrielli"
-        src="https://i1.sndcdn.com/artworks-000590905082-hn81t5-t500x500.jpg"
-      />
-    </div>
-    <div class="comment-content">
-      <h3>Fernanda Adrielli</h3>
-      <span>11 de Novembro de 2019</span>
-      <p>
-        Sempre foi assim nas histórias do homem-morcego e aqui as coisas
-        não são diferentes. Retratada no início dos anos 80, a cidade está
-        imersa em pobreza e desigualdade, acentuada por uma enorme crise
-        de desemprego. Abandonada pelo governo, nem mesmo o lixo é
-        recolhido nas ruas, levando Gotham a uma infestação de ratos. Como
-        se não bastasse, as diferenças sociais se condensam em uma enorme
-        onda de tensão, colocando os ricos contra as classes mais
-        empobrecidas num clima de desesperança e desespero.
-      </p>
-    </div>
-  </div>
+  <% } %>
 </div>
