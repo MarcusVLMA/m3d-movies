@@ -20,6 +20,20 @@
       "role": "USER",
       "email": "cleber@user.com",
       "password": "123456"
+    },
+    {
+      "name": "Daniel Araujo",
+      "role": "USER",
+      "email": "daniel@web.com",
+      "password": "12345678",
+      "id": "1598652435171"
+    },
+    {
+      "name": "Daniel Araujo2",
+      "role": "USER",
+      "email": "daniel@web.coma",
+      "password": "submitting",
+      "id": "1598652823375"
     }
   ],
   "movies": [
