@@ -31,6 +31,7 @@
 /* nav bar */
 
 header {
+  font-family: "Source Sans Pro", sans-serif;
   display: flex;
   align-items: center;
   background-color: var(--back-barra);
@@ -62,6 +63,7 @@ header a {
 
 nav ul {
   padding-left: 16px;
+  margin: 0;
 }
 
 .menu {
