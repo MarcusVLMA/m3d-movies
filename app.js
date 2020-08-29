@@ -8,7 +8,7 @@ const logger = require("morgan");
 const defaultRouter = require("./routes/default");
 const adminRouter = require("./routes/admin");
 const userRouter = require("./routes/user");
-const movieRouter = require("./routes/movies");
+const titleRouter = require("./routes/title");
 
 const db = require("./database").default;
 
@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", defaultRouter);
 app.use("/admin", adminRouter);
 app.use("/user", userRouter);
-app.use("/movie", movieRouter);
+app.use("/title", titleRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

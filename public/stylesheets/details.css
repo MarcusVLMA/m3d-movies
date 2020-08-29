@@ -1,37 +1,41 @@
 .common {
-  --back: #fff;
-  --kcab: #000;
-  --back-gradiente: linear-gradient(
+  --details-back: #fff;
+  --details-kcab: #000;
+  --details-back-gradiente: linear-gradient(
     to right,
     rgba(13.73%, 18.04%, 14.9%, 1) 150px,
     rgba(21.96%, 23.53%, 22.35%, 0.84) 100%
   );
-  --back-btn: #032541;
-  --border: #032541;
-  --mini-btn: #032541;
-  --text-link: royalblue;
-  --clic: rgba(255, 255, 0, 0);
-  --clic-sec: rgba(255, 255, 0, 0);
-  --error: #f00;
+  --details-back-btn: #032541;
+  --details-border: #032541;
+  --details-mini-btn: #032541;
+  --details-text-link: royalblue;
+  --details-clic: rgba(255, 255, 255, 255);
+  --details-clic-sec: rgba(255, 255, 0, 0);
+  --details-error: #f00;
 }
 
 .high-contrast {
-  --back: #000;
-  --kcab: #fff;
-  --back-btn: rgb(240, 196, 0);
-  --back-image: #000;
-  --border: white;
-  --mini-btn: #000;
-  --back-gradiente: #000;
-  --text-link: #ff0;
-  --clic: #ff0;
-  --clic-sec: rgb(179, 179, 0);
-  --error: #f00;
+  --details-back: #000;
+  --details-kcab: #fff;
+  --details-back-btn: rgb(240, 196, 0);
+  --details-back-image: #000;
+  --details-border: white;
+  --details-mini-btn: #000;
+  --details-back-gradiente: linear-gradient(
+    to right,
+    rgba(0%, 0%, 0%, 1) 150px,
+    rgba(0%, 0%, 0%, 1) 100%
+  );
+  --details-text-link: #ff0;
+  --details-clic: #ff0;
+  --details-clic-sec: rgb(179, 179, 0);
+  --details-error: #f00;
 }
 
 html,
 body {
-  background-color: var(--back);
+  background-color: var(--details-back);
   margin: 0;
   height: 100%;
 }
@@ -52,11 +56,11 @@ footer {
 }
 
 .content-wrapper {
-  background-image: var(--back-image);
+  background-image: var(--details-back-image);
 }
 
 .content {
-  background-image: var(--back-gradiente);
+  background-image: var(--details-back-gradiente);
   margin: 15px 0px 15px 0px;
   padding: 30px 60px 30px 60px;
   display: flex;
@@ -124,7 +128,7 @@ footer {
 
 .details-actions-button {
   margin-left: 20px;
-  background-color: var(--back-btn);
+  background-color: var(--details-back-btn);
   width: 54px;
   height: 54px;
   border-radius: 27px;
@@ -174,7 +178,7 @@ footer {
   left: 50%;
   border: 0.75rem solid transparent;
   border-top: none;
-  border-bottom-color: var(--border);
+  border-bottom-color: var(--details-border);
   filter: drop-shadow(0 -0.0425rem 0.0425rem rgba(0, 0, 0, 0.1));
 }
 
@@ -183,12 +187,12 @@ footer {
   position: absolute;
   margin-top: 140px;
   z-index: 1;
-  background-color: var(--mini-btn);
+  background-color: var(--details-mini-btn);
   color: #ffffff;
   text-align: center;
   padding: 5px 10px 15px 10px;
   border-radius: 4px;
-  border: 2px solid var(--clic);
+  border: 2px solid var(--details-clic);
   font-family: "Source Sans Pro", sans-serif;
   font-size: 27px;
   font-weight: 700;
@@ -197,7 +201,7 @@ footer {
   align-items: flex-start;
 }
 .details-actions-button-tooltip-favorites svg line#fav {
-  stroke: var(--clic);
+  stroke: var(--details-clic);
 }
 
 .details-actions-button:hover .details-actions-button-tooltip-favorites {
@@ -217,7 +221,7 @@ footer {
   margin-left: 40px;
   padding: 15px 20px 15px 20px;
   border-radius: 30px 30px 30px 30px;
-  border: 1px solid var(--clic);
+  border: 1px solid var(--details-clic);
 }
 
 .details-actions-trailer:hover {
@@ -230,7 +234,7 @@ footer {
 }
 
 .progress-ring {
-  stroke: var(--text-link);
+  stroke: var(--details-text-link);
   stroke-dasharray: 201.06 201.06;
   transform: rotate(-90deg);
   transform-origin: 50% 50%;
@@ -312,7 +316,7 @@ footer {
 }
 
 .comments h2 {
-  color: var(--kcab);
+  color: var(--details-kcab);
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 800;
 }
@@ -349,7 +353,7 @@ footer {
 }
 
 .comment-content h3 {
-  color: var(--kcab);
+  color: var(--details-kcab);
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 800;
   margin: 0;
@@ -363,7 +367,7 @@ footer {
 }
 
 .comment-content p {
-  color: var(--kcab);
+  color: var(--details-kcab);
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 400;
   font-size: 16px;
@@ -372,7 +376,7 @@ footer {
 .comment-content i {
   position: absolute;
   right: 5px;
-  color: var(--back-btn);
+  color: var(--details-back-btn);
   cursor: pointer;
 }
 
@@ -393,7 +397,7 @@ footer {
 }
 
 .new-comment-container form label {
-  color: var(--kcab);
+  color: var(--details-kcab);
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 400;
   font-size: 16px;
@@ -404,7 +408,7 @@ footer {
   color: #000;
   resize: none;
   height: 100px;
-  border: 2px solid var(--back-btn);
+  border: 2px solid var(--details-back-btn);
   border-radius: 8px;
   padding: 10px;
   font-family: "Source Sans Pro", sans-serif;
@@ -420,7 +424,7 @@ footer {
   font-weight: 700;
   font-size: 14px;
   padding: 6px;
-  border: 2px solid var(--clic);
+  border: 2px solid var(--details-clic);
   border-radius: 8px;
   margin-top: 10px;
 }
@@ -428,5 +432,5 @@ footer {
 .new-comment-container button:hover {
   background-color: #010f1c;
   cursor: pointer;
-  border: 2px solid var(--clic);
+  border: 2px solid var(--details-clic);
 }

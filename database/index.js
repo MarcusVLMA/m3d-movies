@@ -1,7 +1,7 @@
 const UserAccess = require("./users");
-const MovieAccess = require("./movies");
+const TitleAccess = require("./titles");
 
 module.exports = {
   UserAccess,
-  MovieAccess,
+  TitleAccess,
 };
