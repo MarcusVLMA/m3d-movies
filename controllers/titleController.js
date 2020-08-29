@@ -17,3 +17,17 @@ exports.title = async (req, res) => {
     release_date: title.release_date.replace(/-/g, "/"),
   });
 };
+
+exports.titles = async (req, res) => {
+  const searchName = req.query.search;
+
+  const titleAccess = database.TitleAccess;
+  const titles = titleAccess.searchTitles(searchName);
+
+  const pageTitle = "Galeria";
+
+  res.render("gallery", {
+    title: pageTitle,
+    titles,
+  });
+};

@@ -6,7 +6,7 @@ function createTitle(titleInfo) {
   if (titleExists) {
     return null;
   } else {
-    const createdtitle = db
+    const createdTitle = db
       .get("titles")
       .push(titleInfo)
       .last()
@@ -48,19 +48,32 @@ function getTitle(id) {
   };
 }
 
-function findTitle(searchParams) {
-  if (searchParams) {
-    const title = db.get("titles").find(searchParams).value();
-    const commentaries = getCommentaries(title.id);
+function searchTitles(name) {
+  if (name) {
+    const titles = db
+      .get("titles")
+      .filter((title) => {
+        const titleNameToSearch = title.title.toLowerCase();
+        const nameToSearch = name.toLowerCase();
 
-    return {
+        return titleNameToSearch.includes(nameToSearch);
+      })
+      .value();
+
+    const titlesResponse = titles.map((title) => ({
       ...title,
-      commentaries,
-    };
+      commentaries: getCommentaries(title.id),
+    }));
+    return titlesResponse;
   } else {
     const allTitles = db.get("titles").value();
 
-    return allTitles;
+    const titlesResponse = allTitles.map((title) => ({
+      ...title,
+      commentaries: getCommentaries(title.id),
+    }));
+
+    return titlesResponse;
   }
 }
 
@@ -77,6 +90,6 @@ function updateTitle(titleInfo) {
 module.exports = {
   createTitle,
   getTitle,
-  findTitle,
+  searchTitles,
   updateTitle,
 };

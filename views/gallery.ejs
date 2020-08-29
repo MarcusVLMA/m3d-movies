@@ -30,15 +30,13 @@
         </div>
       </div>
       <div class="filter-button-wrapper">
-        <button type="submit" value="Submit">
-          Aplicar
-        </button>
+        <button type="submit" value="Submit">Aplicar</button>
       </div>
     </div>
   </aside>
   <div class="content">
     <div class="content-header">
-      <span>214342 resultados encontrados</span>
+      <span><%= titles.length %> resultados encontrados</span>
       <select name="cars" id="cars">
         <option value="a-z">Título A-Z</option>
         <option value="z-a">Título Z-A</option>
@@ -46,63 +44,24 @@
         <option value="release">Lançamento</option>
       </select>
     </div>
+
+    <% for(var i=0; i < titles.length; i++) { %>
     <div class="content-movies">
       <div class="movie-container">
         <div class="movie-photo">
           <img
-            alt="Capa Dois Homens e Meio"
-            src="https://upload.wikimedia.org/wikipedia/pt/thumb/f/f2/Two_and_a_Half_Men_%281%C2%AA_temporada%29.jpg/280px-Two_and_a_Half_Men_%281%C2%AA_temporada%29.jpg"
+            alt="Capa <%= titles[i].title %>"
+            src="<%= titles[i].poster_path %>"
           />
         </div>
         <div class="movie-content">
-          <h3>Dois Homens e Meio</h3>
-          <span>21 de setembro de 2003</span>
-          <p>
-            A vida mulherenga do solteirão Charlie é afetada quando seu
-            irmão divorciado e seu sobrinho de língua afiada vão morar com
-            ele.
-          </p>
+          <h3><%= titles[i].title %></h3>
+          <span><%= titles[i].release_date %></span>
+          <p><%= titles[i].description %></p>
         </div>
       </div>
     </div>
-    <div class="content-movies">
-      <div class="movie-container">
-        <div class="movie-photo">
-          <img
-            alt="Capa Vis a Vis"
-            src="https://br.web.img3.acsta.net/pictures/16/03/10/09/39/100264.jpg"
-          />
-        </div>
-        <div class="movie-content">
-          <h3>Vis a Vis</h3>
-          <span>20 de abril de 2015</span>
-          <p>
-            Manipulada pelo homem por quem se apaixonou, essa moça cometeu
-            um crime. Condenada à prisão, ela agora deve aprender a viver
-            num ambiente hostial e impiedoso.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class="content-movies">
-      <div class="movie-container">
-        <div class="movie-photo">
-          <img
-            alt="Capa Esquadrão Classe A"
-            src="https://samideivis.files.wordpress.com/2012/03/b3953-esquadrao-classe-a-1c2aa-temporada-completa-capa.jpg"
-          />
-        </div>
-        <div class="movie-content">
-          <h3>Esquadrão Classe A</h3>
-          <span>23 de janeiro de 1983</span>
-          <p>
-            Esquadrão Classe A é uma série de televisão americana de ação
-            e aventura, que vai de 1983 a 1987, sobre um grupo fictício de
-            ex-Forças Especiais do Exército dos Estados Unidos.
-          </p>
-        </div>
-      </div>
-    </div>
+    <% } %>
     <div class="content-pagination">
       <span class="first">1</span>
       <span>2</span>
