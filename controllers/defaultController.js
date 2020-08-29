@@ -1,6 +1,8 @@
+const database = require("../database");
+
 // Renderiza a HOME
 exports.home = (req, res) => {
-  res.render('home', {
-    title: 'Home'
+  res.render("home", {
+    title: "Home",
   });
 };

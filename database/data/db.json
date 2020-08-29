@@ -36,7 +36,7 @@
       "id": "1598652823375"
     }
   ],
-  "movies": [
+  "titles": [
     {
       "id": 605116,
       "vote_average": 6.7,
@@ -54,7 +54,7 @@
       "poster_path": "https://cdn.flickeringmyth.com/wp-content/uploads/2020/06/deathstroke-knights-and-dragons-600x900.jpg",
       "backdrop_path": "https://lh3.googleusercontent.com/proxy/pjLPx1OtPuSDxQLs4my9vJramYpvd-chhiCi4ux35sizXhkKNao9APD3teqXa1LTRgW1AKKwfzrNRYHlS_DMuj7ZLKneW8SgbT0vahvKxXFQLmoAVQaqPQ",
       "release_date": "2020-08-04",
-      "title": "Deathstroke: Knights & Dragons - The Movie",
+      "title": "Deathstroke: Knights & Dragons - The title",
       "vote_average": 6.9
     },
     {
@@ -68,42 +68,42 @@
       "poster_path": "https://upload.wikimedia.org/wikipedia/en/a/ad/Fearless_%282020_film%29.jpg"
     }
   ],
-  "movie_commentaries": {
-    "605116": [
-      {
-        "profile_id": "1597780559820",
-        "text": "Muito bom viu",
-        "date": "2020-08-10"
-      },
-      {
-        "profile_id": "1597780565738",
-        "text": "Gostei muito não",
-        "date": "2020-08-10"
-      }
-    ],
-    "703771": [
-      {
-        "profile_id": "1597780559820",
-        "text": "Nota 10",
-        "date": "2020-08-10"
-      },
-      {
-        "profile_id": "1597780565738",
-        "text": "Horrível",
-        "date": "2020-08-10"
-      }
-    ],
-    "726664": [
-      {
-        "profile_id": "1597780559820",
-        "text": "Show demais",
-        "date": "2020-08-10"
-      },
-      {
-        "profile_id": "1597780565738",
-        "text": "Perdi meu tempo assistindo isso",
-        "date": "2020-08-10"
-      }
-    ]
-  }
+  "title_commentaries": [
+    {
+      "title_id": 605116,
+      "profile_id": "1597780559820",
+      "text": "Um filme impactante. Ao mesmo nível de Clube de Luta! No qual a classe não tão afortunada se revolta com contra a classe opressora. Interessante notar a luta de classe. O filme poderia influenciar um pequena revolta contudo se tornou mero entretenimento porém fugindo ao padrão MCM.",
+      "date": "2020-08-10"
+    },
+    {
+      "title_id": 605116,
+      "profile_id": "1597780565738",
+      "text": "Sempre foi assim nas histórias e aqui as coisas não são diferentes. Retratada no início dos anos 80, a cidade está imersa em pobreza e desigualdade, acentuada por uma enorme crise de desemprego. Abandonada pelo governo, nem mesmo o lixo é recolhido nas ruas, levando Gotham a uma infestação de ratos. Como se não bastasse, as diferenças sociais se condensam em uma enorme onda de tensão, colocando os ricos contra as classes mais empobrecidas num clima de desesperança e desespero. ",
+      "date": "2020-08-10"
+    },
+    {
+      "title_id": 703771,
+      "profile_id": "1597780559820",
+      "text": "Nota 10",
+      "date": "2020-08-10"
+    },
+    {
+      "title_id": 703771,
+      "profile_id": "1597780565738",
+      "text": "Horrível",
+      "date": "2020-08-10"
+    },
+    {
+      "title_id": 726664,
+      "profile_id": "1597780559820",
+      "text": "Show demais",
+      "date": "2020-08-10"
+    },
+    {
+      "title_id": 726664,
+      "profile_id": "1597780565738",
+      "text": "Perdi meu tempo assistindo isso",
+      "date": "2020-08-10"
+    }
+  ]
 }
