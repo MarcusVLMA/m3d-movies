@@ -13,6 +13,7 @@
   --details-clic: rgba(255, 255, 255, 255);
   --details-clic-sec: rgba(255, 255, 0, 0);
   --details-error: #f00;
+  --details-image-grayscale: 0;
 }
 
 .high-contrast {
@@ -31,6 +32,7 @@
   --details-clic: #ff0;
   --details-clic-sec: rgb(179, 179, 0);
   --details-error: #f00;
+  --details-image-grayscale: 100;
 }
 
 html,
@@ -71,6 +73,7 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  filter: grayscale(var(--details-image-grayscale));
 }
 
 .poster img {

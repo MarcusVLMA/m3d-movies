@@ -1,6 +1,6 @@
 .common {
-  --back: #000;
-  --kcab: #fff;
+  --black-white: #000;
+  --white-black: #fff;
   --back-barra: #032541;
   --back-cli: #032541;
   --clic-login: #706bbd;
@@ -9,12 +9,13 @@
   --clic-sec: rgba(255, 255, 0, 0);
   --clic-menu: rgba(0, 0, 0, 0.33);
   --clic-icon: invert(53%) sepia(88%) saturate(359%) hue-rotate(140deg) brightness(94%) contrast(93%);
-  --input-border: 1px solid #2cafc3;
+  --header-search-icon: url('/images/movie-search-colorful.svg');
+  --input-border: #706bbd;
 }
 
 .high-contrast {
-  --back: #fff;
-  --kcab: #000;
+  --black-white: #fff;
+  --white-black: #000;
   --back-barra: #000;
   --back-cli: #ff0;
   --clic-login: #000;
@@ -23,15 +24,21 @@
   --clic-sec: rgb(179, 179, 0);
   --clic-menu: #ff0;
   --clic-icon: invert(91%) sepia(72%) saturate(5067%) hue-rotate(355deg) brightness(106%) contrast(105%);
-  --input-border: none:
+  --header-search-icon: url('/images/movie-search-white.svg');
+  --input-border: white;
 }
 
 /* nav bar */
 
 header {
+  font-family: "Source Sans Pro", sans-serif;
   display: flex;
   align-items: center;
   background-color: var(--back-barra);
+}
+
+input, textarea, button {
+  outline: none;
 }
 
 /* Logo */
@@ -50,8 +57,13 @@ header {
 
 /* nav */
 
+header a {
+  text-decoration: none;
+}
+
 nav ul {
   padding-left: 16px;
+  margin: 0;
 }
 
 .menu {
@@ -64,11 +76,12 @@ nav ul {
 header li {
   float: left;
   text-align: center;
+  list-style-type: none;
 }
 
 nav a:hover {
   background-color: var(--clic-menu);
-  color: var(--kcab);
+  color: var(--white-black);
 }
 
 
@@ -79,7 +92,7 @@ nav a:hover {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: var(--kcab);
+  background-color: var(--white-black);
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
@@ -88,7 +101,7 @@ nav a:hover {
 }
 
 .dropdown-content a {
-  color: var(--back);
+  color: var(--black-white);
   padding: 12px 16px;
   text-decoration: none;
   display: block;
@@ -97,7 +110,7 @@ nav a:hover {
 
 .dropdown-content a:hover {
   background-color: var(--back-cli);
-  color: var(--kcab);
+  color: var(--white-black);
 }
 
 .dropdown:hover .dropdown-content {
@@ -110,33 +123,33 @@ nav a:hover {
   margin-left: auto;
 }
 
-header input[type="text"] {
+header .search-wrapper input[type=text] {
   width: 180px;
-  box-sizing: border-box;
-  border: none;
-  border-radius: 20px;
-  font-size: 16px;
-  background-color: white;
-  background-image: url('/images/icon.png');
-  background-size: 35px 35px;
+  border: 2px solid #fff;
+  background-image: var(--header-search-icon);
+  background-size: 25px 25px;
   background-position: left;
+  background-position-x: 8px;
   background-repeat: no-repeat;
   padding: 5px 5px 5px 40px;
-  color: #032541;
+  color: var(--black-white);
 }
-header input[type="password"] {
-  width: 180px;
+
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: 2px solid var(--input-border);
+}
+
+header .search-wrapper input[type=text], .form-container input[type=text], .form-container input[type=password] {
   box-sizing: border-box;
-  border: none;
-  border-radius: 20px;
-  font-size: 16px;
-  background-color: white;
-  background-size: 35px 35px;
-  background-position: left;
-  background-repeat: no-repeat;
-  padding: 5px 5px 5px 40px;
-  color: #032541;
+  border-radius: 12px;
+  background-color: var(--white-black);
+  color: var(--black-white);
 }
+
+
 
 /* Acessibilidade */
 
@@ -187,7 +200,6 @@ footer {
   position: relative;
   margin-right: 15px;
   display: flex;
-  align-items: center;
   font-size: 18px;
   font-weight: 500;
 }
@@ -201,13 +213,13 @@ header .icon2 {
 
 /* The popup form - hidden by default */
 .form-title {
-  color: var(--back);
+  color: var(--black-white);
   font-size: 22px;
   font-weight: 600;
   padding: 10px;
 }
 .form-label {
-  color: var(--back);
+  color: var(--black-white);
   font-size: 18px;
   font-weight: 600;
   padding: 10px;
@@ -226,17 +238,7 @@ header .icon2 {
 .form-container {
   max-width: 300px;
   padding: 10px;
-  background-color: var(--kcab);
-}
-
-/* Full-width input fields */
-.form-container input[type=text], .form-container input[type=password] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  border: var(--input-border);
-  color: #000;
-  background: #fff;
+  background-color: var(--white-black);
 }
 
 /* Set a style for the submit/login button */
@@ -250,6 +252,16 @@ header .icon2 {
   width: 100%;
   margin-bottom:10px;
   opacity: 0.8;
+}
+
+.form-popup p a {
+  color: var(--black-white);
+  text-decoration:none;
+}
+
+.form-popup p a:hover {
+  color: var(--text-link);
+  text-decoration: underline;
 }
 
 /* Add some hover effects to buttons */

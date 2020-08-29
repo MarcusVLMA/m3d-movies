@@ -1,5 +1,4 @@
-(() => {
-  // Recupera o tema salvo
+window.addEventListener('load', () => {
   if (localStorage.getItem('theme') === 'high-contrast') {
     setTheme('high-contrast');
   } else {
@@ -7,10 +6,10 @@
   }
   // Recupera o tamanho da fonte salva
   setFontSize(parseInt(localStorage.getItem('fontSize')));
-})();
+});
 
 // Troca o tema
-$("a.contrast").click(() => {
+document.querySelector("a.contrast").addEventListener('click', () => {
   if (localStorage.getItem('theme') === 'high-contrast') {
     setTheme('common');
   } else {
@@ -19,13 +18,13 @@ $("a.contrast").click(() => {
 });
 
 // Aumenta o tamanho da fonte
-$("a.font-size-increase").click(() => {
-    setFontSize(parseInt($(".accessibility").css('font-size')) + 2);
+document.querySelector("a.font-size-increase").addEventListener('click', () => {
+  setFontSize(parseInt(getComputedStyle(document.body).getPropertyValue('font-size')) + 2);
 });
 
 // Diminui o tamanho da fonte
-$("a.font-size-decrease").click(() => {
-    setFontSize(parseInt($(".accessibility").css('font-size')) - 2);
+document.querySelector("a.font-size-decrease").addEventListener('click', () => {
+  setFontSize(parseInt(getComputedStyle(document.body).getPropertyValue('font-size')) - 2);
 });
 
 function setTheme(themeName) {
@@ -35,7 +34,7 @@ function setTheme(themeName) {
 
 function setFontSize(fontSize) {
   if (fontSize >= 16 && fontSize <= 24) {
-    $(".accessibility").css("fontSize", fontSize);
+    document.querySelector('.accessibility').style.fontSize = fontSize + 'px';
     localStorage.setItem('fontSize', fontSize);
   }
 }

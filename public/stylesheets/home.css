@@ -1,4 +1,6 @@
 .common {
+  --black-white: #000;
+  --white-black: #fff;
   --back-image: url("/images/7.jpg");
   --back-gradiente: linear-gradient(
       to right,
@@ -10,9 +12,11 @@
   --clic: rgba(255, 255, 0, 0);
   --clic-sec: rgba(255, 255, 0, 0);
   --error: #f00;
-  --s-bar: #fff 2px solid;
+  --s-bar-input-text: rgba(255, 255, 255, 0.863);
 }
 .high-contrast {
+  --black-white: #fff;
+  --white-black: #000;
   --back-image: #000;
   --back-gradiente: #000;
   --btn-submit: #000;
@@ -20,7 +24,6 @@
   --clic: #ff0;
   --clic-sec: rgb(179, 179, 0);
   --error: #f00;
-  --s-bar: none;
 }
 
 
@@ -117,9 +120,9 @@ main {
 }
 .s-bar {
   width: 80%;
-  background:#fff;
+  background:var(--white-black);
   border-radius: 50px;
-  border: var(--s-bar);
+  border: #fff 2px solid;
 }
 .s-bar span {
   font-size: small;
@@ -128,11 +131,11 @@ main {
 .s-bar input[type="text"] {
   font-size: 1em;
   font-weight: 600;
-  color: rgba(37, 37, 37, 0.863);
+  color: var(--black-white);
   padding: 1.5em 1em 1.3em 1.5em;
   width: 74%;
   border-radius: 50px 0 0 50px;
-  background: rgba(255, 255, 255, 0.863);
+  background: var(--s-bar-input-text);
   border: none;
   outline: none;
   float: left;

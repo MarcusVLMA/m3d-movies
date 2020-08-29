@@ -1,26 +1,24 @@
 .common {
-  --back: #fff;
-  --kcab: #000;
-  --back-btn: #032541;
-  --border: #032541;
-  --bolinha: #c2c2c2;
-  --text-gray: #4c4d4d;
-  --hover-blue: #028cb3; 
-  --clic: rgba(255, 255, 0, 0);
-  --clic-sec: rgba(255, 255, 0, 0);
-  --error: #f00;
+  --white-black: #fff;
+  --black-white: #000;
+  --white-yellow: #fff;
+  --gray-white: #4c4d4d;
+  --steelblue-none: #4682B4;
+  --steelblue-yellow: #4682B4;
+  --slider-lbl-opacity: 0.5;
+  --img-filter: none;
+  --btn-hover: #016f8d;
 }
 .high-contrast {
-  --back: #000;
-  --kcab: #fff;
-  --back-btn: #000;
-  --border: white;
-  --bolinha: #ff0;
-  --text-gray: #fff;
-  --hover-blue: rgb(179, 179, 0);
-  --clic: #ff0;
-  --clic-sec: rgb(179, 179, 0);
-  --error: #f00;
+  --white-black: #000;
+  --black-white: #fff;
+  --white-yellow: #ff0;
+  --gray-white: #fff;
+  --steelblue-none: none;
+  --steelblue-yellow: #ff0;
+  --slider-lbl-opacity: 1;
+  --img-filter: grayscale(1);
+  --btn-hover: none;
 }
 
 * { 
@@ -31,47 +29,26 @@
 html, body {
   font-family: "Source Sans Pro", sans-serif;
   font-size: 100%;
-  background-color: #ffffff;
+  background-color: var(--white-black);
   margin: 0;
-}
-header {
-  background-color: #032541;
-  height: 64px;
-  height: 4rem;  
-}
-body {
-  background-color: var(--back);
-}
-
-footer {
-  background-color: #032541;
-  height: 120px;
-  height: 7.5rem;
-}
-
-fieldset {
-  border: none;
-}
-form label {
-  color: var(--text-gray);
-}
-p {
-  color: var(--kcab);
 }
 
 .content {
   display: flex;
   flex-direction: row;
 }
+
+/* Slider */
 .slider {
-    display: block;
-    width: 400rem;
-    width: 25rem;
-    height: 562px;
-    height: 35.125rem;
-    margin: auto;
-    position: relative;
+  display: block;
+  width: 400rem;
+  width: 25rem;
+  height: 562px;
+  height: 35.125rem;
+  margin: auto;
+  position: relative;
 }
+
 .slider li {
   list-style: none;
   position: absolute;
@@ -82,6 +59,7 @@ p {
   height: 100%;
   width: 100%;
   vertical-align: top;
+  filter: var(--img-filter);
 }
 
 .slider input {
@@ -89,7 +67,7 @@ p {
 }
 
 .slider label {
-  background-color: var(--bolinha);
+  background-color: var(--white-yellow);
   bottom: 10px;
   bottom: 0.625rem;
   cursor: pointer;
@@ -102,6 +80,7 @@ p {
   z-index: 10;
   border-radius: 10px;
   border-radius: 0.625rem;
+  opacity: var(--slider-lbl-opacity);
 }
 
 .slider li:nth-child(1) label {
@@ -132,6 +111,21 @@ p {
 
 .slider li input:checked ~ label {
   background-color: #fff;
+  opacity: 1;
+}
+
+/* Formulario */
+
+fieldset {
+  border: none;
+}
+
+form label {
+  color: var(--gray-white);
+}
+
+p {
+  color: var(--black-white);
 }
 
 .content-form {
@@ -139,34 +133,32 @@ p {
   margin-left: 1.875rem;
 }
 
-.field-container input {
+.field-wrapper input {
   width: 100%;
   font-size: 18px;
   font-size: 1.125rem;
-  color: var(--text-gray);
+  color: var(--gray-white);
   padding: 8px;
   padding: 0.5rem;
   margin-top: 5px;
   margin-top: 0.3125rem;
   border-radius: 4px;
   border-radius: .25rem;
-  border-width: 1px;
-  border-style: solid;
-  border-color: var(--bolinha);
-  background-color: var(--back);
+  border: 1px solid var(--gray-white);
+  background-color: var(--white-black);
 }
 
-.field-container input:hover {
-  border-color: #028cb3;  
+.field-wrapper input:hover {
+  border-color: var(--steelblue-none);  
 }
 
-form .field-container, .title-container, .title-container h1 + p{
+form .field-wrapper, .title-wrapper, .title-wrapper h1 + p{
   margin-top: 10px;
   margin-top: 0.625rem;
 }
 
-.title-container {
-  color: var(--kcab);
+.title-wrapper {
+  color: var(--black-white);
   margin-bottom: 10px;
   margin-bottom: 0.625rem;
 }
@@ -194,17 +186,17 @@ input[type="submit"], button {
 }
 .btn-submit {
   color: #fff;
-  background-color: var(--back-btn);
-  border: 1px solid var(--clic);
+  border-color: var(--steelblue-yellow);  
+  background-color: var(--steelblue-none);
 }
 
-.btn-submit:hover {
+.btn-submit:hover, .btn-submit:focus{
   color: #fff;
-  border-color: var(--hover-blue);
+  border-color: var(--steelblue-yellow);  
+  background-color: var(--btn-hover); 
 }
 
-.btn-submit:focus {
-  color: #fff;
-  border-color: #031f38;  
-  background-color: #031f38;  
+.erro-msg {
+  font-size: 0.9em;
+  color: #f00;
 }
