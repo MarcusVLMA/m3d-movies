@@ -1,12 +1,12 @@
 const db = require("./config");
 
 function createTitle(titleInfo) {
-  const titleExists = findUser({ title: titleInfo.title });
+  const titleExists = findTitle({ title: titleInfo.title });
 
   if (titleExists) {
     return null;
   } else {
-    const createdtitle = db
+    const createdTitle = db
       .get("titles")
       .push(titleInfo)
       .last()
@@ -38,8 +38,10 @@ function getCommentaries(title_id) {
   return commentariesWithProfiles;
 }
 
-function getTitle(id) {
+ function getTitle(id) {
+  console.log(id);
   const title = db.get("titles").find({ id }).value();
+  console.log(title);
   const commentaries = getCommentaries(title.id);
 
   return {
@@ -51,12 +53,16 @@ function getTitle(id) {
 function findTitle(searchParams) {
   if (searchParams) {
     const title = db.get("titles").find(searchParams).value();
-    const commentaries = getCommentaries(title.id);
-
-    return {
-      ...title,
-      commentaries,
-    };
+    if (title){
+      const commentaries = getCommentaries(title.id);
+      return {
+        ...title,
+        commentaries,
+      };
+    } else {
+      return;
+    }
+    
   } else {
     const allTitles = db.get("titles").value();
 

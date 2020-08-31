@@ -1,5 +1,5 @@
 <%- contentFor('style') %>
-<link rel="stylesheet" type="text/css" href="/stylesheets/addTitle.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/titleRequest.css" />
 
 <%- contentFor('main') %>
 <div class="content">
@@ -14,19 +14,25 @@
     </div>
   </aside>
   <div class="content-form">
+    <% if(notification) { %> 
+    <div class="alert-success" role="alert">
+      <img src="/images/check-circle.svg">
+      <span>Sugestão enviada com sucesso!</span>
+    </div>
+    <% } %> 
     <div class="title-container">
-      <h1 class="title">Adicionar novo título</h1>
+      <h1 class="title">Sugerir Título</h1>
     </div>          
     <form method="post">
       <fieldset>
         <div class="field-container">
           <label for="title">Título original</label>
-          <input type="text" minlength="4" maxlength="50" name="title" id="title" />
+          <input type="text" minlength="4" maxlength="50" name="title" id="title" required />
         </div>
         <div class="field-container genre-content-type">
           <div class="field-genre">
             <label for="genre">Gênero</label><br>
-            <select name="genre" id="genre">
+            <select name="genre" id="genre" required>
               <option value="">-</option>
               <option value="Ação">Ação</option>
               <option value="Animação">Animação</option>
@@ -46,35 +52,54 @@
           <div class="field-content-type">
             <label>Tipo de conteúdo</label>
             <div class="radio-container">
-              <input type="radio" id="filme" name="content-type" value="filme">
+              <input type="radio" id="filme" name="content_type" value="filme" required>
               <label for="filme">Filme</label>
-              <input type="radio" id="serie" name="content-type" value="serie">
+              <input type="radio" id="serie" name="content_type" value="serie" required>
               <label for="serie">Série</label>
-              <input type="radio" id="animacao" name="content-type" value="animacao">
+              <input type="radio" id="animacao" name="content_type" value="animacao" required>
               <label for="animacao">Animação</label>
             </div>
           </div>
         </div>
         <div class="field-container">
           <label for="general-view">Visão geral sobre o título</label>
-          <textarea id="general-view" name="general-view" minlength="20" rows="8"></textarea>
+          <textarea id="general-view" name="description" minlength="20" rows="8" required></textarea>
         </div>
-        <div class="field-container running-time-premiere-date">
+        <div class="field-container running-time-release-date">
           <div class="field-running-time">
             <label for="running-time">Tempo de duração</label><br>
-            <input type="time" name="running-time" id="running-time">
+            <input type="time" name="running_time" id="running-time" required>
           </div>
-          <div class="field-premiere-date">
-            <label for="premiere-date">Data de estreia</label><br>
-            <input type="date" name="premiere-date" id="premiere-date">
+          <div class="field-release-date">
+            <label for="release-date">Data de estreia</label><br>
+            <input type="date" name="release_date" id="release-date" required>
           </div>              
         </div>
         <div class="field-container">
-          <label for="trailer-link">Link para o trailer</label>
-          <input type="text" minlength="10" name="trailer-link" id="trailer-link" />
+          <label for="trailer-path">Link para o trailer</label>
+          <input type="url" minlength="10" name="trailer_path" id="trailer-path" required/>
+        </div>
+        <div class="field-container">
+          <label for="poster-path">Link para imagem da capa</label>
+          <input type="url" minlength="10" name="poster_path" id="poster-path" required/>
+        </div>
+        <div class="field-container">
+          <label for="backdrop-path">Link para imagem de fundo</label>
+          <input type="url" minlength="10" name="backdrop_path" id="backdrop-path" required/>
         </div>
       </fieldset>
       <input class="btn-submit" type="submit" value="Enviar">
     </form>
   </div>
 </div>
+
+<%# Script de notificação%>
+<% if(notification) { %> 
+<script type="text/javascript">
+  window.setTimeout(() => {
+    const hint = document.querySelector("div.alert-success");
+    hint.style.maxHeight = '0';
+    hint.style.visibility = 'hidden';
+  },5000);
+</script>
+<% } %>

@@ -1,4 +1,4 @@
-const { UserAccess, MovieAccess } = require("../database");
+const { UserAccess } = require("../database");
 
 // Solicitação GET para a página de cadastro.
 exports.registrationGet = (req, res) => {
