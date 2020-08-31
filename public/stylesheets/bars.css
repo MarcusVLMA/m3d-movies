@@ -3,14 +3,16 @@
   --white-black: #fff;
   --back-barra: #032541;
   --back-cli: #032541;
-  --clic-login: #706bbd;
-  --clic-border: #706bbd;
+  --clic-login: #2cafc3;
+  --clic-border: #2cafc3;
   --clic: rgba(255, 255, 0, 0);
   --clic-sec: rgba(255, 255, 0, 0);
   --clic-menu: rgba(0, 0, 0, 0.33);
   --clic-icon: invert(53%) sepia(88%) saturate(359%) hue-rotate(140deg) brightness(94%) contrast(93%);
   --header-search-icon: url('/images/movie-search-colorful.svg');
-  --input-border: #706bbd;
+  --input-border: #2cafc3;
+  --btn-hover: #016f8d;
+  --input-place: none;
 }
 
 .high-contrast {
@@ -25,7 +27,9 @@
   --clic-menu: #ff0;
   --clic-icon: invert(91%) sepia(72%) saturate(5067%) hue-rotate(355deg) brightness(106%) contrast(105%);
   --header-search-icon: url('/images/movie-search-white.svg');
-  --input-border: white;
+  --input-border: #fff;
+  --btn-hover: none;
+  --input-place: #fff;
 }
 
 /* nav bar */
@@ -41,18 +45,31 @@ input, textarea, button {
   outline: none;
 }
 
+input::placeholder {
+  color: var(--input-place);
+}
+
 /* Logo */
 
 .logo {
-  color: #2cafc3;
-  font-size: 36px;
-  padding: 4px 20px 4px 20px;
-  float: left;
-  font-weight: 600;
+    padding: 8px 0px 8px 20px;
+    float: left;
+    align-items: center;
+    display: flex;
 }
 
-.logo-middle {
-  color: #ffffff;
+.logo-m3 {
+  stroke:none;
+  fill-rule:evenodd;
+  fill:#fff;
+  fill-opacity: 1;
+}
+
+.logo-d {
+  stroke:none;
+  fill-rule:evenodd;
+  fill:var(--input-border);
+  fill-opacity: 1;
 }
 
 /* nav */
@@ -82,6 +99,7 @@ header li {
 nav a:hover {
   background-color: var(--clic-menu);
   color: var(--white-black);
+  transition: all 0.3s ease;
 }
 
 
@@ -111,10 +129,12 @@ nav a:hover {
 .dropdown-content a:hover {
   background-color: var(--back-cli);
   color: var(--white-black);
+  transition: all 0.3s ease;
 }
 
 .dropdown:hover .dropdown-content {
   display: block;
+  transition: all 0.3s ease;
 }
 
 /* Campo de Busca */
@@ -161,6 +181,7 @@ header .icon {
 
 header .icon:hover {
   filter: var(--clic-icon);
+  transition: all 0.3s ease;
 }
 
 .accessibility-wrapper a + a {
@@ -196,7 +217,6 @@ footer {
   border-radius: 55px;
   padding: 4px 10px 4px 10px ;
   cursor: pointer;
-  opacity: 0.8;
   position: relative;
   margin-right: 15px;
   display: flex;
@@ -262,9 +282,11 @@ header .icon2 {
 .form-popup p a:hover {
   color: var(--text-link);
   text-decoration: underline;
+  transition: all 0.3s ease;
 }
 
 /* Add some hover effects to buttons */
 .form-container .btn:hover, .open-button:hover {
-  opacity: 1;
+  background-color: var(--btn-hover);
+  transition: all 0.3s ease;
 }

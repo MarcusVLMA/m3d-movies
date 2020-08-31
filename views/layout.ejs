@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <title>M3D | <%= title %></title>
-    <%# Insere as tags os estilos css %> <%- defineContent('style') %>
+    <%# Insere as tags os estilos css %>
+    <%- defineContent('style') %>
     <link rel="stylesheet" type="text/css" href="/stylesheets/bars.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap"
@@ -17,7 +18,8 @@
   </head>
   <body class="accessibility">
     <header>
-      <%# Inclui a Barra de Navegação %> <%- include('header-unloged'); -%>
+      <%# Inclui a Barra de Navegação %> 
+      <%- include('header-unloged'); -%>
     </header>
     <main><%- defineContent('main') %></main>
     <footer>
@@ -26,7 +28,8 @@
 
     <%# Script de troca de tema %>
     <script type="text/javascript" src="/javascripts/accessibility.js"></script>
-
-    <%# Insere os Scripts das Outras Views%> <%- script %>
+    
+    <%# Insere os Scripts das Outras Views%>
+    <%- script %>
   </body>
 </html>
