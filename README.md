@@ -2,7 +2,7 @@
   <img src= "public/images/m3d.svg" width="50%" >
 </p>
 
-## description
+### Description
 This project is a web application of a movie repository. 
 It is also an academic project for the course "TI0080 - DESENV DE APLICACOES PARA WEB" (DETi/UFC, 2020.1)
 
