@@ -196,7 +196,7 @@ header .icon:hover {
 
 footer {
   background: var(--back-barra);
-  ;
+  font-family: "Source Sans Pro", sans-serif;
   color: #fff;
   height: 120px;
   height: 7.5rem;
@@ -289,4 +289,15 @@ header .icon2 {
 .form-container .btn:hover, .open-button:hover {
   background-color: var(--btn-hover);
   transition: all 0.3s ease;
+}
+
+.dropbtn svg circle {
+  fill: var(--clic-border);
+}
+
+.dropbtn svg text {
+  fill: var(--clic-border);
+  stroke: var(--white-black);
+  stroke-width: "0.5px";
+  fill: var(--white-black);
 }
