@@ -19,15 +19,18 @@ exports.title = async (req, res) => {
 };
 
 exports.titles = async (req, res) => {
+  const page = req.params.page;
   const searchName = req.query.search;
 
   const titleAccess = database.TitleAccess;
-  const titles = titleAccess.searchTitles(searchName);
+  const titles = titleAccess.searchTitles(searchName, page);
 
   const pageTitle = "Galeria";
 
   res.render("gallery", {
     title: pageTitle,
-    titles,
+    currentPage: page,
+    searchParams: searchName ? `?search=${searchName}` : "",
+    ...titles,
   });
 };

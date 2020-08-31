@@ -36,7 +36,7 @@
   </aside>
   <div class="content">
     <div class="content-header">
-      <span><%= titles.length %> resultados encontrados</span>
+      <span><%= totalCount %> resultados encontrados</span>
       <select name="cars" id="cars">
         <option value="a-z">Título A-Z</option>
         <option value="z-a">Título Z-A</option>
@@ -55,7 +55,9 @@
           />
         </div>
         <div class="movie-content">
-          <h3><%= titles[i].title %></h3>
+          <a href="/title/<%= titles[i].id %>"
+            ><h3><%= titles[i].title %></h3>
+          </a>
           <span><%= titles[i].release_date %></span>
           <p><%= titles[i].description %></p>
         </div>
@@ -63,16 +65,15 @@
     </div>
     <% } %>
     <div class="content-pagination">
-      <span class="first">1</span>
-      <span>2</span>
-      <span>3</span>
-      <span>4</span>
-      <span>5</span>
-      <span>...</span>
-      <span>236</span>
-      <span>237</span>
-      <span>238</span>
-      <span>Próxima -></span>
+      <% for(var i=0; i < totalPages; i++) { %> <% if(i == currentPage) {%>
+
+      <a class="current" href="/title/gallery/<%= i + searchParams%>">
+        <%= i %>
+      </a>
+      <% } else { %>
+
+      <a href="/title/gallery/<%= i + searchParams %>"> <%= i %> </a>
+      <% } %> <% } %>
     </div>
   </div>
 </div>

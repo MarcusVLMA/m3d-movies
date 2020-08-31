@@ -195,6 +195,10 @@ aside {
   margin: 0;
 }
 
+.movie-content a {
+  text-decoration-line: none;
+}
+
 .movie-content span {
   color: #a2a2a2;
   font-weight: 400;
@@ -214,18 +218,19 @@ aside {
   align-items: center;
 }
 
-.content-pagination span {
+.content-pagination a {
   color: var(--text-link);
   font-size: 16px;
   font-weight: 700;
   margin: 0px 8px 0px 8px;
+  text-decoration-line: none;
 }
 
-.content-pagination span:hover {
+.content-pagination a:hover {
   cursor: pointer;
 }
 
-.content-pagination .first {
+.content-pagination .current {
   border: 1px solid var(--text);
   padding: 0px 4px 0px 4px;
 }

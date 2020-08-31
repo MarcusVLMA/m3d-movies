@@ -1,5 +1,7 @@
 const db = require("./config");
 
+const MOVIES_PER_PAGE = 3;
+
 function createTitle(titleInfo) {
   const titleExists = findUser({ title: titleInfo.title });
 
@@ -17,7 +19,7 @@ function createTitle(titleInfo) {
   }
 }
 
-function getCommentaries(title_id) {
+function _getCommentaries(title_id) {
   const commentaries = db
     .get("title_commentaries")
     .filter({ title_id })
@@ -40,7 +42,7 @@ function getCommentaries(title_id) {
 
 function getTitle(id) {
   const title = db.get("titles").find({ id }).value();
-  const commentaries = getCommentaries(title.id);
+  const commentaries = _getCommentaries(title.id);
 
   return {
     ...title,
@@ -48,33 +50,47 @@ function getTitle(id) {
   };
 }
 
-function searchTitles(name) {
+function _filterTitle(title, name) {
   if (name) {
-    const titles = db
-      .get("titles")
-      .filter((title) => {
-        const titleNameToSearch = title.title.toLowerCase();
-        const nameToSearch = name.toLowerCase();
+    const titleNameToSearch = title.title.toLowerCase();
+    const nameToSearch = name.toLowerCase();
 
-        return titleNameToSearch.includes(nameToSearch);
-      })
-      .value();
-
-    const titlesResponse = titles.map((title) => ({
-      ...title,
-      commentaries: getCommentaries(title.id),
-    }));
-    return titlesResponse;
+    return titleNameToSearch.includes(nameToSearch);
   } else {
-    const allTitles = db.get("titles").value();
-
-    const titlesResponse = allTitles.map((title) => ({
-      ...title,
-      commentaries: getCommentaries(title.id),
-    }));
-
-    return titlesResponse;
+    return true;
   }
+}
+
+function _getMoviesAmountInfos(name) {
+  const allTitles = db
+    .get("titles")
+    .filter((title) => _filterTitle(title, name))
+    .value();
+
+  return {
+    totalCount: allTitles.length,
+    totalPages: Math.ceil(allTitles.length / MOVIES_PER_PAGE),
+  };
+}
+
+function searchTitles(name, page) {
+  const offset = page * MOVIES_PER_PAGE;
+
+  const titles = db
+    .get("titles")
+    .filter((title) => _filterTitle(title, name))
+    .slice(offset, offset + MOVIES_PER_PAGE)
+    .value();
+
+  const titlesResponse = titles.map((title) => ({
+    ...title,
+    commentaries: _getCommentaries(title.id),
+  }));
+
+  return {
+    titles: titlesResponse,
+    ..._getMoviesAmountInfos(name),
+  };
 }
 
 function updateTitle(titleInfo) {
