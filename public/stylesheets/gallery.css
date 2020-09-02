@@ -7,6 +7,7 @@
   --btn-filter-hover: #032541;
   --clic: rgba(255, 255, 0, 0);
   --clic-sec: rgba(255, 255, 0, 0);
+  --image-grayscale: 0;
 }
 .high-contrast {
   --back: #000;
@@ -17,6 +18,7 @@
   --btn-filter-hover: #000;
   --clic: #ff0;
   --clic-sec: rgb(179, 179, 0);
+  --image-grayscale: 100;
 }
 
 html,
@@ -179,6 +181,7 @@ aside {
   width: 110px;
   border-radius: 10px 0 0 10px;
   object-fit: cover;
+  filter: grayscale(var(--image-grayscale));
 }
 
 .movie-content {

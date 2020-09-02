@@ -1,6 +1,6 @@
 const db = require("./config");
 
-const MOVIES_PER_PAGE = 3;
+const MOVIES_PER_PAGE = 15;
 
 function createTitle(titleInfo) {
   const titleExists = findTitle({ title: titleInfo.title });

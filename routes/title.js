@@ -10,7 +10,8 @@ router.get("/request", titleController.requestGet);
 router.post("/request", titleController.requestPost);
 
 // Solicitação GET para a página de detalhes.
+router.get("/gallery/:page?",  titleController.titles);
+
 router.get("/:id", titleController.title);
-router.get("/gallery/:page", titleController.titles);
 
 module.exports = router;

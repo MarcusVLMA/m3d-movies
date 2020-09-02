@@ -18,7 +18,7 @@ exports.title = async (req, res) => {
 };
 
 exports.titles = async (req, res) => {
-  const page = (req.params.page < 1) ? 1 : req.params.page;
+  const page = (!parseInt(req.params.page)) ? 1 : parseInt(req.params.page);
   const searchName = req.query.search;
 
   const titles = TitleAccess.searchTitles(searchName, page);
