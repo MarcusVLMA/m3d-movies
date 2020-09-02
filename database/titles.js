@@ -90,12 +90,16 @@ function _getMoviesAmountInfos(name) {
 
   return {
     totalCount: allTitles.length,
-    totalPages: Math.ceil(allTitles.length / MOVIES_PER_PAGE),
+    totalPages: Math.ceil(allTitles.length / MOVIES_PER_PAGE) + 1,
   };
 }
 
 function searchTitles(name, page) {
-  const offset = page * MOVIES_PER_PAGE;
+  const moviesAmountInfos = _getMoviesAmountInfos(name);
+  if(page > moviesAmountInfos.totalPages){
+    page = moviesAmountInfos.totalPages-1;
+  }
+  const offset = (page - 1) * MOVIES_PER_PAGE;
 
   const titles = db
     .get("titles")
@@ -110,7 +114,7 @@ function searchTitles(name, page) {
 
   return {
     titles: titlesResponse,
-    ..._getMoviesAmountInfos(name),
+    ...moviesAmountInfos,
   };
 }
 

@@ -65,7 +65,7 @@
     </div>
     <% } %>
     <div class="content-pagination">
-      <% for(var i=0; i < totalPages; i++) { %> <% if(i == currentPage) {%>
+      <% for(var i=1; i < totalPages; i++) { %> <% if(i == currentPage) {%>
 
       <a class="current" href="/title/gallery/<%= i + searchParams%>">
         <%= i %>
