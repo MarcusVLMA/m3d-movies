@@ -17,7 +17,7 @@
   </head>
   <body class="accessibility">
     <header>
-      <%# Inclui a Barra de Navegação %> <%- include('header-unloged'); -%>
+      <%# Inclui a Barra de Navegação %> <%- include('header'); -%>
     </header>
     <main><%- defineContent('main') %></main>
     <footer>
@@ -27,6 +27,8 @@
     <%# Script de troca de tema %>
     <script type="text/javascript" src="/javascripts/accessibility.js"></script>
 
-    <%# Insere os Scripts das Outras Views%> <%- script %>
+    <%# Insere os Scripts das Outras Views%>
+    <script type="text/javascript" src="/javascripts/header.js"></script>
+    <%- script %>
   </body>
 </html>

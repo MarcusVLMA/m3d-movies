@@ -3,27 +3,35 @@
 
 <%- contentFor('main') %>
 <script type="text/javascript">
-  const search = document.querySelector('form#search');
-  search.addEventListener('submit', () => {
-    search.action = '/search/' + document.querySelector('input#query').value;
+  const search = document.querySelector("form#search");
+  search.addEventListener("submit", () => {
+    search.action = "/search/" + document.querySelector("input#query").value;
   });
 </script>
 <div class="content-wrapper">
   <div class="content">
     <div class="title">
       <h2>Seja Bem-Vindo(a)!</h2>
-      <h3>Muitas informações de filmes,<br> séries e animes.<br>Explore!</h3>
+      <h3>
+        Muitas informações de filmes,<br />
+        séries e animes.<br />Explore!
+      </h3>
     </div>
     <div class="search">
       <div class="s-bar">
-        <form id="search" action="/search" method="get">
-          <input type="text" id="query" placeholder="Buscar por um filme, série ou anime...">
-          <input type="submit"  value="Pesquisar"/>
+        <form id="search" action="/title/gallery/0" method="get">
+          <input
+            type="text"
+            id="search"
+            name="search"
+            placeholder="Buscar por um filme, série ou anime..."
+          />
+          <input type="submit" value="Pesquisar" />
         </form>
       </div>
-      <span>Exemplo: 
-        <a href="#" target="_blank">Forrest Gump</a>, 
-        <a href="#" target="_blank">Vingadores</a>, 
+      <span
+        >Exemplo: <a href="#" target="_blank">Forrest Gump</a>,
+        <a href="#" target="_blank">Vingadores</a>,
         <a href="#" target="_blank">Liga da Justiça</a>
       </span>
     </div>

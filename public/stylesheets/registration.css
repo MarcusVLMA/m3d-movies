@@ -3,8 +3,8 @@
   --black-white: #000;
   --white-yellow: #fff;
   --gray-white: #4c4d4d;
-  --steelblue-none: #4682B4;
-  --steelblue-yellow: #4682B4;
+  --steelblue-none: #028cb3;
+  --steelblue-yellow: #028cb3;
   --slider-lbl-opacity: 0.5;
   --img-filter: none;
   --btn-hover: #016f8d;
@@ -184,6 +184,7 @@ input[type="submit"], button {
   border-radius: 6px;
   border-radius: .375rem;
 }
+
 .btn-submit {
   color: #fff;
   border-color: var(--steelblue-yellow);  

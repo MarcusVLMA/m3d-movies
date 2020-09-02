@@ -3,7 +3,7 @@ const db = require("./config");
 const MOVIES_PER_PAGE = 3;
 
 function createTitle(titleInfo) {
-  const titleExists = findUser({ title: titleInfo.title });
+  const titleExists = findTitle({ title: titleInfo.title });
 
   if (titleExists) {
     return null;
@@ -42,12 +42,16 @@ function _getCommentaries(title_id) {
 
 function getTitle(id) {
   const title = db.get("titles").find({ id }).value();
-  const commentaries = _getCommentaries(title.id);
+  if (title) {
+    const commentaries = _getCommentaries(title.id);
 
-  return {
-    ...title,
-    commentaries,
-  };
+    return {
+      ...title,
+      commentaries,
+    };
+  } else {
+    return null;
+  }
 }
 
 function _filterTitle(title, name) {
@@ -58,6 +62,23 @@ function _filterTitle(title, name) {
     return titleNameToSearch.includes(nameToSearch);
   } else {
     return true;
+  }
+}
+
+function findTitle(searchParams) {
+  if (searchParams) {
+    const title = db.get("titles").find(searchParams).value();
+    if (title) {
+      const commentaries = getCommentaries(title.id);
+      return {
+        ...title,
+        commentaries,
+      };
+    } else {
+      return;
+    }
+  } else {
+    return;
   }
 }
 

@@ -12,7 +12,8 @@
         <%= title %> <span>(<%= release_year %>)</span>
       </h1>
       <span class="details-subtitle">
-        <%= release_date %> (BR) &nbsp; &bull; &nbsp; <%= genre %>
+        <%= release_date %> (BR) &nbsp; &bull; &nbsp; <%= genre %> &nbsp; &bull;
+        &nbsp; <%= running_time %>
       </span>
       <div class="details-actions">
         <div class="details-actions-rating" style="<%= rating_style %>">
@@ -86,9 +87,11 @@
             </svg>
           </div>
         </div>
-        <div class="details-actions-trailer">
-          <i class="fas fa-play"></i>Reproduzir trailer
-        </div>
+        <a target="_blank" rel="noopener noreferrer" href="<%= trailer_path %>">
+          <div class="details-actions-trailer">
+            <i class="fas fa-play"></i>Reproduzir trailer
+          </div>
+        </a>
       </div>
       <div class="details-sinopsis">
         <h2 class="details-sinopsis-title">Sinopse</h2>
