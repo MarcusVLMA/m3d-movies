@@ -46,6 +46,7 @@ main {
 }
 
 aside {
+  margin-top: 44px;
   margin-right: 30px;
   border: 1px solid #c2c2c2;
   border-radius: 10px;
