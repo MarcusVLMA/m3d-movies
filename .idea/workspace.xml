@@ -28,6 +28,17 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="run" type="js.build_tools.npm" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -53,6 +64,10 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="461" y="352" key="#Template_Data_Languages" timestamp="1599105049322">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="352" key="#Template_Data_Languages/0.0.1920.1040@0.0.1920.1040" timestamp="1599105049322" />
     <state x="414" y="174" width="1092" height="716" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599096331794">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -73,5 +88,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1876" height="277" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1599096339131" />
+    <state x="667" y="119" width="585" height="801" key="find.popup" timestamp="1599106000579">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="667" y="119" width="585" height="801" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1599106000579" />
   </component>
 </project>

@@ -116,11 +116,6 @@ exports.userProfileEditPost = async (req, res) => {
     erros.email = "Endereço de e-mail inválido!";
   }
 
-  if (await UserAccess.findUser({email: req.body.email})){
-    erros.email = "Endereço de e-mail já cadastrado!";
-    console.log(req.body.email);
-  }
-
   if(Object.keys(erros).length) {
     // Renderiza página se houver erros
     res.render('userProfileEdit', {

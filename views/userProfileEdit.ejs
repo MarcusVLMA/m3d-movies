@@ -160,7 +160,7 @@
     <fieldset>
       <div class="field-wrapper">
         <label for="name">Nome</label><br>
-        <input type="text" minlength="4" maxlength="50" name="name" id="name" placeholder="<%= user.name %>" value="<%= inputs.name %>" required />
+        <input type="text" minlength="4" maxlength="50" name="name" id="name" placeholder="<%= user.name %>" value="<%= user.name %>" required />
         <span class="erro-msg" id="name-erro"><%= erros.name %> </span>
       </div>
       <div class="field-wrapper">
@@ -180,7 +180,7 @@
       </div>
       <div class="field-wrapper">
         <label for="email">E-mail</label><br>
-        <input type="email" name="email" id="email" placeholder="<%= user.email %>" value="<%= inputs.email %>" required />
+        <input type="email" name="email" id="email" placeholder="<%= user.email %>" value="<%= user.email %>" required />
         <span class="erro-msg" id="email-erro"><%= erros.email %></span>
       </div>
     </fieldset>
@@ -193,7 +193,7 @@
   // Valida o formulário antes de enviar
   const registrationForm = document.querySelector('form#registrationForm');
   registrationForm.addEventListener('submit', (e) => {
-    if(!nameValidator() || !passwordValidator() || !passwordConfirmValidator() || !emailValidator()){
+    if(!nameValidator() || !passwordValidator() || !passwordConfirmValidator() || !emailValidator() || !passwordOldValidator()){
       e.preventDefault();
     }
   });
@@ -208,14 +208,13 @@
     document.querySelector("span#name-erro").innerHTML = '';
   });
 
-  // Verificação o campo password antigo
-  const password_old = document.querySelector("input#password-old");
-  password_old.addEventListener('blur', () => {
-    passwordValidator();
-    passwordConfirmValidator();
+  // Verificação do campo password antigo
+  const passwordOld = document.querySelector("input#password-old");
+  passwordOld.addEventListener('blur', () => {
+    passwordOldValidator();
   });
   // Remove mensagem de erro
-  password_old.addEventListener('focus', () => {
+  passwordOld.addEventListener('focus', () => {
     document.querySelector("span#password-old-erro").innerHTML = '';
   });
 
@@ -244,23 +243,7 @@
   // Verificação o campo de e-mail
   const email = document.querySelector("input#email");
   email.addEventListener('blur', () => {
-    if (emailValidator()){
-      // Verificação de forma assincrona se o email está disponível
-      fetch('/user/registration/emailAvailable/' + email.value, {
-        method: 'GET'
-      })
-              .then(response => {
-                if(!response.ok) {
-                  throw new Error('Network response was not ok');
-                }
-                return response.json();
-              })
-              .then(jsonResponse => {
-                if(jsonResponse.available === 'false'){
-                  document.querySelector("span#email-erro").innerHTML = 'Endereço de e-mail já cadastrado';
-                }
-              });
-    }
+    emailValidator();
   });
   // Remove mensagem de erro
   email.addEventListener('focus', () => {
@@ -289,13 +272,13 @@
     }
   }
 
-  function passwordOldCheck(){
-    if (passwordConfirm.value != password.value){
-      document.querySelector("span#password-confirm-erro").innerHTML = 'As senhas não são iguais!';
+  function passwordOldValidator(){
+    if (passwordOld.value != <%= user.password %>){
+      document.querySelector("span#password-old-erro").innerHTML = 'Senha incorreta!';
       return false;
     }
     else {
-      document.querySelector("span#password-confirm-erro").innerHTML = '';
+      document.querySelector("span#password-old-erro").innerHTML = '';
       return true;
     }
   }
