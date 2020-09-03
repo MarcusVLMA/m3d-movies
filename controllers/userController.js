@@ -79,7 +79,8 @@ exports.userProfileEditGet = (req, res) => {
         title: 'Edição de Cadastro',
         erros: {},
         inputs: {},
-        user
+        user,
+        notification: false,
       }
   );
 };
@@ -121,7 +122,8 @@ exports.userProfileEditPost = async (req, res) => {
     res.render('userProfileEdit', {
       title: 'Edição de Cadastro',
       erros: erros,
-      inputs: req.body
+      inputs: req.body,
+      notification: false,
     });
   }
   else {
@@ -132,6 +134,14 @@ exports.userProfileEditPost = async (req, res) => {
       "password": req.body.password,
       "id": "1597780559820",
     });
-    res.redirect('/')
+    // Renderiza página
+    const user = UserAccess.getUser("1597780559820");
+    res.render('userProfileEdit', {
+      title: 'Edição de Cadastro',
+      erros: {},
+      inputs: {},
+      user,
+      notification: true,
+    });
   }
 };

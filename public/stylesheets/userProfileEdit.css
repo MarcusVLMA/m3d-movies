@@ -27,6 +27,9 @@
   --slider-lbl-opacity: 0.5;
   --img-filter: none;
   --btn-hover: #016f8d;
+  --green-black: #155724;
+  --lightGreen-white: #d4edda;
+  --alert-img: invert(23%) sepia(88%) saturate(403%) hue-rotate(82deg) brightness(93%) contrast(95%);
 }
 .high-contrast {
   --back-image: #000;
@@ -52,6 +55,9 @@
   --slider-lbl-opacity: 1;
   --img-filter: grayscale(1);
   --btn-hover: none;
+  --green-black: #000;
+  --lightGreen-white: #fff;
+  --alert-img: none;
 }
 
 html,
@@ -208,4 +214,30 @@ input[type="submit"], button {
 .erro-msg {
     font-size: 0.9em;
     color: #f00;
+}
+
+.alert-success {
+    color: var(--green-black);
+    width: 100%;
+    max-height: 40px;
+    background-color: var(--lightGreen-white);
+    border-color: var(--lightGreen-white);
+    position: relative;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    overflow: hidden;
+    align-items: center;
+    display: flex;
+    transition: visibility 0.5s, max-height 0.5s ease-in-out;
+    pointer-events: none;
+}
+
+.alert-success * {
+    margin: .75rem 0 0.75rem 0;
+}
+
+.alert-success img {
+    padding: 0 0.75rem 0 0.75rem;
+    filter: var(--alert-img);
 }

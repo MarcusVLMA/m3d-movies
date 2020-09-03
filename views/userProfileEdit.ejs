@@ -157,6 +157,12 @@
   </div>
   <form method="post" id="registrationForm">
     <fieldset>
+      <% if(notification) { %>
+        <div class="alert-success" role="alert">
+          <img src="/images/check-circle.svg">
+          <span>Sugestão enviada com sucesso!</span>
+        </div>
+      <% } %>
       <div class="field-wrapper">
         <label for="name">Nome</label><br>
         <input type="text" minlength="4" maxlength="50" name="name" id="name" placeholder="<%= user.name %>" value="<%= user.name %>" required />
@@ -303,3 +309,13 @@
     }
   }
 </script>
+<%# Script de notificação%>
+<% if(notification) { %>
+  <script type="text/javascript">
+    window.setTimeout(() => {
+      const hint = document.querySelector("div.alert-success");
+      hint.style.maxHeight = '0';
+      hint.style.visibility = 'hidden';
+    },5000);
+  </script>
+<% } %>
