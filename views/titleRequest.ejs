@@ -158,12 +158,17 @@
         </div>
       </fieldset>
       <% if(titlePending) { %>
-        <input class="btn-submit" type="submit" value="Recusar">
         <input class="btn-submit" type="submit" value="Aceitar">
       <% } else { %>
         <input class="btn-submit" type="submit" value="Enviar">
       <% } %>
     </form>
+    <% if(titlePending) { %>
+      <form method="post" action="/admin/request/reject/<%= titlePending.id %>">
+        <input class="btn-submit" type="submit" value="Recusar">
+      </form>
+      
+    <% } %>
   </div>
 </div>
 

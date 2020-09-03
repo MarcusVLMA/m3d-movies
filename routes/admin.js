@@ -11,6 +11,9 @@ router.get('/request/:id', adminController.requestGetEdit);
 // Solicitação POST que recebe formulário para fazer update em um título.
 router.post('/request/:id', adminController.requestPostEdit);
 
+// Solicitação POST que apaga filme
+router.post('/request/reject/:id', adminController.requestPostRemove);
+
 // Solicitação GET para a página de inserção de título.
 router.get('/title/add', function(req, res) {
   res.send('Add title form');

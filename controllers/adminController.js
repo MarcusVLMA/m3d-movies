@@ -49,3 +49,8 @@ exports.requestPostEdit = async (req, res) => {
     titlePending: true,
   });
 };
+
+exports.requestPostRemove = async (req, res) => {
+  const titlePending = await TitleAccess.removeTitle(req.params.id);
+  res.redirect("/admin/requests");
+};
