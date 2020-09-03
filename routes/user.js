@@ -38,7 +38,4 @@ router.get('/userProfileEdit', userController.userProfileEditGet)
 // Solicitação POST para editar as informações do usuário.
 router.post("/userProfileEdit", userController.userProfileEditPost);
 
-// Verfica se o e-mail ja existe
-router.get("/userProfileEdit/emailAvailable/:userEmail", userController.emailAvailable);
-
 module.exports = router;
