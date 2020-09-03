@@ -19,6 +19,7 @@ function createTitle(titleInfo) {
   }
 }
 
+
 function _getCommentaries(title_id) {
   const commentaries = db
     .get("title_commentaries")
@@ -75,7 +76,6 @@ function _filterTitle(title, searchParams = null) {
         break;
       }
     }
-
     return response;
   } else {
     return true;
@@ -88,6 +88,16 @@ function _filterTitle(title, searchParams = null) {
   // } else {
   //   return true;
   // }
+}
+
+function getTitlesPending() {
+  const title = db.get("titles").find({ status:"pending" }).value();
+  return title;
+}
+
+function getTitlePending(id) {
+  const title = db.get("titles").find({ id, status:"pending" }).value();
+  return title;
 }
 
 function findTitle(searchParams) {
@@ -174,6 +184,8 @@ module.exports = {
   getTitle,
   searchTitles,
   updateTitle,
-  removeCommentaries,
+  getTitlesPending,
+  getTitlePending,
   removeTitle,
+  removeCommentaries,
 };

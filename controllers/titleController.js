@@ -68,11 +68,23 @@ exports.titles = async (req, res) => {
 };
 
 // Solicitação GET para a página de solicitação.
-exports.requestGet = (req, res) => {
-  res.render("titleRequest", {
-    title: "Sugerir Título",
-    notification: false,
-  });
+exports.requestGet = async (req, res) => {
+  const titlePending = await TitleAccess.getTitlePending(req.params.id);
+  if (titlePending){
+    console.log(titlePending);
+    res.render("titleRequest", {
+      title: "Sugerir Título",
+      notification: false,
+      titlePending: true,
+    });
+  } else {
+    res.render("titleRequest", {
+      title: "Sugerir Título",
+      notification: false,
+      titlePending: false,
+    });
+  }
+  
 };
 
 // Solicitação POST para a página de solicitação.
@@ -94,5 +106,6 @@ exports.requestPost = async (req, res) => {
   res.render("titleRequest", {
     title: "Sugerir Título",
     notification: true,
+    titlePending: false,
   });
 };
