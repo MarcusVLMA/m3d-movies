@@ -69,7 +69,7 @@ function findTitle(searchParams) {
   if (searchParams) {
     const title = db.get("titles").find(searchParams).value();
     if (title) {
-      const commentaries = getCommentaries(title.id);
+      const commentaries = _getCommentaries(title.id);
       return {
         ...title,
         commentaries,
