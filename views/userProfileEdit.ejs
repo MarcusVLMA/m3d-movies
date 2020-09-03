@@ -159,27 +159,27 @@
   <form method="post" id="registrationForm">
     <fieldset>
       <div class="field-wrapper">
-        <label for="name">Nome</label>
+        <label for="name">Nome</label><br>
         <input type="text" minlength="4" maxlength="50" name="name" id="name" placeholder="<%= user.name %>" value="<%= inputs.name %>" required />
         <span class="erro-msg" id="name-erro"><%= erros.name %> </span>
       </div>
       <div class="field-wrapper">
-        <label for="password">Senha anterior</label>
+        <label for="password">Senha anterior</label><br>
         <input type="password" minlength="8" maxlength="50" name="password-old" id="password-old" required />
         <span class="erro-msg" id="password-old-erro"><%= erros.password_old %></span>
       </div>
       <div class="field-wrapper">
-        <label for="password">Nova senha (8 caractéres no mínimo)</label>
+        <label for="password">Nova senha (8 caractéres no mínimo)</label><br>
         <input type="password" minlength="8" maxlength="50" name="password" id="password" required />
         <span class="erro-msg" id="password-erro"><%= erros.password %></span>
       </div>
       <div class="field-wrapper">
-        <label for="password-confirm">Confirme sua nova senha</label>
+        <label for="password-confirm">Confirme sua nova senha</label><br>
         <input type="password" minlength="8" maxlength="50" name="password_confirm" id="password-confirm" required />
         <span class="erro-msg" id="password-confirm-erro"><%= erros.password_confirm %></span>
       </div>
       <div class="field-wrapper">
-        <label for="email">E-mail</label>
+        <label for="email">E-mail</label><br>
         <input type="email" name="email" id="email" placeholder="<%= user.email %>" value="<%= inputs.email %>" required />
         <span class="erro-msg" id="email-erro"><%= erros.email %></span>
       </div>
