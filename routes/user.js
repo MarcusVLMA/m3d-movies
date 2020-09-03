@@ -33,9 +33,9 @@ router.post('galery/:id/remove', function(req, res) {
 });
 
 // Solicitação GET para a página de Edição de Perfil do Usuário
-router.get('/userProfileEdit', userController.userProfileEditGet)
+router.get('/profile', userController.userProfileEditGet)
 
 // Solicitação POST para editar as informações do usuário.
-router.post("/userProfileEdit", userController.userProfileEditPost);
+router.post("/profile", userController.userProfileEditPost);
 
 module.exports = router;
