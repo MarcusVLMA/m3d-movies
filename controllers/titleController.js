@@ -56,6 +56,7 @@ exports.titles = async (req, res) => {
 
   const titles = TitleAccess.searchTitles(searchParams, page);
 
+
   const pageTitle = "Galeria";
 
   res.render("gallery", {

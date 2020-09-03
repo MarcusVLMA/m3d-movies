@@ -22,7 +22,7 @@
       </text>
     </svg>
     <div class="info-block">
-      <h1 class="font-user-name">dw2020<span class="font-user-date">Membro desde agosto de 2020</span></h1>
+      <h1 class="font-user-name"><%= user.name %><span class="font-user-date">Membro desde agosto de 2020</span></h1>
       <div class="avaliation">
         <div class="container-avaliation">
           <svg width="48" height="48">
@@ -150,16 +150,156 @@
     </div>
   </div>
 </div>
-<div class="form-container">
-  <h1 class="form-head">Alterar Informações</h1>
-  <h1 class="form-preface">Nome de usuário</h1>
-  <input class="form-box" type="text" name="uname" /> 
-  <h1 class="form-preface">Nova senha (9 caractéres no mínimo)</h1>
-  <input class="form-box" type="text" name="nsenha" /> 
-  <h1 class="form-preface">Confirmar senha</h1>
-  <input class="form-box" type="text" name="csenha" /> 
-  <h1 class="form-preface">E-mail</h1>
-  <input class="form-box" type="text" name="email" />
-  <br><br>
-  <button type="button" class="button">Atualizar</button>
+<div class="content-form">
+  <div class="title-wrapper">
+    <h1 class="title">Alterar Dados</h1>
+    <p>Preecha o seu cadastro com as novas informações.</p>
+  </div>
+  <form method="post" id="registrationForm">
+    <fieldset>
+      <div class="field-wrapper">
+        <label for="name">Nome</label><br>
+        <input type="text" minlength="4" maxlength="50" name="name" id="name" placeholder="<%= user.name %>" value="<%= user.name %>" required />
+        <span class="erro-msg" id="name-erro"><%= erros.name %> </span>
+      </div>
+      <div class="field-wrapper">
+        <label for="password">Senha anterior</label><br>
+        <input type="password" minlength="8" maxlength="50" name="password-old" id="password-old" required />
+        <span class="erro-msg" id="password-old-erro"><%= erros.password_old %></span>
+      </div>
+      <div class="field-wrapper">
+        <label for="password">Nova senha (8 caractéres no mínimo)</label><br>
+        <input type="password" minlength="8" maxlength="50" name="password" id="password" required />
+        <span class="erro-msg" id="password-erro"><%= erros.password %></span>
+      </div>
+      <div class="field-wrapper">
+        <label for="password-confirm">Confirme sua nova senha</label><br>
+        <input type="password" minlength="8" maxlength="50" name="password_confirm" id="password-confirm" required />
+        <span class="erro-msg" id="password-confirm-erro"><%= erros.password_confirm %></span>
+      </div>
+      <div class="field-wrapper">
+        <label for="email">E-mail</label><br>
+        <input type="email" name="email" id="email" placeholder="<%= user.email %>" value="<%= user.email %>" required />
+        <span class="erro-msg" id="email-erro"><%= erros.email %></span>
+      </div>
+    </fieldset>
+    <input class="btn-submit" type="submit" value="Salvar">
+  </form>
 </div>
+
+<%# Script do validador do formualário %>
+<script type="text/javascript">
+  // Valida o formulário antes de enviar
+  const registrationForm = document.querySelector('form#registrationForm');
+  registrationForm.addEventListener('submit', (e) => {
+    if(!nameValidator() || !passwordValidator() || !passwordConfirmValidator() || !emailValidator() || !passwordOldValidator()){
+      e.preventDefault();
+    }
+  });
+
+  // Verificação o campo name
+  const name = document.querySelector("input#name");
+  name.addEventListener('blur', () => {
+    nameValidator();
+  });
+  // Remove mensagem de erro
+  name.addEventListener('focus', () => {
+    document.querySelector("span#name-erro").innerHTML = '';
+  });
+
+  // Verificação do campo password antigo
+  const passwordOld = document.querySelector("input#password-old");
+  passwordOld.addEventListener('blur', () => {
+    passwordOldValidator();
+  });
+  // Remove mensagem de erro
+  passwordOld.addEventListener('focus', () => {
+    document.querySelector("span#password-old-erro").innerHTML = '';
+  });
+
+  // Verificação o campo password
+  const password = document.querySelector("input#password");
+  password.addEventListener('blur', () => {
+    passwordValidator();
+    passwordConfirmValidator();
+  });
+  // Remove mensagem de erro
+  password.addEventListener('focus', () => {
+    document.querySelector("span#password-erro").innerHTML = '';
+  });
+
+  // Valida a senha de confirmação
+  const passwordConfirm = document.querySelector("input#password-confirm");
+  passwordConfirm.addEventListener('blur', () => {
+    passwordValidator();
+    passwordConfirmValidator();
+  });
+  // Remove mensagem de erro
+  passwordConfirm.addEventListener('focus', () => {
+    document.querySelector("span#password-confirm-erro").innerHTML = '';
+  });
+
+  // Verificação o campo de e-mail
+  const email = document.querySelector("input#email");
+  email.addEventListener('blur', () => {
+    emailValidator();
+  });
+  // Remove mensagem de erro
+  email.addEventListener('focus', () => {
+    document.querySelector("span#email-erro").innerHTML = '';
+  });
+
+  function nameValidator() {
+    if (name.value.length < 4){
+      document.querySelector("span#name-erro").innerHTML = 'Nome deve conter pelo menos 4 caractéres!';
+      return false;
+    }
+    else {
+      return true;
+    }
+  }
+
+  function emailValidator() {
+    const emailRegexp = new RegExp("^(?=.{1,254}$)(?=.{1,64}@)[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~]+(\.[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~]+)*@[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?(\.[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?)*$");
+    if (emailRegexp.test(email.value)) {
+      return true;
+    }
+    else {
+      document.querySelector("span#email-erro").innerHTML = 'Endereço de e-mail inválido!';
+      return false;
+    }
+  }
+
+  function passwordOldValidator(){
+    if (passwordOld.value != <%= user.password %>){
+      document.querySelector("span#password-old-erro").innerHTML = 'Senha incorreta!';
+      return false;
+    }
+    else {
+      document.querySelector("span#password-old-erro").innerHTML = '';
+      return true;
+    }
+  }
+
+  function passwordValidator() {
+    const passwordRegexp = new RegExp("^[-!#$@%&'*+/0-9=?A-Z^_`a-z{|}~\(\)]{8,}$");
+    if (!passwordRegexp.test(password.value)){
+      document.querySelector("span#password-erro").innerHTML = 'A senha deve conter pelo menos 8 caractéres sem espaçamento!';
+      return false;
+    }
+    else{
+      return true;
+    }
+  }
+
+  function passwordConfirmValidator() {
+    if (passwordConfirm.value != password.value){
+      document.querySelector("span#password-confirm-erro").innerHTML = 'As senhas não são iguais!';
+      return false;
+    }
+    else {
+      document.querySelector("span#password-confirm-erro").innerHTML = '';
+      return true;
+    }
+  }
+</script>

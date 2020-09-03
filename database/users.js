@@ -40,7 +40,6 @@ function updateUser(userInfo) {
     .get("profiles")
     .find({ id: userInfo.id })
     .assign(userInfo)
-    .value()
     .write();
 
   return updatedUser;
@@ -51,7 +50,6 @@ function removeUser(userId) {
   .remove({ id: userId })
   .write();
 }
-
 
 module.exports = {
   createUser,

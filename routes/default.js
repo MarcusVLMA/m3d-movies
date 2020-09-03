@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 // Inporta o controlador para as rotas default
 const defaultController = require("../controllers/defaultController");
-const { UserAccess, TitleAccess } = require("../database");
 
 // Redireciona para home
 router.get("/", function (req, res) {
