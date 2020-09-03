@@ -74,10 +74,12 @@ exports.registrationPost = async (req, res) => {
 
 // Solicitação GET para a página de edicao.
 exports.userProfileEditGet = (req, res) => {
+  const user = UserAccess.getUser("1597780559820");
   res.render('userProfileEdit', {
         title: 'Edição de Cadastro',
         erros: {},
-        inputs: {}
+        inputs: {},
+        user
       }
   );
 };

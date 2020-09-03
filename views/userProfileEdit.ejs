@@ -22,7 +22,7 @@
       </text>
     </svg>
     <div class="info-block">
-      <h1 class="font-user-name">dw2020<span class="font-user-date">Membro desde agosto de 2020</span></h1>
+      <h1 class="font-user-name"><%= user.name %><span class="font-user-date">Membro desde agosto de 2020</span></h1>
       <div class="avaliation">
         <div class="container-avaliation">
           <svg width="48" height="48">
@@ -160,7 +160,7 @@
     <fieldset>
       <div class="field-wrapper">
         <label for="name">Nome</label>
-        <input type="text" minlength="4" maxlength="50" name="name" id="name" placeholder="dw2020" value="<%= inputs.name %>" required />
+        <input type="text" minlength="4" maxlength="50" name="name" id="name" placeholder="<%= user.name %>" value="<%= inputs.name %>" required />
         <span class="erro-msg" id="name-erro"><%= erros.name %> </span>
       </div>
       <div class="field-wrapper">
@@ -180,7 +180,7 @@
       </div>
       <div class="field-wrapper">
         <label for="email">E-mail</label>
-        <input type="email" name="email" id="email" placeholder="dw2020@gmail.com" value="<%= inputs.email %>" required />
+        <input type="email" name="email" id="email" placeholder="<%= user.email %>" value="<%= inputs.email %>" required />
         <span class="erro-msg" id="email-erro"><%= erros.email %></span>
       </div>
     </fieldset>
@@ -290,12 +290,12 @@
   }
 
   function passwordOldCheck(){
-    const passwordRegexp = new RegExp("^[-!#$@%&'*+/0-9=?A-Z^_`a-z{|}~\(\)]{8,}$");
-    if (!passwordRegexp.test(password.value)){
-      document.querySelector("span#password-old-erro").innerHTML = 'A senha deve conter pelo menos 8 caractéres sem espaçamento!';
+    if (passwordConfirm.value != password.value){
+      document.querySelector("span#password-confirm-erro").innerHTML = 'As senhas não são iguais!';
       return false;
     }
-    else{
+    else {
+      document.querySelector("span#password-confirm-erro").innerHTML = '';
       return true;
     }
   }
