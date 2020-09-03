@@ -1,0 +1,24 @@
+{
+  "name": "m3d-movies",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "devstart": "nodemon ./bin/www --ignore database/data",
+    "serverstart": "DEBUG=m3d-movies:* npm run devstart"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "express-ejs-layouts": "^2.5.0",
+    "http-errors": "~1.6.3",
+    "lowdb": "^1.0.0",
+    "morgan": "~1.9.1"
+  },
+  "devDependencies": {
+    "node-fetch": "^2.6.0",
+    "nodemon": "^2.0.4"
+  }
+}

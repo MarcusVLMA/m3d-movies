@@ -1,0 +1,184 @@
+<%- contentFor('style') %>
+<link rel="stylesheet" type="text/css" href="/stylesheets/registration.css" />
+
+<%- contentFor('main') %>
+<div class="content">
+  <div class="slider-wrapper">
+    <ul class="slider">
+      <li>
+        <input type="radio" class="mySlides" id="slide1" name="slide" checked>
+        <label for="slide1"></label>
+        <img src="/images/slide1.png" alt="Avalie filmes e séries">
+        </li>
+      <li>
+        <input type="radio" class="mySlides" id="slide2" name="slide">
+        <label for="slide2"></label>
+        <img src="/images/slide2.png" alt="Armazene seus filmes favoritos em sua galeria" />
+        </li>
+        <li>
+          <input type="radio" class="mySlides" id="slide3" name="slide">
+          <label for="slide3"></label>
+          <img src="/images/slide3.png" alt="Dê sua opinião sobre os títulos"/>
+        </li>
+      </ul>
+  </div>
+  <div class="content-form">
+    <div class="title-wrapper">
+      <h1 class="title">Crie uma conta</h1>
+      <p>Criar uma conta é fácil e gratuito. Comece preenchendo o formulário abaixo.</p>
+    </div>          
+    <form method="post" id="registrationForm">
+      <fieldset>
+        <div class="field-wrapper">
+          <label for="name">Nome</label>
+          <input type="text" minlength="4" maxlength="50" name="name" id="name" value="<%= inputs.name %>" required />
+          <span class="erro-msg" id="name-erro"><%= erros.name %> </span>
+        </div>
+        <div class="field-wrapper">
+          <label for="password">Senha (8 caractéres no mínimo)</label>
+          <input type="password" minlength="8" maxlength="50" name="password" id="password" required />
+          <span class="erro-msg" id="password-erro"><%= erros.password %></span>
+        </div>
+        <div class="field-wrapper">
+          <label for="password-confirm">Confirme sua senha</label>
+          <input type="password" minlength="8" maxlength="50" name="password_confirm" id="password-confirm" required />
+          <span class="erro-msg" id="password-confirm-erro"><%= erros.password_confirm %></span>
+        </div>
+        <div class="field-wrapper">
+          <label for="email">E-mail</label>
+          <input type="email" name="email" id="email" placeholder="seuemail@exemplo.com" value="<%= inputs.email %>" required />
+          <span class="erro-msg" id="email-erro"><%= erros.email %></span>
+        </div>
+      </fieldset>
+      <p>Ao clicar no botão "Registrar" abaixo, concordo com os termos de uso e a política de privacidade do M3D.</p>
+      <input class="btn-submit" type="submit" value="Registrar">
+    </form>
+  </div>
+</div>
+
+<%# Script do slider e validador do formualário %>
+<script type="text/javascript">
+  let slideIndex = 0;
+  showSlides();
+  
+  function showSlides() {
+    const slides = document.querySelectorAll("input.mySlides");
+    for (let i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}
+    slides[slideIndex-1].checked = "checked";
+    setTimeout(showSlides, 5000);
+  }
+
+  // Valida o formulário antes de enviar
+  const registrationForm = document.querySelector('form#registrationForm');
+  registrationForm.addEventListener('submit', (e) => {
+    if(!nameValidator() || !passwordValidator() || !passwordConfirmValidator() || !emailValidator()){
+      e.preventDefault();
+    }
+  });
+
+  // Verificação o campo name
+  const name = document.querySelector("input#name");
+  name.addEventListener('blur', () => {
+    nameValidator();
+  });
+  // Remove mensagem de erro
+  name.addEventListener('focus', () => {
+    document.querySelector("span#name-erro").innerHTML = '';
+  });
+
+  // Verificação o campo password
+  const password = document.querySelector("input#password");
+  password.addEventListener('blur', () => {
+    passwordValidator();
+    passwordConfirmValidator();
+  });
+  // Remove mensagem de erro
+  password.addEventListener('focus', () => {
+    document.querySelector("span#password-erro").innerHTML = '';
+  });
+
+  // Valida a senha de confirmação
+  const passwordConfirm = document.querySelector("input#password-confirm");
+  passwordConfirm.addEventListener('blur', () => {
+    passwordValidator();
+    passwordConfirmValidator();
+  });
+  // Remove mensagem de erro
+  passwordConfirm.addEventListener('focus', () => {
+    document.querySelector("span#password-confirm-erro").innerHTML = '';
+  });
+
+  // Verificação o campo de e-mail
+  const email = document.querySelector("input#email");
+  email.addEventListener('blur', () => {
+    if (emailValidator()){
+      // Verificação de forma assincrona se o email está disponível
+      fetch('/user/registration/emailAvailable/' + email.value, {
+        method: 'GET'
+      })
+      .then(response => {
+        if(!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(jsonResponse => {
+        if(jsonResponse.available === 'false'){
+          document.querySelector("span#email-erro").innerHTML = 'Endereço de e-mail já cadastrado';
+        }
+      });
+    }
+  });
+  // Remove mensagem de erro
+  email.addEventListener('focus', () => {
+    document.querySelector("span#email-erro").innerHTML = '';
+  });
+  
+  function nameValidator() {
+    if (name.value.length < 4){
+      document.querySelector("span#name-erro").innerHTML = 'Nome deve conter pelo menos 4 caractéres!';
+      return false;
+    }
+    else {
+      return true;
+    }
+    
+  }
+
+  function emailValidator() {
+    const emailRegexp = new RegExp("^(?=.{1,254}$)(?=.{1,64}@)[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~]+(\.[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~]+)*@[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?(\.[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?)*$");
+    if (emailRegexp.test(email.value)) {
+      return true;
+    }
+    else {
+      document.querySelector("span#email-erro").innerHTML = 'Endereço de e-mail inválido!';
+      return false;
+    }
+  }
+
+  function passwordValidator() {
+    const passwordRegexp = new RegExp("^[-!#$@%&'*+/0-9=?A-Z^_`a-z{|}~\(\)]{8,}$");
+    if (!passwordRegexp.test(password.value)){
+      document.querySelector("span#password-erro").innerHTML = 'A senha deve conter pelo menos 8 caractéres sem espaçamento!';
+      return false;
+    }
+    else{
+      return true;
+    }
+  }
+
+  function passwordConfirmValidator() {
+    if (passwordConfirm.value != password.value){
+      document.querySelector("span#password-confirm-erro").innerHTML = 'As senhas não são iguais!';
+      return false;
+    }
+    else {
+      document.querySelector("span#password-confirm-erro").innerHTML = '';
+      return true;
+    }
+  }
+</script>

@@ -1,0 +1,79 @@
+<%- contentFor('style') %>
+<link rel="stylesheet" type="text/css" href="/stylesheets/gallery.css" />
+
+<%- contentFor('main') %>
+<div class="main-wrapper">
+  <aside>
+    <div class="filters-header"></div>
+    <div class="filters-container">
+      <h3>Filtros</h3>
+      <div class="filters">
+        <div class="filter">
+          <span>Gênero</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="filter">
+          <span>Tipos de Mídia</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="filter">
+          <span>Data de Lançamento</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="filter">
+          <span>Idioma</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="filter">
+          <span>Avaliação</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+      </div>
+      <div class="filter-button-wrapper">
+        <button type="submit" value="Submit">Aplicar</button>
+      </div>
+    </div>
+  </aside>
+  <div class="content">
+    <div class="content-header">
+      <span><%= totalCount %> resultados encontrados</span>
+      <select name="cars" id="cars">
+        <option value="a-z">Título A-Z</option>
+        <option value="z-a">Título Z-A</option>
+        <option value="avaliation">Avaliação</option>
+        <option value="release">Lançamento</option>
+      </select>
+    </div>
+
+    <% for(var i=0; i < titles.length; i++) { %>
+    <div class="content-movies">
+      <div class="movie-container">
+        <div class="movie-photo">
+          <img
+            alt="Capa <%= titles[i].title %>"
+            src="<%= titles[i].poster_path %>"
+          />
+        </div>
+        <div class="movie-content">
+          <a href="/title/<%= titles[i].id %>"
+            ><h3><%= titles[i].title %></h3>
+          </a>
+          <span><%= titles[i].release_date %></span>
+          <p><%= titles[i].description %></p>
+        </div>
+      </div>
+    </div>
+    <% } %>
+    <div class="content-pagination">
+      <% for(var i=1; i < totalPages; i++) { %> <% if(i == currentPage) {%>
+
+      <a class="current" href="/title/gallery/<%= i + searchParams%>">
+        <%= i %>
+      </a>
+      <% } else { %>
+
+      <a href="/title/gallery/<%= i + searchParams %>"> <%= i %> </a>
+      <% } %> <% } %>
+    </div>
+  </div>
+</div>

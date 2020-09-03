@@ -1,0 +1,303 @@
+.common {
+  --black-white: #000;
+  --white-black: #fff;
+  --back-barra: #032541;
+  --back-cli: #032541;
+  --clic-login: #2cafc3;
+  --clic-border: #2cafc3;
+  --clic: rgba(255, 255, 0, 0);
+  --clic-sec: rgba(255, 255, 0, 0);
+  --clic-menu: rgba(0, 0, 0, 0.33);
+  --clic-icon: invert(53%) sepia(88%) saturate(359%) hue-rotate(140deg) brightness(94%) contrast(93%);
+  --header-search-icon: url('/images/movie-search-colorful.svg');
+  --input-border: #2cafc3;
+  --btn-hover: #016f8d;
+  --input-place: none;
+}
+
+.high-contrast {
+  --black-white: #fff;
+  --white-black: #000;
+  --back-barra: #000;
+  --back-cli: #ff0;
+  --clic-login: #000;
+  --clic-border: #ff0;
+  --clic: #ff0;
+  --clic-sec: rgb(179, 179, 0);
+  --clic-menu: #ff0;
+  --clic-icon: invert(91%) sepia(72%) saturate(5067%) hue-rotate(355deg) brightness(106%) contrast(105%);
+  --header-search-icon: url('/images/movie-search-white.svg');
+  --input-border: #fff;
+  --btn-hover: none;
+  --input-place: #fff;
+}
+
+/* nav bar */
+
+header {
+  font-family: "Source Sans Pro", sans-serif;
+  display: flex;
+  align-items: center;
+  background-color: var(--back-barra);
+}
+
+input, textarea, button {
+  outline: none;
+}
+
+input::placeholder {
+  color: var(--input-place);
+}
+
+/* Logo */
+
+.logo {
+    padding: 8px 0px 8px 20px;
+    float: left;
+    align-items: center;
+    display: flex;
+}
+
+.logo-m3 {
+  stroke:none;
+  fill-rule:evenodd;
+  fill:#fff;
+  fill-opacity: 1;
+}
+
+.logo-d {
+  stroke:none;
+  fill-rule:evenodd;
+  fill:var(--input-border);
+  fill-opacity: 1;
+}
+
+/* nav */
+
+header a {
+  text-decoration: none;
+}
+
+nav ul {
+  padding-left: 16px;
+  margin: 0;
+}
+
+.menu {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 10px;
+}
+
+header li {
+  float: left;
+  text-align: center;
+  list-style-type: none;
+}
+
+nav a:hover {
+  background-color: var(--clic-menu);
+  color: var(--white-black);
+  transition: all 0.3s ease;
+}
+
+
+.dropdown {
+  margin:0 30px 0 10px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: var(--white-black);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  right: 0;
+  border: 2px solid var(--clic);
+}
+
+.dropdown-content a {
+  color: var(--black-white);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: var(--back-cli);
+  color: var(--white-black);
+  transition: all 0.3s ease;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  transition: all 0.3s ease;
+}
+
+/* Campo de Busca */
+
+.search-wrapper {
+  margin-left: auto;
+}
+
+header .search-wrapper input[type=text] {
+  width: 180px;
+  border: 2px solid #fff;
+  background-image: var(--header-search-icon);
+  background-size: 25px 25px;
+  background-position: left;
+  background-position-x: 8px;
+  background-repeat: no-repeat;
+  padding: 5px 5px 5px 40px;
+  color: var(--black-white);
+}
+
+.form-container input[type=text], .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: 2px solid var(--input-border);
+}
+
+header .search-wrapper input[type=text], .form-container input[type=text], .form-container input[type=password] {
+  box-sizing: border-box;
+  border-radius: 12px;
+  background-color: var(--white-black);
+  color: var(--black-white);
+}
+
+
+
+/* Acessibilidade */
+
+header .icon {
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(234deg) brightness(108%) contrast(106%);
+  width: 30px;
+  height: 30px;
+}
+
+header .icon:hover {
+  filter: var(--clic-icon);
+  transition: all 0.3s ease;
+}
+
+.accessibility-wrapper a + a {
+  margin-left: 4px;
+}
+
+.accessibility-wrapper {
+  margin: 0 10px 0 20px;
+}
+
+/* footer bar */
+
+footer {
+  background: var(--back-barra);
+  font-family: "Source Sans Pro", sans-serif;
+  color: #fff;
+  height: 120px;
+  height: 7.5rem;
+  margin-top: 20px;
+  margin-top: 1.25rem;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Button used to open the contact form - fixed at the bottom of the page */
+.open-button {
+  background-color: var(--clic-login);
+  color: white;
+  border: 2px solid var(--clic-border);
+  border-radius: 55px;
+  padding: 4px 10px 4px 10px ;
+  cursor: pointer;
+  position: relative;
+  margin-right: 15px;
+  display: flex;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+header .icon2 {
+  filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(234deg) brightness(108%) contrast(106%);
+  width: 20px;
+  height: 20px;
+  margin-right: 4px;
+}
+
+/* The popup form - hidden by default */
+.form-title {
+  color: var(--black-white);
+  font-size: 22px;
+  font-weight: 600;
+  padding: 10px;
+}
+.form-label {
+  color: var(--black-white);
+  font-size: 18px;
+  font-weight: 600;
+  padding: 10px;
+}
+
+.form-popup {
+  display: none;
+  position: fixed;
+  top: 60px;
+  right: 10px;
+  border: 2px solid var(--clic-border);
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: var(--white-black);
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: var(--back-barra);
+  color: white;
+  padding: 16px 20px;
+  border: 1.5px solid var(--clic);
+  border-radius: 15px;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+.form-popup p a {
+  color: var(--black-white);
+  text-decoration:none;
+}
+
+.form-popup p a:hover {
+  color: var(--text-link);
+  text-decoration: underline;
+  transition: all 0.3s ease;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  background-color: var(--btn-hover);
+  transition: all 0.3s ease;
+}
+
+.dropbtn svg circle {
+  fill: var(--clic-border);
+}
+
+.dropbtn svg text {
+  fill: var(--clic-border);
+  stroke: var(--white-black);
+  stroke-width: "0.5px";
+  fill: var(--white-black);
+}
