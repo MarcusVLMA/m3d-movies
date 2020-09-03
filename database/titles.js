@@ -19,6 +19,7 @@ function createTitle(titleInfo) {
   }
 }
 
+
 function _getCommentaries(title_id) {
   const commentaries = db
     .get("title_commentaries")
@@ -54,6 +55,17 @@ function getTitle(id) {
   }
 }
 
+function getTitlesPending() {
+  const title = db.get("titles").find({ status:"pending" }).value();
+  return title;
+}
+
+function getTitlePending(id) {
+  const title = db.get("titles").find({ id, status:"pending" }).value();
+  return title;
+}
+
+
 function _filterTitle(title, name) {
   if (name) {
     const titleNameToSearch = title.title.toLowerCase();
@@ -69,7 +81,7 @@ function findTitle(searchParams) {
   if (searchParams) {
     const title = db.get("titles").find(searchParams).value();
     if (title) {
-      const commentaries = getCommentaries(title.id);
+      const commentaries = _getCommentaries(title.id);
       return {
         ...title,
         commentaries,
@@ -129,4 +141,6 @@ module.exports = {
   getTitle,
   searchTitles,
   updateTitle,
+  getTitlesPending,
+  getTitlePending
 };
