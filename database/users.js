@@ -46,9 +46,17 @@ function updateUser(userInfo) {
   return updatedUser;
 }
 
+function removeUser(userId) {
+  db.get("profiles")
+  .remove({ id: userId })
+  .write();
+}
+
+
 module.exports = {
   createUser,
   getUser,
   findUser,
   updateUser,
+  removeUser,
 };

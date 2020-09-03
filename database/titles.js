@@ -128,9 +128,27 @@ function updateTitle(titleInfo) {
   return updatedTitle;
 }
 
+function removeTitle(titleId) {
+  db.get("titles")
+  .remove({ id: titleId })
+  .write();
+
+  db.get("title_commentaries")
+  .remove({ title_id: titleId })
+  .write();
+}
+
+function removeCommentaries(userId) {
+  db.get("title_commentaries")
+  .remove({ profile_id: userId })
+  .write();
+}
+
 module.exports = {
   createTitle,
   getTitle,
   searchTitles,
   updateTitle,
+  removeCommentaries,
+  removeTitle,
 };
