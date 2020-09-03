@@ -54,15 +54,40 @@ function getTitle(id) {
   }
 }
 
-function _filterTitle(title, name) {
-  if (name) {
-    const titleNameToSearch = title.title.toLowerCase();
-    const nameToSearch = name.toLowerCase();
+function _filterTitle(title, searchParams = null) {
+  if (searchParams) {
+    const properties = Object.keys(searchParams);
 
-    return titleNameToSearch.includes(nameToSearch);
+    let response = true;
+    for (let i = 0; i < properties.length; i++) {
+      let propertyToSearch = title[properties[i]];
+      if (typeof propertyToSearch === "string") {
+        propertyToSearch = propertyToSearch.toLowerCase();
+      }
+
+      let providedValue = searchParams[properties[i]];
+      if (typeof providedValue === "string") {
+        providedValue = providedValue.toLowerCase();
+      }
+
+      if (!propertyToSearch.includes(providedValue)) {
+        response = false;
+        break;
+      }
+    }
+
+    return response;
   } else {
     return true;
   }
+  // if (name) {
+  //   const titleNameToSearch = title.title.toLowerCase();
+  //   const nameToSearch = name.toLowerCase();
+
+  //   return titleNameToSearch.includes(nameToSearch);
+  // } else {
+  //   return true;
+  // }
 }
 
 function findTitle(searchParams) {
@@ -94,16 +119,16 @@ function _getMoviesAmountInfos(name) {
   };
 }
 
-function searchTitles(name, page) {
-  const moviesAmountInfos = _getMoviesAmountInfos(name);
-  if(page > moviesAmountInfos.totalPages){
-    page = moviesAmountInfos.totalPages-1;
+function searchTitles(searchParams, page) {
+  const moviesAmountInfos = _getMoviesAmountInfos(searchParams);
+  if (page > moviesAmountInfos.totalPages) {
+    page = moviesAmountInfos.totalPages - 1;
   }
   const offset = (page - 1) * MOVIES_PER_PAGE;
 
   const titles = db
     .get("titles")
-    .filter((title) => _filterTitle(title, name))
+    .filter((title) => _filterTitle(title, searchParams))
     .slice(offset, offset + MOVIES_PER_PAGE)
     .value();
 
