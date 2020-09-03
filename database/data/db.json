@@ -29,9 +29,9 @@
       "genre": "Drama",
       "type": "serie",
       "running_time": "00:45",
-      "trailer_path": "",
+      "trailer_path": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/8Qoyn3j0gK0EOABrm0p6E5mzavg.jpg",
       "backdrop_path": "https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/9hvhGtcsGhQY58pukw8w55UEUbL.jpg",
-      "description": "Enquanto tentam lidar com problemas típicos da adolescência como amor, sexo, escola e família, Archie e sua turma se envolvem em um grande mistério.",
+      "description": "            \r\n              Enquanto tentam lidar com problemas típicos da adolescência como amor, sexo, escola e família, Archie e sua turma se envolvem em um grande mistério.\r\n            \r\n          ",
       "poster_path": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/8Qoyn3j0gK0EOABrm0p6E5mzavg.jpg",
       "status": "pending",
       "vote_average": 8.6,
@@ -50,20 +50,6 @@
       "status": "accepted",
       "vote_average": 6,
       "id": "1599102452403"
-    },
-    {
-      "title": "Code 8: Renegados",
-      "release_date": "2019-12-06",
-      "genre": "Ficção científica",
-      "type": "filme",
-      "running_time": "01:39",
-      "trailer_path": "",
-      "backdrop_path": "https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/wlnDNMQlnwl5ETlVY6n9CEtR5s0.jpg",
-      "description": "Num mundo onde pessoas com habilidades “especiais” vivem na pobreza, Conner Reed é um jovem poderoso que está a lutar para pagar pelo tratamento médico da sua mãe doente. Para ganhar dinheiro, ele entra num mundo criminoso e lucrativo, liderado por Garrett, que trabalha para um traficante de drogas.",
-      "poster_path": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/yOj7bYYyMMqiqgh7Bu7qxLwtbsz.jpg",
-      "status": "pending",
-      "vote_average": 6.2,
-      "id": "1599102452405"
     },
     {
       "title": "Wendy",
@@ -11040,6 +11026,19 @@
       "status": "accepted",
       "vote_average": 8.5,
       "id": "1599102497017"
+    },
+    {
+      "title": "",
+      "release_date": "",
+      "genre": "",
+      "running_time": "",
+      "trailer_path": "",
+      "backdrop_path": "",
+      "description": "          ",
+      "poster_path": "",
+      "status": "pending",
+      "vote_average": 0,
+      "id": "1599152003103"
     }
   ],
   "title_commentaries": [

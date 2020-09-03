@@ -42,12 +42,8 @@ exports.requestPostEdit = async (req, res) => {
     poster_path: req.body.poster_path,
     status: "accepted",
   });
-
-  res.render("titleRequest", {
-    title: "Lista Filmes Sugeridos",
-    notification: true,
-    titlePending: true,
-  });
+  
+  res.redirect("/admin/requests");
 };
 
 exports.requestPostRemove = async (req, res) => {

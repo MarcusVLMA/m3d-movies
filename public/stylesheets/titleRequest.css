@@ -8,7 +8,9 @@
   --steelblue-white: #028cb3;
   --green-black: #155724;
   --lightGreen-white: #d4edda;
+  --red-none: #ff0000;
   --btn-hover: #016f8d;
+  --btn-hover-reject: #ff5757;
   --alert-img: invert(23%) sepia(88%) saturate(403%) hue-rotate(82deg) brightness(93%) contrast(95%);
 }
 .high-contrast {
@@ -21,7 +23,9 @@
   --steelblue-white: #fff;
   --green-black: #000;
   --lightGreen-white: #fff;
+  --red-none: none;
   --btn-hover: none;
+  --btn-hover-reject: none;
   --alert-img: none;
 }
 
@@ -222,6 +226,22 @@ input[type="submit"] {
   color: #fff;
   border-color: var(--steelblue-yellow);  
   background-color: var(--btn-hover); 
+}
+
+.btn-reject {
+  color: #fff;
+  border-color: #ff0000;  
+  background-color: var(--red-none);
+}
+
+.btn-reject:hover {
+  color: #fff;
+  border-color: #ff5757;  
+  background-color:var(--btn-hover-reject);;
+}
+
+.btn-submit + .btn-reject {
+  margin-left: 20px;
 }
 
 .alert-success {

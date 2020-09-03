@@ -7,7 +7,7 @@
     <div class="information-header"></div>
     <div class="information-container">
       <% if(titlePending) { %>
-        <h3>Administrador: sugestão de filme enviado</h3>
+        <h3>Administrador: sugestão de título enviado</h3>
         <div class="information">
           <p>Querido administrador, tenha certeza que os dados estão corretos antes de aceitá-los</p>
           <p>Sugestão: verifique as fontes e garanta que os links não estão quebrados</p>
@@ -31,16 +31,14 @@
     <% } %> 
     <div class="title-container">
       <% if(titlePending) { %>
-        <h1 class="title">Validação de filme enviado</h1>
+        <h1 class="title">Validação de título enviado</h1>
       <% } else { %>
         <h1 class="title">Sugerir Título</h1>
       <% } %>
       
     </div>          
-    <form method="post">
+    <form id="validation" method="post">
       <fieldset>
-        
-
         <div class="field-container">
           <label for="title">Título original</label>
           <input type="text" minlength="4" maxlength="50" name="title" id="title" required 
@@ -50,11 +48,10 @@
           />
         </div>
 
-
         <div class="field-container genre-content-type">
           <div class="field-genre">
             <label for="genre">Gênero</label><br>
-            <select name="genre" id="genre" required>
+            <select name="genre" id="genre" >
               <% if(titlePending) { %>
                 <option value="<%=titlePending.genre%>"><%=titlePending.genre%></option>
               <% } else { %>
@@ -108,10 +105,10 @@
         </div>
         <div class="field-container">
           <label for="general-view">Visão geral sobre o título</label>
-          <textarea id="general-view" name="description" minlength="20" rows="8" required>
-            <% if(titlePending) { %>
-              <%= titlePending.description %>
-            <% } %>
+          <textarea id="general-view" name="description" minlength="20" rows="8" >
+            <%_ if(titlePending) { _%>
+              <%=titlePending.description_%>
+            <%_ } _%>
           </textarea>
         </div>
         <div class="field-container running-time-release-date">
@@ -159,16 +156,11 @@
       </fieldset>
       <% if(titlePending) { %>
         <input class="btn-submit" type="submit" value="Aceitar">
+        <input class="btn-reject" type="submit" value="Recusar">
       <% } else { %>
         <input class="btn-submit" type="submit" value="Enviar">
       <% } %>
     </form>
-    <% if(titlePending) { %>
-      <form method="post" action="/admin/request/reject/<%= titlePending.id %>">
-        <input class="btn-submit" type="submit" value="Recusar">
-      </form>
-      
-    <% } %>
   </div>
 </div>
 
@@ -181,4 +173,17 @@
     hint.style.visibility = 'hidden';
   },5000);
 </script>
+<% } %>
+
+<% if(titlePending) { %>
+  <script type="text/javascript">
+    document.querySelector("input.btn-reject").addEventListener("click", () => {
+      const formValidation = document.querySelector("form#validation");
+      formValidation.action = "/admin/request/reject/<%= titlePending.id %>";
+    });
+    document.querySelector("input.btn-submit").addEventListener("click", () => {
+      const formValidation = document.querySelector("form#validation");
+      formValidation.action = "/admin/request/accept/<%= titlePending.id %>";
+    });
+  </script>
 <% } %>
