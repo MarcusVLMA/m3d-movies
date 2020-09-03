@@ -40,7 +40,6 @@ function updateUser(userInfo) {
     .get("profiles")
     .find({ id: userInfo.id })
     .assign(userInfo)
-    .value()
     .write();
 
   return updatedUser;
