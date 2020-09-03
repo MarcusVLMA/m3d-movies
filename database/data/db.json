@@ -5,21 +5,21 @@
       "name": "José",
       "role": "ADMIN",
       "email": "jose@admin.com",
-      "password": "123456"
+      "password": "12345678"
     },
     {
       "id": "1597780559820",
       "name": "Joana",
       "role": "USER",
       "email": "joana@user.com",
-      "password": "123456"
+      "password": "12345678"
     },
     {
       "id": "1597780565738",
       "name": "Cléber",
       "role": "USER",
       "email": "cleber@user.com",
-      "password": "123456"
+      "password": "12345678"
     }
   ],
   "titles": [
