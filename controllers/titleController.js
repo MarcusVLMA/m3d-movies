@@ -17,18 +17,51 @@ exports.title = async (req, res) => {
   });
 };
 
-exports.titles = async (req, res) => {
-  const page = (!parseInt(req.params.page)) ? 1 : parseInt(req.params.page);
-  const searchName = req.query.search;
+const _formatSearchParamsToView = (searchParams) => {
+  const properties = Object.keys(searchParams);
 
-  const titles = TitleAccess.searchTitles(searchName, page);
+  let finalString = "";
+  for (let i = 0; i < properties.length; i++) {
+    const property = properties[i];
+    const value = searchParams[property];
+
+    if (property !== "status") {
+      // "Status" é uma propriedade de busca interna e não é bom expor
+      if (!finalString) {
+        finalString = finalString.concat(`?${property}=${value}`);
+      } else {
+        finalString = finalString.concat(`&${property}=${value}`);
+      }
+    }
+  }
+
+  return finalString;
+};
+
+exports.titles = async (req, res) => {
+  const page = !parseInt(req.params.page) ? 1 : parseInt(req.params.page);
+
+  const searchType = req.query.type;
+  const searchName = req.query.title;
+
+  const searchParams = { status: "accepted" };
+
+  if (searchName) {
+    searchParams.title = searchName;
+  }
+
+  if (searchType) {
+    searchParams.type = searchType;
+  }
+
+  const titles = TitleAccess.searchTitles(searchParams, page);
 
   const pageTitle = "Galeria";
 
   res.render("gallery", {
     title: pageTitle,
     currentPage: page,
-    searchParams: searchName ? `?search=${searchName}` : "",
+    searchParams: _formatSearchParamsToView(searchParams),
     ...titles,
   });
 };
