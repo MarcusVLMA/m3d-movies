@@ -1,0 +1,321 @@
+<%# CSS da Página %>
+<%- contentFor('style') %>
+<link rel="stylesheet" type="text/css" href="/stylesheets/userProfileEdit.css" />
+
+<%# Corpo da Página %>
+<%- contentFor('main') %>
+<div class="info-bg">
+  <div class="info">
+    <svg width="104" height="104" style="padding: 20px 10px">
+      <circle fill="#02b4df" r="50" cx="52" cy="52" />
+      <text
+        x="54"
+        y="68"
+        text-anchor="middle"
+        stroke="#ffffff"
+        stroke-width="1.5px"
+        fill="#ffffff"
+        font-family="Source Sans Pro, sans-serif"
+        font-size="48px" 
+        >
+        D
+      </text>
+    </svg>
+    <div class="info-block">
+      <h1 class="font-user-name"><%= user.name %><span class="font-user-date">Membro desde agosto de 2020</span></h1>
+      <div class="avaliation">
+        <div class="container-avaliation">
+          <svg width="48" height="48">
+            <circle fill="#081C22" r="24" cx="24" cy="24" />
+            <circle stroke="#1C4027" stroke-width="4" fill="transparent" r="22" cx="24" cy="24"/>
+            <circle
+              class="progress-ring"
+              stroke="var(--circulo)"
+              stroke-width="2"
+              fill="transparent"
+              r="22"
+              cx="24"
+              cy="24"
+              />
+            <text
+              x="21"
+              y="27"
+              text-anchor="middle"
+              stroke="#ffffff"
+              stroke-width="1px"
+              fill="#ffffff"
+              font-family="Source Sans Pro, sans-serif"
+              font-size="16px"
+              >
+              100
+            </text>
+            <text
+              x="37"
+              y="25"
+              text-anchor="middle"
+              stroke="#ffffff"
+              stroke-width="0.5px"
+              fill="#ffffff"
+              font-family="Source Sans Pro, sans-serif"
+              font-size="8px"
+              >
+              %
+            </text>
+          </svg>
+          <h1 class="font-user-avaliation">
+            Avaliação Média de Filmes
+          </h1>
+        </div>
+        <div class="container-avaliation">
+          <svg width="48" height="48">
+            <circle fill="#081C22" r="24" cx="24" cy="24" />
+            <circle stroke="#1C4027" stroke-width="4" fill="transparent" r="22" cx="24" cy="24"/>
+            <circle
+              class="progress-ring"
+              stroke="var(--circulo)"
+              stroke-width="2"
+              fill="transparent"
+              r="22"
+              cx="24"
+              cy="24"
+              />
+            <text
+              x="21"
+              y="27"
+              text-anchor="middle"
+              stroke="#ffffff"
+              stroke-width="1px"
+              fill="#ffffff"
+              font-family="Source Sans Pro, sans-serif"
+              font-size="16px"
+              >
+              100
+            </text>
+            <text
+              x="37"
+              y="25"
+              text-anchor="middle"
+              stroke="#ffffff"
+              stroke-width="0.5px"
+              fill="#ffffff"
+              font-family="Source Sans Pro, sans-serif"
+              font-size="8px"
+              >
+              %
+            </text>
+          </svg>
+          <h1 class="font-user-avaliation">Avaliação Média de Séries</h1>
+        </div>
+        <div class="container-avaliation" style="border: none">
+          <svg width="48" height="48">
+            <circle fill="#081C22" r="24" cx="24" cy="24" />
+            <circle stroke="#1C4027" stroke-width="4" fill="transparent" r="22" cx="24" cy="24"/>
+            <circle
+              class="progress-ring"
+              stroke="var(--circulo)"
+              stroke-width="2"
+              fill="transparent"
+              r="22"
+              cx="24"
+              cy="24"
+              />
+            <text
+              x="21"
+              y="27"
+              text-anchor="middle"
+              stroke="#ffffff"
+              stroke-width="1px"
+              fill="#ffffff"
+              font-family="Source Sans Pro, sans-serif"
+              font-size="16px"
+              >
+              100
+            </text>
+            <text
+              x="37"
+              y="25"
+              text-anchor="middle"
+              stroke="#ffffff"
+              stroke-width="0.5px"
+              fill="#ffffff"
+              font-family="Source Sans Pro, sans-serif"
+              font-size="8px"
+              >
+              %
+            </text>
+          </svg>
+          <h1 class="font-user-avaliation">Avaliação Média de Animes</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="content-form">
+  <div class="title-wrapper">
+    <h1 class="title">Alterar Dados</h1>
+    <p>Preecha o seu cadastro com as novas informações.</p>
+  </div>
+  <form method="post" id="registrationForm">
+    <fieldset>
+      <% if(notification) { %>
+        <div class="alert-success" role="alert">
+          <img src="/images/check-circle.svg">
+          <span>Sugestão enviada com sucesso!</span>
+        </div>
+      <% } %>
+      <div class="field-wrapper">
+        <label for="name">Nome</label><br>
+        <input type="text" minlength="4" maxlength="50" name="name" id="name" placeholder="<%= user.name %>" value="<%= user.name %>" required />
+        <span class="erro-msg" id="name-erro"><%= erros.name %> </span>
+      </div>
+      <div class="field-wrapper">
+        <label for="password">Senha anterior</label><br>
+        <input type="password" minlength="8" maxlength="50" name="password-old" id="password-old" required />
+        <span class="erro-msg" id="password-old-erro"><%= erros.password_old %></span>
+      </div>
+      <div class="field-wrapper">
+        <label for="password">Nova senha (8 caractéres no mínimo)</label><br>
+        <input type="password" minlength="8" maxlength="50" name="password" id="password" required />
+        <span class="erro-msg" id="password-erro"><%= erros.password %></span>
+      </div>
+      <div class="field-wrapper">
+        <label for="password-confirm">Confirme sua nova senha</label><br>
+        <input type="password" minlength="8" maxlength="50" name="password_confirm" id="password-confirm" required />
+        <span class="erro-msg" id="password-confirm-erro"><%= erros.password_confirm %></span>
+      </div>
+      <div class="field-wrapper">
+        <label for="email">E-mail</label><br>
+        <input type="email" name="email" id="email" placeholder="<%= user.email %>" value="<%= user.email %>" required />
+        <span class="erro-msg" id="email-erro"><%= erros.email %></span>
+      </div>
+    </fieldset>
+    <input class="btn-submit" type="submit" value="Salvar">
+  </form>
+</div>
+
+<%# Script do validador do formualário %>
+<script type="text/javascript">
+  // Valida o formulário antes de enviar
+  const registrationForm = document.querySelector('form#registrationForm');
+  registrationForm.addEventListener('submit', (e) => {
+    if(!nameValidator() || !passwordValidator() || !passwordConfirmValidator() || !emailValidator() || !passwordOldValidator()){
+      e.preventDefault();
+    }
+  });
+
+  // Verificação o campo name
+  const name = document.querySelector("input#name");
+  name.addEventListener('blur', () => {
+    nameValidator();
+  });
+  // Remove mensagem de erro
+  name.addEventListener('focus', () => {
+    document.querySelector("span#name-erro").innerHTML = '';
+  });
+
+  // Verificação do campo password antigo
+  const passwordOld = document.querySelector("input#password-old");
+  passwordOld.addEventListener('blur', () => {
+    passwordOldValidator();
+  });
+  // Remove mensagem de erro
+  passwordOld.addEventListener('focus', () => {
+    document.querySelector("span#password-old-erro").innerHTML = '';
+  });
+
+  // Verificação o campo password
+  const password = document.querySelector("input#password");
+  password.addEventListener('blur', () => {
+    passwordValidator();
+    passwordConfirmValidator();
+  });
+  // Remove mensagem de erro
+  password.addEventListener('focus', () => {
+    document.querySelector("span#password-erro").innerHTML = '';
+  });
+
+  // Valida a senha de confirmação
+  const passwordConfirm = document.querySelector("input#password-confirm");
+  passwordConfirm.addEventListener('blur', () => {
+    passwordValidator();
+    passwordConfirmValidator();
+  });
+  // Remove mensagem de erro
+  passwordConfirm.addEventListener('focus', () => {
+    document.querySelector("span#password-confirm-erro").innerHTML = '';
+  });
+
+  // Verificação o campo de e-mail
+  const email = document.querySelector("input#email");
+  email.addEventListener('blur', () => {
+    emailValidator();
+  });
+  // Remove mensagem de erro
+  email.addEventListener('focus', () => {
+    document.querySelector("span#email-erro").innerHTML = '';
+  });
+
+  function nameValidator() {
+    if (name.value.length < 4){
+      document.querySelector("span#name-erro").innerHTML = 'Nome deve conter pelo menos 4 caractéres!';
+      return false;
+    }
+    else {
+      return true;
+    }
+  }
+
+  function emailValidator() {
+    const emailRegexp = new RegExp("^(?=.{1,254}$)(?=.{1,64}@)[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~]+(\.[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~]+)*@[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?(\.[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?)*$");
+    if (emailRegexp.test(email.value)) {
+      return true;
+    }
+    else {
+      document.querySelector("span#email-erro").innerHTML = 'Endereço de e-mail inválido!';
+      return false;
+    }
+  }
+
+  function passwordOldValidator(){
+    if (passwordOld.value != <%= user.password %>){
+      document.querySelector("span#password-old-erro").innerHTML = 'Senha incorreta!';
+      return false;
+    }
+    else {
+      document.querySelector("span#password-old-erro").innerHTML = '';
+      return true;
+    }
+  }
+
+  function passwordValidator() {
+    const passwordRegexp = new RegExp("^[-!#$@%&'*+/0-9=?A-Z^_`a-z{|}~\(\)]{8,}$");
+    if (!passwordRegexp.test(password.value)){
+      document.querySelector("span#password-erro").innerHTML = 'A senha deve conter pelo menos 8 caractéres sem espaçamento!';
+      return false;
+    }
+    else{
+      return true;
+    }
+  }
+
+  function passwordConfirmValidator() {
+    if (passwordConfirm.value != password.value){
+      document.querySelector("span#password-confirm-erro").innerHTML = 'As senhas não são iguais!';
+      return false;
+    }
+    else {
+      document.querySelector("span#password-confirm-erro").innerHTML = '';
+      return true;
+    }
+  }
+</script>
+<%# Script de notificação%>
+<% if(notification) { %>
+  <script type="text/javascript">
+    window.setTimeout(() => {
+      const hint = document.querySelector("div.alert-success");
+      hint.style.maxHeight = '0';
+      hint.style.visibility = 'hidden';
+    },5000);
+  </script>
+<% } %>
