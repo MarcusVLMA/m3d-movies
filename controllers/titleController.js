@@ -10,6 +10,7 @@ exports.title = async (req, res) => {
 
   res.render("details", {
     ...title,
+    user: req.user,
     backdrop_style: backdropStyle,
     rating_style: ratingStyle,
     release_year: title.release_date.split("-")[0],
@@ -56,11 +57,10 @@ exports.titles = async (req, res) => {
 
   const titles = TitleAccess.searchTitles(searchParams, page);
 
-
-  const pageTitle = "Galeria";
-
-  res.render("gallery", {
+  const pageTitle = "Busca";
+  res.render("search", {
     title: pageTitle,
+    user: req.user,
     currentPage: page,
     searchParams: _formatSearchParamsToView(searchParams),
     ...titles,
@@ -74,17 +74,18 @@ exports.requestGet = async (req, res) => {
     console.log(titlePending);
     res.render("titleRequest", {
       title: "Sugerir Título",
+      user: req.user,
       notification: false,
       titlePending: true,
     });
   } else {
     res.render("titleRequest", {
       title: "Sugerir Título",
+      user: req.user,
       notification: false,
       titlePending: false,
     });
   }
-  
 };
 
 // Solicitação POST para a página de solicitação.
@@ -105,6 +106,7 @@ exports.requestPost = async (req, res) => {
 
   res.render("titleRequest", {
     title: "Sugerir Título",
+    user: req.user,
     notification: true,
     titlePending: false,
   });

@@ -11,19 +11,21 @@
 <nav>
   <ul>
     <li>
-      <a class="menu" href="/title/gallery?type=filme">Filmes</a>
+      <a class="menu" href="/title/search?type=filme">Filmes</a>
     </li>
     <li>
-      <a class="menu" href="/title/gallery?type=serie">Séries</a>
+      <a class="menu" href="/title/search?type=serie">Séries</a>
     </li>
     <li>
-      <a class="menu" href="/title/gallery?type=animacao">Animações</a>
+      <a class="menu" href="/title/search?type=animacao">Animações</a>
     </li>
   </ul>
   </ul>
 </nav>
 <div class="search-wrapper">
-  <input id="header-searchbar" class="header-input" type="text" name="search" placeholder="Buscar...">
+  <% if (title != "Home") { %> 
+    <input id="header-searchbar" class="header-input" type="text" name="search" placeholder="Buscar...">
+  <% } %> 
 </div>
 <div class="accessibility-wrapper">
   <a class="contrast" href="#">
@@ -36,28 +38,65 @@
     <img class="icon" alt="diminuir fonte" src="/images/font-size-decrease.svg" />
   </a>
 </div>
-<div class="dropdown">
-  <a href="#" class="dropbtn">
-    <svg width="28" height="30" class="position-user-img">
-      <circle r="14" cx="14" cy="16"/>
-        <text
-          x="14"
-          y="22"
-          text-anchor="middle"
-          stroke-width="0.5px"
-          font-family="Source Sans Pro, sans-serif"
-          font-size="18px"
-        >
-        D
-        </text>
-    </svg>
-  </a>
-  <div class="dropdown-content">
-    <a href="/user/profile">Meu Perfil</a>
-    <a href="#">Minha Galeria</a>
-    <a href="/title/request">Sugerir Conteúdo</a>
-    <a href="/admin/requests">Lista Filmes Sugeridos</a>
-    <a href="#">Sair</a>
-  </div>
-</div>
 
+<%# Se estiver logado %> 
+<% if (user) { %>
+  <div class="dropdown">
+    <a href="#" class="dropbtn">
+      <svg width="28" height="30" class="position-user-img">
+        <circle r="14" cx="14" cy="16"/>
+          <text
+            x="14"
+            y="22"
+            text-anchor="middle"
+            stroke-width="0.5px"
+            font-family="Source Sans Pro, sans-serif"
+            font-size="18px"
+          >
+          <%= user.name[0].toUpperCase() %> 
+          </text>
+      </svg>
+    </a>
+    <div class="dropdown-content">
+      <div class="user-name">
+        <%= user.name.slice(0,15) %> 
+      </div>
+      <div class="user-options">
+        <a href="/user/profile">Meu Perfil</a>
+        <a href="/user/gallery">Minha Galeria</a>
+        <a href="/title/request">Sugerir Conteúdo</a>
+      </div>
+      <% if(user.role === "ADMIN") { %> 
+      <div class="admin-options">
+        <a href="/admin/requests">Lista Filmes Sugeridos</a>
+      </div>
+      <% } %> 
+      <div class="logout">
+        <a href="/user/sigout">Sair</a>
+      </div>
+    </div>
+  </div>
+
+  <%# Se nãoestiver logado %> 
+  <%} else { %> 
+  <button class="open-button" id="btn-entrar"> 
+    <img class="icon2" alt="entrar" src="/images/account.svg" />
+    <label>Entrar</label>
+  </button>
+  <div class="form-popup" id="loginForm-wrapper">
+    <form class="form-login" id="form-login" >
+      
+      <input id="loginEmail" type="email" placeholder="Digite seu e-mail" name="userEmail" required>
+      <input id="loginPassword" type="password" placeholder="Digite a Senha" name="userPassword" required>
+
+      <button id="loginBtn" type="submit" class="btn">
+        <span id="btnLoginText">Entrar</span>
+        <img id="loadLoginIcon" class="loading" alt="carregando" src="/images/loading.svg" />
+      </button>
+      <label class="erro" id="login-erro"></label>
+    </form>
+    <div class="line-division">
+      <a href="/user/registration">Ainda não tem conta? Cadastre-se aqui</a>
+    </div>
+  </div>
+<% } %>

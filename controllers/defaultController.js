@@ -4,5 +4,6 @@ const database = require("../database");
 exports.home = (req, res) => {
   res.render("home", {
     title: "Home",
+    user: req.user,
   });
 };

@@ -5,6 +5,7 @@ exports.requests = async (req, res) => { //para todos os filmes pendentes
     const titlePending = await TitleAccess.getTitlesPending();
     res.render("admTitleRequest", {
         title: 'Lista Filmes Sugeridos',
+        user: req.user,
         titlePending: titlePending,
     });
 };
@@ -18,6 +19,7 @@ exports.requestGetEdit = async (req, res) => { //vai pegar os campos do add film
     console.log(titlePending);
     res.render("titleRequest", {
       title: "Filme" , //pegando o id do filme
+      user: req.user,
       notification: false,
       titlePending: titlePending,
     });

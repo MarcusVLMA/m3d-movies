@@ -1,5 +1,5 @@
 <%- contentFor('style') %>
-<link rel="stylesheet" type="text/css" href="/stylesheets/gallery.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/search.css" />
 
 <%- contentFor('main') %>
 <div class="main-wrapper">
@@ -52,6 +52,7 @@
           <img
             alt="Capa <%= titles[i].title %>"
             src="<%= titles[i].poster_path %>"
+            loading="lazy"
           />
         </div>
         <div class="movie-content">
@@ -67,12 +68,12 @@
     <div class="content-pagination">
       <% for(var i=1; i < totalPages; i++) { %> <% if(i == currentPage) {%>
 
-      <a class="current" href="/title/gallery/<%= i + searchParams%>">
+      <a class="current" href="/title/search/<%= i + searchParams%>">
         <%= i %>
       </a>
       <% } else { %>
 
-      <a href="/title/gallery/<%= i + searchParams %>"> <%= i %> </a>
+      <a href="/title/search/<%= i + searchParams %>"> <%= i %> </a>
       <% } %> <% } %>
     </div>
   </div>

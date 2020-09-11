@@ -169,6 +169,8 @@ aside {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
+  overflow: hidden;
+  height: 165px;
 }
 
 .movie-photo {

@@ -160,7 +160,7 @@
       <% if(notification) { %>
         <div class="alert-success" role="alert">
           <img src="/images/check-circle.svg">
-          <span>Sugestão enviada com sucesso!</span>
+          <span>Perfil atualizado com sucesso!</span>
         </div>
       <% } %>
       <div class="field-wrapper">
@@ -170,7 +170,7 @@
       </div>
       <div class="field-wrapper">
         <label for="password">Senha anterior</label><br>
-        <input type="password" minlength="8" maxlength="50" name="password-old" id="password-old" required />
+        <input type="password" minlength="1" maxlength="50" name="password_old" id="password-old" required />
         <span class="erro-msg" id="password-old-erro"><%= erros.password_old %></span>
       </div>
       <div class="field-wrapper">
@@ -198,7 +198,7 @@
   // Valida o formulário antes de enviar
   const registrationForm = document.querySelector('form#registrationForm');
   registrationForm.addEventListener('submit', (e) => {
-    if(!nameValidator() || !passwordValidator() || !passwordConfirmValidator() || !emailValidator() || !passwordOldValidator()){
+    if(!nameValidator() || !passwordValidator() || !passwordConfirmValidator() || !emailValidator()){
       e.preventDefault();
     }
   });
@@ -213,11 +213,6 @@
     document.querySelector("span#name-erro").innerHTML = '';
   });
 
-  // Verificação do campo password antigo
-  const passwordOld = document.querySelector("input#password-old");
-  passwordOld.addEventListener('blur', () => {
-    passwordOldValidator();
-  });
   // Remove mensagem de erro
   passwordOld.addEventListener('focus', () => {
     document.querySelector("span#password-old-erro").innerHTML = '';
@@ -273,17 +268,6 @@
     else {
       document.querySelector("span#email-erro").innerHTML = 'Endereço de e-mail inválido!';
       return false;
-    }
-  }
-
-  function passwordOldValidator(){
-    if (passwordOld.value != <%= user.password %>){
-      document.querySelector("span#password-old-erro").innerHTML = 'Senha incorreta!';
-      return false;
-    }
-    else {
-      document.querySelector("span#password-old-erro").innerHTML = '';
-      return true;
     }
   }
 

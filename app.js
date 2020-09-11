@@ -4,13 +4,18 @@ const expressLayouts = require("express-ejs-layouts");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
+require('dotenv-safe').config();
+
+const passport = require('passport');
+const session = require('express-session');
+const db = require("./database/config");
+const LowdbStore = require('lowdb-session-store')(session);
 
 const defaultRouter = require("./routes/default");
 const adminRouter = require("./routes/admin");
 const userRouter = require("./routes/user");
 const titleRouter = require("./routes/title");
 
-const db = require("./database").default;
 
 const app = express();
 
@@ -26,6 +31,20 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
+// Autenticação
+require('./auth')(passport);
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+  store: new LowdbStore(db.get('sessions'), {
+    ttl: 86400
+  })
+}))
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Rotas
 app.use("/", defaultRouter);
 app.use("/admin", adminRouter);
 app.use("/user", userRouter);

@@ -8,14 +8,21 @@
     "serverstart": "DEBUG=m3d-movies:* npm run devstart"
   },
   "dependencies": {
+    "bcrypt": "^5.0.0",
+    "connect-flash": "^0.1.1",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
+    "dotenv-safe": "^8.2.0",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
     "express-ejs-layouts": "^2.5.0",
+    "express-session": "^1.17.1",
     "http-errors": "~1.6.3",
     "lowdb": "^1.0.0",
-    "morgan": "~1.9.1"
+    "lowdb-session-store": "^1.1.0",
+    "morgan": "~1.9.1",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "node-fetch": "^2.6.0",

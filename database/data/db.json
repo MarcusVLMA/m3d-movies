@@ -1,25 +1,35 @@
 {
+  "sessions": [
+    {
+      "_id": "QVHFHBmbMDVIh9xcEgtMNWl-jOm3_nYH",
+      "session": {
+        "cookie": {
+          "originalMaxAge": null,
+          "expires": null,
+          "httpOnly": true,
+          "path": "/"
+        },
+        "passport": {
+          "user": "1599784519641"
+        }
+      },
+      "expires": 1599874157226
+    }
+  ],
   "profiles": [
     {
-      "id": "1597780541556",
-      "name": "José",
+      "name": "Daniel Araujo",
       "role": "ADMIN",
-      "email": "jose@admin.com",
-      "password": "12345678"
+      "email": "daniel@admin.com",
+      "password": "$2b$10$bHS0gMZlOms7tonjgRbUCeyVRBObIeGjFjWhVTvJrc1blHkfCxfkm",
+      "id": "1599784519641"
     },
     {
-      "id": "1597780559820",
-      "name": "Joana",
+      "name": "Jose Sampaio",
       "role": "USER",
-      "email": "joana@user.com",
-      "password": "12345678"
-    },
-    {
-      "id": "1597780565738",
-      "name": "Cléber",
-      "role": "USER",
-      "email": "cleber@user.com",
-      "password": "12345678"
+      "email": "jose@user.com",
+      "password": "$2b$10$/aFMTh1VC7P0I/BVl8Kjae1P07nRbYniVkI9/zhPFpu1u8DDbpjPm",
+      "id": "1599785107980"
     }
   ],
   "titles": [
