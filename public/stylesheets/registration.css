@@ -214,6 +214,8 @@ input[type="submit"], button {
   color: #f00;
 }
 
+
+/* Modal Content/Box */
 .modal {
   display: none;
   position: fixed;
@@ -227,7 +229,6 @@ input[type="submit"], button {
   background-color: rgba(0,0,0,0.4);
 }
 
-/* Modal Content/Box */
 .modal .modal-wrapper {
   background-color: var(--lightGreen-black);
   margin: 15% auto;
@@ -251,7 +252,6 @@ input[type="submit"], button {
   min-width: 120px;
   min-height: 120px;
 }
-
 
 .check-circle {
   filter: var(--alert-img);

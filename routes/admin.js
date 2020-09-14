@@ -11,9 +11,9 @@ router.get('/requests', adminArea(), adminController.requests);
 router.get('/request/:id', adminArea(), adminController.requestGetEdit);
 
 // Solicitação POST que recebe formulário para fazer update em um título.
-router.post('/request/accept/:id', adminController.requestPostEdit);
+router.put('/request/accept/:id', adminController.requestAccept);
 
 // Solicitação POST que apaga filme
-router.post('/request/reject/:id', adminController.requestPostRemove);
+router.delete('/request/reject/:id', adminController.requestReject);
 
 module.exports = router;

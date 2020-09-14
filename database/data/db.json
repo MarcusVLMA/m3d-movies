@@ -1,7 +1,7 @@
 {
   "sessions": [
     {
-      "_id": "QVHFHBmbMDVIh9xcEgtMNWl-jOm3_nYH",
+      "_id": "fY3EVMbJNRbK0RhS4gWTiK8hMMJ6vUKD",
       "session": {
         "cookie": {
           "originalMaxAge": null,
@@ -13,7 +13,7 @@
           "user": "1599784519641"
         }
       },
-      "expires": 1599874157226
+      "expires": 1600141002877
     }
   ],
   "profiles": [
@@ -41,7 +41,7 @@
       "running_time": "00:45",
       "trailer_path": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/8Qoyn3j0gK0EOABrm0p6E5mzavg.jpg",
       "backdrop_path": "https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/9hvhGtcsGhQY58pukw8w55UEUbL.jpg",
-      "description": "            \r\n              Enquanto tentam lidar com problemas típicos da adolescência como amor, sexo, escola e família, Archie e sua turma se envolvem em um grande mistério.\r\n            \r\n          ",
+      "description": "Enquanto tentam lidar com problemas típicos da adolescência como amor, sexo, escola e família, Archie e sua turma se envolvem em um grande mistério.",
       "poster_path": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/8Qoyn3j0gK0EOABrm0p6E5mzavg.jpg",
       "status": "pending",
       "vote_average": 8.6,
@@ -85,7 +85,7 @@
       "backdrop_path": "https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/70xTjXpb0kfOhTRJqKwDYSG8Kle.jpg",
       "description": "Crayon Shin-chan segue as excêntricas travessuras e aventuras de Shinnosuke \"Shin\" Nohara, de cinco anos, e seus pais, vizinhos e amigos, e fica em Kasukabe, na província de Saitama, no Japão.\n\nMuitas das piadas da série decorrem do uso ocasionalmente estranho, antinatural e inadequado da linguagem de Shin-chan, bem como de seu comportamento inadequado. Uma mordaça típica envolve Shin-chan confundindo seus pais usando a frase errada para a ocasião; por exemplo, dizendo \"Bem-vindo de volta!\" em vez de \"Estou de volta!\" quando ele chega em casa.\n\nDurante o início da série, o programa de TV foi baseado principalmente na história do mangá original. À medida que o programa avançava, mais e mais episódios se tornaram originais do anime.",
       "poster_path": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/zg19Paur3lVVSh8J4LJVO1wgBIg.jpg",
-      "status": "pending",
+      "status": "accepted",
       "vote_average": 7.2,
       "id": "1599102452422"
     },
@@ -4960,20 +4960,6 @@
       "status": "pending",
       "vote_average": 8,
       "id": "1599102475011"
-    },
-    {
-      "title": "Pantera Negra",
-      "release_date": "2018-02-13",
-      "genre": "Ação",
-      "type": "filme",
-      "running_time": "02:14",
-      "trailer_path": "",
-      "backdrop_path": "https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/6ELJEzQJ3Y45HczvreC3dg0GV5R.jpg",
-      "description": "O príncipe T'Challa retorna a Wakanda para ser coroado rei. Assumindo o manto de Pantera Negra, ele vai à caça de um vilão que roubou um precioso metal de seu país.",
-      "poster_path": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/2yQUnpc1BXgesJrfcdoRa6jTAnA.jpg",
-      "status": "pending",
-      "vote_average": 7.4,
-      "id": "1599102475061"
     },
     {
       "title": "SIX",
@@ -10828,20 +10814,6 @@
       "id": "1599102496073"
     },
     {
-      "title": "Caçadores de Trolls",
-      "release_date": "2016-12-23",
-      "genre": "Animação",
-      "type": "animacao",
-      "running_time": "00:25",
-      "trailer_path": "",
-      "backdrop_path": "https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/mhETUY8XxLewCZb6bKm6FyBlnhh.jpg",
-      "description": "Jim é um garoto de 15 anos que é transformado em um caçador de trolls e defensor dos Trolls do bem, depois de encontrar sem querer um amuleto mágico. Enquanto luta ao lado do seu melhor amigo, Toby, e do Troll sabichão Blinky, ele precisa ao mesmo tempo conciliar os ensaios e deveres de casa da escola.",
-      "poster_path": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/zmFfWfUVJI3UgVOOUZbRbRQUIE5.jpg",
-      "status": "pending",
-      "vote_average": 8.3,
-      "id": "1599102496086"
-    },
-    {
       "title": "Boruto: Naruto the Movie",
       "release_date": "2015-08-07",
       "genre": "Ação",
@@ -11005,7 +10977,7 @@
       "backdrop_path": "https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/orjiB3oUIsyz60hoEqkiGpy5CeO.jpg",
       "description": "Após os eventos devastadores de \"Vingadores: Guerra Infinita\", o universo está em ruínas devido aos esforços do Titã Louco, Thanos. Com a ajuda de aliados remanescentes, os Vingadores devem se reunir mais uma vez a fim de desfazer as ações de Thanos e restaurar a ordem no universo de uma vez por todas, não importando as consequências.",
       "poster_path": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/q6725aR8Zs4IwGMXzZT8aC8lh41.jpg",
-      "status": "pending",
+      "status": "accepted",
       "vote_average": 8.3,
       "id": "1599102496885"
     },
@@ -11038,17 +11010,32 @@
       "id": "1599102497017"
     },
     {
-      "title": "",
-      "release_date": "",
-      "genre": "",
-      "running_time": "",
-      "trailer_path": "",
-      "backdrop_path": "",
-      "description": "          ",
-      "poster_path": "",
+      "title": "Vingadores: Guerra Infinita ",
+      "release_date": "2020-12-31",
+      "genre": "Animação",
+      "type": "filme",
+      "running_time": "22:59",
+      "trailer_path": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/8Qoyn3j0gK0EOABrm0p6E5mzavg.jpg",
+      "backdrop_path": "https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/bOGkgRGdhrBYJSLpXaxhXVstddV.jpg",
+      "description": "ddddddddddddddddddddddddddddd",
+      "poster_path": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/89QTZmn34iwXYeCpVxhC9UrT8sX.jpg",
       "status": "pending",
       "vote_average": 0,
-      "id": "1599152003103"
+      "id": "1599946973022"
+    },
+    {
+      "title": "Pantera Negra",
+      "release_date": "2018-02-15",
+      "genre": "Ação",
+      "type": "filme",
+      "running_time": "02:14",
+      "trailer_path": "https://www.youtube.com/watch?v=wL4a4MafSjQ&feature",
+      "backdrop_path": "https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/6ELJEzQJ3Y45HczvreC3dg0GV5R.jpg",
+      "description": "O príncipe T'Challa retorna a Wakanda para ser coroado rei. Assumindo o manto de Pantera Negra, ele vai à caça de um vilão que roubou um precioso metal de seu paíss.",
+      "poster_path": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/2yQUnpc1BXgesJrfcdoRa6jTAnA.jpg",
+      "status": "accepted",
+      "vote_average": 0,
+      "id": "1600042612990"
     }
   ],
   "title_commentaries": [

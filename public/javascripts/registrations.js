@@ -59,7 +59,7 @@ registrationForm.addEventListener('submit', (e) => {
         notificationModal.style.display = "block";
         window.setTimeout(() => {
           modalWrapper.style.maxHeight = "300px";
-        },50);
+        },300);
         
       }
     })

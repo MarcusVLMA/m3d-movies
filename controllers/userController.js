@@ -28,36 +28,34 @@ exports.registrationPost = async (req, res, next) => {
   // Objeto que armazena as mensagens de erro
   let erros = {};
 
-  // Testa se o nome é válido
-  if (req.body.name.length < 4){
+  // Verifica se o nome é válido
+  if (req.body.name === undefined || req.body.name.length < 4){
     erros.name = "Nome deve conter pelo menos 4 caractéres!";
   }
 
-  // Testa se o password é válido
+  // Verifica se o password é válido
   const passwordRegexp = new RegExp("^[-!#$@%&'*+/0-9=?A-Z^_`a-z{|}~\(\)]{8,}$");
-  if (!passwordRegexp.test(req.body.userPassword)){
+  if (req.body.userPassword === undefined || !passwordRegexp.test(req.body.userPassword)){
     erros.password = "A senha deve conter pelo menos 8 caractéres sem espaçamento!";
   }
   
-  // Testa se a confirmação de senha é válida
-  if (req.body.userPassword != req.body.password_confirm){
+  // Verifica se a confirmação de senha é válida
+  if (req.body.password_confirm === undefined || req.body.userPassword !== req.body.password_confirm){
     erros.password_confirm = "As senhas não são iguais!";
   }
 
-  // Testa se o email válido
+  // Verifica se o email válido
   const emailRegexp = new RegExp("^(?=.{1,254}$)(?=.{1,64}@)[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~]+(\.[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~]+)*@[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?(\.[A-Za-z0-9]([A-Za-z0-9-]{0,61}[A-Za-z0-9])?)*$");
-  if (!emailRegexp.test(req.body.userEmail)) {
+  if (req.body.userEmail === undefined || !emailRegexp.test(req.body.userEmail)) {
     erros.email = "Endereço de e-mail inválido!";
   }
-
-  if (await UserAccess.findUser({email: req.body.userEmail})){
+  else if (await UserAccess.findUser({email: req.body.userEmail})){
     erros.email = "Endereço de e-mail já cadastrado!";
   }
 
   if(Object.keys(erros).length) {
     // Renderiza página se houver erros
     res.status(400).json({erros: erros});
-
   }
   else {
     const newUser = await UserAccess.createUser({

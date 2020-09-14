@@ -179,6 +179,15 @@ function removeCommentaries(userId) {
   .write();
 }
 
+function countTitle(searchParams) {
+  if (searchParams) {
+    const titles = db.get("titles").find(searchParams).value();
+    return titles ? Object.keys(titles).length : 0;
+  } else {
+    return 0;
+  }
+}
+
 module.exports = {
   createTitle,
   getTitle,
@@ -188,4 +197,5 @@ module.exports = {
   getTitlePending,
   removeTitle,
   removeCommentaries,
+  countTitle,
 };
