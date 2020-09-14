@@ -1,6 +1,5 @@
 {
-  "sessions": [
-  ],
+  "sessions": [],
   "profiles": [
     {
       "id": "1597780541556",
@@ -118,6 +117,12 @@
       "profile_id": "1597780565738",
       "text": "Perdi meu tempo assistindo isso",
       "date": "2020-08-10"
+    }
+  ],
+  "profile_gallery": [
+    {
+      "profile_id": "1597780565738",
+      "title_ids": ["605116", "703771"]
     }
   ]
 }

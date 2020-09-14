@@ -1,7 +1,7 @@
 {
   "sessions": [
     {
-      "_id": "QVHFHBmbMDVIh9xcEgtMNWl-jOm3_nYH",
+      "_id": "iWMNMZHrT8drWRoCjcX7vrcOWxBKX7zZ",
       "session": {
         "cookie": {
           "originalMaxAge": null,
@@ -10,10 +10,10 @@
           "path": "/"
         },
         "passport": {
-          "user": "1599784519641"
+          "user": "1600040142186"
         }
       },
-      "expires": 1599874157226
+      "expires": 1600132982016
     }
   ],
   "profiles": [
@@ -30,6 +30,13 @@
       "email": "jose@user.com",
       "password": "$2b$10$/aFMTh1VC7P0I/BVl8Kjae1P07nRbYniVkI9/zhPFpu1u8DDbpjPm",
       "id": "1599785107980"
+    },
+    {
+      "name": "Marcus",
+      "role": "USER",
+      "email": "m@m.com",
+      "password": "$2b$10$hkzbB123jzAJgZN/ul2nzOTekU9WRjYn8O.vB6d0ZiVIPahSAZZn2",
+      "id": "1600040142186"
     }
   ],
   "titles": [
@@ -11087,6 +11094,15 @@
       "profile_id": "1597780565738",
       "text": "Perdi meu tempo assistindo isso",
       "date": "2020-08-10"
+    }
+  ],
+  "profile_gallery": [
+    {
+      "profile_id": "1600040142186",
+      "title_ids": [
+        "1599102452403",
+        "1599102452434"
+      ]
     }
   ]
 }

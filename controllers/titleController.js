@@ -1,4 +1,5 @@
 const { TitleAccess } = require("../database");
+const { formatSearchParamsToView } = require("./utils");
 
 exports.title = async (req, res) => {
   const title = await TitleAccess.getTitle(req.params.id);
@@ -8,6 +9,9 @@ exports.title = async (req, res) => {
 
   const backdropStyle = `background-image: url(${title.backdrop_path})`;
 
+  const userGalleryTitleIds = TitleAccess.allGalleryTitleIds(req.user.id);
+  const titleIsInUserGallery = userGalleryTitleIds.includes(req.params.id);
+
   res.render("details", {
     ...title,
     user: req.user,
@@ -15,28 +19,8 @@ exports.title = async (req, res) => {
     rating_style: ratingStyle,
     release_year: title.release_date.split("-")[0],
     release_date: title.release_date.replace(/-/g, "/"),
+    titleIsInUserGallery,
   });
-};
-
-const _formatSearchParamsToView = (searchParams) => {
-  const properties = Object.keys(searchParams);
-
-  let finalString = "";
-  for (let i = 0; i < properties.length; i++) {
-    const property = properties[i];
-    const value = searchParams[property];
-
-    if (property !== "status") {
-      // "Status" é uma propriedade de busca interna e não é bom expor
-      if (!finalString) {
-        finalString = finalString.concat(`?${property}=${value}`);
-      } else {
-        finalString = finalString.concat(`&${property}=${value}`);
-      }
-    }
-  }
-
-  return finalString;
 };
 
 exports.titles = async (req, res) => {
@@ -62,7 +46,8 @@ exports.titles = async (req, res) => {
     title: pageTitle,
     user: req.user,
     currentPage: page,
-    searchParams: _formatSearchParamsToView(searchParams),
+    searchParams: formatSearchParamsToView(searchParams),
+    isUserGallery: false,
     ...titles,
   });
 };
@@ -70,7 +55,7 @@ exports.titles = async (req, res) => {
 // Solicitação GET para a página de solicitação.
 exports.requestGet = async (req, res) => {
   const titlePending = await TitleAccess.getTitlePending(req.params.id);
-  if (titlePending){
+  if (titlePending) {
     console.log(titlePending);
     res.render("titleRequest", {
       title: "Sugerir Título",

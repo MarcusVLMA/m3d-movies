@@ -1,36 +1,47 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
 // Inporta o controlador para as rotas user
 const userController = require("../controllers/userController");
 // Controle de autenticação
-const { authenticated,
-        unauthenticated,
-      } = require("../middlewares/authentication");
+const {
+  authenticated,
+  unauthenticated,
+} = require("../middlewares/authentication");
 
 // Solicitação GET para o perfil do usuário.
-router.get('/', authenticated(), function(req, res) {
-  res.redirect('/profile');
+router.get("/", authenticated(), function (req, res) {
+  res.redirect("/profile");
 });
 
 // Solicitação GET para a página de cadastro.
 router.get("/registration", unauthenticated(), userController.registrationGet);
 
 // Verfica se o e-mail ja existe
-router.get("/registration/emailAvailable/:userEmail", userController.emailAvailable);
+router.get(
+  "/registration/emailAvailable/:userEmail",
+  userController.emailAvailable
+);
 
 // Solicitação POST para registrar usuário.
-router.post("/registration", unauthenticated(), userController.registrationPost);
+router.post(
+  "/registration",
+  unauthenticated(),
+  userController.registrationPost
+);
 
 // Solicitação GET para a página de Edição de Perfil do Usuário
-router.get('/profile', authenticated(), userController.userProfileEditGet)
+router.get("/profile", authenticated(), userController.userProfileEditGet);
 
 // Solicitação POST para editar as informações do usuário.
-router.post("/profile", authenticated(),userController.userProfileEditPost);
+router.post("/profile", authenticated(), userController.userProfileEditPost);
 
 // Solicitação POST para login
-router.post('/sigin', unauthenticated(), userController.siginPost);
+router.post("/sigin", unauthenticated(), userController.siginPost);
 
 // Solicitação GET para deslogar
-router.get('/sigout', authenticated(), userController.sigoutGet);
+router.get("/sigout", authenticated(), userController.sigoutGet);
+
+// Solicitação GET para galeria
+router.get("/gallery/:page", authenticated(), userController.gallery);
 
 module.exports = router;

@@ -56,12 +56,21 @@
             usuários
           </div>
         </div>
+        <% if(titleIsInUserGallery) { %>
+        <div class="details-actions-button">
+          <i class="fas fa-times"></i>
+          <div class="details-actions-button-tooltip-gallery">
+            Remover da galeria
+          </div>
+        </div>
+        <% } else {%>
         <div class="details-actions-button">
           <i class="fas fa-list"></i>
           <div class="details-actions-button-tooltip-gallery">
             Adicionar à galeria
           </div>
         </div>
+        <% } %>
         <div class="details-actions-button">
           <i class="fas fa-star"></i>
           <div class="details-actions-button-tooltip-favorites">
