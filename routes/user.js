@@ -42,6 +42,16 @@ router.post("/sigin", unauthenticated(), userController.siginPost);
 router.get("/sigout", authenticated(), userController.sigoutGet);
 
 // Solicitação GET para galeria
-router.get("/gallery/:page", authenticated(), userController.gallery);
+router.get("/gallery/:page?", authenticated(), userController.gallery);
+
+// Solicitação POST para adicionar título à galeria do usuário
+router.post("/add/gallery", authenticated(), userController.addTitleToGallery);
+
+// Solicitação POST para remover título da galeria do usuário
+router.post(
+  "/remove/gallery",
+  authenticated(),
+  userController.removeTitleFromGallery
+);
 
 module.exports = router;

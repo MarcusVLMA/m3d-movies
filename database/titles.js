@@ -213,6 +213,36 @@ function allGalleryTitleIds(profileId) {
   }
 }
 
+function addTitleToUserGallery(profileId, titleId) {
+  const galleryTitles = allGalleryTitleIds(profileId);
+
+  !galleryTitles.includes(titleId) && galleryTitles.push(titleId);
+
+  const updatedProfileGallery = db
+    .get("profile_gallery")
+    .find({ profile_id: profileId })
+    .assign({ profile_id: profileId, title_ids: galleryTitles })
+    .write();
+
+  return updatedProfileGallery;
+}
+
+function removeTitleFromUserGallery(profileId, titleId) {
+  const currentGalleryTitles = allGalleryTitleIds(profileId);
+
+  const galleryTitles = currentGalleryTitles.filter(
+    (title_id) => title_id !== titleId
+  );
+
+  const updatedProfileGallery = db
+    .get("profile_gallery")
+    .find({ profile_id: profileId })
+    .assign({ profile_id: profileId, title_ids: galleryTitles })
+    .write();
+
+  return updatedProfileGallery;
+}
+
 function updateTitle(titleInfo) {
   const updatedTitle = db
     .get("titles")
@@ -244,4 +274,6 @@ module.exports = {
   removeCommentaries,
   galleryTitles,
   allGalleryTitleIds,
+  addTitleToUserGallery,
+  removeTitleFromUserGallery,
 };

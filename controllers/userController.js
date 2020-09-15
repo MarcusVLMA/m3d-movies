@@ -207,3 +207,19 @@ exports.gallery = (req, res) => {
     ...titles,
   });
 };
+
+exports.addTitleToGallery = async (req, res) => {
+  const titleId = req.body.titleId;
+
+  TitleAccess.addTitleToUserGallery(req.user.id, titleId);
+
+  res.json({ added: true });
+};
+
+exports.removeTitleFromGallery = async (req, res) => {
+  const titleId = req.body.titleId;
+
+  TitleAccess.removeTitleFromUserGallery(req.user.id, titleId);
+
+  res.json({ removed: true });
+};
