@@ -263,6 +263,33 @@ function removeCommentaries(userId) {
   db.get("title_commentaries").remove({ profile_id: userId }).write();
 }
 
+function addCommentary(titleId, profileId, text) {
+  const today = new Date();
+  const day =
+    today.getDate().toString().length === 1
+      ? "0" + today.getDate().toString()
+      : today.getDate().toString();
+
+  const month =
+    today.getMonth().toString().length === 1
+      ? "0" + today.getMonth().toString()
+      : today.getMonth().toString();
+
+  const createdCommentary = db
+    .get("title_commentaries")
+    .push({
+      title_id: titleId,
+      profile_id: profileId,
+      text,
+      date: `${today.getFullYear()}-${month}-${day}`,
+    })
+    .last()
+    .assign({ id: today.getTime() })
+    .write();
+
+  return createdCommentary;
+}
+
 module.exports = {
   createTitle,
   getTitle,
@@ -276,4 +303,5 @@ module.exports = {
   allGalleryTitleIds,
   addTitleToUserGallery,
   removeTitleFromUserGallery,
+  addCommentary,
 };

@@ -96,3 +96,11 @@ exports.requestPost = async (req, res) => {
     titlePending: false,
   });
 };
+
+exports.titleCommentary = async (req, res) => {
+  const { titleId, text } = req.body;
+
+  const commentary = TitleAccess.addCommentary(titleId, req.user.id, text);
+
+  res.json({ commentary, user: req.user });
+};

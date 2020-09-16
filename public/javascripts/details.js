@@ -2,21 +2,9 @@ const notificationModal = document.querySelector("div#notificationModal");
 const modalText = document.querySelector("p#modal-text");
 const modalWrapper = document.querySelector("div.modal-wrapper");
 
-{
-  /* <div
-          id="details-actions-button"
-          class="details-actions-button"
-          onclick="addTitleToUserGallery(<%= id %>)"
-        >
-          <i id="details-actions-button-icon" class="fas fa-list"></i>
-          <div
-            id="details-actions-button-tooltip-gallery"
-            class="details-actions-button-tooltip-gallery"
-          >
-            Adicionar à galeria
-          </div>
-        </div> */
-}
+const allCommentsContainer = document.querySelector("div.comments");
+const commentForm = document.querySelector("form#new-comment-form");
+const commentText = document.querySelector("textarea#new-comment");
 
 function addTitleToUserGallery(titleId) {
   fetch("/user/add/gallery", {
@@ -90,3 +78,48 @@ function removeTitleFromUserGallery(titleId) {
       }, 50);
     });
 }
+
+commentForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const titleId = window.location.href.split("/").pop();
+  const text = commentText.value;
+
+  fetch("/title/commentary", {
+    method: "POST",
+    body: JSON.stringify({ titleId: titleId.toString(), text }),
+    headers: { "Content-Type": "application/json" },
+  })
+    .then((response) => response.json())
+    .then((jsonResponse) => {
+      document.querySelector("textarea#new-comment").value = "";
+
+      const commentContainer = document.createElement("div");
+      const commentContent = document.createElement("div");
+      const username = document.createElement("h3");
+      const date = document.createElement("span");
+      const commentText = document.createElement("p");
+
+      commentContainer.className = "comment-container";
+      commentContent.className = "comment-content";
+
+      username.innerHTML = jsonResponse.user.name;
+      date.innerHTML = jsonResponse.commentary.date;
+      commentText.innerHTML = jsonResponse.commentary.text;
+
+      commentContent.appendChild(username);
+      commentContent.appendChild(date);
+      commentContent.appendChild(commentText);
+
+      commentContainer.appendChild(commentContent);
+
+      allCommentsContainer.appendChild(commentContainer);
+      // <div class="comment-container">
+      //   <div class="comment-content">
+      //     <h3><%= commentaries[i].profile.name %></h3>
+      //     <span><%= commentaries[i].date %></span>
+      //     <p><%= commentaries[i].text %></p>
+      //   </div>
+      // </div>
+    });
+});
