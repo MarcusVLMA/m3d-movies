@@ -284,7 +284,7 @@ function addCommentary(titleId, profileId, text) {
       date: `${today.getFullYear()}-${month}-${day}`,
     })
     .last()
-    .assign({ id: today.getTime() })
+    .assign({ id: today.getTime().toString() })
     .write();
 
   return createdCommentary;
