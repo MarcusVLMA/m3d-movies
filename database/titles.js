@@ -206,7 +206,11 @@ function addAvaliation(avaliationInfo) {
 
 function userAvaliationGet(title_id, user_id) {
   const aval = db.get("avaliation").filter({ title_id}).find({ user_id }).value();
-  return parseFloat(aval.entry)*10;
+  if(typeof aval==="undefined"){
+    return 0;
+  }else{
+    return parseFloat(aval.entry)*10;
+  }
 }
 
 module.exports = {

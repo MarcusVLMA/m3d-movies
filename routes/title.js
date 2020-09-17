@@ -17,6 +17,6 @@ router.get("/search/:page?", titleController.titles);
 router.get("/:id", titleController.title);
 
 // Solicitação Post para a página de detalhes.
-router.post("/:id", titleController.avaliationPost);
+router.post("/:id", authenticated(),titleController.avaliationPost);
 
 module.exports = router;

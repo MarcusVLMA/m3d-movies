@@ -67,7 +67,7 @@
           <i class="fas fa-star"></i>
           <div class="details-actions-button-tooltip-favorites">
             <div class="slidecontainer">
-              <input type="range" min="1" max="100" value="<%= aval%>" class="slider" id="myRange">
+              <input type="range" min="0" max="100" value="<%= aval%>" class="slider" id="myRange">
               <span>Nota: <span id="demo"></span></span>
             </div>
           </div>
@@ -117,8 +117,15 @@
   var output = document.getElementById("demo");
   output.innerHTML = parseFloat(slider.value)/10;
 
-  slider.oninput = function() {
-    output.innerHTML = parseFloat(this.value)/10;
-
+  slider.oninput = async function () {
+    output.innerHTML = parseFloat(this.value) / 10;
+    await fetch('/title/<%= title_id %>', {
+      method: 'Post'
+    }).then(response => {
+      if (!response.ok) {
+        throw new Error('Erro de conexão!');
+      }
+      return response.json();
+    })
   }
 </script>

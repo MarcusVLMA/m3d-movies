@@ -18,6 +18,8 @@ exports.title = async (req, res) => {
     rating_style: ratingStyle,
     release_year: title.release_date.split("-")[0],
     release_date: title.release_date.replace(/-/g, "/"),
+    type: title.type,
+    title_id: title.id,
     mean,
     aval,
   });
@@ -188,10 +190,21 @@ exports.requestPost = async (req, res) => {
 // Avaliacao do usuario
 
 exports.avaliationPost = async (req, res) => {
-  await UserAccess.addAvaliation({
+  /*console.log("Debbug1", req.body.title_id);
+  console.log("Debbug2", req.body.type);
+  console.log("Debbug3", req.body.user_id);
+  console.log("Debbug4", req.body.output.innerHTML);
+  await TitleAccess.addAvaliation({
     title_id: req.body.title_id,
+    type: req.body.type,
     user_id: req.body.user_id,
     entry: req.body.output.innerHTML,
+  });*/
+  await TitleAccess.addAvaliation({
+    title_id: "1600042612990",
+    type: "filme",
+    user_id: "1600304224005",
+    entry: "9",
   });
   res.render("details");
 }
