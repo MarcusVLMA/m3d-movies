@@ -19,7 +19,6 @@ function createTitle(titleInfo) {
   }
 }
 
-
 function _getCommentaries(title_id) {
   const commentaries = db
     .get("title_commentaries")
@@ -80,23 +79,15 @@ function _filterTitle(title, searchParams = null) {
   } else {
     return true;
   }
-  // if (name) {
-  //   const titleNameToSearch = title.title.toLowerCase();
-  //   const nameToSearch = name.toLowerCase();
-
-  //   return titleNameToSearch.includes(nameToSearch);
-  // } else {
-  //   return true;
-  // }
 }
 
 function getTitlesPending() {
-  const title = db.get("titles").find({ status:"pending" }).value();
+  const title = db.get("titles").find({ status: "pending" }).value();
   return title;
 }
 
 function getTitlePending(id) {
-  const title = db.get("titles").find({ id, status:"pending" }).value();
+  const title = db.get("titles").find({ id, status: "pending" }).value();
   return title;
 }
 
@@ -117,16 +108,27 @@ function findTitle(searchParams) {
   }
 }
 
-function _getMoviesAmountInfos(name) {
-  const allTitles = db
-    .get("titles")
-    .filter((title) => _filterTitle(title, name))
-    .value();
+function _getMoviesAmountInfos(searchParams, subset = null) {
+  if (subset) {
+    const allTitles = subset.filter((title) =>
+      _filterTitle(title, searchParams)
+    );
 
-  return {
-    totalCount: allTitles.length,
-    totalPages: Math.ceil(allTitles.length / MOVIES_PER_PAGE) + 1,
-  };
+    return {
+      totalCount: allTitles.length,
+      totalPages: Math.ceil(allTitles.length / MOVIES_PER_PAGE) + 1,
+    };
+  } else {
+    const allTitles = db
+      .get("titles")
+      .filter((title) => _filterTitle(title, searchParams))
+      .value();
+
+    return {
+      totalCount: allTitles.length,
+      totalPages: Math.ceil(allTitles.length / MOVIES_PER_PAGE) + 1,
+    };
+  }
 }
 
 function searchTitles(searchParams, page) {
@@ -153,6 +155,94 @@ function searchTitles(searchParams, page) {
   };
 }
 
+function galleryTitles(profileId, searchParams, page) {
+  const profileGallery = db
+    .get("profile_gallery")
+    .find({ profile_id: profileId })
+    .value();
+
+  if (profileGallery) {
+    const allTitles = [];
+
+    profileGallery.title_ids.forEach((titleId) => {
+      allTitles.push(findTitle({ id: titleId }));
+    });
+
+    const filteredTitles = allTitles.filter((title) =>
+      _filterTitle(title, searchParams)
+    );
+
+    const moviesAmountInfos = _getMoviesAmountInfos(
+      searchParams,
+      filteredTitles
+    );
+    if (page > moviesAmountInfos.totalPages) {
+      page = moviesAmountInfos.totalPages - 1;
+    }
+    const offset = (page - 1) * MOVIES_PER_PAGE;
+
+    const paginatedTitles = filteredTitles.slice(
+      offset,
+      offset + MOVIES_PER_PAGE
+    );
+
+    const titlesResponse = paginatedTitles.map((title) => ({
+      ...title,
+      commentaries: _getCommentaries(title.id),
+    }));
+
+    return {
+      titles: titlesResponse,
+      ...moviesAmountInfos,
+    };
+  } else {
+    return { titles: [], totalCount: 0, totalPages: 1 };
+  }
+}
+
+function allGalleryTitleIds(profileId) {
+  const profileGallery = db
+    .get("profile_gallery")
+    .find({ profile_id: profileId })
+    .value();
+
+  if (profileGallery) {
+    return profileGallery.title_ids;
+  } else {
+    return [];
+  }
+}
+
+function addTitleToUserGallery(profileId, titleId) {
+  const galleryTitles = allGalleryTitleIds(profileId);
+
+  !galleryTitles.includes(titleId) && galleryTitles.push(titleId);
+
+  const updatedProfileGallery = db
+    .get("profile_gallery")
+    .find({ profile_id: profileId })
+    .assign({ profile_id: profileId, title_ids: galleryTitles })
+    .write();
+
+  return updatedProfileGallery;
+}
+
+function removeTitleFromUserGallery(profileId, titleId) {
+  const currentGalleryTitles = allGalleryTitleIds(profileId);
+
+  const galleryTitles = currentGalleryTitles.filter(
+    (title_id) => title_id !== titleId
+  );
+
+  const updatedProfileGallery = db
+    .get("profile_gallery")
+    .find({ profile_id: profileId })
+    .assign({ profile_id: profileId, title_ids: galleryTitles })
+    .write();
+
+  return updatedProfileGallery;
+}
+
 function updateTitle(titleInfo) {
   const updatedTitle = db
     .get("titles")
@@ -164,19 +254,40 @@ function updateTitle(titleInfo) {
 }
 
 function removeTitle(titleId) {
-  db.get("titles")
-  .remove({ id: titleId })
-  .write();
+  db.get("titles").remove({ id: titleId }).write();
 
-  db.get("title_commentaries")
-  .remove({ title_id: titleId })
-  .write();
+  db.get("title_commentaries").remove({ title_id: titleId }).write();
 }
 
 function removeCommentaries(userId) {
-  db.get("title_commentaries")
-  .remove({ profile_id: userId })
-  .write();
+  db.get("title_commentaries").remove({ profile_id: userId }).write();
+}
+
+function addCommentary(titleId, profileId, text) {
+  const today = new Date();
+  const day =
+    today.getDate().toString().length === 1
+      ? "0" + today.getDate().toString()
+      : today.getDate().toString();
+
+  const month =
+    today.getMonth().toString().length === 1
+      ? "0" + today.getMonth().toString()
+      : today.getMonth().toString();
+
+  const createdCommentary = db
+    .get("title_commentaries")
+    .push({
+      title_id: titleId,
+      profile_id: profileId,
+      text,
+      date: `${today.getFullYear()}-${month}-${day}`,
+    })
+    .last()
+    .assign({ id: today.getTime().toString() })
+    .write();
+
+  return createdCommentary;
 }
 
 function countTitle(searchParams) {

@@ -16,4 +16,7 @@ router.get("/search/:page?", titleController.titles);
 // Solicitação GET para a página de detalhes.
 router.get("/:id", titleController.title);
 
+// Solicitação POST para criar comentário.
+router.post("/commentary", titleController.titleCommentary);
+
 module.exports = router;
