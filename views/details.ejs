@@ -36,6 +36,7 @@
               r="32"
               cx="42"
               cy="42"
+              id="progressring"
             />
             <text
               x="42"
@@ -47,7 +48,7 @@
               font-family="Source Sans Pro, sans-serif"
               font-size="24px"
             >
-              <%= vote_average %>
+              <%= mean %>
             </text>
           </svg>
           <div class="details-actions-rating-text">
@@ -65,26 +66,10 @@
         <div class="details-actions-button">
           <i class="fas fa-star"></i>
           <div class="details-actions-button-tooltip-favorites">
-            <span>70%</span>
-            <svg width="180" height="10">
-              <line
-                x1="0"
-                y1="5"
-                x2="180"
-                y2="5"
-                stroke-width="6"
-                stroke="#a2a2a2"
-              />
-              <line
-                id="fav"
-                x1="0"
-                y1="5"
-                x2="126"
-                y2="5"
-                stroke-width="6"
-                stroke="#ffffff"
-              />
-            </svg>
+            <div class="slidecontainer">
+              <input type="range" min="1" max="100" value="<%= aval%>" class="slider" id="myRange">
+              <span>Nota: <span id="demo"></span></span>
+            </div>
           </div>
         </div>
         <a target="_blank" rel="noopener noreferrer" href="<%= trailer_path %>">
@@ -123,3 +108,17 @@
   </div>
   <% } %>
 </div>
+<script type="text/javascript">
+  var progressoCirculo =  23.5 * parseFloat(<%= mean %>);
+  document.getElementById("progressring").style.strokeDasharray = progressoCirculo;
+</script>
+<script>
+  var slider = document.getElementById("myRange");
+  var output = document.getElementById("demo");
+  output.innerHTML = parseFloat(slider.value)/10;
+
+  slider.oninput = function() {
+    output.innerHTML = parseFloat(this.value)/10;
+
+  }
+</script>

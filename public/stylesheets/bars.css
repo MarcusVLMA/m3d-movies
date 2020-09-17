@@ -1,6 +1,11 @@
 .common {
   --black-white: #000;
   --white-black: #fff;
+  --gray-yellow: #5f6368;
+  --gray-black: #5f6368;
+  --ligthGray-yellow: #f5f5f5;
+  --ligthGray-none: #f5f5f5;
+  --red-yellow: #c20808;
   --back-barra: #032541;
   --back-cli: #032541;
   --clic-login: #2cafc3;
@@ -13,11 +18,17 @@
   --input-border: #2cafc3;
   --btn-hover: #016f8d;
   --input-place: none;
+  --popup-border: 1px solid #032541;;
 }
 
 .high-contrast {
   --black-white: #fff;
   --white-black: #000;
+  --gray-yellow: #ff0;
+  --gray-black: #000;
+  --ligthGray-yellow: #ff0;
+  --ligthGray-none: none;
+  --red-yellow: #ff0;
   --back-barra: #000;
   --back-cli: #ff0;
   --clic-login: #000;
@@ -30,10 +41,14 @@
   --input-border: #fff;
   --btn-hover: none;
   --input-place: #fff;
+  --popup-border: 2px solid #fff;
+}
+
+body {
+  min-width: 830px;
 }
 
 /* nav bar */
-
 header {
   font-family: "Source Sans Pro", sans-serif;
   display: flex;
@@ -49,8 +64,12 @@ input::placeholder {
   color: var(--input-place);
 }
 
-/* Logo */
+label.erro {
+  font-size: 0.6em;
+  color: #ff0000;
+}
 
+/* Logo */
 .logo {
     padding: 8px 0px 8px 20px;
     float: left;
@@ -73,6 +92,15 @@ input::placeholder {
 }
 
 /* nav */
+
+header {
+  height: 60px;
+}
+
+main {
+  width: 100%;
+  height: auto;
+}
 
 header a {
   text-decoration: none;
@@ -106,6 +134,18 @@ nav a:hover {
 .dropdown {
   margin:0 30px 0 10px;
 }
+.dropdown-content .user-name {
+  color: var(--black-white);
+  padding: 20px 0;
+  text-align: center;
+  font-size: 1.2rem;
+  border-bottom: 1px solid var(--ligthGray-yellow);
+}
+
+.dropdown-content .user-options, .dropdown-content .admin-options {
+  border-bottom: 1px solid var(--ligthGray-yellow);
+  padding: 10px 0;
+}
 
 .dropdown-content {
   display: none;
@@ -116,6 +156,8 @@ nav a:hover {
   z-index: 1;
   right: 0;
   border: 2px solid var(--clic);
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .dropdown-content a {
@@ -128,6 +170,12 @@ nav a:hover {
 
 .dropdown-content a:hover {
   background-color: var(--back-cli);
+  color: var(--white-black);
+  transition: all 0.3s ease;
+}
+
+.dropdown-content .logout a:hover {
+  background-color: var(--red-yellow);
   color: var(--white-black);
   transition: all 0.3s ease;
 }
@@ -155,14 +203,27 @@ header .search-wrapper input[type=text] {
   color: var(--black-white);
 }
 
-.form-container input[type=text], .form-container input[type=password] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  border: 2px solid var(--input-border);
+.form-login input[type=email] {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
-header .search-wrapper input[type=text], .form-container input[type=text], .form-container input[type=password] {
+.form-login input[type=password] {
+  margin-bottom: 20px;
+}
+
+.form-login input[type=email], .form-login input[type=password] {
+  width: 200px;;
+  padding: 10px 6px;
+  border: none;
+  border-bottom: 1px solid #818181;
+}
+
+.form-login input[type=email]::placeholder, .form-login input[type=password]::placeholder {
+  color: #000;
+}
+
+header .search-wrapper input[type=text] {
   box-sizing: border-box;
   border-radius: 12px;
   background-color: var(--white-black);
@@ -232,11 +293,14 @@ header .icon2 {
 }
 
 /* The popup form - hidden by default */
-.form-title {
+.form-login {
   color: var(--black-white);
-  font-size: 22px;
+  font-size: 1.4em;
   font-weight: 600;
-  padding: 10px;
+  padding: 10px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .form-label {
   color: var(--black-white);
@@ -248,45 +312,52 @@ header .icon2 {
 .form-popup {
   display: none;
   position: fixed;
-  top: 60px;
+  top: 54px;
   right: 10px;
-  border: 2px solid var(--clic-border);
+  background-color: var(--white-black);
+  border: var(--popup-border);
+  border-radius: 8px;
+  overflow: hidden;
   z-index: 9;
 }
 
 /* Add styles to the form container */
-.form-container {
-  max-width: 300px;
-  padding: 10px;
-  background-color: var(--white-black);
-}
 
 /* Set a style for the submit/login button */
-.form-container .btn {
+.form-login .btn {
+  font-size: 0.6em;
   background-color: var(--back-barra);
   color: white;
-  padding: 16px 20px;
+  padding: 10px 20px;
   border: 1.5px solid var(--clic);
-  border-radius: 15px;
   cursor: pointer;
   width: 100%;
   margin-bottom:10px;
-  opacity: 0.8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.form-popup p a {
+.form-login .btn .loading {
+  visibility: hidden;
+  height: 0;
+  width: 0;
+}
+
+.form-popup a {
   color: var(--black-white);
   text-decoration:none;
+  font-size: 1rem;
 }
 
-.form-popup p a:hover {
+.form-popup a:hover {
   color: var(--text-link);
   text-decoration: underline;
   transition: all 0.3s ease;
 }
 
 /* Add some hover effects to buttons */
-.form-container .btn:hover, .open-button:hover {
+.form-login .btn:hover, .open-button:hover {
   background-color: var(--btn-hover);
   transition: all 0.3s ease;
 }
@@ -300,4 +371,25 @@ header .icon2 {
   stroke: var(--white-black);
   stroke-width: "0.5px";
   fill: var(--white-black);
+}
+
+.line-division {
+  border-top: 1px solid #e8eaed;
+  display: flex;
+}
+.line-division a {
+  color: var(--gray-yellow);
+  font-size: 0.8rem;
+  text-align: center;
+  background-color: var(--white-black);
+  text-decoration: none;
+  padding: 14px;
+  margin: 0;
+  width: 100%;
+}
+
+.line-division a:hover{
+  color: var(--gray-black);
+  background-color: var(--ligthGray-yellow);
+  text-decoration: none;
 }

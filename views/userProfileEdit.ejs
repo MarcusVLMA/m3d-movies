@@ -25,21 +25,21 @@
       <h1 class="font-user-name"><%= user.name %><span class="font-user-date">Membro desde agosto de 2020</span></h1>
       <div class="avaliation">
         <div class="container-avaliation">
-          <svg width="48" height="48">
-            <circle fill="#081C22" r="24" cx="24" cy="24" />
+          <svg width="49" height="49">
+            <circle fill="#081C22" stroke="transparent" r="24" cx="24" cy="24" />
             <circle stroke="#1C4027" stroke-width="4" fill="transparent" r="22" cx="24" cy="24"/>
             <circle
               class="progress-ring"
-              stroke="var(--circulo)"
               stroke-width="2"
               fill="transparent"
               r="22"
               cx="24"
               cy="24"
+              id="circle-filme"
               />
             <text
-              x="21"
-              y="27"
+              x="24"
+              y="28"
               text-anchor="middle"
               stroke="#ffffff"
               stroke-width="1px"
@@ -47,19 +47,7 @@
               font-family="Source Sans Pro, sans-serif"
               font-size="16px"
               >
-              100
-            </text>
-            <text
-              x="37"
-              y="25"
-              text-anchor="middle"
-              stroke="#ffffff"
-              stroke-width="0.5px"
-              fill="#ffffff"
-              font-family="Source Sans Pro, sans-serif"
-              font-size="8px"
-              >
-              %
+              <%= mean.filme %>
             </text>
           </svg>
           <h1 class="font-user-avaliation">
@@ -67,8 +55,8 @@
           </h1>
         </div>
         <div class="container-avaliation">
-          <svg width="48" height="48">
-            <circle fill="#081C22" r="24" cx="24" cy="24" />
+          <svg width="49" height="49">
+            <circle fill="#081C22" stroke="transparent" r="24" cx="24" cy="24" />
             <circle stroke="#1C4027" stroke-width="4" fill="transparent" r="22" cx="24" cy="24"/>
             <circle
               class="progress-ring"
@@ -78,10 +66,11 @@
               r="22"
               cx="24"
               cy="24"
+              id="circle-serie"
               />
             <text
-              x="21"
-              y="27"
+                    x="24"
+                    y="28"
               text-anchor="middle"
               stroke="#ffffff"
               stroke-width="1px"
@@ -89,26 +78,14 @@
               font-family="Source Sans Pro, sans-serif"
               font-size="16px"
               >
-              100
-            </text>
-            <text
-              x="37"
-              y="25"
-              text-anchor="middle"
-              stroke="#ffffff"
-              stroke-width="0.5px"
-              fill="#ffffff"
-              font-family="Source Sans Pro, sans-serif"
-              font-size="8px"
-              >
-              %
+              <%= mean.serie %>
             </text>
           </svg>
           <h1 class="font-user-avaliation">Avaliação Média de Séries</h1>
         </div>
         <div class="container-avaliation" style="border: none">
-          <svg width="48" height="48">
-            <circle fill="#081C22" r="24" cx="24" cy="24" />
+          <svg width="49" height="49">
+            <circle fill="#081C22" stroke="transparent" r="24" cx="24" cy="24" />
             <circle stroke="#1C4027" stroke-width="4" fill="transparent" r="22" cx="24" cy="24"/>
             <circle
               class="progress-ring"
@@ -118,10 +95,11 @@
               r="22"
               cx="24"
               cy="24"
+              id="circle-animacao"
               />
             <text
-              x="21"
-              y="27"
+                    x="24"
+                    y="28"
               text-anchor="middle"
               stroke="#ffffff"
               stroke-width="1px"
@@ -129,19 +107,7 @@
               font-family="Source Sans Pro, sans-serif"
               font-size="16px"
               >
-              100
-            </text>
-            <text
-              x="37"
-              y="25"
-              text-anchor="middle"
-              stroke="#ffffff"
-              stroke-width="0.5px"
-              fill="#ffffff"
-              font-family="Source Sans Pro, sans-serif"
-              font-size="8px"
-              >
-              %
+              <%= mean.animacao %>
             </text>
           </svg>
           <h1 class="font-user-avaliation">Avaliação Média de Animes</h1>
@@ -150,7 +116,6 @@
     </div>
   </div>
 </div>
-
 <div class="content-form">
   <div class="title-wrapper">
     <h1 class="title">Alterar Dados</h1>
@@ -161,7 +126,7 @@
       <% if(notification) { %>
         <div class="alert-success" role="alert">
           <img src="/images/check-circle.svg">
-          <span>Sugestão enviada com sucesso!</span>
+          <span>Perfil atualizado com sucesso!</span>
         </div>
       <% } %>
       <div class="field-wrapper">
@@ -171,7 +136,7 @@
       </div>
       <div class="field-wrapper">
         <label for="password">Senha anterior</label><br>
-        <input type="password" minlength="8" maxlength="50" name="password-old" id="password-old" required />
+        <input type="password" minlength="1" maxlength="50" name="password_old" id="password-old" required />
         <span class="erro-msg" id="password-old-erro"><%= erros.password_old %></span>
       </div>
       <div class="field-wrapper">
@@ -194,12 +159,12 @@
   </form>
 </div>
 
-<%# Script do slider e validador do formualário %>
+<%# Script do validador do formualário %>
 <script type="text/javascript">
   // Valida o formulário antes de enviar
   const registrationForm = document.querySelector('form#registrationForm');
   registrationForm.addEventListener('submit', (e) => {
-    if(!nameValidator() || !passwordValidator() || !passwordConfirmValidator() || !emailValidator() || !passwordOldValidator()){
+    if(!nameValidator() || !passwordValidator() || !passwordConfirmValidator() || !emailValidator()){
       e.preventDefault();
     }
   });
@@ -214,11 +179,6 @@
     document.querySelector("span#name-erro").innerHTML = '';
   });
 
-  // Verificação do campo password antigo
-  const passwordOld = document.querySelector("input#password-old");
-  passwordOld.addEventListener('blur', () => {
-    passwordOldValidator();
-  });
   // Remove mensagem de erro
   passwordOld.addEventListener('focus', () => {
     document.querySelector("span#password-old-erro").innerHTML = '';
@@ -264,7 +224,6 @@
     else {
       return true;
     }
-
   }
 
   function emailValidator() {
@@ -275,17 +234,6 @@
     else {
       document.querySelector("span#email-erro").innerHTML = 'Endereço de e-mail inválido!';
       return false;
-    }
-  }
-
-  function passwordOldValidator(){
-    if (passwordOld.value != <%= user.password %>){
-      document.querySelector("span#password-old-erro").innerHTML = 'Senha incorreta!';
-      return false;
-    }
-    else {
-      document.querySelector("span#password-old-erro").innerHTML = '';
-      return true;
     }
   }
 

@@ -13,20 +13,21 @@
     </div>
     <div class="search">
       <div class="s-bar">
-        <form id="search" action="/title/gallery" method="get">
+        <form id="search" action="/title/search" method="get">
           <input
             type="text"
-            id="search"
-            name="search"
+            id="title"
+            name="title"
             placeholder="Buscar por um filme, série ou anime..."
           />
           <input type="submit" value="Pesquisar" />
         </form>
       </div>
-      <span
-        >Exemplo: <a href="/title/gallery?search=Forrest%20Gump">Forrest Gump</a>,
-        <a href="/title/gallery?search=Vingadores">Vingadores</a>,
-        <a href="/title/gallery?search=Ligada%20da%20Justiça">Liga da Justiça</a>
+      <span>
+        Exemplo:
+        <a href="/title/search?title=Batman">Batman</a>,
+        <a href="/title/search?title=La%20casa%20de%20papel">La casa de papel</a>,
+        <a href="/title/search?title=Dragon%20Ball">Dragon Ball</a>
       </span>
     </div>
   </div>

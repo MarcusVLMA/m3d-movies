@@ -19,6 +19,7 @@ function createTitle(titleInfo) {
   }
 }
 
+
 function _getCommentaries(title_id) {
   const commentaries = db
     .get("title_commentaries")
@@ -54,22 +55,56 @@ function getTitle(id) {
   }
 }
 
-function _filterTitle(title, name) {
-  if (name) {
-    const titleNameToSearch = title.title.toLowerCase();
-    const nameToSearch = name.toLowerCase();
+function _filterTitle(title, searchParams = null) {
+  if (searchParams) {
+    const properties = Object.keys(searchParams);
 
-    return titleNameToSearch.includes(nameToSearch);
+    let response = true;
+    for (let i = 0; i < properties.length; i++) {
+      let propertyToSearch = title[properties[i]];
+      if (typeof propertyToSearch === "string") {
+        propertyToSearch = propertyToSearch.toLowerCase();
+      }
+
+      let providedValue = searchParams[properties[i]];
+      if (typeof providedValue === "string") {
+        providedValue = providedValue.toLowerCase();
+      }
+
+      if (!propertyToSearch.includes(providedValue)) {
+        response = false;
+        break;
+      }
+    }
+    return response;
   } else {
     return true;
   }
+  // if (name) {
+  //   const titleNameToSearch = title.title.toLowerCase();
+  //   const nameToSearch = name.toLowerCase();
+
+  //   return titleNameToSearch.includes(nameToSearch);
+  // } else {
+  //   return true;
+  // }
+}
+
+function getTitlesPending() {
+  const title = db.get("titles").find({ status:"pending" }).value();
+  return title;
+}
+
+function getTitlePending(id) {
+  const title = db.get("titles").find({ id, status:"pending" }).value();
+  return title;
 }
 
 function findTitle(searchParams) {
   if (searchParams) {
     const title = db.get("titles").find(searchParams).value();
     if (title) {
-      const commentaries = getCommentaries(title.id);
+      const commentaries = _getCommentaries(title.id);
       return {
         ...title,
         commentaries,
@@ -94,16 +129,16 @@ function _getMoviesAmountInfos(name) {
   };
 }
 
-function searchTitles(name, page) {
-  const moviesAmountInfos = _getMoviesAmountInfos(name);
-  if(page > moviesAmountInfos.totalPages){
-    page = moviesAmountInfos.totalPages-1;
+function searchTitles(searchParams, page) {
+  const moviesAmountInfos = _getMoviesAmountInfos(searchParams);
+  if (page > moviesAmountInfos.totalPages) {
+    page = moviesAmountInfos.totalPages - 1;
   }
   const offset = (page - 1) * MOVIES_PER_PAGE;
 
   const titles = db
     .get("titles")
-    .filter((title) => _filterTitle(title, name))
+    .filter((title) => _filterTitle(title, searchParams))
     .slice(offset, offset + MOVIES_PER_PAGE)
     .value();
 
@@ -128,9 +163,63 @@ function updateTitle(titleInfo) {
   return updatedTitle;
 }
 
+function removeTitle(titleId) {
+  db.get("titles")
+  .remove({ id: titleId })
+  .write();
+
+  db.get("title_commentaries")
+  .remove({ title_id: titleId })
+  .write();
+}
+
+function removeCommentaries(userId) {
+  db.get("title_commentaries")
+  .remove({ profile_id: userId })
+  .write();
+}
+
+function countTitle(searchParams) {
+  if (searchParams) {
+    const titles = db.get("titles").find(searchParams).value();
+    return titles ? Object.keys(titles).length : 0;
+  } else {
+    return 0;
+  }
+}
+
+function titleAvaliationMean(title_id) {
+  const aval = db.get("avaliation").filter({ title_id }).value();
+  let med = 0;
+  aval.forEach((avaliation) => {
+    med += parseFloat(avaliation.entry);
+  });
+  med = med/aval.length;
+  return med;
+}
+
+function addAvaliation(avaliationInfo) {
+  const addAvaliation = db.get("avaliation").push(avaliationInfo).last().write();
+
+  return addAvaliation;
+}
+
+function userAvaliationGet(title_id, user_id) {
+  const aval = db.get("avaliation").filter({ title_id}).find({ user_id }).value();
+  return parseFloat(aval.entry)*10;
+}
+
 module.exports = {
   createTitle,
   getTitle,
   searchTitles,
   updateTitle,
+  getTitlesPending,
+  getTitlePending,
+  removeTitle,
+  removeCommentaries,
+  countTitle,
+  titleAvaliationMean,
+  addAvaliation,
+  userAvaliationGet,
 };

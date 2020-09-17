@@ -1,12 +1,25 @@
-window.addEventListener('load', () => {
-  if (localStorage.getItem('theme') === 'high-contrast') {
-    setTheme('high-contrast');
-  } else {
-    setTheme('common');
-  }
-  // Recupera o tamanho da fonte salva
-  setFontSize(parseInt(localStorage.getItem('fontSize')));
-});
+// Define o tema
+if (localStorage.getItem('theme') === 'high-contrast') {
+  setTheme('high-contrast');
+} else {
+  setTheme('common');
+}
+// Recupera o tamanho da fonte salva
+setFontSize(parseInt(localStorage.getItem('fontSize')));
+
+document.onreadystatechange = function(e)
+{
+    if (document.readyState === 'complete')
+    {
+      if (localStorage.getItem('theme') === 'high-contrast') {
+        setTheme('high-contrast');
+      } else {
+        setTheme('common');
+      }
+      // Recupera o tamanho da fonte salva
+      setFontSize(parseInt(localStorage.getItem('fontSize')));
+    }
+};
 
 // Troca o tema
 document.querySelector("a.contrast").addEventListener('click', () => {

@@ -2,40 +2,35 @@ var express = require('express');
 var router = express.Router();
 // Inporta o controlador para as rotas user
 const userController = require("../controllers/userController");
+// Controle de autenticação
+const { authenticated,
+        unauthenticated,
+      } = require("../middlewares/authentication");
 
 // Solicitação GET para o perfil do usuário.
-router.get('/', function(req, res) {
-  res.send('Solicitação GET para o perfil do usuário');
+router.get('/', authenticated(), function(req, res) {
+  res.redirect('/profile');
 });
 
 // Solicitação GET para a página de cadastro.
-router.get("/registration", userController.registrationGet);
+router.get("/registration", unauthenticated(), userController.registrationGet);
 
 // Verfica se o e-mail ja existe
 router.get("/registration/emailAvailable/:userEmail", userController.emailAvailable);
 
 // Solicitação POST para registrar usuário.
-router.post("/registration", userController.registrationPost);
-
-// Solicitação GET para a galeria.
-router.get('galery', function(req, res) {
-  res.send('Solicitação GET para a galeria');
-});
-
-// Solicitação POST para adicionar a galeria.
-router.post('galery/:id/add', function(req, res) {
-  res.send('Solicitação POST para adicionar a galeria');
-});
-
-// Solicitação POST para remover da galeria.
-router.post('galery/:id/remove', function(req, res) {
-  res.send('Solicitação POST para remover da galeria');
-});
+router.post("/registration", unauthenticated(), userController.registrationPost);
 
 // Solicitação GET para a página de Edição de Perfil do Usuário
-router.get('/profile', userController.userProfileEditGet)
+router.get('/profile', authenticated(), userController.userProfileEditGet)
 
 // Solicitação POST para editar as informações do usuário.
-router.post("/profile", userController.userProfileEditPost);
+router.post("/profile", authenticated(),userController.userProfileEditPost);
+
+// Solicitação POST para login
+router.post('/sigin', unauthenticated(), userController.siginPost);
+
+// Solicitação GET para deslogar
+router.get('/sigout', authenticated(), userController.sigoutGet);
 
 module.exports = router;

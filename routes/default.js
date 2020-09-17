@@ -11,11 +11,4 @@ router.get("/", function (req, res) {
 // Solicitação GET para a página principal
 router.get("/home", defaultController.home);
 
-// Solicitação GET para a página de busca.
-router.get("/search/:query?", function (req, res) {
-  res.send(
-    "Solicitação GET para a página de busca <br>" + "Query: " + req.params.query
-  );
-});
-
 module.exports = router;
