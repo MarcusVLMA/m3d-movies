@@ -28,6 +28,7 @@ exports.titles = async (req, res) => {
 
   const searchType = req.query.type;
   const searchName = req.query.title;
+  const orderBy = req.query.orderby;
 
   const searchParams = { status: "accepted" };
 
@@ -39,7 +40,7 @@ exports.titles = async (req, res) => {
     searchParams.type = searchType;
   }
 
-  const titles = TitleAccess.searchTitles(searchParams, page);
+  const titles = TitleAccess.searchTitles(searchParams, page, orderBy);
 
   const pageTitle = "Busca";
   res.render("search", {
