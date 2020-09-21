@@ -6,6 +6,8 @@ const allCommentsContainer = document.querySelector("div.comments");
 const commentForm = document.querySelector("form#new-comment-form");
 const commentText = document.querySelector("textarea#new-comment");
 
+const deleteCommentaryIcon = document.querySelector("i#delete-commentary-icon");
+
 function addTitleToUserGallery(titleId) {
   fetch("/user/add/gallery", {
     method: "POST",
@@ -114,12 +116,26 @@ commentForm.addEventListener("submit", (event) => {
       commentContainer.appendChild(commentContent);
 
       allCommentsContainer.appendChild(commentContainer);
-      // <div class="comment-container">
-      //   <div class="comment-content">
-      //     <h3><%= commentaries[i].profile.name %></h3>
-      //     <span><%= commentaries[i].date %></span>
-      //     <p><%= commentaries[i].text %></p>
-      //   </div>
-      // </div>
     });
 });
+
+function removeCommentary(commentaryId) {
+  fetch(`/title/commentary/${commentaryId}`, {
+    method: "DELETE",
+    body: JSON.stringify({ commentaryId: commentaryId.toString() }),
+    headers: { "Content-Type": "application/json" },
+  })
+    .then((response) => response.json())
+    .then(() => {
+      modalText.innerHTML = "Comentário removido com sucesso!";
+      notificationModal.style.display = "block";
+      window.setTimeout(() => {
+        modalWrapper.style.maxHeight = "300px";
+
+        window.setTimeout(() => {
+          notificationModal.style.display = "none";
+          window.location.reload();
+        }, 2000);
+      }, 50);
+    });
+}

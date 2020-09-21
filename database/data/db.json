@@ -1,5 +1,20 @@
 {
   "sessions": [
+    {
+      "_id": "ngc47ny47edjOByoX1m4hmZCptIv-11_",
+      "session": {
+        "cookie": {
+          "originalMaxAge": null,
+          "expires": null,
+          "httpOnly": true,
+          "path": "/"
+        },
+        "passport": {
+          "user": "1600040142186"
+        }
+      },
+      "expires": 1600735093313
+    }
   ],
   "profiles": [
     {
@@ -11078,49 +11093,35 @@
       "profile_id": "1600040142186",
       "text": "Muito bom, nota 10",
       "date": "2020-08-16",
-      "id": 1600225641867
+      "id": "1600225641867"
     },
     {
       "title_id": "1599102452403",
       "profile_id": "1600040142186",
       "text": "Na verdade não entendi nada",
       "date": "2020-08-16",
-      "id": 1600225692654
+      "id": "1600225692654"
     },
     {
       "title_id": "1599102452403",
       "profile_id": "1600040142186",
       "text": "Na verdade é bom sim",
       "date": "2020-08-16",
-      "id": 1600225720213
-    },
-    {
-      "title_id": "1599102452403",
-      "profile_id": "1600040142186",
-      "text": ".",
-      "date": "2020-08-16",
-      "id": 1600225822816
-    },
-    {
-      "title_id": "1599102452403",
-      "profile_id": "1600040142186",
-      "text": ".",
-      "date": "2020-08-16",
-      "id": 1600225825214
-    },
-    {
-      "title_id": "1599102452403",
-      "profile_id": "1600040142186",
-      "text": ".",
-      "date": "2020-08-16",
-      "id": 1600225852952
+      "id": "1600225720213"
     },
     {
       "title_id": "1599102452403",
       "profile_id": "1600040142186",
       "text": "HOrrivel",
       "date": "2020-08-16",
-      "id": 1600225879146
+      "id": "1600225879146"
+    },
+    {
+      "title_id": "1599102452403",
+      "profile_id": "1600040142186",
+      "text": "Muito médio",
+      "date": "2020-08-20",
+      "id": "1600648067937"
     }
   ],
   "profile_gallery": [

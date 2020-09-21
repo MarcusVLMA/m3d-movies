@@ -290,6 +290,15 @@ function addCommentary(titleId, profileId, text) {
   return createdCommentary;
 }
 
+function removeCommentary(commentaryId) {
+  try {
+    db.get("title_commentaries").remove({ id: commentaryId }).write();
+    return true;
+  } catch (error) {
+    return false;
+  }
+}
+
 function countTitle(searchParams) {
   if (searchParams) {
     const titles = db.get("titles").find(searchParams).value();
@@ -309,4 +318,10 @@ module.exports = {
   removeTitle,
   removeCommentaries,
   countTitle,
+  allGalleryTitleIds,
+  addCommentary,
+  addTitleToUserGallery,
+  galleryTitles,
+  removeTitleFromUserGallery,
+  removeCommentary,
 };

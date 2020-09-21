@@ -150,6 +150,14 @@
       <h3><%= commentaries[i].profile.name %></h3>
       <span><%= commentaries[i].date %></span>
       <p><%= commentaries[i].text %></p>
+
+      <% if (user && user.role == 'ADMIN') {%>
+      <i
+        id="delete-commentary-icon"
+        class="fas fa-trash"
+        onclick="removeCommentary(<%= commentaries[i].id %>)"
+      ></i>
+      <% } %>
     </div>
   </div>
   <% } %>
