@@ -17,6 +17,13 @@ router.get("/search/:page?", titleController.titles);
 router.get("/:id", titleController.title);
 
 // Solicitação POST para criar comentário.
-router.post("/commentary", titleController.titleCommentary);
+router.post("/commentary", authenticated(), titleController.titleCommentary);
+
+// Solicitação DELETE para deletar comentário.
+router.delete(
+  "/commentary/:commentaryId",
+  authenticated(),
+  titleController.deleteTitleCommentary
+);
 
 module.exports = router;
