@@ -48,6 +48,38 @@ exports.titles = async (req, res) => {
     currentPage: page,
     searchParams: formatSearchParamsToView(searchParams),
     isUserGallery: false,
+    isAdm: false,
+    ...titles,
+  });
+};
+
+exports.titlesPending = async (req, res) => {
+  
+  const page = !parseInt(req.params.page) ? 1 : parseInt(req.params.page);
+
+  const searchType = req.query.type;
+  const searchName = req.query.title;
+
+  const searchParams = { status: "pending" };
+
+  if (searchName) {
+    searchParams.title = searchName;
+  }
+
+  if (searchType) {
+    searchParams.type = searchType;
+  }
+
+  const titles = TitleAccess.searchTitles(searchParams, page);
+
+  const pageTitle = "Busca";
+  res.render("search", {
+    title: pageTitle,
+    user: req.user,
+    currentPage: page,
+    searchParams: formatSearchParamsToView(searchParams),
+    isUserGallery: false,
+    isAdm: true,
     ...titles,
   });
 };

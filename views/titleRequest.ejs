@@ -131,9 +131,11 @@
         </div>
         <div class="field-container">
           <label for="trailer-path">Link para o trailer</label>
-          <input type="url" minlength="10" name="trailer_path" id="trailer-path" required
+          <input type="url" minlength="10" name="trailer_path" id="trailer-path"
           <% if(titlePending) { %>
-            value= "<%= titlePending.trailer_path %>"
+            value= "<%= titlePending.trailer_path %>" 
+          <% } else { %>
+            required
           <% } %>
           />
         </div>

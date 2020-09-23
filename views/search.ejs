@@ -3,37 +3,41 @@
 
 <%- contentFor('main') %>
 <div class="main-wrapper">
-  <aside>
-    <div class="filters-header"></div>
-    <div class="filters-container">
-      <h3>Filtros</h3>
-      <div class="filters">
-        <div class="filter">
-          <span>Gênero</span>
-          <i class="fas fa-chevron-down"></i>
+  <% if (isAdm) {%>   
+  <%} else {%>
+    <aside>
+      <div class="filters-header"></div>
+      <div class="filters-container">
+        <h3>Filtros</h3>
+        <div class="filters">
+          <div class="filter">
+            <span>Gênero</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="filter">
+            <span>Tipos de Mídia</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="filter">
+            <span>Data de Lançamento</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="filter">
+            <span>Idioma</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="filter">
+            <span>Avaliação</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
         </div>
-        <div class="filter">
-          <span>Tipos de Mídia</span>
-          <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="filter">
-          <span>Data de Lançamento</span>
-          <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="filter">
-          <span>Idioma</span>
-          <i class="fas fa-chevron-down"></i>
-        </div>
-        <div class="filter">
-          <span>Avaliação</span>
-          <i class="fas fa-chevron-down"></i>
+        <div class="filter-button-wrapper">
+          <button type="submit" value="Submit">Aplicar</button>
         </div>
       </div>
-      <div class="filter-button-wrapper">
-        <button type="submit" value="Submit">Aplicar</button>
-      </div>
-    </div>
-  </aside>
+    </aside>
+  <%}%>
+
   <div class="content">
     <div class="content-header">
       <span><%= totalCount %> resultados encontrados</span>
@@ -56,9 +60,22 @@
           />
         </div>
         <div class="movie-content">
-          <a href="/title/<%= titles[i].id %>"
-            ><h3><%= titles[i].title %></h3>
-          </a>
+          <%if (isAdm) {%>
+            <a href="request/<%= titles[i].id %>">
+              <h3><%= titles[i].title %></h3>
+            </a>
+            <a href="request/<%= titles[i].id %>">
+              <h3>ID: <%= titles[i].id %></h3>
+            </a>
+            <form id="validation" method="post">
+              <input class="btn-submit" type="submit" value="Aceitar">
+              <input class="btn-reject" type="submit" value="Recusar">
+            </form>
+          <% } else { %>
+            <a href="/title/<%= titles[i].id %>"
+              ><h3><%= titles[i].title %></h3>
+            </a>
+          <% } %>
           <span><%= titles[i].release_date %></span>
           <p><%= titles[i].description %></p>
         </div>
@@ -86,3 +103,6 @@
     </div>
   </div>
 </div>
+
+
+
