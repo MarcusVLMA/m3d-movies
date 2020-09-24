@@ -419,6 +419,7 @@ footer {
   position: relative;
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
 .comment-content h3 {

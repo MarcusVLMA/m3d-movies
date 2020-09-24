@@ -23,12 +23,22 @@
     </div>
   </aside>
   <div class="content-form">
-    <% if(notification) { %> 
-    <div class="alert-success" role="alert">
+    <% if(titlePending) { %>
+    <div id="notificationModal" class="modal">
+      <div class="modal-wrapper">
+        <div class="modal-content">
+          <img class="check-circle" src="/images/check-circle.svg" />
+          <p class="modal-text"></p>
+          <button id="btnModal">Continuar</button>
+        </div>
+      </div>
+    </div>
+    <% } else { %>
+    <div id="alertSuccess" class="alert-success" role="alert">
       <img src="/images/check-circle.svg">
       <span>Sugestão enviada com sucesso!</span>
     </div>
-    <% } %> 
+    <% } %>
     <div class="title-container">
       <% if(titlePending) { %>
         <h1 class="title">Validação de título enviado</h1>
@@ -37,46 +47,50 @@
       <% } %>
       
     </div>          
-    <form id="validation" method="post">
+    <form id="titleForm" method="post">
       <fieldset>
         <div class="field-container">
           <label for="title">Título original</label>
-          <input type="text" minlength="4" maxlength="50" name="title" id="title" required 
+          <input type="text" maxlength="50" name="title" id="title" requireed 
           <% if(titlePending) { %>
             value= "<%= titlePending.title %>"
           <% } %>
           />
+          <span class="erro-msg" id="title-erro"></span>
         </div>
 
         <div class="field-container genre-content-type">
           <div class="field-genre">
             <label for="genre">Gênero</label><br>
             <select name="genre" id="genre" >
-              <% if(titlePending) { %>
-                <option value="<%=titlePending.genre%>"><%=titlePending.genre%></option>
-              <% } else { %>
-                <option value="">-</option>
-                <option value="Ação">Ação</option>
-                <option value="Animação">Animação</option>
-                <option value="Aventura">Aventura</option>
-                <option value="Comédia">Comédia</option>
-                <option value="Documentário">Documentário</option>
-                <option value="Fantasia">Fantasia</option>
-                <option value="Faroeste – Western">Faroeste – Western</option>
-                <option value="Ficção científica">Ficção científica</option>
-                <option value="Guerra">Guerra</option>
-                <option value="Romance">Romance</option>
-                <option value="Suspense">Suspense</option>
-                <option value="Terror">Terror</option>
-                <option value="Tragédia/Drama">Tragédia/Drama</option>
-              <% } %>
-              
+              <option value="">-</option>
+              <% genres = [ "Ação", 
+                            "Animação", 
+                            "Aventura", 
+                            "Comédia", 
+                            "Documentário", 
+                            "Fantasia",
+                            "aroeste – Western",
+                            "Ficção científica",
+                            "Guerra",
+                            "Romance",
+                            "Suspense",
+                            "Terror",
+                            "Tragédia/Drama"];
+              genres.forEach(genre => {  %>
+                <option value="<%=genre%>"
+                  <% if(titlePending && titlePending.genre === genre) { %>
+                    selected
+                  <% } %>
+                  ><%=genre%></option>
+              <% }); %>
             </select>
+            <br><span class="erro-msg" id="genre-erro"></span>
           </div>
           <div class="field-content-type">
             <label>Tipo de conteúdo</label>
             <div class="radio-container">
-              <input type="radio" id="filme" name="content_type" value="filme" required
+              <input type="radio" id="filme" name="content_type" value="filme" requireed
               <% if(titlePending) { %>
                 <% if(titlePending.type == "filme") { %>
                   checked
@@ -84,7 +98,7 @@
               <% } %>
               >
               <label for="filme">Filme</label>
-              <input type="radio" id="serie" name="content_type" value="serie" required
+              <input type="radio" id="serie" name="content_type" value="serie" requireed
               <% if(titlePending) { %>
                 <% if(titlePending.type == "serie") { %>
                   checked
@@ -92,7 +106,7 @@
               <% } %>
               >
               <label for="serie">Série</label>
-              <input type="radio" id="animacao" name="content_type" value="animacao" required
+              <input type="radio" id="animacao" name="content_type" value="animacao" requireed
               <% if(titlePending) { %>
                 <% if(titlePending.type == "animacao") { %>
                   checked
@@ -100,92 +114,86 @@
               <% } %>
               >
               <label for="animacao">Animação</label>
+              <br><span class="erro-msg" id="type-erro"></span>
             </div>
           </div>
         </div>
         <div class="field-container">
-          <label for="general-view">Visão geral sobre o título</label>
-          <textarea id="general-view" name="description" minlength="20" rows="8" >
-            <%_ if(titlePending) { _%>
-              <%=titlePending.description_%>
-            <%_ } _%>
-          </textarea>
+          <label for="description">Visão geral sobre o título</label>
+          <textarea id="description" name="description" rows="8" > <%_ if(titlePending) { _%><%=titlePending.description_%>
+            <%_ } _%> </textarea>
+          <span class="erro-msg" id="description-erro"></span>
         </div>
         <div class="field-container running-time-release-date">
           <div class="field-running-time">
             <label for="running-time">Tempo de duração</label><br>
-            <input type="time" name="running_time" id="running-time" required
+            <input type="time" name="running_time" id="running-time" requireed
             <% if(titlePending) { %>
               value= "<%= titlePending.running_time %>"
             <% } %>
             >
+          <br><span class="erro-msg" id="time-erro"></span>
           </div>
           <div class="field-release-date">
             <label for="release-date">Data de estreia</label><br>
-            <input type="date" name="release_date" id="release-date" required
+            <input type="date" name="release_date" id="release-date" requireed
             <% if(titlePending) { %>
               value= "<%= titlePending.release_date %>"
             <% } %>
             >
+            <br><span class="erro-msg" id="date-erro"></span>
           </div>              
         </div>
         <div class="field-container">
           <label for="trailer-path">Link para o trailer</label>
-          <input type="url" minlength="10" name="trailer_path" id="trailer-path"
+
+          <input type="url" name="trailer_path" id="trailer-path"
+
           <% if(titlePending) { %>
             value= "<%= titlePending.trailer_path %>" 
           <% } else { %>
             required
           <% } %>
           />
+        <span class="erro-msg" id="trailer-erro"></span>
         </div>
         <div class="field-container">
           <label for="poster-path">Link para imagem da capa</label>
-          <input type="url" minlength="10" name="poster_path" id="poster-path" required
+          <input type="url" name="poster_path" id="poster-path" requireed
           <% if(titlePending) { %>
             value= "<%= titlePending.poster_path %>"
           <% } %>
           />
+        <span class="erro-msg" id="poster-erro"></span>
         </div>
         <div class="field-container">
           <label for="backdrop-path">Link para imagem de fundo</label>
-          <input type="url" minlength="10" name="backdrop_path" id="backdrop-path" required
+          <input type="url" name="backdrop_path" id="backdrop-path" requireed
           <% if(titlePending) { %>
             value= "<%= titlePending.backdrop_path %>"
           <% } %>
           />
+        <span class="erro-msg" id="backdrop-erro"></span>
         </div>
       </fieldset>
       <% if(titlePending) { %>
-        <input class="btn-submit" type="submit" value="Aceitar">
-        <input class="btn-reject" type="submit" value="Recusar">
+        <button id="accBtn" type="submit" class="btn-submit">
+          <span id="btnAccText">Aceitar</span>
+          <img id="loadAccIcon" class="loading" alt="carregando" src="/images/loading.svg" />
+        </button>
+        <button id="rejBtn" type="submit" class="btn-reject">
+          <span id="btnRejText">Recusar</span>
+          <img id="loadRejIcon" class="loading" alt="carregando" src="/images/loading.svg" />
+        </button>
       <% } else { %>
-        <input class="btn-submit" type="submit" value="Enviar">
+        <button id="subBtn" type="submit" class="btn-submit">
+          <span id="btnSubText">Enviar</span>
+          <img id="loadSubIcon" class="loading" alt="carregando" src="/images/loading.svg" />
+        </button>
       <% } %>
     </form>
   </div>
 </div>
 
-<%# Script de notificação%>
-<% if(notification) { %> 
-<script type="text/javascript">
-  window.setTimeout(() => {
-    const hint = document.querySelector("div.alert-success");
-    hint.style.maxHeight = '0';
-    hint.style.visibility = 'hidden';
-  },5000);
-</script>
-<% } %>
-
-<% if(titlePending) { %>
-  <script type="text/javascript">
-    document.querySelector("input.btn-reject").addEventListener("click", () => {
-      const formValidation = document.querySelector("form#validation");
-      formValidation.action = "/admin/request/reject/<%= titlePending.id %>";
-    });
-    document.querySelector("input.btn-submit").addEventListener("click", () => {
-      const formValidation = document.querySelector("form#validation");
-      formValidation.action = "/admin/request/accept/<%= titlePending.id %>";
-    });
-  </script>
-<% } %>
+<%# Script de controle assincrono %>
+<script type="text/javascript" src="/javascripts/titleRequest.js"></script>

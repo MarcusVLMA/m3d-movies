@@ -2,34 +2,16 @@
 <link rel="stylesheet" type="text/css" href="/stylesheets/search.css" />
 
 <%- contentFor('main') %>
-<div class="main-wrapper">
-  <% if (isAdm) {%>   
-  <%} else {%>
-    <aside>
-      <div class="filters-header"></div>
-      <div class="filters-container">
-        <h3>Filtros</h3>
-        <div class="filters">
-          <div class="filter">
-            <span>Gênero</span>
-            <i class="fas fa-chevron-down"></i>
-          </div>
-          <div class="filter">
-            <span>Tipos de Mídia</span>
-            <i class="fas fa-chevron-down"></i>
-          </div>
-          <div class="filter">
-            <span>Data de Lançamento</span>
-            <i class="fas fa-chevron-down"></i>
-          </div>
-          <div class="filter">
-            <span>Idioma</span>
-            <i class="fas fa-chevron-down"></i>
-          </div>
-          <div class="filter">
-            <span>Avaliação</span>
-            <i class="fas fa-chevron-down"></i>
-          </div>
+
+<div id="search-main-wrapper" class="main-wrapper">
+  <aside>
+    <div class="filters-header"></div>
+    <div class="filters-container">
+      <h3>Filtros</h3>
+      <div class="filters">
+        <div class="filter">
+          <span>Gênero</span>
+          <i class="fas fa-chevron-down"></i>
         </div>
         <div class="filter-button-wrapper">
           <button type="submit" value="Submit">Aplicar</button>
@@ -41,10 +23,10 @@
   <div class="content">
     <div class="content-header">
       <span><%= totalCount %> resultados encontrados</span>
-      <select name="cars" id="cars">
+      <select name="orderby-select" id="orderby-select">
+        <option value="avaliation">Avaliação</option>
         <option value="a-z">Título A-Z</option>
         <option value="z-a">Título Z-A</option>
-        <option value="avaliation">Avaliação</option>
         <option value="release">Lançamento</option>
       </select>
     </div>
@@ -104,5 +86,5 @@
   </div>
 </div>
 
-
+<script type="text/javascript" src="/javascripts/search.js"></script>
 
