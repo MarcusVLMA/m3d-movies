@@ -53,7 +53,7 @@
           <i class="fas fa-star"></i>
           <div class="details-actions-button-tooltip-favorites">
             <div class="slidecontainer">
-              <input type="range" min="0" max="100" value="<%= aval%>" class="slider" id="myRange">
+              <input type="range" min="0" max="100" value="<%= aval%>" class="slider" id="myRange" oninput="(event)=>postAvaliation(event, <%= title_id %>,<%= type %>)">
               <span>Nota: <span id="demo"></span></span>
             </div>
           </div>
@@ -139,10 +139,16 @@
   var output = document.getElementById("demo");
   output.innerHTML = parseFloat(slider.value)/10;
 
-  slider.oninput = async function () {
-    output.innerHTML = parseFloat(this.value) / 10;
-    await fetch('/title/<%= title_id %>', {
-      method: 'Post'
+  function postAvaliation(event, title_id, type) {
+    console.log("Teste");
+    output.innerHTML = parseFloat(event.target.value) / 10;
+    fetch('/title/'+title_id, {
+      method: 'Post',
+      body: JSON.stringify({
+        entry: event.target.value,
+        title_id: title_id,
+        type: type,
+      }),
     }).then(response => {
       if (!response.ok) {
         throw new Error('Erro de conexão!');
@@ -150,4 +156,21 @@
       return response.json();
     })
   }
+
+  /*slider.oninput = async function (event) {
+    output.innerHTML = parseFloat(this.value) / 10;
+    fetch('/title/<%= title_id %>', {
+      method: 'Post',
+      body: JSON.stringify({
+        entry: event.target.value,
+        title_id: <%= title_id %>,
+        type: <%= type %>,
+      }),
+    }).then(response => {
+      if (!response.ok) {
+        throw new Error('Erro de conexão!');
+      }
+      return response.json();
+    })
+  }*/
 </script>
