@@ -2,7 +2,7 @@
 <link rel="stylesheet" type="text/css" href="/stylesheets/search.css" />
 
 <%- contentFor('main') %>
-<div class="main-wrapper">
+<div id="search-main-wrapper" class="main-wrapper">
   <aside>
     <div class="filters-header"></div>
     <div class="filters-container">
@@ -37,10 +37,10 @@
   <div class="content">
     <div class="content-header">
       <span><%= totalCount %> resultados encontrados</span>
-      <select name="cars" id="cars">
+      <select name="orderby-select" id="orderby-select">
+        <option value="avaliation">Avaliação</option>
         <option value="a-z">Título A-Z</option>
         <option value="z-a">Título Z-A</option>
-        <option value="avaliation">Avaliação</option>
         <option value="release">Lançamento</option>
       </select>
     </div>
@@ -86,3 +86,5 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript" src="/javascripts/search.js"></script>

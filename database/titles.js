@@ -81,6 +81,51 @@ function _filterTitle(title, searchParams = null) {
   }
 }
 
+function _orderTitles(first, second, orderBy) {
+  const orderByTitleName = () => {
+    if (first.title.toLowerCase() < second.title.toLowerCase()) {
+      return orderBy === "a-z" ? -1 : 1;
+    }
+    if (first.title.toLowerCase() > second.title.toLowerCase()) {
+      return orderBy === "a-z" ? 1 : -1;
+    }
+    return 0;
+  };
+
+  const orderByRelease = () => {
+    if (first.release_date < second.release_date) {
+      return 1;
+    }
+    if (first.release_date > second.release_date) {
+      return -1;
+    }
+    return 0;
+  };
+
+  const orderByAvaliation = () => {
+    if (first.vote_average < second.vote_average) {
+      return 1;
+    }
+    if (first.vote_average > second.vote_average) {
+      return -1;
+    }
+    return 0;
+  };
+
+  switch (orderBy) {
+    case "a-z":
+      return orderByTitleName();
+    case "z-a":
+      return orderByTitleName();
+    case "release":
+      return orderByRelease();
+    case "avaliation":
+      return orderByAvaliation();
+    default:
+      return orderByRelease();
+  }
+}
+
 function getTitlesPending() {
   const title = db.get("titles").find({ status: "pending" }).value();
   return title;
@@ -131,7 +176,7 @@ function _getMoviesAmountInfos(searchParams, subset = null) {
   }
 }
 
-function searchTitles(searchParams, page) {
+function searchTitles(searchParams, page, orderBy) {
   const moviesAmountInfos = _getMoviesAmountInfos(searchParams);
   if (page > moviesAmountInfos.totalPages) {
     page = moviesAmountInfos.totalPages - 1;
@@ -141,6 +186,7 @@ function searchTitles(searchParams, page) {
   const titles = db
     .get("titles")
     .filter((title) => _filterTitle(title, searchParams))
+    .sort((first, second) => _orderTitles(first, second, orderBy))
     .slice(offset, offset + MOVIES_PER_PAGE)
     .value();
 
@@ -155,7 +201,7 @@ function searchTitles(searchParams, page) {
   };
 }
 
-function galleryTitles(profileId, searchParams, page) {
+function galleryTitles(profileId, searchParams, page, orderBy) {
   const profileGallery = db
     .get("profile_gallery")
     .find({ profile_id: profileId })
@@ -168,9 +214,9 @@ function galleryTitles(profileId, searchParams, page) {
       allTitles.push(findTitle({ id: titleId }));
     });
 
-    const filteredTitles = allTitles.filter((title) =>
-      _filterTitle(title, searchParams)
-    );
+    const filteredTitles = allTitles
+      .filter((title) => _filterTitle(title, searchParams))
+      .sort((first, second) => _orderTitles(first, second, orderBy));
 
     const moviesAmountInfos = _getMoviesAmountInfos(
       searchParams,
@@ -290,6 +336,15 @@ function addCommentary(titleId, profileId, text) {
   return createdCommentary;
 }
 
+function removeCommentary(commentaryId) {
+  try {
+    db.get("title_commentaries").remove({ id: commentaryId }).write();
+    return true;
+  } catch (error) {
+    return false;
+  }
+}
+
 function countTitle(searchParams) {
   if (searchParams) {
     const titles = db.get("titles").find(searchParams).value();
@@ -309,4 +364,10 @@ module.exports = {
   removeTitle,
   removeCommentaries,
   countTitle,
+  allGalleryTitleIds,
+  addCommentary,
+  addTitleToUserGallery,
+  galleryTitles,
+  removeTitleFromUserGallery,
+  removeCommentary,
 };

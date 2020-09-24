@@ -64,7 +64,7 @@
             usuários
           </div>
         </div>
-        <% if(titleIsInUserGallery) { %>
+        <% if(user) {%> <% if(titleIsInUserGallery) { %>
         <div
           id="details-actions-button"
           class="details-actions-button"
@@ -118,6 +118,7 @@
             </svg>
           </div>
         </div>
+        <% } %>
         <a target="_blank" rel="noopener noreferrer" href="<%= trailer_path %>">
           <div class="details-actions-trailer">
             <i class="fas fa-play"></i>Reproduzir trailer
@@ -133,6 +134,7 @@
 </div>
 <div class="comments">
   <h2>Comentários</h2>
+  <% if(user) {%>
   <div class="new-comment-container">
     <form id="new-comment-form" name="new-comment-form">
       <label for="new-comment">Faça uma comentário!</label>
@@ -144,12 +146,20 @@
     </form>
     <button type="submit" form="new-comment-form" value="Submit">Enviar</button>
   </div>
-  <% for(var i=0; i < commentaries.length; i++) { %>
+  <% } %> <% for(var i=0; i < commentaries.length; i++) { %>
   <div class="comment-container">
     <div class="comment-content">
       <h3><%= commentaries[i].profile.name %></h3>
       <span><%= commentaries[i].date %></span>
       <p><%= commentaries[i].text %></p>
+
+      <% if (user && user.role == 'ADMIN') {%>
+      <i
+        id="delete-commentary-icon"
+        class="fas fa-trash"
+        onclick="removeCommentary(<%= commentaries[i].id %>)"
+      ></i>
+      <% } %>
     </div>
   </div>
   <% } %>
