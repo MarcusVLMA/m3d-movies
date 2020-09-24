@@ -1,5 +1,3 @@
-const { json } = require("express");
-
 // Requer que o usuário esteja logado
 function authenticated () {  
   return (req, res, next) => {
