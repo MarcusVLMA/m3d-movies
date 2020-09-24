@@ -5,7 +5,7 @@ exports.title = async (req, res) => {
   const title = await TitleAccess.getTitle(req.params.id);
   let mean = 0;
   mean = await TitleAccess.titleAvaliationMean(req.params.id);
-  const aval = await TitleAccess.userAvaliationGet(title.id, req.user.id);
+  const aval = req.user ? await TitleAccess.userAvaliationGet(title.id, req.user.id) : 0;
 
   const ratingValue = (1 - mean / 10) * 201.06;
   const ratingStyle = `stroke-dashoffset: ${ratingValue}`;

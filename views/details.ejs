@@ -24,46 +24,46 @@
         &nbsp; <%= running_time %>
       </span>
       <div class="details-actions">
-        <div class="details-actions-rating" style="<%= rating_style %>">
-          <svg width="84" height="84">
-            <circle fill="#081C22" r="40" cx="42" cy="42" />
-            <circle
-                    class="ring"
-                    stroke="#1C4027"
-                    stroke-width="4"
-                    fill="transparent"
-                    r="32"
-                    cx="42"
-                    cy="42"
-            />
-            <circle
-                    class="progress-ring"
-                    stroke="#21D07A"
-                    stroke-width="4"
-                    fill="transparent"
-                    r="32"
-                    cx="42"
-                    cy="42"
-            />
-            <text
-                    x="42"
-                    y="49"
-                    text-anchor="middle"
-                    stroke="#ffffff"
-                    stroke-width="2px"
-                    fill="#ffffff"
-                    font-family="Source Sans Pro, sans-serif"
-                    font-size="24px"
-            >
-              <%= mean %>
-            </text>
-          </svg>
-          <div class="details-actions-rating-text">
-            Avaliação<br />
-            dos<br />
-            usuários
+          <div class="details-actions-rating" style="<%= rating_style %>">
+              <svg width="84" height="84">
+                  <circle fill="#081C22" r="40" cx="42" cy="42" />
+                  <circle
+                          class="ring"
+                          stroke="#1C4027"
+                          stroke-width="4"
+                          fill="transparent"
+                          r="32"
+                          cx="42"
+                          cy="42"
+                  />
+                  <circle
+                          class="progress-ring"
+                          stroke="#21D07A"
+                          stroke-width="4"
+                          fill="transparent"
+                          r="32"
+                          cx="42"
+                          cy="42"
+                  />
+                  <text
+                          x="42"
+                          y="49"
+                          text-anchor="middle"
+                          stroke="#ffffff"
+                          stroke-width="2px"
+                          fill="#ffffff"
+                          font-family="Source Sans Pro, sans-serif"
+                          font-size="24px"
+                  >
+                      <%= mean %>
+                  </text>
+              </svg>
+              <div class="details-actions-rating-text">
+                  Avaliação<br />
+                  dos<br />
+                  usuários
+              </div>
           </div>
-        </div>
         <% if(user) {%> <% if(titleIsInUserGallery) { %>
           <div
                   id="details-actions-button"
