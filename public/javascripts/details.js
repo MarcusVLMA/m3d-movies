@@ -33,10 +33,10 @@ function addTitleToUserGallery(titleId) {
           const detailsActionsButtonTooltip = document.querySelector(
             "div#details-actions-button-tooltip-gallery"
           );
-
-          detailsActionsButton.setAttribute("onclick", () =>
-            removeTitleFromUserGallery(titleId)
-          );
+          function removeTitle() {
+            removeTitleFromUserGallery(titleId);
+          }
+          detailsActionsButton.onclick = removeTitle;
           detailsActionsButtonIcon.className = "fas fa-times";
           detailsActionsButtonTooltip.innerHTML = "Remover da galeria";
         }, 2200);
@@ -70,10 +70,10 @@ function removeTitleFromUserGallery(titleId) {
           const detailsActionsButtonTooltip = document.querySelector(
             "div#details-actions-button-tooltip-gallery"
           );
-
-          detailsActionsButton.setAttribute("onclick", () =>
-            addTitleToUserGallery(titleId)
-          );
+          function addTitle() {
+            addTitleToUserGallery(titleId);
+          }
+          detailsActionsButton.onclick = addTitle;
           detailsActionsButtonIcon.className = "fas fa-list";
           detailsActionsButtonTooltip.innerHTML = "Adicionar à galeria";
         }, 2200);

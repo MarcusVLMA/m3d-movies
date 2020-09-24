@@ -10,10 +10,10 @@
           "path": "/"
         },
         "passport": {
-          "user": "1600915234104"
+          "user": "1600966528272"
         }
       },
-      "expires": 1601050109006
+      "expires": 1601053202112
     }
   ],
   "profiles": [
@@ -44,6 +44,13 @@
       "email": "jeovannish@hotmail.com",
       "password": "$2b$10$y7ZJL8cV3F25jjlW0bt9EOYTxxUE9ZGaInOD0uKgyrqRtPnk7JwyS",
       "id": "1600915234104"
+    },
+    {
+      "name": "marcus",
+      "role": "USER",
+      "email": "jeovannish@gmail.com",
+      "password": "$2b$10$4CRs/UYK88IIYMWjQYdJAO25IFkWc699cLDrsmcBaREVEwzU.am1W",
+      "id": "1600966528272"
     }
   ],
   "titles": [
@@ -11164,6 +11171,66 @@
       "entry": 3,
       "user_id": "1600915234104",
       "type": "filme"
+    },
+    {
+      "title_id": "1599102476285",
+      "entry": 6.8,
+      "user_id": "1600915234104",
+      "type": "serie"
+    },
+    {
+      "title_id": "1599102453104",
+      "entry": 5.6,
+      "user_id": "1600915234104",
+      "type": "serie"
+    },
+    {
+      "title_id": "1599102471891",
+      "entry": 6.2,
+      "user_id": "1600915234104",
+      "type": "animacao"
+    },
+    {
+      "title_id": "1599102461022",
+      "entry": 9.2,
+      "user_id": "1600915234104",
+      "type": "animacao"
+    },
+    {
+      "title_id": "1599102483979",
+      "entry": 6.3,
+      "user_id": "1600966528272",
+      "type": "filme"
+    },
+    {
+      "title_id": "1599102475573",
+      "entry": 4.8,
+      "user_id": "1600966528272",
+      "type": "filme"
+    },
+    {
+      "title_id": "1599102476285",
+      "entry": 10,
+      "user_id": "1600966528272",
+      "type": "serie"
+    },
+    {
+      "title_id": "1599102453104",
+      "entry": 2.8,
+      "user_id": "1600966528272",
+      "type": "serie"
+    },
+    {
+      "title_id": "1599102471891",
+      "entry": 8.5,
+      "user_id": "1600966528272",
+      "type": "animacao"
+    },
+    {
+      "title_id": "1599102461022",
+      "entry": 5.2,
+      "user_id": "1600966528272",
+      "type": "animacao"
     }
   ]
 }

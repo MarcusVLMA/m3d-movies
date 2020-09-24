@@ -3,6 +3,9 @@ const { formatSearchParamsToView } = require("./utils");
 
 exports.title = async (req, res) => {
   const title = await TitleAccess.getTitle(req.params.id);
+
+  if(!title) res.redirect("/");
+  
   let mean = 0;
   mean = await TitleAccess.titleAvaliationMean(req.params.id);
   const aval = req.user ? await TitleAccess.userAvaliationGet(title.id, req.user.id) : 0;
