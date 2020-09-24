@@ -9,7 +9,9 @@ exports.title = async (req, res) => {
 
   const backdropStyle = `background-image: url(${title.backdrop_path})`;
 
-  const userGalleryTitleIds = TitleAccess.allGalleryTitleIds(req.user.id);
+  const userGalleryTitleIds = req.user
+    ? TitleAccess.allGalleryTitleIds(req.user.id)
+    : [];
   const titleIsInUserGallery = userGalleryTitleIds.includes(req.params.id);
 
   res.render("details", {

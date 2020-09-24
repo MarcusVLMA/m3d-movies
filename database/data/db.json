@@ -1,21 +1,5 @@
 {
-  "sessions": [
-    {
-      "_id": "ngc47ny47edjOByoX1m4hmZCptIv-11_",
-      "session": {
-        "cookie": {
-          "originalMaxAge": null,
-          "expires": null,
-          "httpOnly": true,
-          "path": "/"
-        },
-        "passport": {
-          "user": "1600040142186"
-        }
-      },
-      "expires": 1600740333951
-    }
-  ],
+  "sessions": [],
   "profiles": [
     {
       "name": "Daniel Araujo",
