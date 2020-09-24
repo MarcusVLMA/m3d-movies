@@ -12,12 +12,12 @@ router.get('/requests', adminArea(), adminController.requestsTitlesPending);
 router.get('/request/:id', adminArea(), adminController.requestGetEdit);
 
 // Solicitação POST que recebe formulário para fazer update em um título.
-router.post('/request/accept/:id', adminController.requestPostEdit);
+router.post('/request/accept/:id', adminArea(), adminController.requestPostEdit);
 
 // Solicitação POST que apaga filme
-router.post('/request/reject/:id', adminController.requestPostRemove);
+router.post('/request/reject/:id', adminArea(), adminController.requestPostRemove);
 
-router.get("/search/:page?", titleController.titlesPending);
+router.get("/search/:page?", adminArea(), titleController.titlesPending);
 
 // Solicitação GET para a página de detalhes.
 router.get("/:id", titleController.title);

@@ -67,10 +67,6 @@
             <a href="request/<%= titles[i].id %>">
               <h3>ID: <%= titles[i].id %></h3>
             </a>
-            <form id="validation" method="post">
-              <input class="btn-submit" type="submit" value="Aceitar">
-              <input class="btn-reject" type="submit" value="Recusar">
-            </form>
           <% } else { %>
             <a href="/title/<%= titles[i].id %>"
               ><h3><%= titles[i].title %></h3>

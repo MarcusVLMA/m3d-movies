@@ -76,32 +76,3 @@ exports.title = async (req, res) => {
     titleIsInUserGallery,
   });
 };
-
-exports.titles = async (req, res) => {
-  const page = !parseInt(req.params.page) ? 1 : parseInt(req.params.page);
-
-  const searchType = req.query.type;
-  const searchName = req.query.title;
-
-  const searchParams = { status: "pending" };
-
-  if (searchName) {
-    searchParams.title = searchName;
-  }
-
-  if (searchType) {
-    searchParams.type = searchType;
-  }
-
-  const titles = TitleAccess.searchTitles(searchParams, page);
-
-  const pageTitle = "inhai bb";
-  res.render("admTitleRequest", {
-    title: pageTitle,
-    user: req.user,
-    currentPage: page,
-    searchParams: formatSearchParamsToView(searchParams),
-    isUserGallery: false,
-    ...titles,
-  });
-};

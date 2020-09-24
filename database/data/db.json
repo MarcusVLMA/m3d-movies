@@ -1,7 +1,7 @@
 {
   "sessions": [
     {
-      "_id": "Lp_UoNFEwM1GUGT5e4SleOKDW5oV2Cno",
+      "_id": "Cwqup05gaGDYeoF_JZMBwFDhzXEy1CAg",
       "session": {
         "cookie": {
           "originalMaxAge": null,
@@ -10,25 +10,10 @@
           "path": "/"
         },
         "passport": {
-          "user": "1600040142186"
+          "user": "1599784519641"
         }
       },
-      "expires": 1600226496670
-    },
-    {
-      "_id": "JgKtFJiwhP6PzV1W8p-48yXi3Aa1iaTD",
-      "session": {
-        "cookie": {
-          "originalMaxAge": null,
-          "expires": null,
-          "httpOnly": true,
-          "path": "/"
-        },
-        "passport": {
-          "user": "1600040142186"
-        }
-      },
-      "expires": 1600312279155
+      "expires": 1601051963752
     }
   ],
   "profiles": [
@@ -63,9 +48,9 @@
       "running_time": "00:45",
       "trailer_path": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/8Qoyn3j0gK0EOABrm0p6E5mzavg.jpg",
       "backdrop_path": "https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/9hvhGtcsGhQY58pukw8w55UEUbL.jpg",
-      "description": "            \r\n              Enquanto tentam lidar com problemas típicos da adolescência como amor, sexo, escola e família, Archie e sua turma se envolvem em um grande mistério.\r\n            \r\n          ",
+      "description": "                          \r\n              Enquanto tentam lidar com problemas típicos da adolescência como amor, sexo, escola e família, Archie e sua turma se envolvem em um grande mistério.\r\n            \r\n                    ",
       "poster_path": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/8Qoyn3j0gK0EOABrm0p6E5mzavg.jpg",
-      "status": "pending",
+      "status": "accepted",
       "vote_average": 8.6,
       "id": "1599102452393"
     },
@@ -84,20 +69,6 @@
       "id": "1599102452403"
     },
     {
-      "title": "Wendy",
-      "release_date": "2020-02-28",
-      "genre": "Aventura",
-      "type": "filme",
-      "running_time": "01:52",
-      "trailer_path": "",
-      "backdrop_path": "https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/pPNMk2TQVIhNn2IFHVJo1jcXQmR.jpg",
-      "description": "Uma jovem menina é sequestrada por um estranho grupo e levada para uma misteriosa ilha em que uma espécie de polén místico faz com que a relação entre o tempo e o envelhecimento seja quebrada.",
-      "poster_path": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/nphsStbtAuJ2IaXtCvDXDwMUF5N.jpg",
-      "status": "pending",
-      "vote_average": 5.7,
-      "id": "1599102452420"
-    },
-    {
       "title": "Crayon Shin-chan",
       "release_date": "1992-04-13",
       "genre": "Animação",
@@ -105,9 +76,9 @@
       "running_time": "00:24",
       "trailer_path": "",
       "backdrop_path": "https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/70xTjXpb0kfOhTRJqKwDYSG8Kle.jpg",
-      "description": "Crayon Shin-chan segue as excêntricas travessuras e aventuras de Shinnosuke \"Shin\" Nohara, de cinco anos, e seus pais, vizinhos e amigos, e fica em Kasukabe, na província de Saitama, no Japão.\n\nMuitas das piadas da série decorrem do uso ocasionalmente estranho, antinatural e inadequado da linguagem de Shin-chan, bem como de seu comportamento inadequado. Uma mordaça típica envolve Shin-chan confundindo seus pais usando a frase errada para a ocasião; por exemplo, dizendo \"Bem-vindo de volta!\" em vez de \"Estou de volta!\" quando ele chega em casa.\n\nDurante o início da série, o programa de TV foi baseado principalmente na história do mangá original. À medida que o programa avançava, mais e mais episódios se tornaram originais do anime.",
+      "description": "              Crayon Shin-chan segue as excêntricas travessuras e aventuras de Shinnosuke \"Shin\" Nohara, de cinco anos, e seus pais, vizinhos e amigos, e fica em Kasukabe, na província de Saitama, no Japão.\r\n\r\nMuitas das piadas da série decorrem do uso ocasionalmente estranho, antinatural e inadequado da linguagem de Shin-chan, bem como de seu comportamento inadequado. Uma mordaça típica envolve Shin-chan confundindo seus pais usando a frase errada para a ocasião; por exemplo, dizendo \"Bem-vindo de volta!\" em vez de \"Estou de volta!\" quando ele chega em casa.\r\n\r\nDurante o início da série, o programa de TV foi baseado principalmente na história do mangá original. À medida que o programa avançava, mais e mais episódios se tornaram originais do anime.          ",
       "poster_path": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/zg19Paur3lVVSh8J4LJVO1wgBIg.jpg",
-      "status": "pending",
+      "status": "accepted",
       "vote_average": 7.2,
       "id": "1599102452422"
     },
@@ -119,25 +90,11 @@
       "running_time": "01:32",
       "trailer_path": "",
       "backdrop_path": "https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/wJt0gN6D1QDRnYNGZBIcQY6a4D8.jpg",
-      "description": "As empresas Mishima Zaibatsu (de Jin Kazama) e a Corporação G (de Kazuya Mishima) estão buscando informações sobre um estudante chamado Shin Kamiya. Kasuya envia Ling Xiaoyu para descobrir informações sobre o estudante. Alisa Bosconovitch (enviada por Jin) tem a mesma missão.",
+      "description": "              As empresas Mishima Zaibatsu (de Jin Kazama) e a Corporação G (de Kazuya Mishima) estão buscando informações sobre um estudante chamado Shin Kamiya. Kasuya envia Ling Xiaoyu para descobrir informações sobre o estudante. Alisa Bosconovitch (enviada por Jin) tem a mesma missão.          ",
       "poster_path": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/i4CJ0zeZsERk2IYKVli3Orn70Ep.jpg",
-      "status": "pending",
+      "status": "accepted",
       "vote_average": 6.1,
       "id": "1599102452425"
-    },
-    {
-      "title": "Frozen: Uma Aventura Congelante",
-      "release_date": "2013-11-27",
-      "genre": "Aventura",
-      "type": "filme",
-      "running_time": "01:42",
-      "trailer_path": "",
-      "backdrop_path": "https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/fydUcbkqLyESCFa9U5XKqi8dIVj.jpg",
-      "description": "A caçula Anna adora sua irmã Elsa, mas um acidente envolvendo os poderes especiais da mais velha, durante a infância, fez com que os pais as mantivessem afastadas. Após a morte deles, as duas cresceram isoladas no castelo da família, até o dia em que Elsa deveria assumir o reinado de Arendell. Com o reencontro das duas, um novo acidente acontece e ela decide partir para sempre e se isolar do mundo, deixando todos para trás e provocando o congelamento do reino. É quando Anna decide se aventurar pelas montanhas de gelo para encontrar a irmã e acabar com o frio.",
-      "poster_path": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/qWFgaDLfiLtsFIEa8fcbmP2SIp9.jpg",
-      "status": "pending",
-      "vote_average": 7.3,
-      "id": "1599102452429"
     },
     {
       "title": "Z Nation",
