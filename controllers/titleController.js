@@ -3,6 +3,8 @@ const { formatSearchParamsToView } = require("./utils");
 
 exports.title = async (req, res) => {
   const title = await TitleAccess.getTitle(req.params.id);
+  
+  if(!title) res.redirect("/");
 
   const ratingValue = (1 - title.vote_average / 10) * 201.06;
   const ratingStyle = `stroke-dashoffset: ${ratingValue}`;
