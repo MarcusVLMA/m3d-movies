@@ -146,7 +146,11 @@
     </form>
     <button type="submit" form="new-comment-form" value="Submit">Enviar</button>
   </div>
-  <% } %> <% for(var i=0; i < commentaries.length; i++) { %>
+  <% } %>
+  <%  if(!commentaries.length) { %>
+    <p>Nenhum comentário adicionado.</p>
+  <% } %>
+  <% for(var i=0; i < commentaries.length; i++) { %>
   <div class="comment-container">
     <div class="comment-content">
       <h3><%= commentaries[i].profile.name %></h3>
