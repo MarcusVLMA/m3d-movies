@@ -19,7 +19,6 @@ function createTitle(titleInfo) {
   }
 }
 
-
 function _getCommentaries(title_id) {
   const commentaries = db
     .get("title_commentaries")
@@ -91,12 +90,12 @@ function _filterTitle(title, searchParams = null) {
 }
 
 function getTitlesPending() {
-  const title = db.get("titles").find({ status:"pending" }).value();
+  const title = db.get("titles").find({ status: "pending" }).value();
   return title;
 }
 
 function getTitlePending(id) {
-  const title = db.get("titles").find({ id, status:"pending" }).value();
+  const title = db.get("titles").find({ id, status: "pending" }).value();
   return title;
 }
 
@@ -164,19 +163,13 @@ function updateTitle(titleInfo) {
 }
 
 function removeTitle(titleId) {
-  db.get("titles")
-  .remove({ id: titleId })
-  .write();
+  db.get("titles").remove({ id: titleId }).write();
 
-  db.get("title_commentaries")
-  .remove({ title_id: titleId })
-  .write();
+  db.get("title_commentaries").remove({ title_id: titleId }).write();
 }
 
 function removeCommentaries(userId) {
-  db.get("title_commentaries")
-  .remove({ profile_id: userId })
-  .write();
+  db.get("title_commentaries").remove({ profile_id: userId }).write();
 }
 
 function countTitle(searchParams) {
@@ -194,22 +187,36 @@ function titleAvaliationMean(title_id) {
   aval.forEach((avaliation) => {
     med += parseFloat(avaliation.entry);
   });
-  med = med/aval.length;
+  med = med / aval.length;
   return med;
 }
 
-function addAvaliation(avaliationInfo) {
-  const addAvaliation = db.get("avaliation").push(avaliationInfo).last().write();
+function addAvaliation(title_id, entry, user_id) {
+  const title = findTitle({ id: title_id.toString() });
+  const addAvaliation = db
+    .get("avaliation")
+    .push({
+      title_id,
+      entry,
+      user_id,
+      type: title.type,
+    })
+    .last()
+    .write();
 
   return addAvaliation;
 }
 
 function userAvaliationGet(title_id, user_id) {
-  const aval = db.get("avaliation").filter({ title_id}).find({ user_id }).value();
-  if(typeof aval==="undefined"){
+  const aval = db
+    .get("avaliation")
+    .filter({ title_id })
+    .find({ user_id })
+    .value();
+  if (typeof aval === "undefined") {
     return 0;
-  }else{
-    return parseFloat(aval.entry)*10;
+  } else {
+    return parseFloat(aval.entry) * 10;
   }
 }
 

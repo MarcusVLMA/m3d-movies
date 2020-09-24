@@ -21,16 +21,19 @@
             <circle fill="#081C22" r="40" cx="42" cy="42">
               <div class="chart" id="graph" data-percent="<%= mean %>">
                 <text
-                        x="42"
-                        y="49"
-                        text-anchor="middle"
-                        style="position: absolute;
-                        color: #ffffff;
-                        left: 382px; top: 230px;
-                        font-size: 30px;"
-                        stroke-width="2px"
-                        fill="#ffffff"
-                        font-family="Source Sans Pro, sans-serif"
+                  x="42"
+                  y="49"
+                  text-anchor="middle"
+                  style="
+                    position: absolute;
+                    color: #ffffff;
+                    left: 382px;
+                    top: 230px;
+                    font-size: 30px;
+                  "
+                  stroke-width="2px"
+                  fill="#ffffff"
+                  font-family="Source Sans Pro, sans-serif"
                 >
                   <%= mean %>
                 </text>
@@ -53,7 +56,14 @@
           <i class="fas fa-star"></i>
           <div class="details-actions-button-tooltip-favorites">
             <div class="slidecontainer">
-              <input type="range" min="0" max="100" value="<%= aval%>" class="slider" id="myRange" oninput="(event)=>postAvaliation(event, <%= title_id %>,<%= type %>)">
+              <input
+                type="range"
+                min="0"
+                max="100"
+                value="<%= aval %>"
+                class="slider"
+                id="myRange"
+              />
               <span>Nota: <span id="demo"></span></span>
             </div>
           </div>
@@ -94,23 +104,25 @@
   </div>
   <% } %>
 </div>
+
+<script type="text/javascript" src="/javascripts/details.js"></script>
 <script type="text/javascript">
-  var el = document.getElementById('graph'); // get canvas
+  var el = document.getElementById("graph"); // get canvas
 
   var options = {
-    percent:  el.getAttribute('data-percent') || 25,
-    size: el.getAttribute('data-size') || 78,
-    lineWidth: el.getAttribute('data-line') || 2,
-    rotate: el.getAttribute('data-rotate') || 0
-  }
+    percent: el.getAttribute("data-percent") || 25,
+    size: el.getAttribute("data-size") || 78,
+    lineWidth: el.getAttribute("data-line") || 2,
+    rotate: el.getAttribute("data-rotate") || 0,
+  };
 
-  var canvas = document.createElement('canvas');
+  var canvas = document.createElement("canvas");
 
-  if (typeof(G_vmlCanvasManager) !== 'undefined') {
+  if (typeof G_vmlCanvasManager !== "undefined") {
     G_vmlCanvasManager.initElement(canvas);
   }
 
-  var ctx = canvas.getContext('2d');
+  var ctx = canvas.getContext("2d");
   canvas.width = canvas.height = options.size;
 
   el.appendChild(canvas);
@@ -121,34 +133,54 @@
   //imd = ctx.getImageData(0, 0, 240, 240);
   var radius = (options.size - options.lineWidth) / 2;
 
-  var drawCircle = function(color, lineWidth, percent) {
+  var drawCircle = function (color, lineWidth, percent) {
     percent = Math.min(Math.max(0, percent || 1), 1);
     ctx.beginPath();
     ctx.arc(0, 0, radius, 0, Math.PI * 2 * percent, false);
     ctx.strokeStyle = color;
-    ctx.lineCap = 'round'; // butt, round or square
-    ctx.lineWidth = lineWidth
+    ctx.lineCap = "round"; // butt, round or square
+    ctx.lineWidth = lineWidth;
     ctx.stroke();
   };
 
-  drawCircle('#1C4027', options.lineWidth, 100 / 100);
-  drawCircle('#13f513', options.lineWidth, options.percent / 10);
+  drawCircle("#1C4027", options.lineWidth, 100 / 100);
+  drawCircle("#13f513", options.lineWidth, options.percent / 10);
 </script>
 <script>
   var slider = document.getElementById("myRange");
   var output = document.getElementById("demo");
-  output.innerHTML = parseFloat(slider.value)/10;
+  // output.innerHTML = parseFloat(slider.value) / 10;
 
-  function postAvaliation(event, title_id, type) {
-    console.log("Teste");
-    output.innerHTML = parseFloat(event.target.value) / 10;
-    fetch('/title/'+title_id, {
+  // function postAvaliation(title_id, type) {
+  //   console.log("Teste");
+  //   output.innerHTML = parseFloat(this.value) / 10;
+  //   fetch("/title/" + title_id, {
+  //     method: "Post",
+  //     body: JSON.stringify({
+  //       entry: this.value,
+  //       title_id: title_id,
+  //       type: type,
+  //     }),
+  //   }).then((response) => {
+  //     if (!response.ok) {
+  //       throw new Error("Erro de conexão!");
+  //     }
+  //     return response.json();
+  //   });
+  // }
+
+  slider.oninput = async function () {
+    output.innerHTML = parseFloat(this.value) / 10;
+    var title_id = <%= title_id %>
+
+    console.log('PARAMS', title_id, this.value)
+    fetch('/title/' + title_id, {
       method: 'Post',
       body: JSON.stringify({
-        entry: event.target.value,
-        title_id: title_id,
-        type: type,
+        entry: parseFloat(this.value) / 10,
+        title_id: title_id.toString(),
       }),
+      headers: { 'Content-type': 'application/json' }
     }).then(response => {
       if (!response.ok) {
         throw new Error('Erro de conexão!');
@@ -156,21 +188,4 @@
       return response.json();
     })
   }
-
-  /*slider.oninput = async function (event) {
-    output.innerHTML = parseFloat(this.value) / 10;
-    fetch('/title/<%= title_id %>', {
-      method: 'Post',
-      body: JSON.stringify({
-        entry: event.target.value,
-        title_id: <%= title_id %>,
-        type: <%= type %>,
-      }),
-    }).then(response => {
-      if (!response.ok) {
-        throw new Error('Erro de conexão!');
-      }
-      return response.json();
-    })
-  }*/
 </script>
