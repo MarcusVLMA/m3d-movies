@@ -94,6 +94,10 @@ commentForm.addEventListener("submit", (event) => {
   })
     .then((response) => response.json())
     .then((jsonResponse) => {
+      const noCommentsParagraph = document.querySelector("p#no-comments-added-text");
+      if(noCommentsParagraph) {
+        noCommentsParagraph.innerHTML = ""
+      }
       document.querySelector("textarea#new-comment").value = "";
 
       const commentContainer = document.createElement("div");
