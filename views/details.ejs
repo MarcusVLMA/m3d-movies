@@ -24,53 +24,47 @@
         &nbsp; <%= running_time %>
       </span>
       <div class="details-actions">
-          <div class="details-actions-rating" style="<%= rating_style %>">
-              <svg width="84" height="84">
-                  <circle fill="#081C22" r="40" cx="42" cy="42" />
-                  <circle
-                          class="ring"
-                          stroke="#1C4027"
-                          stroke-width="4"
-                          fill="transparent"
-                          r="32"
-                          cx="42"
-                          cy="42"
-                  />
-                  <circle
-                          class="progress-ring"
-                          stroke="#21D07A"
-                          stroke-width="4"
-                          fill="transparent"
-                          r="32"
-                          cx="42"
-                          cy="42"
-                  />
-                  <text
-                          x="42"
-                          y="49"
-                          text-anchor="middle"
-                          stroke="#ffffff"
-                          stroke-width="2px"
-                          fill="#ffffff"
-                          font-family="Source Sans Pro, sans-serif"
-                          font-size="24px"
-                  >
-                      <%= mean %>
-                  </text>
-              </svg>
-              <div class="details-actions-rating-text">
-                  Avaliação<br />
-                  dos<br />
-                  usuários
-              </div>
+        <div class="details-actions-rating" style="<%= rating_style %>">
+          <svg width="84" height="84">
+            <circle fill="#081C22" r="40" cx="42" cy="42" />
+            <circle
+                    class="ring"
+                    stroke="#1C4027"
+                    stroke-width="4"
+                    fill="transparent"
+                    r="32"
+                    cx="42"
+                    cy="42"
+            />
+            <circle
+                    class="progress-ring"
+                    stroke="#21D07A"
+                    stroke-width="4"
+                    fill="transparent"
+                    r="32"
+                    cx="42"
+                    cy="42"
+            />
+            <text
+                    x="42"
+                    y="49"
+                    text-anchor="middle"
+                    stroke="#ffffff"
+                    stroke-width="2px"
+                    fill="#ffffff"
+                    font-family="Source Sans Pro, sans-serif"
+                    font-size="24px"
+            >
+              <%= mean %>
+            </text>
+          </svg>
+          <div class="details-actions-rating-text">
+            Avaliação<br />
+            dos<br />
+            usuários
           </div>
+        </div>
         <% if(user) {%> <% if(titleIsInUserGallery) { %>
-        <div
-          id="details-actions-button"
-          class="details-actions-button"
-          onclick="removeTitleFromUserGallery(<%= id %>)"
-        >
-          <i id="details-actions-button-icon" class="fas fa-times"></i>
           <div
                   id="details-actions-button"
                   class="details-actions-button"
@@ -100,44 +94,43 @@
           </div>
         <% } %>
 
-          <div class="details-actions-button">
-            <i class="fas fa-star"></i>
-            <div class="details-actions-button-tooltip-favorites">
-              <div class="slidecontainer">
-                <input
-                        type="range"
-                        min="0"
-                        max="100"
-                        value="<%= aval %>"
-                        class="slider"
-                        id="myRange"
-                />
-                <span>Nota: <span id="demo"></span></span>
-              </div>
+        <div class="details-actions-button">
+          <i class="fas fa-star"></i>
+          <div class="details-actions-button-tooltip-favorites">
+            <div class="slidecontainer">
+              <input
+                      type="range"
+                      min="0"
+                      max="100"
+                      value="<%= aval %>"
+                      class="slider"
+                      id="myRange"
+              />
+              <span>Nota: <span id="demo"></span></span>
             </div>
           </div>
-          <div class="details-actions-button-tooltip-favorites">
-            <span>70%</span>
-            <svg width="180" height="10">
-              <line
-                      x1="0"
-                      y1="5"
-                      x2="180"
-                      y2="5"
-                      stroke-width="6"
-                      stroke="#a2a2a2"
-              />
-              <line
-                      id="fav"
-                      x1="0"
-                      y1="5"
-                      x2="126"
-                      y2="5"
-                      stroke-width="6"
-                      stroke="#ffffff"
-              />
-            </svg>
-          </div>
+        </div>
+        <div class="details-actions-button-tooltip-favorites">
+          <span>70%</span>
+          <svg width="180" height="10">
+            <line
+                    x1="0"
+                    y1="5"
+                    x2="180"
+                    y2="5"
+                    stroke-width="6"
+                    stroke="#a2a2a2"
+            />
+            <line
+                    id="fav"
+                    x1="0"
+                    y1="5"
+                    x2="126"
+                    y2="5"
+                    stroke-width="6"
+                    stroke="#ffffff"
+            />
+          </svg>
         </div>
         <% } %>
         <a target="_blank" rel="noopener noreferrer" href="<%= trailer_path %>">
@@ -156,35 +149,36 @@
 <div class="comments">
   <h2>Comentários</h2>
   <% if(user) {%>
-  <div class="new-comment-container">
-    <form id="new-comment-form" name="new-comment-form">
-      <label for="new-comment">Faça uma comentário!</label>
-      <textarea
-        id="new-comment"
-        name="new-comment"
-        placeholder="O que achou desse filme?"
-      ></textarea>
-    </form>
-    <button type="submit" form="new-comment-form" value="Submit">Enviar</button>
-  </div>
+    <div class="new-comment-container">
+      <form id="new-comment-form" name="new-comment-form">
+        <label for="new-comment">Faça uma comentário!</label>
+        <textarea
+                id="new-comment"
+                name="new-comment"
+                placeholder="O que achou desse filme?"
+        ></textarea>
+      </form>
+      <button type="submit" form="new-comment-form" value="Submit">Enviar</button>
+    </div>
   <% } %>
   <%  if(!commentaries.length) { %>
     <p>Nenhum comentário adicionado.</p>
   <% } %>
   <% for(var i=0; i < commentaries.length; i++) { %>
-  <div class="comment-container">
-    <div class="comment-content">
-      <h3><%= commentaries[i].profile.name %></h3>
-      <span><%= commentaries[i].date %></span>
-      <p><%= commentaries[i].text %></p>
+    <div class="comment-container">
+      <div class="comment-content">
+        <h3><%= commentaries[i].profile.name %></h3>
+        <span><%= commentaries[i].date %></span>
+        <p><%= commentaries[i].text %></p>
 
-      <% if (user && user.role == 'ADMIN') {%>
-      <i
-        id="delete-commentary-icon"
-        class="fas fa-trash"
-        onclick="removeCommentary(<%= commentaries[i].id %>)"
-      ></i>
-      <% } %>
+        <% if (user && user.role == 'ADMIN') {%>
+          <i
+                  id="delete-commentary-icon"
+                  class="fas fa-trash"
+                  onclick="removeCommentary(<%= commentaries[i].id %>)"
+          ></i>
+        <% } %>
+      </div>
     </div>
   <% } %>
 </div>
@@ -200,7 +194,7 @@
   slider.oninput = async function () {
     output.innerHTML = parseFloat(this.value) / 10;
     var title_id = <%= title_id %>
-    console.log('PARAMS', title_id, this.value)
+            console.log('PARAMS', title_id, this.value)
     fetch('/title/' + title_id, {
       method: 'Post',
       body: JSON.stringify({
