@@ -264,11 +264,26 @@ function addTitleToUserGallery(profileId, titleId) {
 
   !galleryTitles.includes(titleId) && galleryTitles.push(titleId);
 
-  const updatedProfileGallery = db
+  const profileGallery = db
     .get("profile_gallery")
-    .find({ profile_id: profileId })
-    .assign({ profile_id: profileId, title_ids: galleryTitles })
-    .write();
+    .find({ profile_id: profileId }).value();
+
+  let updatedProfileGallery;
+
+  if(profileGallery) {
+    updatedProfileGallery = db
+      .get("profile_gallery")
+      .find({ profile_id: profileId })
+      .assign({ profile_id: profileId, title_ids: galleryTitles })
+      .write();
+  } else {
+    updatedProfileGallery = db
+      .get("profile_gallery")
+      .push({ title_ids: galleryTitles })
+      .last()
+      .assign({ profile_id: profileId })
+      .write();
+  }
 
   return updatedProfileGallery;
 }
