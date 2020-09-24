@@ -90,11 +90,19 @@ exports.registrationPost = async (req, res, next) => {
 
 // Solicitação GET para a página de edicao.
 exports.userProfileEditGet = async (req, res) => {
+  const movieMean = await UserAccess.userAvaliationMean(req.user.id, "filme");
+  const animationMean = await UserAccess.userAvaliationMean(
+    req.user.id,
+    "animacao"
+  );
+  const tvShowMean = await UserAccess.userAvaliationMean(req.user.id, "serie");
+  const mean = { filme: movieMean, animacao: animationMean, serie: tvShowMean };
   res.render("userProfileEdit", {
     title: "Edição de Cadastro",
     user: req.user,
     erros: {},
     notification: false,
+    mean: mean,
   });
 };
 
@@ -103,6 +111,15 @@ exports.userProfileEditGet = async (req, res) => {
 exports.userProfileEditPost = async (req, res) => {
   // Objeto que armazena as mensagens de erro
   let erros = {};
+
+  // Carregar as medias
+  const movieMean = await UserAccess.userAvaliationMean(req.user.id, "filme");
+  const animationMean = await UserAccess.userAvaliationMean(
+    req.user.id,
+    "animacao"
+  );
+  const tvShowMean = await UserAccess.userAvaliationMean(req.user.id, "serie");
+  const mean = { filme: movieMean, animacao: animationMean, serie: tvShowMean };
 
   // Testa se o nome é válido
   if (req.body.name.length < 4) {
@@ -141,6 +158,7 @@ exports.userProfileEditPost = async (req, res) => {
       erros: erros,
       inputs: req.body,
       notification: false,
+      mean: mean,
     });
   } else {
     UserAccess.updateUser({
@@ -156,6 +174,7 @@ exports.userProfileEditPost = async (req, res) => {
       user: req.user,
       erros: {},
       notification: true,
+      mean: mean,
     });
   }
 };

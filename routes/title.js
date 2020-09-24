@@ -16,6 +16,10 @@ router.get("/search/:page?", titleController.titles);
 // Solicitação GET para a página de detalhes.
 router.get("/:id", titleController.title);
 
+// Solicitação Post para a página de detalhes.
+// TODO: Mudar o nome dessa rota para algo como /avaliation/:id
+router.post("/:id", authenticated(), titleController.avaliationPost);
+
 // Solicitação POST para criar comentário.
 router.post("/commentary", authenticated(), titleController.titleCommentary);
 

@@ -46,9 +46,25 @@ function updateUser(userInfo) {
 }
 
 function removeUser(userId) {
-  db.get("profiles")
-  .remove({ id: userId })
-  .write();
+  db.get("profiles").remove({ id: userId }).write();
+}
+
+function userAvaliationMean(user_id, type) {
+  const aval = db
+    .get("avaliation")
+    .filter({ user_id })
+    .filter({ type })
+    .value();
+  let med = 0;
+  aval.forEach((avaliation) => {
+    med += parseFloat(avaliation.entry);
+  });
+  med = Math.round(((med/ aval.length) + Number.EPSILON) * 10) / 10;
+  if(isNaN(med)){
+    return 0;
+  }else{
+    return med;
+  }
 }
 
 module.exports = {
@@ -57,4 +73,5 @@ module.exports = {
   findUser,
   updateUser,
   removeUser,
+  userAvaliationMean,
 };

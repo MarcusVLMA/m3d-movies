@@ -79,6 +79,24 @@ function _filterTitle(title, searchParams = null) {
   } else {
     return true;
   }
+  // if (name) {
+  //   const titleNameToSearch = title.title.toLowerCase();
+  //   const nameToSearch = name.toLowerCase();
+
+  //   return titleNameToSearch.includes(nameToSearch);
+  // } else {
+  //   return true;
+  // }
+}
+
+function getTitlesPending() {
+  const title = db.get("titles").find({ status: "pending" }).value();
+  return title;
+}
+
+function getTitlePending(id) {
+  const title = db.get("titles").find({ id, status: "pending" }).value();
+  return title;
 }
 
 function _orderTitles(first, second, orderBy) {
@@ -309,6 +327,74 @@ function removeCommentaries(userId) {
   db.get("title_commentaries").remove({ profile_id: userId }).write();
 }
 
+function countTitle(searchParams) {
+  if (searchParams) {
+    const titles = db.get("titles").find(searchParams).value();
+    return titles ? Object.keys(titles).length : 0;
+  } else {
+    return 0;
+  }
+}
+
+function titleAvaliationMean(title_id) {
+  const aval = db.get("avaliation").filter({ title_id }).value();
+  let med = 0;
+  aval.forEach((avaliation) => {
+    med += parseFloat(avaliation.entry);
+  });
+  med = Math.round(((med/ aval.length) + Number.EPSILON) * 10) / 10;
+  if(isNaN(med)){
+    return 0;
+  }else{
+    return med;
+  }
+}
+
+function addAvaliation(title_id, entry, user_id) {
+  const title = findTitle({ id: title_id.toString() });
+
+  const aval = db.get("avaliation").find({title_id, user_id}).value();
+  console.log("teste", aval);
+  let addAvaliation;
+  if(typeof aval === "undefined") {
+    addAvaliation = db
+        .get("avaliation")
+        .push({
+          title_id,
+          entry,
+          user_id,
+          type: title.type,
+        })
+        .last()
+        .write();
+  }else {
+    addAvaliation = db
+        .get("avaliation")
+        .find({title_id, user_id})
+        .assign({
+          title_id,
+          entry,
+          user_id,
+          type: title.type,
+        })
+        .write();
+  }
+  return addAvaliation;
+}
+
+function userAvaliationGet(title_id, user_id) {
+  const aval = db
+    .get("avaliation")
+    .filter({ title_id })
+    .find({ user_id })
+    .value();
+  if (typeof aval === "undefined") {
+    return 0;
+  } else {
+    return parseFloat(aval.entry) * 10;
+  }
+}
+
 function addCommentary(titleId, profileId, text) {
   const today = new Date();
   const day =
@@ -345,15 +431,6 @@ function removeCommentary(commentaryId) {
   }
 }
 
-function countTitle(searchParams) {
-  if (searchParams) {
-    const titles = db.get("titles").find(searchParams).value();
-    return titles ? Object.keys(titles).length : 0;
-  } else {
-    return 0;
-  }
-}
-
 module.exports = {
   createTitle,
   getTitle,
@@ -364,6 +441,9 @@ module.exports = {
   removeTitle,
   removeCommentaries,
   countTitle,
+  titleAvaliationMean,
+  addAvaliation,
+  userAvaliationGet,
   allGalleryTitleIds,
   addCommentary,
   addTitleToUserGallery,

@@ -18,131 +18,76 @@
         font-family="Source Sans Pro, sans-serif"
         font-size="48px" 
         >
-        D
+        <%= user.name.slice(0,1) %>
       </text>
     </svg>
     <div class="info-block">
       <h1 class="font-user-name"><%= user.name %><span class="font-user-date">Membro desde agosto de 2020</span></h1>
       <div class="avaliation">
         <div class="container-avaliation">
-          <svg width="48" height="48">
-            <circle fill="#081C22" r="24" cx="24" cy="24" />
-            <circle stroke="#1C4027" stroke-width="4" fill="transparent" r="22" cx="24" cy="24"/>
-            <circle
-              class="progress-ring"
-              stroke="var(--circulo)"
-              stroke-width="2"
-              fill="transparent"
-              r="22"
-              cx="24"
-              cy="24"
-              />
-            <text
-              x="21"
-              y="27"
-              text-anchor="middle"
-              stroke="#ffffff"
-              stroke-width="1px"
-              fill="#ffffff"
-              font-family="Source Sans Pro, sans-serif"
-              font-size="16px"
+          <svg width="49" height="49">
+            <circle fill="#081C22" stroke="transparent" r="24" cx="24" cy="24" />
+            <div class="chart" id="graph" data-percent="<%= mean.filme %>">
+              <text
+                      x="24"
+                      y="28"
+                      text-anchor="middle"
+                      stroke-width="1px"
+                      style="position: absolute;
+                        color: #ffffff;
+                        left: 24px; top: 13px;font-size: 16px"
+                      font-family="Source Sans Pro, sans-serif"
+                      font-size="16px"
               >
-              100
-            </text>
-            <text
-              x="37"
-              y="25"
-              text-anchor="middle"
-              stroke="#ffffff"
-              stroke-width="0.5px"
-              fill="#ffffff"
-              font-family="Source Sans Pro, sans-serif"
-              font-size="8px"
-              >
-              %
-            </text>
+                <%= mean.filme %>
+              </text>
+            </div>
           </svg>
           <h1 class="font-user-avaliation">
             Avaliação Média de Filmes
           </h1>
         </div>
         <div class="container-avaliation">
-          <svg width="48" height="48">
-            <circle fill="#081C22" r="24" cx="24" cy="24" />
-            <circle stroke="#1C4027" stroke-width="4" fill="transparent" r="22" cx="24" cy="24"/>
-            <circle
-              class="progress-ring"
-              stroke="var(--circulo)"
-              stroke-width="2"
-              fill="transparent"
-              r="22"
-              cx="24"
-              cy="24"
-              />
-            <text
-              x="21"
-              y="27"
-              text-anchor="middle"
-              stroke="#ffffff"
-              stroke-width="1px"
-              fill="#ffffff"
-              font-family="Source Sans Pro, sans-serif"
-              font-size="16px"
+          <svg width="49" height="49">
+            <circle fill="#081C22" stroke="transparent" r="24" cx="24" cy="24" />
+            <div class="chart" id="graph2" data-percent="<%= mean.serie %>">
+              <text
+                      x="24"
+                      y="28"
+                      text-anchor="middle"
+                      stroke-width="1px"
+                      style="position: absolute;
+                        color: #ffffff;
+                        left: 30px;
+                        top: 13px;
+                        font-size: 16px"
+                      font-family="Source Sans Pro, sans-serif"
+                      font-size="16px"
               >
-              100
-            </text>
-            <text
-              x="37"
-              y="25"
-              text-anchor="middle"
-              stroke="#ffffff"
-              stroke-width="0.5px"
-              fill="#ffffff"
-              font-family="Source Sans Pro, sans-serif"
-              font-size="8px"
-              >
-              %
-            </text>
+                <%= mean.serie %>
+              </text>
+            </div>
           </svg>
           <h1 class="font-user-avaliation">Avaliação Média de Séries</h1>
         </div>
         <div class="container-avaliation" style="border: none">
-          <svg width="48" height="48">
-            <circle fill="#081C22" r="24" cx="24" cy="24" />
-            <circle stroke="#1C4027" stroke-width="4" fill="transparent" r="22" cx="24" cy="24"/>
-            <circle
-              class="progress-ring"
-              stroke="var(--circulo)"
-              stroke-width="2"
-              fill="transparent"
-              r="22"
-              cx="24"
-              cy="24"
-              />
-            <text
-              x="21"
-              y="27"
-              text-anchor="middle"
-              stroke="#ffffff"
-              stroke-width="1px"
-              fill="#ffffff"
-              font-family="Source Sans Pro, sans-serif"
-              font-size="16px"
+          <svg width="49" height="49">
+            <circle fill="#081C22" stroke="transparent" r="24" cx="24" cy="24" />
+            <div class="chart" id="graph3" data-percent="<%= mean.animacao %>">
+              <text
+                      x="24"
+                      y="28"
+                      text-anchor="middle"
+                      stroke-width="1px"
+                      style="position: absolute;
+                        color: #ffffff;
+                        left: 30px; top: 13px;font-size: 16px"
+                      font-family="Source Sans Pro, sans-serif"
+                      font-size="16px"
               >
-              100
-            </text>
-            <text
-              x="37"
-              y="25"
-              text-anchor="middle"
-              stroke="#ffffff"
-              stroke-width="0.5px"
-              fill="#ffffff"
-              font-family="Source Sans Pro, sans-serif"
-              font-size="8px"
-              >
-              %
-            </text>
+                <%= mean.animacao %>
+              </text>
+            </div>
           </svg>
           <h1 class="font-user-avaliation">Avaliação Média de Animes</h1>
         </div>
@@ -303,3 +248,103 @@
     },5000);
   </script>
 <% } %>
+<script type="text/javascript">
+  var el = document.getElementById('graph'); // get canvas
+  var el2 = document.getElementById('graph2');
+  var el3 = document.getElementById('graph3');
+
+  var options = {
+    percent:  el.getAttribute('data-percent') || 25,
+    size: el.getAttribute('data-size') || 48,
+    lineWidth: el.getAttribute('data-line') || 4,
+    rotate: el.getAttribute('data-rotate') || 0
+  }
+
+  var options2 = {
+    percent:  el2.getAttribute('data-percent') || 25,
+    size: el2.getAttribute('data-size') || 48,
+    lineWidth: el2.getAttribute('data-line') || 4,
+    rotate: el2.getAttribute('data-rotate') || 0
+  }
+
+  var options3 = {
+    percent:  el3.getAttribute('data-percent') || 25,
+    size: el3.getAttribute('data-size') || 48,
+    lineWidth: el3.getAttribute('data-line') || 4,
+    rotate: el3.getAttribute('data-rotate') || 0
+  }
+
+  var canvas = document.createElement('canvas');
+  var canvas2 = document.createElement('canvas');
+  var canvas3 = document.createElement('canvas');
+
+
+  if (typeof(G_vmlCanvasManager) !== 'undefined') {
+    G_vmlCanvasManager.initElement(canvas);
+  }
+  if (typeof(G_vmlCanvasManager) !== 'undefined') {
+    G_vmlCanvasManager.initElement(canvas2);
+  }
+  if (typeof(G_vmlCanvasManager) !== 'undefined') {
+    G_vmlCanvasManager.initElement(canvas3);
+  }
+
+
+  var ctx = canvas.getContext('2d');
+  canvas.width = canvas.height = options.size;
+  var ctx2 = canvas2.getContext('2d');
+  canvas2.width = canvas2.height = options2.size;
+  var ctx3 = canvas3.getContext('2d');
+  canvas3.width = canvas3.height = options3.size;
+
+  el.appendChild(canvas);
+  el2.appendChild(canvas2);
+  el3.appendChild(canvas3);
+
+  ctx.translate(options.size / 2, options.size / 2); // change center
+  ctx.rotate((-1 / 2 + options.rotate / 180) * Math.PI); // rotate -90 deg
+  ctx2.translate(options2.size / 2, options2.size / 2); // change center
+  ctx2.rotate((-1 / 2 + options2.rotate / 180) * Math.PI); // rotate -90 deg
+  ctx3.translate(options3.size / 2, options3.size / 2); // change center
+  ctx3.rotate((-1 / 2 + options3.rotate / 180) * Math.PI); // rotate -90 deg
+
+  //imd = ctx.getImageData(0, 0, 240, 240);
+  var radius = (options.size - options.lineWidth) / 2;
+  var radius2 = (options2.size - options2.lineWidth) / 2;
+  var radius3 = (options3.size - options3.lineWidth) / 2;
+
+  var drawCircle = function(color, lineWidth, percent) {
+    percent = Math.min(Math.max(0, percent || 1), 1);
+    ctx.beginPath();
+    ctx.arc(0, 0, radius, 0, Math.PI * 2 * percent, false);
+    ctx.strokeStyle = color;
+    ctx.lineCap = 'round'; // butt, round or square
+    ctx.lineWidth = lineWidth
+    ctx.stroke();
+  };
+  var drawCircle2 = function(color, lineWidth, percent) {
+    percent = Math.min(Math.max(0, percent || 1), 1);
+    ctx2.beginPath();
+    ctx2.arc(0, 0, radius2, 0, Math.PI * 2 * percent, false);
+    ctx2.strokeStyle = color;
+    ctx2.lineCap = 'round'; // butt, round or square
+    ctx2.lineWidth = lineWidth
+    ctx2.stroke();
+  };
+  var drawCircle3 = function(color, lineWidth, percent) {
+    percent = Math.min(Math.max(0, percent || 1), 1);
+    ctx3.beginPath();
+    ctx3.arc(0, 0, radius3, 0, Math.PI * 2 * percent, false);
+    ctx3.strokeStyle = color;
+    ctx3.lineCap = 'round'; // butt, round or square
+    ctx3.lineWidth = lineWidth
+    ctx3.stroke();
+  };
+
+  drawCircle('#1C4027', options.lineWidth, 100 / 100);
+  drawCircle('#13f513', options.lineWidth, options.percent / 10);
+  drawCircle2('#1C4027', options2.lineWidth, 100 / 100);
+  drawCircle2('#13f513', options2.lineWidth, options2.percent / 10);
+  drawCircle3('#1C4027', options3.lineWidth, 100 / 100);
+  drawCircle3('#13f513', options3.lineWidth, options3.percent / 10);
+</script>

@@ -3,10 +3,14 @@ const { formatSearchParamsToView } = require("./utils");
 
 exports.title = async (req, res) => {
   const title = await TitleAccess.getTitle(req.params.id);
-  
-  if(!title) res.redirect("/");
 
-  const ratingValue = (1 - title.vote_average / 10) * 201.06;
+  if(!title) res.redirect("/");
+  
+  let mean = 0;
+  mean = await TitleAccess.titleAvaliationMean(req.params.id);
+  const aval = req.user ? await TitleAccess.userAvaliationGet(title.id, req.user.id) : 0;
+
+  const ratingValue = (1 - mean / 10) * 201.06;
   const ratingStyle = `stroke-dashoffset: ${ratingValue}`;
 
   const backdropStyle = `background-image: url(${title.backdrop_path})`;
@@ -23,8 +27,33 @@ exports.title = async (req, res) => {
     rating_style: ratingStyle,
     release_year: title.release_date.split("-")[0],
     release_date: title.release_date.replace(/-/g, "/"),
+    type: title.type,
+    title_id: title.id,
+    mean,
+    aval,
     titleIsInUserGallery,
   });
+};
+
+const _formatSearchParamsToView = (searchParams) => {
+  const properties = Object.keys(searchParams);
+
+  let finalString = "";
+  for (let i = 0; i < properties.length; i++) {
+    const property = properties[i];
+    const value = searchParams[property];
+
+    if (property !== "status") {
+      // "Status" é uma propriedade de busca interna e não é bom expor
+      if (!finalString) {
+        finalString = finalString.concat(`?${property}=${value}`);
+      } else {
+        finalString = finalString.concat(`&${property}=${value}`);
+      }
+    }
+  }
+
+  return finalString;
 };
 
 exports.titles = async (req, res) => {
@@ -209,4 +238,19 @@ exports.deleteTitleCommentary = async (req, res) => {
   } else {
     res.json({ removed: false, user: req.user });
   }
+};
+
+// Avaliacao do usuario
+
+exports.avaliationPost = async (req, res) => {
+  const { title_id, entry } = req.body;
+
+  TitleAccess.addAvaliation(title_id, entry, req.user.id);
+  // await TitleAccess.addAvaliation({
+  //   title_id: req.body.title_id,
+  //   type: req.body.type,
+  //   user_id: req.user.id,
+  //   entry: req.body.entry,
+  // });
+  res.json({ response: true });
 };

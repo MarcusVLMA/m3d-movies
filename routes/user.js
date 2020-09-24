@@ -18,15 +18,15 @@ router.get("/registration", unauthenticated(), userController.registrationGet);
 
 // Verfica se o e-mail ja existe
 router.get(
-  "/registration/emailAvailable/:userEmail",
-  userController.emailAvailable
+    "/registration/emailAvailable/:userEmail",
+    userController.emailAvailable
 );
 
 // Solicitação POST para registrar usuário.
 router.post(
-  "/registration",
-  unauthenticated(),
-  userController.registrationPost
+    "/registration",
+    unauthenticated(),
+    userController.registrationPost
 );
 
 // Solicitação GET para a página de Edição de Perfil do Usuário
@@ -49,9 +49,9 @@ router.post("/add/gallery", authenticated(), userController.addTitleToGallery);
 
 // Solicitação POST para remover título da galeria do usuário
 router.post(
-  "/remove/gallery",
-  authenticated(),
-  userController.removeTitleFromGallery
+    "/remove/gallery",
+    authenticated(),
+    userController.removeTitleFromGallery
 );
 
 module.exports = router;
