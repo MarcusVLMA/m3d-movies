@@ -1,4 +1,5 @@
 const { TitleAccess } = require("../database");
+const { formatSearchParamsToView } = require("./utils");
 
 exports.title = async (req, res) => {
   const title = await TitleAccess.getTitle(req.params.id);
@@ -11,6 +12,11 @@ exports.title = async (req, res) => {
 
   const backdropStyle = `background-image: url(${title.backdrop_path})`;
 
+  const userGalleryTitleIds = req.user
+    ? TitleAccess.allGalleryTitleIds(req.user.id)
+    : [];
+  const titleIsInUserGallery = userGalleryTitleIds.includes(req.params.id);
+
   res.render("details", {
     ...title,
     user: req.user,
@@ -22,6 +28,7 @@ exports.title = async (req, res) => {
     title_id: title.id,
     mean,
     aval,
+    titleIsInUserGallery,
   });
 };
 
@@ -51,6 +58,7 @@ exports.titles = async (req, res) => {
 
   const searchType = req.query.type;
   const searchName = req.query.title;
+  const orderBy = req.query.orderby;
 
   const searchParams = { status: "accepted" };
 
@@ -62,14 +70,15 @@ exports.titles = async (req, res) => {
     searchParams.type = searchType;
   }
 
-  const titles = TitleAccess.searchTitles(searchParams, page);
+  const titles = TitleAccess.searchTitles(searchParams, page, orderBy);
 
   const pageTitle = "Busca";
   res.render("search", {
     title: pageTitle,
     user: req.user,
     currentPage: page,
-    searchParams: _formatSearchParamsToView(searchParams),
+    searchParams: formatSearchParamsToView(searchParams),
+    isUserGallery: false,
     ...titles,
   });
 };
@@ -206,6 +215,25 @@ exports.requestPost = async (req, res) => {
     });
 
     res.json({ title: newTitle });
+  }
+};
+
+exports.titleCommentary = async (req, res) => {
+  const { titleId, text } = req.body;
+
+  const commentary = TitleAccess.addCommentary(titleId, req.user.id, text);
+
+  res.json({ commentary, user: req.user });
+};
+
+exports.deleteTitleCommentary = async (req, res) => {
+  if ("user" in req && req.user.role === "ADMIN") {
+    const { commentaryId } = req.params;
+    const response = TitleAccess.removeCommentary(commentaryId);
+
+    res.json({ removed: response, user: req.user });
+  } else {
+    res.json({ removed: false, user: req.user });
   }
 };
 

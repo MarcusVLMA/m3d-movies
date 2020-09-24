@@ -2,6 +2,14 @@
 <link rel="stylesheet" type="text/css" href="/stylesheets/details.css" />
 
 <%- contentFor('main') %>
+<div id="notificationModal" class="modal">
+  <div class="modal-wrapper">
+    <div class="modal-content">
+      <img class="check-circle" src="/images/check-circle.svg" />
+      <p id="modal-text" class="modal-text">.</p>
+    </div>
+  </div>
+</div>
 <div class="content-wrapper" style="<%= backdrop_style %>">
   <div class="content">
     <div class="poster">
@@ -46,12 +54,35 @@
             usuários
           </div>
         </div>
-        <div class="details-actions-button">
-          <i class="fas fa-list"></i>
-          <div class="details-actions-button-tooltip-gallery">
+        <% if(titleIsInUserGallery) { %>
+        <div
+          id="details-actions-button"
+          class="details-actions-button"
+          onclick="removeTitleFromUserGallery(<%= id %>)"
+        >
+          <i id="details-actions-button-icon" class="fas fa-times"></i>
+          <div
+            id="details-actions-button-tooltip-gallery"
+            class="details-actions-button-tooltip-gallery"
+          >
+            Remover da galeria
+          </div>
+        </div>
+        <% } else {%>
+        <div
+          id="details-actions-button"
+          class="details-actions-button"
+          onclick="addTitleToUserGallery(<%= id %>)"
+        >
+          <i id="details-actions-button-icon" class="fas fa-list"></i>
+          <div
+            id="details-actions-button-tooltip-gallery"
+            class="details-actions-button-tooltip-gallery"
+          >
             Adicionar à galeria
           </div>
         </div>
+        <% } %>
         <div class="details-actions-button">
           <i class="fas fa-star"></i>
           <div class="details-actions-button-tooltip-favorites">
@@ -100,6 +131,14 @@
       <h3><%= commentaries[i].profile.name %></h3>
       <span><%= commentaries[i].date %></span>
       <p><%= commentaries[i].text %></p>
+
+      <% if (user && user.role == 'ADMIN') {%>
+      <i
+        id="delete-commentary-icon"
+        class="fas fa-trash"
+        onclick="removeCommentary(<%= commentaries[i].id %>)"
+      ></i>
+      <% } %>
     </div>
   </div>
   <% } %>

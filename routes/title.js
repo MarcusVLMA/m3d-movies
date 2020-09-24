@@ -17,6 +17,17 @@ router.get("/search/:page?", titleController.titles);
 router.get("/:id", titleController.title);
 
 // Solicitação Post para a página de detalhes.
-router.post("/:id", authenticated(),titleController.avaliationPost);
+// TODO: Mudar o nome dessa rota para algo como /avaliation/:id
+router.post("/:id", authenticated(), titleController.avaliationPost);
+
+// Solicitação POST para criar comentário.
+router.post("/commentary", authenticated(), titleController.titleCommentary);
+
+// Solicitação DELETE para deletar comentário.
+router.delete(
+  "/commentary/:commentaryId",
+  authenticated(),
+  titleController.deleteTitleCommentary
+);
 
 module.exports = router;

@@ -99,6 +99,61 @@ function getTitlePending(id) {
   return title;
 }
 
+function _orderTitles(first, second, orderBy) {
+  const orderByTitleName = () => {
+    if (first.title.toLowerCase() < second.title.toLowerCase()) {
+      return orderBy === "a-z" ? -1 : 1;
+    }
+    if (first.title.toLowerCase() > second.title.toLowerCase()) {
+      return orderBy === "a-z" ? 1 : -1;
+    }
+    return 0;
+  };
+
+  const orderByRelease = () => {
+    if (first.release_date < second.release_date) {
+      return 1;
+    }
+    if (first.release_date > second.release_date) {
+      return -1;
+    }
+    return 0;
+  };
+
+  const orderByAvaliation = () => {
+    if (first.vote_average < second.vote_average) {
+      return 1;
+    }
+    if (first.vote_average > second.vote_average) {
+      return -1;
+    }
+    return 0;
+  };
+
+  switch (orderBy) {
+    case "a-z":
+      return orderByTitleName();
+    case "z-a":
+      return orderByTitleName();
+    case "release":
+      return orderByRelease();
+    case "avaliation":
+      return orderByAvaliation();
+    default:
+      return orderByRelease();
+  }
+}
+
+function getTitlesPending() {
+  const title = db.get("titles").find({ status: "pending" }).value();
+  return title;
+}
+
+function getTitlePending(id) {
+  const title = db.get("titles").find({ id, status: "pending" }).value();
+  return title;
+}
+
 function findTitle(searchParams) {
   if (searchParams) {
     const title = db.get("titles").find(searchParams).value();
@@ -116,19 +171,30 @@ function findTitle(searchParams) {
   }
 }
 
-function _getMoviesAmountInfos(name) {
-  const allTitles = db
-    .get("titles")
-    .filter((title) => _filterTitle(title, name))
-    .value();
+function _getMoviesAmountInfos(searchParams, subset = null) {
+  if (subset) {
+    const allTitles = subset.filter((title) =>
+      _filterTitle(title, searchParams)
+    );
 
-  return {
-    totalCount: allTitles.length,
-    totalPages: Math.ceil(allTitles.length / MOVIES_PER_PAGE) + 1,
-  };
+    return {
+      totalCount: allTitles.length,
+      totalPages: Math.ceil(allTitles.length / MOVIES_PER_PAGE) + 1,
+    };
+  } else {
+    const allTitles = db
+      .get("titles")
+      .filter((title) => _filterTitle(title, searchParams))
+      .value();
+
+    return {
+      totalCount: allTitles.length,
+      totalPages: Math.ceil(allTitles.length / MOVIES_PER_PAGE) + 1,
+    };
+  }
 }
 
-function searchTitles(searchParams, page) {
+function searchTitles(searchParams, page, orderBy) {
   const moviesAmountInfos = _getMoviesAmountInfos(searchParams);
   if (page > moviesAmountInfos.totalPages) {
     page = moviesAmountInfos.totalPages - 1;
@@ -138,6 +204,7 @@ function searchTitles(searchParams, page) {
   const titles = db
     .get("titles")
     .filter((title) => _filterTitle(title, searchParams))
+    .sort((first, second) => _orderTitles(first, second, orderBy))
     .slice(offset, offset + MOVIES_PER_PAGE)
     .value();
 
@@ -150,6 +217,94 @@ function searchTitles(searchParams, page) {
     titles: titlesResponse,
     ...moviesAmountInfos,
   };
+}
+
+function galleryTitles(profileId, searchParams, page, orderBy) {
+  const profileGallery = db
+    .get("profile_gallery")
+    .find({ profile_id: profileId })
+    .value();
+
+  if (profileGallery) {
+    const allTitles = [];
+
+    profileGallery.title_ids.forEach((titleId) => {
+      allTitles.push(findTitle({ id: titleId }));
+    });
+
+    const filteredTitles = allTitles
+      .filter((title) => _filterTitle(title, searchParams))
+      .sort((first, second) => _orderTitles(first, second, orderBy));
+
+    const moviesAmountInfos = _getMoviesAmountInfos(
+      searchParams,
+      filteredTitles
+    );
+    if (page > moviesAmountInfos.totalPages) {
+      page = moviesAmountInfos.totalPages - 1;
+    }
+    const offset = (page - 1) * MOVIES_PER_PAGE;
+
+    const paginatedTitles = filteredTitles.slice(
+      offset,
+      offset + MOVIES_PER_PAGE
+    );
+
+    const titlesResponse = paginatedTitles.map((title) => ({
+      ...title,
+      commentaries: _getCommentaries(title.id),
+    }));
+
+    return {
+      titles: titlesResponse,
+      ...moviesAmountInfos,
+    };
+  } else {
+    return { titles: [], totalCount: 0, totalPages: 1 };
+  }
+}
+
+function allGalleryTitleIds(profileId) {
+  const profileGallery = db
+    .get("profile_gallery")
+    .find({ profile_id: profileId })
+    .value();
+
+  if (profileGallery) {
+    return profileGallery.title_ids;
+  } else {
+    return [];
+  }
+}
+
+function addTitleToUserGallery(profileId, titleId) {
+  const galleryTitles = allGalleryTitleIds(profileId);
+
+  !galleryTitles.includes(titleId) && galleryTitles.push(titleId);
+
+  const updatedProfileGallery = db
+    .get("profile_gallery")
+    .find({ profile_id: profileId })
+    .assign({ profile_id: profileId, title_ids: galleryTitles })
+    .write();
+
+  return updatedProfileGallery;
+}
+
+function removeTitleFromUserGallery(profileId, titleId) {
+  const currentGalleryTitles = allGalleryTitleIds(profileId);
+
+  const galleryTitles = currentGalleryTitles.filter(
+    (title_id) => title_id !== titleId
+  );
+
+  const updatedProfileGallery = db
+    .get("profile_gallery")
+    .find({ profile_id: profileId })
+    .assign({ profile_id: profileId, title_ids: galleryTitles })
+    .write();
+
+  return updatedProfileGallery;
 }
 
 function updateTitle(titleInfo) {
@@ -220,6 +375,42 @@ function userAvaliationGet(title_id, user_id) {
   }
 }
 
+function addCommentary(titleId, profileId, text) {
+  const today = new Date();
+  const day =
+    today.getDate().toString().length === 1
+      ? "0" + today.getDate().toString()
+      : today.getDate().toString();
+
+  const month =
+    today.getMonth().toString().length === 1
+      ? "0" + today.getMonth().toString()
+      : today.getMonth().toString();
+
+  const createdCommentary = db
+    .get("title_commentaries")
+    .push({
+      title_id: titleId,
+      profile_id: profileId,
+      text,
+      date: `${today.getFullYear()}-${month}-${day}`,
+    })
+    .last()
+    .assign({ id: today.getTime().toString() })
+    .write();
+
+  return createdCommentary;
+}
+
+function removeCommentary(commentaryId) {
+  try {
+    db.get("title_commentaries").remove({ id: commentaryId }).write();
+    return true;
+  } catch (error) {
+    return false;
+  }
+}
+
 module.exports = {
   createTitle,
   getTitle,
@@ -233,4 +424,10 @@ module.exports = {
   titleAvaliationMean,
   addAvaliation,
   userAvaliationGet,
+  allGalleryTitleIds,
+  addCommentary,
+  addTitleToUserGallery,
+  galleryTitles,
+  removeTitleFromUserGallery,
+  removeCommentary,
 };

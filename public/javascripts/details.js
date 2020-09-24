@@ -1,81 +1,141 @@
-var el = document.getElementById("graph"); // get canvas
+const notificationModal = document.querySelector("div#notificationModal");
+const modalText = document.querySelector("p#modal-text");
+const modalWrapper = document.querySelector("div.modal-wrapper");
 
-var options = {
-  percent: el.getAttribute("data-percent") || 25,
-  size: el.getAttribute("data-size") || 78,
-  lineWidth: el.getAttribute("data-line") || 2,
-  rotate: el.getAttribute("data-rotate") || 0,
-};
+const allCommentsContainer = document.querySelector("div.comments");
+const commentForm = document.querySelector("form#new-comment-form");
+const commentText = document.querySelector("textarea#new-comment");
 
-var canvas = document.createElement("canvas");
+const deleteCommentaryIcon = document.querySelector("i#delete-commentary-icon");
 
-if (typeof G_vmlCanvasManager !== "undefined") {
-  G_vmlCanvasManager.initElement(canvas);
+function addTitleToUserGallery(titleId) {
+  fetch("/user/add/gallery", {
+    method: "POST",
+    body: JSON.stringify({ titleId: titleId.toString() }),
+    headers: { "Content-Type": "application/json" },
+  })
+    .then((response) => response.json())
+    .then(() => {
+      modalText.innerHTML = "Título adicionado com sucesso!";
+      notificationModal.style.display = "block";
+      window.setTimeout(() => {
+        modalWrapper.style.maxHeight = "300px";
+
+        window.setTimeout(() => {
+          notificationModal.style.display = "none";
+
+          const detailsActionsButton = document.querySelector(
+            "div#details-actions-button"
+          );
+          const detailsActionsButtonIcon = document.querySelector(
+            "i#details-actions-button-icon"
+          );
+          const detailsActionsButtonTooltip = document.querySelector(
+            "div#details-actions-button-tooltip-gallery"
+          );
+
+          detailsActionsButton.setAttribute("onclick", () =>
+            removeTitleFromUserGallery(titleId)
+          );
+          detailsActionsButtonIcon.className = "fas fa-times";
+          detailsActionsButtonTooltip.innerHTML = "Remover da galeria";
+        }, 2200);
+      }, 50);
+    });
 }
 
-var ctx = canvas.getContext("2d");
-canvas.width = canvas.height = options.size;
+function removeTitleFromUserGallery(titleId) {
+  fetch("/user/remove/gallery", {
+    method: "POST",
+    body: JSON.stringify({ titleId: titleId.toString() }),
+    headers: { "Content-Type": "application/json" },
+  })
+    .then((response) => response.json())
+    .then(() => {
+      modalText.innerHTML = "Título removido com sucesso!";
+      notificationModal.style.display = "block";
 
-el.appendChild(canvas);
+      window.setTimeout(() => {
+        modalWrapper.style.maxHeight = "300px";
 
-ctx.translate(options.size / 2, options.size / 2); // change center
-ctx.rotate((-1 / 2 + options.rotate / 180) * Math.PI); // rotate -90 deg
+        window.setTimeout(() => {
+          notificationModal.style.display = "none";
 
-//imd = ctx.getImageData(0, 0, 240, 240);
-var radius = (options.size - options.lineWidth) / 2;
+          const detailsActionsButton = document.querySelector(
+            "div#details-actions-button"
+          );
+          const detailsActionsButtonIcon = document.querySelector(
+            "i#details-actions-button-icon"
+          );
+          const detailsActionsButtonTooltip = document.querySelector(
+            "div#details-actions-button-tooltip-gallery"
+          );
 
-var drawCircle = function (color, lineWidth, percent) {
-  percent = Math.min(Math.max(0, percent || 1), 1);
-  ctx.beginPath();
-  ctx.arc(0, 0, radius, 0, Math.PI * 2 * percent, false);
-  ctx.strokeStyle = color;
-  ctx.lineCap = "round"; // butt, round or square
-  ctx.lineWidth = lineWidth;
-  ctx.stroke();
-};
-
-drawCircle("#1C4027", options.lineWidth, 100 / 100);
-drawCircle("#13f513", options.lineWidth, options.percent / 10);
-
-var slider = document.getElementById("myRange");
-var output = document.getElementById("demo");
-output.innerHTML = parseFloat(slider.value) / 10;
-
-function postAvaliation(event) {
-  console.log("Teste");
-  output.innerHTML = parseFloat(event.target.value) / 10;
-  // fetch("/title/" + title_id, {
-  //   method: "Post",
-  //   body: JSON.stringify({
-  //     entry: this.value,
-  //     title_id: title_id,
-  //     type: type,
-  //   }),
-  // }).then((response) => {
-  //   if (!response.ok) {
-  //     throw new Error("Erro de conexão!");
-  //   }
-  //   return response.json();
-  // });
+          detailsActionsButton.setAttribute("onclick", () =>
+            addTitleToUserGallery(titleId)
+          );
+          detailsActionsButtonIcon.className = "fas fa-list";
+          detailsActionsButtonTooltip.innerHTML = "Adicionar à galeria";
+        }, 2200);
+      }, 50);
+    });
 }
 
-function teste() {
-  alert("AAAAAAAAAAAAAAA");
-}
+commentForm.addEventListener("submit", (event) => {
+  event.preventDefault();
 
-// slider.oninput = async function (event) {
-//   output.innerHTML = parseFloat(this.value) / 10;
-//   fetch('/title/<%= title_id %>', {
-//     method: 'Post',
-//     body: JSON.stringify({
-//       entry: event.target.value,
-//       title_id: <%= title_id %>,
-//       type: <%= type %>,
-//     }),
-//   }).then(response => {
-//     if (!response.ok) {
-//       throw new Error('Erro de conexão!');
-//     }
-//     return response.json();
-//   })
-// }
+  const titleId = window.location.href.split("/").pop();
+  const text = commentText.value;
+
+  fetch("/title/commentary", {
+    method: "POST",
+    body: JSON.stringify({ titleId: titleId.toString(), text }),
+    headers: { "Content-Type": "application/json" },
+  })
+    .then((response) => response.json())
+    .then((jsonResponse) => {
+      document.querySelector("textarea#new-comment").value = "";
+
+      const commentContainer = document.createElement("div");
+      const commentContent = document.createElement("div");
+      const username = document.createElement("h3");
+      const date = document.createElement("span");
+      const commentText = document.createElement("p");
+
+      commentContainer.className = "comment-container";
+      commentContent.className = "comment-content";
+
+      username.innerHTML = jsonResponse.user.name;
+      date.innerHTML = jsonResponse.commentary.date;
+      commentText.innerHTML = jsonResponse.commentary.text;
+
+      commentContent.appendChild(username);
+      commentContent.appendChild(date);
+      commentContent.appendChild(commentText);
+
+      commentContainer.appendChild(commentContent);
+
+      allCommentsContainer.appendChild(commentContainer);
+    });
+});
+
+function removeCommentary(commentaryId) {
+  fetch(`/title/commentary/${commentaryId}`, {
+    method: "DELETE",
+    body: JSON.stringify({ commentaryId: commentaryId.toString() }),
+    headers: { "Content-Type": "application/json" },
+  })
+    .then((response) => response.json())
+    .then(() => {
+      modalText.innerHTML = "Comentário removido com sucesso!";
+      notificationModal.style.display = "block";
+      window.setTimeout(() => {
+        modalWrapper.style.maxHeight = "300px";
+
+        window.setTimeout(() => {
+          notificationModal.style.display = "none";
+          window.location.reload();
+        }, 2000);
+      }, 50);
+    });
+}

@@ -46,21 +46,22 @@ function updateUser(userInfo) {
 }
 
 function removeUser(userId) {
-  db.get("profiles")
-  .remove({ id: userId })
-  .write();
+  db.get("profiles").remove({ id: userId }).write();
 }
 
 function userAvaliationMean(user_id, type) {
-  const aval = db.get("avaliation").filter({ user_id }).filter({ type }).value();
+  const aval = db
+    .get("avaliation")
+    .filter({ user_id })
+    .filter({ type })
+    .value();
   let med = 0;
   aval.forEach((avaliation) => {
     med += parseFloat(avaliation.entry);
   });
-  med = med/aval.length;
+  med = med / aval.length;
   return med;
 }
-
 
 module.exports = {
   createUser,

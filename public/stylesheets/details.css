@@ -14,6 +14,7 @@
   --details-clic-sec: rgba(255, 255, 0, 0);
   --details-error: #f00;
   --details-image-grayscale: 0;
+  --details-lightGreen-black: #d4edda;
 }
 
 .high-contrast {
@@ -33,6 +34,7 @@
   --details-clic-sec: rgb(179, 179, 0);
   --details-error: #f00;
   --details-image-grayscale: 100;
+  --details-lightGreen-black: #000;
 }
 
 html,
@@ -55,6 +57,66 @@ main {
 footer {
   height: 100px;
   background-color: blue;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Modal Content/Box */
+.modal .modal-wrapper {
+  background-color: var(--details-lightGreen-black);
+  margin: 15% auto;
+  border: 2px solid #fff;
+  width: 40%;
+  max-width: 400px;
+  max-height: 0;
+  transition: all 1s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.modal-content {
+  padding: 20px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-content .check-circle {
+  min-width: 120px;
+  min-height: 120px;
+}
+
+.check-circle {
+  filter: var(--alert-img);
+}
+.modal-content .modal-text {
+  font-size: 2rem;
+  color: var(--green-white);
+}
+
+.modal-content button {
+  margin-top: 30px;
+  color: #fff;
+  border-color: var(--steelblue-yellow);
+  background-color: var(--steelblue-none);
+}
+
+.modal-content button:hover,
+.modal-content button:focus {
+  color: #fff;
+  border-color: var(--steelblue-yellow);
+  background-color: var(--btn-hover);
 }
 
 .content-wrapper {
@@ -394,6 +456,7 @@ canvas {
   position: relative;
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
 .comment-content h3 {
