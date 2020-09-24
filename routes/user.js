@@ -3,15 +3,6 @@ var router = express.Router();
 // Inporta o controlador para as rotas user
 const userController = require("../controllers/userController");
 // Controle de autenticação
-<<<<<<< HEAD
-const { authenticated,
-        unauthenticated,
-      } = require("../middlewares/authentication");
-
-// Solicitação GET para o perfil do usuário.
-router.get('/', authenticated(), function(req, res) {
-  res.redirect('/profile');
-=======
 const {
   authenticated,
   unauthenticated,
@@ -20,7 +11,6 @@ const {
 // Solicitação GET para o perfil do usuário.
 router.get("/", authenticated(), function (req, res) {
   res.redirect("/profile");
->>>>>>> nodejsApplication
 });
 
 // Solicitação GET para a página de cadastro.
@@ -28,15 +18,15 @@ router.get("/registration", unauthenticated(), userController.registrationGet);
 
 // Verfica se o e-mail ja existe
 router.get(
-  "/registration/emailAvailable/:userEmail",
-  userController.emailAvailable
+    "/registration/emailAvailable/:userEmail",
+    userController.emailAvailable
 );
 
 // Solicitação POST para registrar usuário.
 router.post(
-  "/registration",
-  unauthenticated(),
-  userController.registrationPost
+    "/registration",
+    unauthenticated(),
+    userController.registrationPost
 );
 
 // Solicitação GET para a página de Edição de Perfil do Usuário
@@ -59,9 +49,9 @@ router.post("/add/gallery", authenticated(), userController.addTitleToGallery);
 
 // Solicitação POST para remover título da galeria do usuário
 router.post(
-  "/remove/gallery",
-  authenticated(),
-  userController.removeTitleFromGallery
+    "/remove/gallery",
+    authenticated(),
+    userController.removeTitleFromGallery
 );
 
 module.exports = router;

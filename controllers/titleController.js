@@ -7,7 +7,7 @@ exports.title = async (req, res) => {
   mean = await TitleAccess.titleAvaliationMean(req.params.id);
   const aval = await TitleAccess.userAvaliationGet(title.id, req.user.id);
 
-  const ratingValue = (1 - title.vote_average / 10) * 201.06;
+  const ratingValue = (1 - mean / 10) * 201.06;
   const ratingStyle = `stroke-dashoffset: ${ratingValue}`;
 
   const backdropStyle = `background-image: url(${title.backdrop_path})`;

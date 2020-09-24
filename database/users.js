@@ -59,8 +59,12 @@ function userAvaliationMean(user_id, type) {
   aval.forEach((avaliation) => {
     med += parseFloat(avaliation.entry);
   });
-  med = med / aval.length;
-  return med;
+  med = Math.round(((med/ aval.length) + Number.EPSILON) * 10) / 10;
+  if(isNaN(med)){
+    return 0;
+  }else{
+    return med;
+  }
 }
 
 module.exports = {

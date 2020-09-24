@@ -26,27 +26,37 @@
       <div class="details-actions">
         <div class="details-actions-rating" style="<%= rating_style %>">
           <svg width="84" height="84">
-            <circle fill="#081C22" r="40" cx="42" cy="42">
-              <div class="chart" id="graph" data-percent="<%= mean %>">
-                <text
-                  x="42"
-                  y="49"
-                  text-anchor="middle"
-                  style="
-                    position: absolute;
-                    color: #ffffff;
-                    left: 382px;
-                    top: 230px;
-                    font-size: 30px;
-                  "
-                  stroke-width="2px"
-                  fill="#ffffff"
-                  font-family="Source Sans Pro, sans-serif"
-                >
-                  <%= mean %>
-                </text>
-              </div>
-            </circle>
+            <circle fill="#081C22" r="40" cx="42" cy="42" />
+            <circle
+                    class="ring"
+                    stroke="#1C4027"
+                    stroke-width="4"
+                    fill="transparent"
+                    r="32"
+                    cx="42"
+                    cy="42"
+            />
+            <circle
+                    class="progress-ring"
+                    stroke="#21D07A"
+                    stroke-width="4"
+                    fill="transparent"
+                    r="32"
+                    cx="42"
+                    cy="42"
+            />
+            <text
+                    x="42"
+                    y="49"
+                    text-anchor="middle"
+                    stroke="#ffffff"
+                    stroke-width="2px"
+                    fill="#ffffff"
+                    font-family="Source Sans Pro, sans-serif"
+                    font-size="24px"
+            >
+              <%= mean %>
+            </text>
           </svg>
           <div class="details-actions-rating-text">
             Avaliação<br />
@@ -54,51 +64,75 @@
             usuários
           </div>
         </div>
-        <% if(titleIsInUserGallery) { %>
-        <div
-          id="details-actions-button"
-          class="details-actions-button"
-          onclick="removeTitleFromUserGallery(<%= id %>)"
-        >
-          <i id="details-actions-button-icon" class="fas fa-times"></i>
+        <% if(user) {%> <% if(titleIsInUserGallery) { %>
           <div
-            id="details-actions-button-tooltip-gallery"
-            class="details-actions-button-tooltip-gallery"
+                  id="details-actions-button"
+                  class="details-actions-button"
+                  onclick="removeTitleFromUserGallery(<%= id %>)"
           >
-            Remover da galeria
-          </div>
-        </div>
-        <% } else {%>
-        <div
-          id="details-actions-button"
-          class="details-actions-button"
-          onclick="addTitleToUserGallery(<%= id %>)"
-        >
-          <i id="details-actions-button-icon" class="fas fa-list"></i>
-          <div
-            id="details-actions-button-tooltip-gallery"
-            class="details-actions-button-tooltip-gallery"
-          >
-            Adicionar à galeria
-          </div>
-        </div>
-        <% } %>
-        <div class="details-actions-button">
-          <i class="fas fa-star"></i>
-          <div class="details-actions-button-tooltip-favorites">
-            <div class="slidecontainer">
-              <input
-                type="range"
-                min="0"
-                max="100"
-                value="<%= aval %>"
-                class="slider"
-                id="myRange"
-              />
-              <span>Nota: <span id="demo"></span></span>
+            <i id="details-actions-button-icon" class="fas fa-times"></i>
+            <div
+                    id="details-actions-button-tooltip-gallery"
+                    class="details-actions-button-tooltip-gallery"
+            >
+              Remover da galeria
             </div>
           </div>
-        </div>
+        <% } else {%>
+          <div
+                  id="details-actions-button"
+                  class="details-actions-button"
+                  onclick="addTitleToUserGallery(<%= id %>)"
+          >
+            <i id="details-actions-button-icon" class="fas fa-list"></i>
+            <div
+                    id="details-actions-button-tooltip-gallery"
+                    class="details-actions-button-tooltip-gallery"
+            >
+              Adicionar à galeria
+            </div>
+          </div>
+        <% } %>
+
+          <div class="details-actions-button">
+            <i class="fas fa-star"></i>
+            <div class="details-actions-button-tooltip-favorites">
+              <div class="slidecontainer">
+                <input
+                        type="range"
+                        min="0"
+                        max="100"
+                        value="<%= aval %>"
+                        class="slider"
+                        id="myRange"
+                />
+                <span>Nota: <span id="demo"></span></span>
+              </div>
+            </div>
+          </div>
+          <div class="details-actions-button-tooltip-favorites">
+            <span>70%</span>
+            <svg width="180" height="10">
+              <line
+                      x1="0"
+                      y1="5"
+                      x2="180"
+                      y2="5"
+                      stroke-width="6"
+                      stroke="#a2a2a2"
+              />
+              <line
+                      id="fav"
+                      x1="0"
+                      y1="5"
+                      x2="126"
+                      y2="5"
+                      stroke-width="6"
+                      stroke="#ffffff"
+              />
+            </svg>
+          </div>
+        <% } %>
         <a target="_blank" rel="noopener noreferrer" href="<%= trailer_path %>">
           <div class="details-actions-trailer">
             <i class="fas fa-play"></i>Reproduzir trailer
@@ -114,104 +148,47 @@
 </div>
 <div class="comments">
   <h2>Comentários</h2>
-  <div class="new-comment-container">
-    <form id="new-comment-form" name="new-comment-form">
-      <label for="new-comment">Faça uma comentário!</label>
-      <textarea
-        id="new-comment"
-        name="new-comment"
-        placeholder="O que achou desse filme?"
-      ></textarea>
-    </form>
-    <button type="submit" form="new-comment-form" value="Submit">Enviar</button>
-  </div>
-  <% for(var i=0; i < commentaries.length; i++) { %>
-  <div class="comment-container">
-    <div class="comment-content">
-      <h3><%= commentaries[i].profile.name %></h3>
-      <span><%= commentaries[i].date %></span>
-      <p><%= commentaries[i].text %></p>
-
-      <% if (user && user.role == 'ADMIN') {%>
-      <i
-        id="delete-commentary-icon"
-        class="fas fa-trash"
-        onclick="removeCommentary(<%= commentaries[i].id %>)"
-      ></i>
-      <% } %>
+  <% if(user) {%>
+    <div class="new-comment-container">
+      <form id="new-comment-form" name="new-comment-form">
+        <label for="new-comment">Faça uma comentário!</label>
+        <textarea
+                id="new-comment"
+                name="new-comment"
+                placeholder="O que achou desse filme?"
+        ></textarea>
+      </form>
+      <button type="submit" form="new-comment-form" value="Submit">Enviar</button>
     </div>
-  </div>
+  <% } %> <% for(var i=0; i < commentaries.length; i++) { %>
+    <div class="comment-container">
+      <div class="comment-content">
+        <h3><%= commentaries[i].profile.name %></h3>
+        <span><%= commentaries[i].date %></span>
+        <p><%= commentaries[i].text %></p>
+        <% if (user && user.role == 'ADMIN') {%>
+          <i
+                  id="delete-commentary-icon"
+                  class="fas fa-trash"
+                  onclick="removeCommentary(<%= commentaries[i].id %>)"
+          ></i>
+        <% } %>
+      </div>
+    </div>
   <% } %>
 </div>
 
 <script type="text/javascript" src="/javascripts/details.js"></script>
-<script type="text/javascript">
-  var el = document.getElementById("graph"); // get canvas
-
-  var options = {
-    percent: el.getAttribute("data-percent") || 25,
-    size: el.getAttribute("data-size") || 78,
-    lineWidth: el.getAttribute("data-line") || 2,
-    rotate: el.getAttribute("data-rotate") || 0,
-  };
-
-  var canvas = document.createElement("canvas");
-
-  if (typeof G_vmlCanvasManager !== "undefined") {
-    G_vmlCanvasManager.initElement(canvas);
-  }
-
-  var ctx = canvas.getContext("2d");
-  canvas.width = canvas.height = options.size;
-
-  el.appendChild(canvas);
-
-  ctx.translate(options.size / 2, options.size / 2); // change center
-  ctx.rotate((-1 / 2 + options.rotate / 180) * Math.PI); // rotate -90 deg
-
-  //imd = ctx.getImageData(0, 0, 240, 240);
-  var radius = (options.size - options.lineWidth) / 2;
-
-  var drawCircle = function (color, lineWidth, percent) {
-    percent = Math.min(Math.max(0, percent || 1), 1);
-    ctx.beginPath();
-    ctx.arc(0, 0, radius, 0, Math.PI * 2 * percent, false);
-    ctx.strokeStyle = color;
-    ctx.lineCap = "round"; // butt, round or square
-    ctx.lineWidth = lineWidth;
-    ctx.stroke();
-  };
-
-  drawCircle("#1C4027", options.lineWidth, 100 / 100);
-  drawCircle("#13f513", options.lineWidth, options.percent / 10);
-</script>
 <script>
   var slider = document.getElementById("myRange");
   var output = document.getElementById("demo");
-  // output.innerHTML = parseFloat(slider.value) / 10;
+  var initialValue = <%= aval %>;
+  output.innerHTML = parseFloat(initialValue) / 10;
 
-  // function postAvaliation(title_id, type) {
-  //   console.log("Teste");
-  //   output.innerHTML = parseFloat(this.value) / 10;
-  //   fetch("/title/" + title_id, {
-  //     method: "Post",
-  //     body: JSON.stringify({
-  //       entry: this.value,
-  //       title_id: title_id,
-  //       type: type,
-  //     }),
-  //   }).then((response) => {
-  //     if (!response.ok) {
-  //       throw new Error("Erro de conexão!");
-  //     }
-  //     return response.json();
-  //   });
-  // }
 
   slider.oninput = async function () {
     output.innerHTML = parseFloat(this.value) / 10;
     var title_id = <%= title_id %>
-
     console.log('PARAMS', title_id, this.value)
     fetch('/title/' + title_id, {
       method: 'Post',

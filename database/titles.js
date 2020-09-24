@@ -342,23 +342,43 @@ function titleAvaliationMean(title_id) {
   aval.forEach((avaliation) => {
     med += parseFloat(avaliation.entry);
   });
-  med = med / aval.length;
-  return med;
+  med = Math.round(((med/ aval.length) + Number.EPSILON) * 10) / 10;
+  if(isNaN(med)){
+    return 0;
+  }else{
+    return med;
+  }
 }
 
 function addAvaliation(title_id, entry, user_id) {
   const title = findTitle({ id: title_id.toString() });
-  const addAvaliation = db
-    .get("avaliation")
-    .push({
-      title_id,
-      entry,
-      user_id,
-      type: title.type,
-    })
-    .last()
-    .write();
 
+  const aval = db.get("avaliation").find({title_id, user_id}).value();
+  console.log("teste", aval);
+  let addAvaliation;
+  if(typeof aval === "undefined") {
+    addAvaliation = db
+        .get("avaliation")
+        .push({
+          title_id,
+          entry,
+          user_id,
+          type: title.type,
+        })
+        .last()
+        .write();
+  }else {
+    addAvaliation = db
+        .get("avaliation")
+        .find({title_id, user_id})
+        .assign({
+          title_id,
+          entry,
+          user_id,
+          type: title.type,
+        })
+        .write();
+  }
   return addAvaliation;
 }
 

@@ -1,5 +1,21 @@
 {
-  "sessions": [],
+  "sessions": [
+    {
+      "_id": "ERFtDOGkzqaaKoYbpoTKD8TDf0R0fJS9",
+      "session": {
+        "cookie": {
+          "originalMaxAge": null,
+          "expires": null,
+          "httpOnly": true,
+          "path": "/"
+        },
+        "passport": {
+          "user": "1600915234104"
+        }
+      },
+      "expires": 1601005495965
+    }
+  ],
   "profiles": [
     {
       "name": "Daniel Araujo",
@@ -21,6 +37,13 @@
       "email": "m@m.com",
       "password": "$2b$10$hkzbB123jzAJgZN/ul2nzOTekU9WRjYn8O.vB6d0ZiVIPahSAZZn2",
       "id": "1600040142186"
+    },
+    {
+      "name": "jeovanni",
+      "role": "USER",
+      "email": "jeovannish@hotmail.com",
+      "password": "$2b$10$y7ZJL8cV3F25jjlW0bt9EOYTxxUE9ZGaInOD0uKgyrqRtPnk7JwyS",
+      "id": "1600915234104"
     }
   ],
   "titles": [
@@ -11115,6 +11138,32 @@
         "1599102452434",
         "1599102452403"
       ]
+    }
+  ],
+  "avaliation": [
+    {
+      "title_id": "605116",
+      "type": "filme",
+      "user_id": "1599784519641",
+      "entry": 10
+    },
+    {
+      "title_id": "703771",
+      "type": "filme",
+      "user_id": "1600304224005",
+      "entry": 9
+    },
+    {
+      "title_id": "1599102483979",
+      "entry": 5.2,
+      "user_id": "1600915234104",
+      "type": "filme"
+    },
+    {
+      "title_id": "1599102475573",
+      "entry": 3,
+      "user_id": "1600915234104",
+      "type": "filme"
     }
   ]
 }
