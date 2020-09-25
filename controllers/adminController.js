@@ -1,22 +1,11 @@
 //request do titulo para acesso admin
 const { TitleAccess } = require("../database");
 
-exports.requests = async (req, res) => { //para todos os filmes pendentes
-    const titlePending = await TitleAccess.getTitlesPending();
-    res.render("admTitleRequest", {
-        title: 'Lista Filmes Sugeridos',
-        user: req.user,
-        titlePending: titlePending,
-    });
-};
-
-
 exports.requestGetEdit = async (req, res) => { //vai pegar os campos do add filme
 
   const titlePending = await TitleAccess.getTitlePending(req.params.id);
   //passar todas as variveis que vou precisar de um unico id
   if (titlePending){
-    console.log(titlePending);
     res.render("titleRequest", {
       title: "Filme" , //pegando o id do filme
       user: req.user,
@@ -45,7 +34,9 @@ exports.requestAccept = async (req, res) => {
                     "Animação", 
                     "Aventura", 
                     "Comédia", 
-                    "Documentário", 
+                    "Crime",
+                    "Documentário",
+                    "Drama", 
                     "Fantasia",
                     "aroeste – Western",
                     "Ficção científica",
@@ -81,7 +72,7 @@ exports.requestAccept = async (req, res) => {
       erros.release_date = "Data inválida!";
     }
     
-    const urlRegexp = new RegExp('^(https?|ftp|torrent|image|irc):\/\/(-\.)?([^\s\/?\.#-]+\.?)+(\/[^\s]*)?$');
+    const urlRegexp = new RegExp('^(https?:\\/\\/)?((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|((\\d{1,3}\\.){3}\\d{1,3}))(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*(\\?[;&a-z\\d%_.~+=-]*)?(\\#[-a-z\\d_]*)?$','i');
     
     // Se a url do trailer não existir define como vazia
     if (req.body.trailer_path === undefined || !urlRegexp.test(req.body.trailer_path)) {
@@ -92,16 +83,15 @@ exports.requestAccept = async (req, res) => {
     if (req.body.poster_path === undefined || !urlRegexp.test(req.body.poster_path)) {
       erros.poster_path = "URL inválida!";
     }
-
     // Se a url do fundo não existir define como vazia
     if (req.body.backdrop_path === undefined || !urlRegexp.test(req.body.backdrop_path)) {
       req.body.backdrop_path = "";
     }
+    
   }
   else {
     erros.id = "ID inválido!";
   }
-
   if(Object.keys(erros).length) {
     // Renderiza página se houver erros
     res.status(400).json({erros: erros});
@@ -132,4 +122,20 @@ exports.requestReject = async (req, res) => {
   else {
     res.status(400).json({erros: erros});
   }
+};
+
+exports.requests = async (req, res) => {
+  const TITLES_PER_PAGE = 15;
+  const page = !parseInt(req.params.page) ? 1 : parseInt(req.params.page);
+  const titlePending = await TitleAccess.getTitlesPending(page);
+
+  res.render("titlesList", {
+    title: "Lista Sugestões",
+    user: req.user,
+    currentPage: page,
+    searchParams: null,
+    movieContentPath: "/admin/request/",
+    paginationPath: "/admin/requests/",
+    ...titlePending,
+  });
 };

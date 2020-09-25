@@ -209,14 +209,17 @@ exports.gallery = (req, res) => {
     page,
     orderBy
   );
+  
+  const userFirstName = req.user.name.substring(0,req.user.name.indexOf(" "));
 
-  const pageTitle = `Galeria de ${req.user.name}`;
-  res.render("search", {
+  const pageTitle = `Galeria de ${userFirstName.slice(0,10)}`;
+  res.render("titlesList", {
     title: pageTitle,
     user: req.user,
     currentPage: page,
     searchParams: formatSearchParamsToView(searchParams),
-    isUserGallery: true,
+    movieContentPath: "/title/",
+    paginationPath: "/user/gallery/",
     ...titles,
   });
 };

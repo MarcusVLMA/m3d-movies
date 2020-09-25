@@ -27,7 +27,7 @@ exports.title = async (req, res) => {
   });
 };
 
-exports.titles = async (req, res) => {
+exports.searchTitles = async (req, res) => {
   const page = !parseInt(req.params.page) ? 1 : parseInt(req.params.page);
 
   const searchType = req.query.type;
@@ -45,14 +45,14 @@ exports.titles = async (req, res) => {
   }
 
   const titles = TitleAccess.searchTitles(searchParams, page, orderBy);
-
   const pageTitle = "Busca";
-  res.render("search", {
+  res.render("titlesList", {
     title: pageTitle,
     user: req.user,
     currentPage: page,
-    searchParams: formatSearchParamsToView(searchParams),
-    isUserGallery: false,
+    searchParams: formatSearchParamsToView(searchParams).concat(`&orderby=${orderBy}`),
+    movieContentPath: "/title/",
+    paginationPath: "/title/search/",
     ...titles,
   });
 };
@@ -61,7 +61,6 @@ exports.titles = async (req, res) => {
 exports.requestGet = async (req, res) => {
   const titlePending = await TitleAccess.getTitlePending(req.params.id);
   if (titlePending) {
-    console.log(titlePending);
     res.render("titleRequest", {
       title: "Sugerir Título",
       user: req.user,
@@ -94,7 +93,9 @@ exports.requestPost = async (req, res) => {
     "Animação",
     "Aventura",
     "Comédia",
+    "Crime",
     "Documentário",
+    "Drama",
     "Fantasia",
     "aroeste – Western",
     "Ficção científica",

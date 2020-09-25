@@ -57,7 +57,12 @@ aside {
 .filters-header {
   background-color: var(--filter-header);
   border-radius: 10px 10px 0 0;
-  padding: 5px;
+  padding: 13px 5px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--back);
+  align-items: center;
+  text-align: center;
 }
 
 .filters-input {
@@ -159,6 +164,8 @@ aside {
 
 .content-header select {
   background-color: var(--clic);
+  padding: 5px 20px;
+  border-radius: 8px;
 }
 
 .movie-container {

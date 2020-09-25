@@ -18,7 +18,7 @@
   --input-border: #2cafc3;
   --btn-hover: #016f8d;
   --input-place: none;
-  --popup-border: 1px solid #032541;;
+  --popup-border: 1px solid #032541;
 }
 
 .high-contrast {
@@ -46,11 +46,11 @@
 
 body {
   min-width: 830px;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 /* nav bar */
 header {
-  font-family: "Source Sans Pro", sans-serif;
   display: flex;
   align-items: center;
   background-color: var(--back-barra);
