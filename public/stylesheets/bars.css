@@ -54,6 +54,17 @@ header {
   display: flex;
   align-items: center;
   background-color: var(--back-barra);
+  transition: top 0.3s;
+  position: fixed;
+  height: 60px;
+  top: 0;
+  width: 100%;
+  z-index:1;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+}
+
+header + main {
+  padding-top: 60px;
 }
 
 input, textarea, button {
@@ -92,10 +103,6 @@ label.erro {
 }
 
 /* nav */
-
-header {
-  height: 60px;
-}
 
 main {
   width: 100%;
