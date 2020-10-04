@@ -28,7 +28,8 @@ async function findUser(searchParams) {
   return axios.get(`${process.env.DB_SERVICE}/user/find/${encodedParams}`)
   .then(resp => {
     return resp.data;
-  }).catch(err => {
+  })
+  .catch(err => {
     return null;
   });
 }

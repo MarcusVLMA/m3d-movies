@@ -8,3 +8,4 @@ const defaultData = require("./data/defaultData.json");
 
 db.defaults(defaultData).write();
 module.exports = db;
+

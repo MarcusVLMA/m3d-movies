@@ -8,7 +8,6 @@ require('dotenv-safe').config();
 
 const passport = require('passport');
 const session = require('express-session');
-const db = require("./database/config");
 
 const defaultRouter = require("./routes/default");
 const adminRouter = require("./routes/admin");

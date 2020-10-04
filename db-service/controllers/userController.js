@@ -3,9 +3,9 @@ const { base64ToJson } = require("./utils");
 
 exports.findUser = async (req, res, next) => {
   // Decodifica os parametros
-  const params = base64ToJson(req.params.encodedParams);
+  const searchParams = base64ToJson(req.params.encodedParams);
 
-  const user = UserAccess.findUser(params);
+  const user = UserAccess.findUser(searchParams);
   if (user){
     res.json(user);
   }
@@ -69,6 +69,63 @@ exports.removeUser = async (req, res, next) => {
   if (removedUser) {
     res.json(removedUser);
   } else {
+    res.sendStatus(400);
+  }
+}
+
+exports.galleryTitles = async (req, res, next) => {
+  // Decodifica os parametros
+  const searchParams = base64ToJson(req.params.encodedParams);
+  const page = req.params.page || 1;
+  const orderBy = req.params.order || "";
+  const profileId = req.params.profileId;
+  
+  const titles = await TitleAccess.galleryTitles(profileId, searchParams, page, orderBy);
+
+  if (titles){
+    res.json(titles);
+  }
+  else{
+    res.sendStatus(404);
+  }
+}
+
+exports.allGalleryTitleIds = async (req, res, next) => {
+  
+  const titles = await TitleAccess.allGalleryTitleIds(req.params.profileId);
+
+  if (titles){
+    res.json(titles);
+  }
+  else{
+    res.sendStatus(404);
+  }
+}
+
+exports.addTitleToUserGallery = async (req, res, next) => {
+  const updatedGallery = await TitleAccess.addTitleToUserGallery(
+    req.params.profileId, 
+    req.body.titleId, 
+  );
+
+  if (updatedGallery){
+    res.json(updatedGallery);
+  }
+  else{
+    res.sendStatus(400);
+  }
+}
+
+exports.removeTitleFromUserGallery = async (req, res, next) => {
+  const removedGallery = await TitleAccess.removeTitleFromUserGallery(
+    req.params.profileId, 
+    req.params.titleId, 
+  );
+
+  if (removedGallery){
+    res.json(removedGallery);
+  }
+  else{
     res.sendStatus(400);
   }
 }

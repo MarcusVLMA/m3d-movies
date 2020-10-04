@@ -1,55 +1,10 @@
 {
-  "sessions": [
-    {
-      "_id": "B-0l7aty_pCv-l6eC_9ZzUTJMl-eKKaJ",
-      "session": {
-        "cookie": {
-          "originalMaxAge": null,
-          "expires": null,
-          "httpOnly": true,
-          "path": "/"
-        },
-        "passport": {}
-      },
-      "expires": 1601000269626
-    },
-    {
-      "_id": "6cJd8xcpgS6HqGR76N3lESNEw1L2Fg3U",
-      "session": {
-        "cookie": {
-          "originalMaxAge": null,
-          "expires": null,
-          "httpOnly": true,
-          "path": "/"
-        },
-        "passport": {
-          "user": "1599784519641"
-        }
-      },
-      "expires": 1601041686719
-    },
-    {
-      "_id": "d_rlN3tq0BmkGsZ7tPmz82fg5Sy_Dbaj",
-      "session": {
-        "cookie": {
-          "originalMaxAge": null,
-          "expires": null,
-          "httpOnly": true,
-          "path": "/"
-        },
-        "passport": {
-          "user": "1600963704400"
-        }
-      },
-      "expires": 1601051093356
-    }
-  ],
   "profiles": [
     {
       "name": "Daniel Araujo",
-      "role": "USER",
+      "role": "ADMIN",
       "email": "daniel@admin.com",
-      "password": "$2b$10$8z5wSX7OWZPbGqcxSRhn6uQ6utXOK637/fsPVOzfzh48GZcU/pb2S",
+      "password": "$2b$10$8N3mJua3cENyu6/Jon7YhOq1XUSqYHCM4.N1BVi/r8MxiChh.k.zO",
       "id": "1599784519641"
     },
     {
@@ -99,7 +54,7 @@
       "backdrop_path": "https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/9hvhGtcsGhQY58pukw8w55UEUbL.jpg",
       "description": "Enquanto tentam lidar com problemas típicos da adolescência como amor, sexo, escola e família, Archie e sua turma se envolvem em um grande mistério.",
       "poster_path": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/8Qoyn3j0gK0EOABrm0p6E5mzavg.jpg",
-      "status": "pending",
+      "status": "accepted",
       "vote_average": 8.6,
       "id": "1599102452393"
     },
@@ -118,20 +73,6 @@
       "id": "1599102452403"
     },
     {
-      "title": "Wendy",
-      "release_date": "2020-02-28",
-      "genre": "Aventura",
-      "type": "filme",
-      "running_time": "01:52",
-      "trailer_path": "",
-      "backdrop_path": "https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/pPNMk2TQVIhNn2IFHVJo1jcXQmR.jpg",
-      "description": "Uma jovem menina é sequestrada por um estranho grupo e levada para uma misteriosa ilha em que uma espécie de polén místico faz com que a relação entre o tempo e o envelhecimento seja quebrada.",
-      "poster_path": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/nphsStbtAuJ2IaXtCvDXDwMUF5N.jpg",
-      "status": "pending",
-      "vote_average": 5.7,
-      "id": "1599102452420"
-    },
-    {
       "title": "Crayon Shin-chan",
       "release_date": "1992-04-13",
       "genre": "Animação",
@@ -144,62 +85,6 @@
       "status": "accepted",
       "vote_average": 7.2,
       "id": "1599102452422"
-    },
-    {
-      "title": "Tekken: Vingança de Sangue",
-      "release_date": "2011-07-26",
-      "genre": "Ação",
-      "type": "filme",
-      "running_time": "01:32",
-      "trailer_path": "",
-      "backdrop_path": "https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/wJt0gN6D1QDRnYNGZBIcQY6a4D8.jpg",
-      "description": "As empresas Mishima Zaibatsu (de Jin Kazama) e a Corporação G (de Kazuya Mishima) estão buscando informações sobre um estudante chamado Shin Kamiya. Kasuya envia Ling Xiaoyu para descobrir informações sobre o estudante. Alisa Bosconovitch (enviada por Jin) tem a mesma missão.",
-      "poster_path": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/i4CJ0zeZsERk2IYKVli3Orn70Ep.jpg",
-      "status": "pending",
-      "vote_average": 6.1,
-      "id": "1599102452425"
-    },
-    {
-      "title": "Frozen: Uma Aventura Congelante",
-      "release_date": "2013-11-27",
-      "genre": "Aventura",
-      "type": "filme",
-      "running_time": "01:42",
-      "trailer_path": "",
-      "backdrop_path": "https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/fydUcbkqLyESCFa9U5XKqi8dIVj.jpg",
-      "description": "A caçula Anna adora sua irmã Elsa, mas um acidente envolvendo os poderes especiais da mais velha, durante a infância, fez com que os pais as mantivessem afastadas. Após a morte deles, as duas cresceram isoladas no castelo da família, até o dia em que Elsa deveria assumir o reinado de Arendell. Com o reencontro das duas, um novo acidente acontece e ela decide partir para sempre e se isolar do mundo, deixando todos para trás e provocando o congelamento do reino. É quando Anna decide se aventurar pelas montanhas de gelo para encontrar a irmã e acabar com o frio.",
-      "poster_path": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/qWFgaDLfiLtsFIEa8fcbmP2SIp9.jpg",
-      "status": "pending",
-      "vote_average": 7.3,
-      "id": "1599102452429"
-    },
-    {
-      "title": "Z Nation",
-      "release_date": "2014-09-12",
-      "genre": "Mistério",
-      "type": "serie",
-      "running_time": "00:44",
-      "trailer_path": "",
-      "backdrop_path": "https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/jCvwvSH5i9bLaql1rR21j9U9LS.jpg",
-      "description": "Um grupo embarca em uma perigosa jornada pelo país para levar o único sobrevivente de uma epidemia zumbi a um centro de pesquisas.",
-      "poster_path": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/geFT40zG22OCJSj7WkkCi71xWES.jpg",
-      "status": "pending",
-      "vote_average": 6.6,
-      "id": "1599102452431"
-    },
-    {
-      "title": "Lúcifer",
-      "release_date": "2016-01-25",
-      "genre": "Crime",
-      "type": "serie",
-      "running_time": "00:45",
-      "trailer_path": "",
-      "backdrop_path": "https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/ta5oblpMlEcIPIS2YGcq9XEkWK2.jpg",
-      "description": "Entediado com a vida nas trevas, o diabo se muda para Los Angeles, abre um piano-bar e empresta sua sabedoria a uma investigadora de assassinatos.",
-      "poster_path": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/vn4K3hgtoDV2rIK6FfYK8ejn1tW.jpg",
-      "status": "pending",
-      "vote_average": 8.5,
-      "id": "1599102452433"
     },
     {
       "title": "O Chefinho: De Volta aos Negócios",
@@ -225,7 +110,7 @@
       "backdrop_path": "https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/cqa3sa4c4jevgnEJwq3CMF8UfTG.jpg",
       "description": "Os cabos Schofield (George MacKay) e Blake (Dean-Charles Chapman) são jovens soldados britânicos durante a Primeira Guerra Mundial. Quando eles são encarregados de uma missão aparentemente impossível, os dois precisam atravessar território inimigo, lutando contra o tempo, para entregar uma mensagem que pode salvar cerca de 1600 colegas de batalhão.",
       "poster_path": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/8KkyXE7Hd9MPOOkORxkMM6SUXAB.jpg",
-      "status": "pending",
+      "status": "accepted",
       "vote_average": 7.9,
       "id": "1599102452436"
     },
@@ -11092,109 +10977,43 @@
       "status": "accepted",
       "vote_average": 0,
       "id": "1600042612990"
+    },
+    {
+      "title": "Algum titulo teste",
+      "release_date": "2010-10-10",
+      "genre": "Comédia",
+      "type": "filme",
+      "running_time": "01:40",
+      "trailer_path": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/8Qoyn3j0gK0EOABrm0p6E5mzavg.jpg",
+      "backdrop_path": "https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/ize3ZieqSy0TCWljmVoEiy8fSFS.jpg",
+      "description": "Algum titulo teste Algum titulo teste Algum titulo teste Algum titulo teste",
+      "poster_path": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/89QTZmn34iwXYeCpVxhC9UrT8sX.jpg",
+      "status": "pending",
+      "vote_average": 0,
+      "id": "1601831738330"
+    },
+    {
+      "title": "OutroLivro21",
+      "release_date": "1111-11-11",
+      "genre": "Ação",
+      "type": "filme",
+      "running_time": "11:11",
+      "trailer_path": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/8Qoyn3j0gK0EOABrm0p6E5mzavg.jpg",
+      "backdrop_path": "https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/ize3ZieqSy0TCWljmVoEiy8fSFS.jpg",
+      "description": "aaaaaaaaaaaa",
+      "poster_path": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/89QTZmn34iwXYeCpVxhC9UrT8sX.jpg",
+      "status": "pending",
+      "vote_average": 0,
+      "id": "1601834805640"
     }
   ],
-  "title_commentaries": [
-    {
-      "id": "2",
-      "title_id": "1599102452501",
-      "profile_id": "1599784519641",
-      "text": "Sempre foi assim nas histórias e aqui as coisas não são diferentes. Retratada no início dos anos 80, a cidade está imersa em pobreza e desigualdade, acentuada por uma enorme crise de desemprego. Abandonada pelo governo, nem mesmo o lixo é recolhido nas ruas, levando Gotham a uma infestação de ratos. Como se não bastasse, as diferenças sociais se condensam em uma enorme onda de tensão, colocando os ricos contra as classes mais empobrecidas num clima de desesperança e desespero. ",
-      "date": "2020-08-10"
-    },
-    {
-      "id": "3",
-      "title_id": "703771",
-      "profile_id": "1599784519641",
-      "text": "Nota 10",
-      "date": "2020-08-10"
-    },
-    {
-      "id": "4",
-      "title_id": "703771",
-      "profile_id": "1600040142186",
-      "text": "Horrível",
-      "date": "2020-08-10"
-    },
-    {
-      "id": "5",
-      "title_id": "726664",
-      "profile_id": "1600040142186",
-      "text": "Show demais",
-      "date": "2020-08-10"
-    },
-    {
-      "id": "6",
-      "title_id": "726664",
-      "profile_id": "1600040142186",
-      "text": "Perdi meu tempo assistindo isso",
-      "date": "2020-08-10"
-    },
-    {
-      "title_id": "1599102452403",
-      "profile_id": "1600040142186",
-      "text": "Muito bom, nota 10",
-      "date": "2020-08-16",
-      "id": "1600225641867"
-    },
-    {
-      "title_id": "1599102452403",
-      "profile_id": "1600040142186",
-      "text": "Na verdade não entendi nada",
-      "date": "2020-08-16",
-      "id": "1600225692654"
-    },
-    {
-      "title_id": "1599102452403",
-      "profile_id": "1600040142186",
-      "text": "Na verdade é bom sim",
-      "date": "2020-08-16",
-      "id": "1600225720213"
-    },
-    {
-      "title_id": "1599102452403",
-      "profile_id": "1600040142186",
-      "text": "HOrrivel",
-      "date": "2020-08-16",
-      "id": "1600225879146"
-    },
-    {
-      "title_id": "1599102452403",
-      "profile_id": "1600040142186",
-      "text": "Muito médio",
-      "date": "2020-08-20",
-      "id": "1600648067937"
-    },
-    {
-      "title_id": "1599102471891",
-      "profile_id": "1600963704400",
-      "text": "Muito divertido hahahahaha",
-      "date": "2020-08-24",
-      "id": "1600964517893"
-    },
-    {
-      "title_id": "1599102476285",
-      "profile_id": "1600963704400",
-      "text": "Curti muito não",
-      "date": "2020-08-24",
-      "id": "1600964690843"
-    }
-  ],
+  "title_commentaries": [],
   "profile_gallery": [
     {
-      "profile_id": "1600040142186",
       "title_ids": [
-        "1599102452434",
-        "1599102452403",
-        "1599102485185"
-      ]
-    },
-    {
-      "title_ids": [
-        "1599102471891",
-        "1599102476285"
+        "1599102496885"
       ],
-      "profile_id": "1600963704400"
+      "profile_id": "1599784519641"
     }
   ]
 }

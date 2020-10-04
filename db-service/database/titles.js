@@ -326,9 +326,8 @@ function updateTitle(titleInfo) {
 }
 
 function removeTitle(titleId) {
-  db.get("titles").remove({ id: titleId }).write();
-
   db.get("title_commentaries").remove({ title_id: titleId }).write();
+  return db.get("titles").remove({ id: titleId }).write();
 }
 
 function removeCommentaries(userId) {

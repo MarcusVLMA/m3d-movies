@@ -94,7 +94,7 @@ titleForm.addEventListener('submit', (e) => {
       spanBackdrop.innerHTML = erros.backdrop_path !== undefined ? erros.backdrop_path: "";
       blockTitleForm(false);
     }
-    else {
+    else if (Object.keys(jsonResponse).length) {
       // Reseta o formulario
       titleForm.reset();
       if(rejBtn && accBtn) {
@@ -121,6 +121,9 @@ titleForm.addEventListener('submit', (e) => {
         },5000);
         blockTitleForm(false);
       }
+    }
+    else {
+      throw new Error('Erro de conexão!');
     }
   })
   .catch(() => {
@@ -197,7 +200,9 @@ backdrop.addEventListener('focus', () => {
   spanBackdrop.innerHTML = '';
 });
 
-// Modal
-btnModal.addEventListener("click", () => {
-  window.location.href = "/admin/requests";
-})
+if (btnModal) {
+  // Modal
+  btnModal.addEventListener("click", () => {
+    window.location.href = "/admin/requests";
+  });
+}

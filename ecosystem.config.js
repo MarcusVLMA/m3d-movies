@@ -16,7 +16,6 @@ module.exports = {
     script: "node ./bin/www",
     cwd: "./gateway-service",
     watch: true,
-    ignore_watch : ["database/data"],
     env: {
       NODE_ENV: "development",
     },

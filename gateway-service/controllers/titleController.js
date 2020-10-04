@@ -12,7 +12,7 @@ exports.title = async (req, res) => {
   const backdropStyle = `background-image: url(${title.backdrop_path})`;
 
   const userGalleryTitleIds = req.user
-    ? TitleAccess.allGalleryTitleIds(req.user.id)
+    ? await TitleAccess.allGalleryTitleIds(req.user.id)
     : [];
   const titleIsInUserGallery = userGalleryTitleIds.includes(req.params.id);
 
@@ -44,7 +44,7 @@ exports.searchTitles = async (req, res) => {
     searchParams.type = searchType;
   }
 
-  const titles = TitleAccess.searchTitles(searchParams, page, orderBy);
+  const titles = await TitleAccess.searchTitles(searchParams, page, orderBy);
   const pageTitle = "Busca";
   res.render("titlesList", {
     title: pageTitle,
@@ -83,7 +83,7 @@ exports.requestPost = async (req, res) => {
   // Verifica se o título é válido
   if (req.body.title === undefined || req.body.title.length < 4) {
     erros.title = "O título deve conter pelo menos 4 caractéres!";
-  } else if (TitleAccess.countTitle({ title: req.body.title })) {
+  } else if (await TitleAccess.countTitle({ title: req.body.title })) {
     erros.title = "O título está já cadastrado!";
   }
 
@@ -144,7 +144,7 @@ exports.requestPost = async (req, res) => {
   }
 
   const urlRegexp = new RegExp(
-    "^(https?|ftp|torrent|image|irc)://(-.)?([^s/?.#-]+.?)+(/[^s]*)?$"
+    '^(https?:\\/\\/)?((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|((\\d{1,3}\\.){3}\\d{1,3}))(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*(\\?[;&a-z\\d%_.~+=-]*)?(\\#[-a-z\\d_]*)?$','i'
   );
 
   // Se a url do trailer não existir define como vazia
@@ -170,12 +170,12 @@ exports.requestPost = async (req, res) => {
   ) {
     req.body.backdrop_path = "";
   }
-
+  console.log(erros)
   if (Object.keys(erros).length) {
     // Renderiza página se houver erros
     res.status(400).json({ erros: erros });
   } else {
-    const newTitle = TitleAccess.createTitle({
+    const newTitle = await TitleAccess.createTitle({
       title: req.body.title,
       release_date: req.body.release_date,
       genre: req.body.genre,
@@ -189,14 +189,14 @@ exports.requestPost = async (req, res) => {
       vote_average: 0,
     });
 
-    res.json({ title: newTitle });
+    res.json({ title: newTitle.title });
   }
 };
 
 exports.titleCommentary = async (req, res) => {
   const { titleId, text } = req.body;
 
-  const commentary = TitleAccess.addCommentary(titleId, req.user.id, text);
+  const commentary = await TitleAccess.addCommentary(titleId, req.user.id, text);
 
   res.json({ commentary, user: req.user });
 };

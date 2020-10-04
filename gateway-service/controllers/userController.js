@@ -146,7 +146,7 @@ exports.userProfileEditPost = async (req, res) => {
     console.log(req.user)
     await UserAccess.updateUser({
       name: req.body.name,
-      role: "USER",
+      role: req.user.role || "USER",
       email: req.body.email,
       password: bcrypt.hashSync(req.body.password, 10),
       id: req.user.id,
@@ -182,12 +182,12 @@ exports.siginPost = async (req, res, next) => {
   })(req, res, next);
 };
 
-exports.sigoutGet = (req, res) => {
+exports.sigoutGet = async (req, res) => {
   req.logout();
   res.redirect("/");
 };
 
-exports.gallery = (req, res) => {
+exports.gallery = async (req, res) => {
   const page = !parseInt(req.params.page) ? 1 : parseInt(req.params.page);
 
   const searchType = req.query.type;
@@ -204,7 +204,7 @@ exports.gallery = (req, res) => {
     searchParams.type = searchType;
   }
 
-  const titles = TitleAccess.galleryTitles(
+  const titles = await TitleAccess.galleryTitles(
     req.user.id,
     searchParams,
     page,
@@ -228,9 +228,9 @@ exports.gallery = (req, res) => {
 exports.addTitleToGallery = async (req, res) => {
   const titleId = req.body.titleId;
 
-  TitleAccess.addTitleToUserGallery(req.user.id, titleId);
+  const updatedGallery = TitleAccess.addTitleToUserGallery(req.user.id, titleId);
 
-  res.json({ added: true });
+  res.json({ added: updatedGallery ? true : false });
 };
 
 exports.removeTitleFromGallery = async (req, res) => {

@@ -20,12 +20,12 @@ exports.requestGetEdit = async (req, res) => { //vai pegar os campos do add film
 exports.requestAccept = async (req, res) => {
   // Objeto que armazena as mensagens de erro
   let erros = {};
-  if (TitleAccess.countTitle({ id: req.params.id, status: "pending" })) {
+  if (await TitleAccess.countTitle({ id: req.params.id, status: "pending" })) {
     // Verifica se o título é válido
     if (req.body.title === undefined || req.body.title.length < 4){
       erros.title = "O título deve conter pelo menos 4 caractéres!";
     }
-    else if(TitleAccess.countTitle({ title: req.body.title, status: "accepted" })){
+    else if(await TitleAccess.countTitle({ title: req.body.title, status: "accepted" })){
       erros.title = "O título está já cadastrado!";
     }
 
@@ -97,7 +97,7 @@ exports.requestAccept = async (req, res) => {
     res.status(400).json({erros: erros});
   }
   else {
-    const acceptedTitle = TitleAccess.updateTitle({
+    const acceptedTitle = await TitleAccess.updateTitle({
       id: req.params.id,
       title: req.body.title,
       release_date: req.body.release_date,
@@ -115,12 +115,12 @@ exports.requestAccept = async (req, res) => {
 };
 
 exports.requestReject = async (req, res) => {
-  if (TitleAccess.countTitle({ id: req.params.id, status: "pending" })){
+  if (await TitleAccess.countTitle({ id: req.params.id, status: "pending" })){
     await TitleAccess.removeTitle(req.params.id);
     res.json({id: req.params.id});
   }
   else {
-    res.status(400).json({erros: erros});
+    res.sendStatus(400);
   }
 };
 
