@@ -29,7 +29,7 @@
     <script type="text/javascript" src="/javascripts/accessibility.js"></script>
     <%#_ Insere os Scripts das Outras Views _%>
     <script type="text/javascript" src="/javascripts/header.js"></script>
-    <%_ if (!user) { _%>
+    <%_ if (!locals.user) { _%>
     <script type="text/javascript" src="/javascripts/login.js"></script>
     <% } %>
     <%- script %>

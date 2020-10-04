@@ -4,15 +4,17 @@
  * Module dependencies.
  */
 
-var app = require('../app');
-var debug = require('debug')('m3dserver:server');
-var http = require('http');
+const app = require('../app');
+const debug = require('debug')('m3dserver:server');
+const http = require('http');
+require('dotenv-safe').config();
+
 
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(process.env.SERVER_PORT || '3000');
 app.set('port', port);
 
 /**
@@ -28,6 +30,7 @@ var server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+console.log(`Server started on port ${process.env.SERVER_PORT}`);
 
 /**
  * Normalize a port into a number, string, or false.

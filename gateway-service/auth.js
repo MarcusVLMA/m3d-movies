@@ -8,9 +8,9 @@ module.exports = function(passport) {
     done(null, user.id);
   });
 
-  passport.deserializeUser((id, done) => {
+  passport.deserializeUser(async (id, done) => {
     let err;
-    const user = UserAccess.getUser(id);
+    const user = await UserAccess.getUser(id);
     if (!user) err = new Error('Database connection error');
     done(err, user);
   });
@@ -19,11 +19,11 @@ module.exports = function(passport) {
       usernameField: 'userEmail',
       passwordField: 'userPassword'
     },
-    (userEmail, userPassword, done) => {
+    async (userEmail, userPassword, done) => {
       
       console.log(userEmail, userPassword);
-      const user = UserAccess.findUser({email: userEmail});
-      
+      const user = await UserAccess.findUser({email: userEmail});
+
       // usuário inexistente
       if (!user) {
         return done(null, false);

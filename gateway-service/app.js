@@ -9,13 +9,11 @@ require('dotenv-safe').config();
 const passport = require('passport');
 const session = require('express-session');
 const db = require("./database/config");
-const LowdbStore = require('lowdb-session-store')(session);
 
 const defaultRouter = require("./routes/default");
 const adminRouter = require("./routes/admin");
 const userRouter = require("./routes/user");
 const titleRouter = require("./routes/title");
-
 
 const app = express();
 
@@ -36,10 +34,7 @@ require('./auth')(passport);
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
-  saveUninitialized: false,
-  store: new LowdbStore(db.get('sessions'), {
-    ttl: 86400
-  })
+  saveUninitialized: false
 }))
 app.use(passport.initialize());
 app.use(passport.session());

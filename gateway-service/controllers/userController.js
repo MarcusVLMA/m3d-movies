@@ -81,7 +81,7 @@ exports.registrationPost = async (req, res, next) => {
       }
       return;
     });
-
+    
     res.json({ user: newUser });
   }
 };
@@ -143,7 +143,8 @@ exports.userProfileEditPost = async (req, res) => {
       notification: false,
     });
   } else {
-    UserAccess.updateUser({
+    console.log(req.user)
+    await UserAccess.updateUser({
       name: req.body.name,
       role: "USER",
       email: req.body.email,

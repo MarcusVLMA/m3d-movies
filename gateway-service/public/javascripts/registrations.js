@@ -43,6 +43,7 @@ registrationForm.addEventListener('submit', (e) => {
     .then(response => {
       if(!response.ok) {
         blockRegistrationForm(false);
+        throw response;
       }
       return response.json();
     })

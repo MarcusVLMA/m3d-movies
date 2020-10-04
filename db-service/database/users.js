@@ -7,11 +7,11 @@ function createUser(userInfo) {
     return null;
   } else {
     const createdUser = db
-      .get("profiles")
-      .push(userInfo)
-      .last()
-      .assign({ id: Date.now().toString() })
-      .write();
+    .get("profiles")
+    .push(userInfo)
+    .last()
+    .assign({ id: Date.now().toString() })
+    .write();
 
     return createdUser;
   }
@@ -37,18 +37,20 @@ function findUser(searchParams) {
 
 function updateUser(userInfo) {
   const updatedUser = db
-    .get("profiles")
-    .find({ id: userInfo.id })
-    .assign(userInfo)
-    .write();
+  .get("profiles")
+  .find({ id: userInfo.id })
+  .assign(userInfo)
+  .write();
 
   return updatedUser;
 }
 
 function removeUser(userId) {
-  db.get("profiles")
+  const removedUser = db.get("profiles")
   .remove({ id: userId })
   .write();
+  
+  return removedUser;
 }
 
 module.exports = {
