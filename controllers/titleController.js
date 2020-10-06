@@ -246,11 +246,9 @@ exports.avaliationPost = async (req, res) => {
   const { title_id, entry } = req.body;
 
   TitleAccess.addAvaliation(title_id, entry, req.user.id);
-  // await TitleAccess.addAvaliation({
-  //   title_id: req.body.title_id,
-  //   type: req.body.type,
-  //   user_id: req.user.id,
-  //   entry: req.body.entry,
-  // });
-  res.json({ response: true });
+
+  let mean = 0;
+  mean = await TitleAccess.titleAvaliationMean(title_id);
+
+  res.json({ response: mean });
 };

@@ -54,6 +54,7 @@
                     fill="#ffffff"
                     font-family="Source Sans Pro, sans-serif"
                     font-size="24px"
+                    id = "avaliation-mean"
             >
               <%= mean %>
             </text>
@@ -207,6 +208,13 @@
         throw new Error('Erro de conexão!');
       }
       return response.json();
+    }).then(response => {
+        var avaliationMeanText = document.querySelector("#avaliation-mean");
+        var avaliationMeanBar = document.querySelector(".details-actions-rating");
+        avaliationMeanText.innerHTML = response.response;
+        const ratingValue = (1 - response.response / 10) * 201.06;
+        const ratingStyle = `stroke-dashoffset: ${ratingValue}`;
+        avaliationMeanBar.style = ratingStyle;
     })
   }
 </script>

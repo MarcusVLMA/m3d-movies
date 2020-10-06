@@ -1,7 +1,7 @@
 {
   "sessions": [
     {
-      "_id": "ERFtDOGkzqaaKoYbpoTKD8TDf0R0fJS9",
+      "_id": "xJy2axQ-9Fe2mtqzfR29z3bXs5RGKee6",
       "session": {
         "cookie": {
           "originalMaxAge": null,
@@ -13,7 +13,7 @@
           "user": "1600966528272"
         }
       },
-      "expires": 1601053202112
+      "expires": 1602107280789
     }
   ],
   "profiles": [
@@ -11145,6 +11145,14 @@
         "1599102452434",
         "1599102452403"
       ]
+    },
+    {
+      "title_ids": [
+        "1599102483979",
+        "1599102475573",
+        "1599102476285"
+      ],
+      "profile_id": "1600966528272"
     }
   ],
   "avaliation": [
@@ -11198,13 +11206,13 @@
     },
     {
       "title_id": "1599102483979",
-      "entry": 6.3,
+      "entry": 6.5,
       "user_id": "1600966528272",
       "type": "filme"
     },
     {
       "title_id": "1599102475573",
-      "entry": 4.8,
+      "entry": 9,
       "user_id": "1600966528272",
       "type": "filme"
     },
