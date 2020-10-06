@@ -1,7 +1,7 @@
 {
   "sessions": [
     {
-      "_id": "xJy2axQ-9Fe2mtqzfR29z3bXs5RGKee6",
+      "_id": "tWhgoUivH4cEBhRN5qzEtr7kyzkVtn68",
       "session": {
         "cookie": {
           "originalMaxAge": null,
@@ -10,10 +10,10 @@
           "path": "/"
         },
         "passport": {
-          "user": "1600966528272"
+          "user": "1600040142186"
         }
       },
-      "expires": 1602107280789
+      "expires": 1602107710911
     }
   ],
   "profiles": [
@@ -39,18 +39,11 @@
       "id": "1600040142186"
     },
     {
-      "name": "jeovanni",
+      "name": "teste",
       "role": "USER",
-      "email": "jeovannish@hotmail.com",
-      "password": "$2b$10$y7ZJL8cV3F25jjlW0bt9EOYTxxUE9ZGaInOD0uKgyrqRtPnk7JwyS",
-      "id": "1600915234104"
-    },
-    {
-      "name": "marcus",
-      "role": "USER",
-      "email": "jeovannish@gmail.com",
-      "password": "$2b$10$4CRs/UYK88IIYMWjQYdJAO25IFkWc699cLDrsmcBaREVEwzU.am1W",
-      "id": "1600966528272"
+      "email": "g@g.com",
+      "password": "$2b$10$GCb23mhmbl7xp5HZ1flpaev1f91vyncr7GcdqCwMWlzxZucfRDUXi",
+      "id": "1600963704400"
     }
   ],
   "titles": [
@@ -11136,6 +11129,20 @@
       "text": "Muito médio",
       "date": "2020-08-20",
       "id": "1600648067937"
+    },
+    {
+      "title_id": "1599102471891",
+      "profile_id": "1600963704400",
+      "text": "Muito divertido hahahahaha",
+      "date": "2020-08-24",
+      "id": "1600964517893"
+    },
+    {
+      "title_id": "1599102476285",
+      "profile_id": "1600963704400",
+      "text": "Curti muito não",
+      "date": "2020-08-24",
+      "id": "1600964690843"
     }
   ],
   "profile_gallery": [
@@ -11148,11 +11155,10 @@
     },
     {
       "title_ids": [
-        "1599102483979",
-        "1599102475573",
+        "1599102471891",
         "1599102476285"
       ],
-      "profile_id": "1600966528272"
+      "profile_id": "1600963704400"
     }
   ],
   "avaliation": [
@@ -11170,74 +11176,26 @@
     },
     {
       "title_id": "1599102483979",
-      "entry": 7.9,
-      "user_id": "1600915234104",
+      "entry": 7.7,
+      "user_id": "1600040142186",
       "type": "filme"
     },
     {
       "title_id": "1599102475573",
-      "entry": 3,
-      "user_id": "1600915234104",
+      "entry": 5.8,
+      "user_id": "1600040142186",
       "type": "filme"
     },
     {
       "title_id": "1599102476285",
-      "entry": 6.8,
-      "user_id": "1600915234104",
-      "type": "serie"
-    },
-    {
-      "title_id": "1599102453104",
-      "entry": 5.6,
-      "user_id": "1600915234104",
+      "entry": 4.2,
+      "user_id": "1600040142186",
       "type": "serie"
     },
     {
       "title_id": "1599102471891",
-      "entry": 6.2,
-      "user_id": "1600915234104",
-      "type": "animacao"
-    },
-    {
-      "title_id": "1599102461022",
-      "entry": 9.2,
-      "user_id": "1600915234104",
-      "type": "animacao"
-    },
-    {
-      "title_id": "1599102483979",
-      "entry": 6.5,
-      "user_id": "1600966528272",
-      "type": "filme"
-    },
-    {
-      "title_id": "1599102475573",
-      "entry": 9,
-      "user_id": "1600966528272",
-      "type": "filme"
-    },
-    {
-      "title_id": "1599102476285",
-      "entry": 10,
-      "user_id": "1600966528272",
-      "type": "serie"
-    },
-    {
-      "title_id": "1599102453104",
-      "entry": 2.8,
-      "user_id": "1600966528272",
-      "type": "serie"
-    },
-    {
-      "title_id": "1599102471891",
-      "entry": 8.5,
-      "user_id": "1600966528272",
-      "type": "animacao"
-    },
-    {
-      "title_id": "1599102461022",
-      "entry": 5.2,
-      "user_id": "1600966528272",
+      "entry": 6.1,
+      "user_id": "1600040142186",
       "type": "animacao"
     }
   ]

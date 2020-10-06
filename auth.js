@@ -21,7 +21,6 @@ module.exports = function(passport) {
     },
     (userEmail, userPassword, done) => {
       
-      console.log(userEmail, userPassword);
       const user = UserAccess.findUser({email: userEmail});
       
       // usuário inexistente

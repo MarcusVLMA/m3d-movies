@@ -11,7 +11,7 @@ router.get("/request", authenticated(), titleController.requestGet);
 router.post("/request", authenticated(), titleController.requestPost);
 
 // Solicitação GET para a página de busca.
-router.get("/search/:page?", titleController.titles);
+router.get("/search/:page?", titleController.searchTitles);
 
 // Solicitação GET para a página de detalhes.
 router.get("/:id", titleController.title);

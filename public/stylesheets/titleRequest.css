@@ -12,6 +12,7 @@
   --red-none: #ff0000;
   --btn-hover: #016f8d;
   --btn-hover-reject: #ff5757;
+  --green-white: #155724;
   --alert-img: invert(23%) sepia(88%) saturate(403%) hue-rotate(82deg) brightness(93%) contrast(95%);
 }
 .high-contrast {
@@ -29,6 +30,8 @@
   --btn-hover: none;
   --btn-hover-reject: none;
   --alert-img: none;
+  --green-white: #fff;
+  --alert-img: invert(98%) sepia(92%) saturate(9%) hue-rotate(163deg) brightness(102%) contrast(103%);
 }
 
 * { 

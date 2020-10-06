@@ -75,14 +75,14 @@ titleForm.addEventListener('submit', (e) => {
 
   fetch(titleForm.action, fetchParam)
   .then(response => {
+    if (response.status === 401){
+      window.location.href = "/admin/requests";
+    }
     return response.json();
   })
   .then(jsonResponse => {
     const erros = jsonResponse.erros;
     if (erros !== undefined) {
-      if (erros.id !== undefined) {
-        window.location.href = "admin/requests";
-      }
       spanTitle.innerHTML = erros.title !== undefined ? erros.title: "";
       spanGenre.innerHTML = erros.genre !== undefined ? erros.genre: "";
       spanType.innerHTML = erros.content_type !== undefined ? erros.content_type: "";

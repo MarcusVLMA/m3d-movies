@@ -1,6 +1,6 @@
 const db = require("./config");
 
-const MOVIES_PER_PAGE = 15;
+const TITLES_PER_PAGE = 15;
 
 function createTitle(titleInfo) {
   const titleExists = findTitle({ title: titleInfo.title });
@@ -144,9 +144,20 @@ function _orderTitles(first, second, orderBy) {
   }
 }
 
-function getTitlesPending() {
-  const title = db.get("titles").find({ status: "pending" }).value();
-  return title;
+async function getTitlesPending(page) {
+  
+  const offset = (page - 1) * TITLES_PER_PAGE;
+
+  let titles = db
+    .get("titles")
+    .filter({"status": "pending"})
+    .value();
+
+  return {
+    totalCount: titles.length,
+    totalPages: Math.ceil(titles.length / TITLES_PER_PAGE) + 1,
+    titles: titles.slice(offset, offset + TITLES_PER_PAGE),
+  }
 }
 
 function getTitlePending(id) {
@@ -179,7 +190,7 @@ function _getMoviesAmountInfos(searchParams, subset = null) {
 
     return {
       totalCount: allTitles.length,
-      totalPages: Math.ceil(allTitles.length / MOVIES_PER_PAGE) + 1,
+      totalPages: Math.ceil(allTitles.length / TITLES_PER_PAGE) + 1,
     };
   } else {
     const allTitles = db
@@ -189,7 +200,7 @@ function _getMoviesAmountInfos(searchParams, subset = null) {
 
     return {
       totalCount: allTitles.length,
-      totalPages: Math.ceil(allTitles.length / MOVIES_PER_PAGE) + 1,
+      totalPages: Math.ceil(allTitles.length / TITLES_PER_PAGE) + 1,
     };
   }
 }
@@ -199,13 +210,13 @@ function searchTitles(searchParams, page, orderBy) {
   if (page > moviesAmountInfos.totalPages) {
     page = moviesAmountInfos.totalPages - 1;
   }
-  const offset = (page - 1) * MOVIES_PER_PAGE;
+  const offset = (page - 1) * TITLES_PER_PAGE;
 
   const titles = db
     .get("titles")
     .filter((title) => _filterTitle(title, searchParams))
     .sort((first, second) => _orderTitles(first, second, orderBy))
-    .slice(offset, offset + MOVIES_PER_PAGE)
+    .slice(offset, offset + TITLES_PER_PAGE)
     .value();
 
   const titlesResponse = titles.map((title) => ({
@@ -243,11 +254,11 @@ function galleryTitles(profileId, searchParams, page, orderBy) {
     if (page > moviesAmountInfos.totalPages) {
       page = moviesAmountInfos.totalPages - 1;
     }
-    const offset = (page - 1) * MOVIES_PER_PAGE;
+    const offset = (page - 1) * TITLES_PER_PAGE;
 
     const paginatedTitles = filteredTitles.slice(
       offset,
-      offset + MOVIES_PER_PAGE
+      offset + TITLES_PER_PAGE
     );
 
     const titlesResponse = paginatedTitles.map((title) => ({
@@ -369,7 +380,6 @@ function addAvaliation(title_id, entry, user_id) {
   const title = findTitle({ id: title_id.toString() });
 
   const aval = db.get("avaliation").find({title_id, user_id}).value();
-  console.log("teste", aval);
   let addAvaliation;
   if(typeof aval === "undefined") {
     addAvaliation = db

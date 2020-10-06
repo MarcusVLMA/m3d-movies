@@ -35,28 +35,7 @@ exports.title = async (req, res) => {
   });
 };
 
-const _formatSearchParamsToView = (searchParams) => {
-  const properties = Object.keys(searchParams);
-
-  let finalString = "";
-  for (let i = 0; i < properties.length; i++) {
-    const property = properties[i];
-    const value = searchParams[property];
-
-    if (property !== "status") {
-      // "Status" é uma propriedade de busca interna e não é bom expor
-      if (!finalString) {
-        finalString = finalString.concat(`?${property}=${value}`);
-      } else {
-        finalString = finalString.concat(`&${property}=${value}`);
-      }
-    }
-  }
-
-  return finalString;
-};
-
-exports.titles = async (req, res) => {
+exports.searchTitles = async (req, res) => {
   const page = !parseInt(req.params.page) ? 1 : parseInt(req.params.page);
 
   const searchType = req.query.type;
@@ -74,14 +53,14 @@ exports.titles = async (req, res) => {
   }
 
   const titles = TitleAccess.searchTitles(searchParams, page, orderBy);
-
   const pageTitle = "Busca";
-  res.render("search", {
+  res.render("titlesList", {
     title: pageTitle,
     user: req.user,
     currentPage: page,
-    searchParams: formatSearchParamsToView(searchParams),
-    isUserGallery: false,
+    searchParams: formatSearchParamsToView(searchParams).concat(`&orderby=${orderBy}`),
+    movieContentPath: "/title/",
+    paginationPath: "/title/search/",
     ...titles,
   });
 };
@@ -90,7 +69,6 @@ exports.titles = async (req, res) => {
 exports.requestGet = async (req, res) => {
   const titlePending = await TitleAccess.getTitlePending(req.params.id);
   if (titlePending) {
-    console.log(titlePending);
     res.render("titleRequest", {
       title: "Sugerir Título",
       user: req.user,
@@ -123,7 +101,9 @@ exports.requestPost = async (req, res) => {
     "Animação",
     "Aventura",
     "Comédia",
+    "Crime",
     "Documentário",
+    "Drama",
     "Fantasia",
     "aroeste – Western",
     "Ficção científica",

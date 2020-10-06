@@ -278,7 +278,7 @@ footer {
 }
 
 .details-actions-button i {
-  color: #ffffff;
+  color: var(--details-back);
   font-size: 20px;
 }
 
