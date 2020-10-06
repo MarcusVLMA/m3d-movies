@@ -120,7 +120,24 @@
   "profile_gallery": [
     {
       "profile_id": "1599784519641",
-      "title_ids": ["605116", "703771"]
+      "title_ids": [
+        "605116",
+        "703771"
+      ]
+    }
+  ],
+  "avaliation": [
+    {
+      "title_id": "605116",
+      "type": "filme",
+      "user_id": "1599784519641",
+      "entry": 10
+    },
+    {
+      "title_id": "703771",
+      "type": "filme",
+      "user_id": "1600304224005",
+      "entry": 9
     }
   ]
 }

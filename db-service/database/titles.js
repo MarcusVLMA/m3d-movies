@@ -127,12 +127,12 @@ function _orderTitles(first, second, orderBy) {
 }
 
 async function getTitlesPending(page) {
-  
+
   const offset = (page - 1) * TITLES_PER_PAGE;
 
   let titles = db
     .get("titles")
-    .filter({"status": "pending"})
+    .filter({ "status": "pending" })
     .value();
 
   return {
@@ -281,7 +281,7 @@ function addTitleToUserGallery(profileId, titleId) {
 
   let updatedProfileGallery;
 
-  if(profileGallery) {
+  if (profileGallery) {
     updatedProfileGallery = db
       .get("profile_gallery")
       .find({ profile_id: profileId })
@@ -379,6 +379,64 @@ function countTitle(searchParams) {
   }
 }
 
+function titleAvaliationMean(title_id) {
+  const aval = db.get("avaliation").filter({ title_id }).value();
+  let med = 0;
+  aval.forEach((avaliation) => {
+    med += parseFloat(avaliation.entry);
+  });
+  med = Math.round(((med / aval.length) + Number.EPSILON) * 10) / 10;
+  console.log('MED MED', med)
+  if (isNaN(med)) {
+    return 0;
+  } else {
+    return med;
+  }
+}
+
+function addAvaliation(title_id, entry, user_id) {
+  const title = findTitle({ id: title_id.toString() });
+  const aval = db.get("avaliation").find({ title_id, user_id }).value();
+  let addAvaliation;
+  if (typeof aval === "undefined") {
+    addAvaliation = db
+      .get("avaliation")
+      .push({
+        title_id,
+        entry,
+        user_id,
+        type: title.type,
+      })
+      .last()
+      .write();
+  } else {
+    addAvaliation = db
+      .get("avaliation")
+      .find({ title_id, user_id })
+      .assign({
+        title_id,
+        entry,
+        user_id,
+        type: title.type,
+      })
+      .write();
+  }
+  return addAvaliation;
+}
+
+function userAvaliationGet(title_id, user_id) {
+  const aval = db
+    .get("avaliation")
+    .filter({ title_id })
+    .find({ user_id })
+    .value();
+  if (typeof aval === "undefined") {
+    return 0;
+  } else {
+    return parseFloat(aval.entry) * 10;
+  }
+}
+
 module.exports = {
   createTitle,
   getTitle,
@@ -395,4 +453,7 @@ module.exports = {
   galleryTitles,
   removeTitleFromUserGallery,
   removeCommentary,
+  titleAvaliationMean,
+  addAvaliation,
+  userAvaliationGet,
 };

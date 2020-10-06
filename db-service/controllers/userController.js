@@ -1,7 +1,7 @@
 const { UserAccess, TitleAccess } = require("../database");
 const { base64ToJson } = require("./utils");
 
-exports.findUser = async (req, res, next) => {
+exports.findUser = async (req, res) => {
   // Decodifica os parametros
   const searchParams = base64ToJson(req.params.encodedParams);
 
@@ -14,7 +14,7 @@ exports.findUser = async (req, res, next) => {
   }
 };
 
-exports.getUser = async (req, res, next) => {
+exports.getUser = async (req, res) => {
   const user = UserAccess.getUser(req.params.id);
 
   if (user){
@@ -25,7 +25,7 @@ exports.getUser = async (req, res, next) => {
   }
 };
 
-exports.createUser = async (req, res, next) => {
+exports.createUser = async (req, res) => {
 
   const userInfo = {
     name: req.body.name,
@@ -43,7 +43,7 @@ exports.createUser = async (req, res, next) => {
   }
 };
 
-exports.updateUser = async (req, res, next) => {
+exports.updateUser = async (req, res) => {
 
   const userInfo = {
     name: req.body.name,
@@ -62,7 +62,7 @@ exports.updateUser = async (req, res, next) => {
   }
 }
 
-exports.removeUser = async (req, res, next) => {
+exports.removeUser = async (req, res) => {
 
   const removedUser = await UserAccess.removeUser(req.params.id);
   
@@ -73,7 +73,7 @@ exports.removeUser = async (req, res, next) => {
   }
 }
 
-exports.galleryTitles = async (req, res, next) => {
+exports.galleryTitles = async (req, res) => {
   // Decodifica os parametros
   const searchParams = base64ToJson(req.params.encodedParams);
   const page = req.params.page || 1;
@@ -90,7 +90,7 @@ exports.galleryTitles = async (req, res, next) => {
   }
 }
 
-exports.allGalleryTitleIds = async (req, res, next) => {
+exports.allGalleryTitleIds = async (req, res) => {
   
   const titles = await TitleAccess.allGalleryTitleIds(req.params.profileId);
 
@@ -102,7 +102,7 @@ exports.allGalleryTitleIds = async (req, res, next) => {
   }
 }
 
-exports.addTitleToUserGallery = async (req, res, next) => {
+exports.addTitleToUserGallery = async (req, res) => {
   const updatedGallery = await TitleAccess.addTitleToUserGallery(
     req.params.profileId, 
     req.body.titleId, 
@@ -116,7 +116,7 @@ exports.addTitleToUserGallery = async (req, res, next) => {
   }
 }
 
-exports.removeTitleFromUserGallery = async (req, res, next) => {
+exports.removeTitleFromUserGallery = async (req, res) => {
   const removedGallery = await TitleAccess.removeTitleFromUserGallery(
     req.params.profileId, 
     req.params.titleId, 

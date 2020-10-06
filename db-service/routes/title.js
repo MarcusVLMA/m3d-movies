@@ -32,4 +32,13 @@ router.post('/', titleController.createTitle);
 // Atualiza um titulo
 router.put('/', titleController.updateTitle);
 
+// Envia avaliacao
+router.post('/avaliation', titleController.avaliationPost)
+
+// Retorna avaliacao media do titulo
+router.get('/avaliation-mean/:id', titleController.titleAvaliationMean)
+
+// Retorna avaliacao media do titulo de determinado usuario
+router.get('/avaliation-user/:titleId/:userId', titleController.userAvaliationGet)
+
 module.exports = router;
