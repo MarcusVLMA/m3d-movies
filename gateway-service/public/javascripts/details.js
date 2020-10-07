@@ -84,7 +84,7 @@ function removeTitleFromUserGallery(titleId) {
 commentForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  const titleId = window.location.href.split("/").pop();
+  const titleId = window.location.pathname.split("/").pop();
   const text = commentText.value;
 
   fetch("/title/commentary", {

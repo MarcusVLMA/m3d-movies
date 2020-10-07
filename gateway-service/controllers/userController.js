@@ -142,6 +142,14 @@ exports.userProfileEditPost = async (req, res) => {
     erros.email = "Endereço de e-mail inválido!";
   }
 
+  const movieMean = await UserAccess.userAvaliationMean(req.user.id, "filme");
+  const animationMean = await UserAccess.userAvaliationMean(
+    req.user.id,
+    "animacao"
+  );
+  const tvShowMean = await UserAccess.userAvaliationMean(req.user.id, "serie");
+  const mean = { filme: movieMean.mean, animacao: animationMean.mean, serie: tvShowMean.mean };
+
   if (Object.keys(erros).length) {
     // Renderiza página se houver erros
     res.render("userProfileEdit", {
@@ -150,6 +158,7 @@ exports.userProfileEditPost = async (req, res) => {
       erros: erros,
       inputs: req.body,
       notification: false,
+      mean
     });
   } else {
     console.log(req.user)
@@ -166,6 +175,7 @@ exports.userProfileEditPost = async (req, res) => {
       user: req.user,
       erros: {},
       notification: true,
+      mean
     });
   }
 };
