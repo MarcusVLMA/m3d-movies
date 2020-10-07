@@ -131,7 +131,7 @@
       "backdrop_path": "https://image.tmdb.org/t/p/w1920_and_h800_multi_faces/fBYspi4VrvLJUhV0fKVm2ENh84t.jpg",
       "description": "Ben 10: Ultimate Alien (no Brasil: Ben 10: Supremacia Alienígena) é uma série animada americana que é a terceira sequência de Ben 10. Foi estreado após o final da série de Ben 10: Força Alienígena, em 26 de março de 2010, nos Estados Unidos, e foi ao ar em 23 de abril de 2010; no Brasil, foi estreado em 10 de outubro do mesmo ano, no especial do dia 10 de outubro de 2010. O título original foi \"Ben 10: Evolution\", no qual seu nome foi mudado para \"Ben 10: Ultimate Alien\". A série mostrar um grande trama parecida com sua antecessora Ben 10 Alien Force, mas dessa vez com mais humor.",
       "poster_path": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/n4KwrlUKO9S4GvOdZzmnz4zOxx7.jpg",
-      "status": "pending",
+      "status": "accepted",
       "vote_average": 8.2,
       "id": "1599102452439"
     },
@@ -11012,6 +11012,20 @@
       "status": "pending",
       "vote_average": 0,
       "id": "1601834805640"
+    },
+    {
+      "title": "Titulo teste",
+      "release_date": "2020-10-22",
+      "genre": "Ação",
+      "type": "filme",
+      "running_time": "02:02",
+      "trailer_path": "",
+      "backdrop_path": "https://exame.com/wp-content/uploads/2020/05/star-wars-the-rise-of-skywalker-disney-plus-digital-dvd-and-blu-ray-release-date.jpg",
+      "description": "Na verdade eh soh um teste. Pode ignorar",
+      "poster_path": "https://br.web.img3.acsta.net/pictures/20/01/22/18/59/2385080.jpg",
+      "status": "pending",
+      "vote_average": 0,
+      "id": "1602029433906"
     }
   ],
   "title_commentaries": [],
@@ -11024,7 +11038,8 @@
     },
     {
       "title_ids": [
-        "1599102483979"
+        "1599102483979",
+        "1599102471891"
       ],
       "profile_id": "1600040142186"
     }
@@ -11044,7 +11059,7 @@
     },
     {
       "title_id": "1599102483979",
-      "entry": 3.5,
+      "entry": 8.3,
       "user_id": "1600040142186",
       "type": "filme"
     },
