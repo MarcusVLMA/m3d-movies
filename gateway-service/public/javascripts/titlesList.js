@@ -18,7 +18,6 @@ orderBySelect.addEventListener("change", (event) => {
 
   queryParameters.set("orderby", newOrderBy);
 
-  console.log("O TAL DO PATHNAME", window.location.pathname);
   const currentPathname = window.location.pathname;
 
   window.location.href = `${currentPathname}?${queryParameters.toString()}`;

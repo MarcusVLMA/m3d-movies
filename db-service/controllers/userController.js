@@ -6,7 +6,7 @@ exports.findUser = async (req, res) => {
   const searchParams = base64ToJson(req.params.encodedParams);
 
   const user = UserAccess.findUser(searchParams);
-  if (user){
+  if (user) {
     res.json(user);
   }
   else {
@@ -17,10 +17,10 @@ exports.findUser = async (req, res) => {
 exports.getUser = async (req, res) => {
   const user = UserAccess.getUser(req.params.id);
 
-  if (user){
+  if (user) {
     res.json(user);
   }
-  else{
+  else {
     res.sendStatus(404);
   }
 };
@@ -35,7 +35,7 @@ exports.createUser = async (req, res) => {
   }
 
   const newUser = await UserAccess.createUser(userInfo);
-  
+
   if (newUser) {
     res.json(newUser);
   } else {
@@ -54,7 +54,7 @@ exports.updateUser = async (req, res) => {
   }
 
   const updatedUser = await UserAccess.updateUser(userInfo);
-  
+
   if (updatedUser) {
     res.json(updatedUser);
   } else {
@@ -65,7 +65,7 @@ exports.updateUser = async (req, res) => {
 exports.removeUser = async (req, res) => {
 
   const removedUser = await UserAccess.removeUser(req.params.id);
-  
+
   if (removedUser) {
     res.json(removedUser);
   } else {
@@ -79,53 +79,64 @@ exports.galleryTitles = async (req, res) => {
   const page = req.params.page || 1;
   const orderBy = req.params.order || "";
   const profileId = req.params.profileId;
-  
+
   const titles = await TitleAccess.galleryTitles(profileId, searchParams, page, orderBy);
 
-  if (titles){
+  if (titles) {
     res.json(titles);
   }
-  else{
+  else {
     res.sendStatus(404);
   }
 }
 
 exports.allGalleryTitleIds = async (req, res) => {
-  
+
   const titles = await TitleAccess.allGalleryTitleIds(req.params.profileId);
 
-  if (titles){
+  if (titles) {
     res.json(titles);
   }
-  else{
+  else {
     res.sendStatus(404);
   }
 }
 
 exports.addTitleToUserGallery = async (req, res) => {
   const updatedGallery = await TitleAccess.addTitleToUserGallery(
-    req.params.profileId, 
-    req.body.titleId, 
+    req.params.profileId,
+    req.body.titleId,
   );
 
-  if (updatedGallery){
+  if (updatedGallery) {
     res.json(updatedGallery);
   }
-  else{
+  else {
     res.sendStatus(400);
   }
 }
 
 exports.removeTitleFromUserGallery = async (req, res) => {
   const removedGallery = await TitleAccess.removeTitleFromUserGallery(
-    req.params.profileId, 
-    req.params.titleId, 
+    req.params.profileId,
+    req.params.titleId,
   );
 
-  if (removedGallery){
+  if (removedGallery) {
     res.json(removedGallery);
   }
-  else{
+  else {
     res.sendStatus(400);
+  }
+}
+
+exports.userAvaliationMean = async (req, res) => {
+  try {
+    const { userId, type } = req.params
+    const mean = UserAccess.userAvaliationMean(userId, type)
+
+    res.json({ mean })
+  } catch (error) {
+    res.sendStatus(500)
   }
 }

@@ -41,6 +41,13 @@
       "email": "daniel223@algo.com",
       "password": "$2b$10$KWyDHOiiq6fnj/fnJ5a5ae3g6XKeCv90FCELBL6PokJXZHSW9/E8y",
       "id": "1601769864616"
+    },
+    {
+      "name": "Cleber",
+      "role": "USER",
+      "email": "c@c.com",
+      "password": "$2b$10$dWgpL1Ag3EAaaXsFhqJ7V.EMt2jiL4ADGg73Zbn3HKsdmR.v4ilR6",
+      "id": "1602029122697"
     }
   ],
   "titles": [
@@ -11040,6 +11047,36 @@
       "entry": 3.5,
       "user_id": "1600040142186",
       "type": "filme"
+    },
+    {
+      "title_id": "1599102476285",
+      "entry": 9.3,
+      "user_id": "1600040142186",
+      "type": "serie"
+    },
+    {
+      "title_id": "1599102471891",
+      "entry": 5.8,
+      "user_id": "1600040142186",
+      "type": "animacao"
+    },
+    {
+      "title_id": "1599102483979",
+      "entry": 10,
+      "user_id": "1602029122697",
+      "type": "filme"
+    },
+    {
+      "title_id": "1599102476285",
+      "entry": 7.5,
+      "user_id": "1602029122697",
+      "type": "serie"
+    },
+    {
+      "title_id": "1599102471891",
+      "entry": 10,
+      "user_id": "1602029122697",
+      "type": "animacao"
     }
   ]
 }

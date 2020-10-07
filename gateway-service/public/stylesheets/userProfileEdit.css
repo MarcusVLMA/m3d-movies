@@ -126,7 +126,17 @@ main {
     display: flex;
     flex-direction: row;
 }
-
+.progress-ring {
+    transform-origin: 50% 50%;
+    stroke: var(--circulo);
+    stroke-dasharray: 300;
+}
+canvas {
+    display: block;
+    position:absolute;
+    top:0;
+    left:10px;
+}
 /* Formulario */
 
 fieldset {

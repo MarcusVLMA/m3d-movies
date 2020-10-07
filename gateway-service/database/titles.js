@@ -162,6 +162,38 @@ function removeCommentary(commentaryId) {
   });
 }
 
+function createAvaliation(title_id, entry, userId) {
+  return axios.post(`${process.env.DB_SERVICE}/title/avaliation`, {
+    title_id, entry, userId
+  })
+  .then(resp => {
+    return resp.data;
+  })
+  .catch(err => {
+    return null;
+  });
+}
+
+function titleAvaliationMean(title_id) {
+  return axios.get(`${process.env.DB_SERVICE}/title/avaliation-mean/${title_id}`)
+  .then(resp => {
+    return resp.data;
+  })
+  .catch(err => {
+    return null;
+  });
+}
+
+function userAvaliationGet(title_id, user_id) {
+  return axios.get(`${process.env.DB_SERVICE}/title/avaliation-user/${title_id}/${user_id}`)
+  .then(resp => {
+    return resp.data;
+  })
+  .catch(err => {
+    return null;
+  });
+}
+
 module.exports = {
   createTitle,
   getTitle,
@@ -177,4 +209,7 @@ module.exports = {
   galleryTitles,
   removeTitleFromUserGallery,
   removeCommentary,
+  createAvaliation,
+  titleAvaliationMean,
+  userAvaliationGet
 };

@@ -3,11 +3,15 @@ const { formatSearchParamsToView } = require("./utils");
 
 exports.title = async (req, res) => {
   const title = await TitleAccess.getTitle(req.params.id);
-  
-  if(!title) res.redirect("/");
 
-  const ratingValue = (1 - title.vote_average / 10) * 201.06;
+  if (!title) res.redirect("/");
+
+  const meanResponse = await TitleAccess.titleAvaliationMean(req.params.id)
+
+  const ratingValue = (1 - meanResponse.mean / 10) * 201.06;
   const ratingStyle = `stroke-dashoffset: ${ratingValue}`;
+
+  const avalResponse = req.user ? await TitleAccess.userAvaliationGet(req.params.id, req.user.id) : 0;
 
   const backdropStyle = `background-image: url(${title.backdrop_path})`;
 
@@ -23,6 +27,8 @@ exports.title = async (req, res) => {
     rating_style: ratingStyle,
     release_year: title.release_date.split("-")[0],
     release_date: title.release_date.replace(/-/g, "/"),
+    mean: meanResponse.mean,
+    aval: avalResponse.aval,
     titleIsInUserGallery,
   });
 };
@@ -144,7 +150,7 @@ exports.requestPost = async (req, res) => {
   }
 
   const urlRegexp = new RegExp(
-    '^(https?:\\/\\/)?((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|((\\d{1,3}\\.){3}\\d{1,3}))(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*(\\?[;&a-z\\d%_.~+=-]*)?(\\#[-a-z\\d_]*)?$','i'
+    '^(https?:\\/\\/)?((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|((\\d{1,3}\\.){3}\\d{1,3}))(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*(\\?[;&a-z\\d%_.~+=-]*)?(\\#[-a-z\\d_]*)?$', 'i'
   );
 
   // Se a url do trailer não existir define como vazia
@@ -204,10 +210,17 @@ exports.titleCommentary = async (req, res) => {
 exports.deleteTitleCommentary = async (req, res) => {
   if ("user" in req && req.user.role === "ADMIN") {
     const { commentaryId } = req.params;
-    const response = TitleAccess.removeCommentary(commentaryId);
+    const response = await TitleAccess.removeCommentary(commentaryId);
 
     res.json({ removed: response, user: req.user });
   } else {
     res.json({ removed: false, user: req.user });
   }
 };
+
+exports.avaliationPost = async (req, res) => {
+  const { title_id, entry } = req.body
+  const response = await TitleAccess.createAvaliation(title_id, entry, req.user.id)
+
+  return res.json({ ...response, user: req.user })
+}

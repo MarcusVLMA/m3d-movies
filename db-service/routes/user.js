@@ -30,4 +30,7 @@ router.put('/', userController.updateUser);
 // Remove um usuário
 router.delete('/:id', userController.removeUser);
 
+// Retorna media de avaliacoes do usuario para um tipo de titulo
+router.get('/avaliation-mean/:userId/:type', userController.userAvaliationMean)
+
 module.exports = router;

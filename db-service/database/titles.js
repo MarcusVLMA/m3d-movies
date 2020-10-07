@@ -386,7 +386,7 @@ function titleAvaliationMean(title_id) {
     med += parseFloat(avaliation.entry);
   });
   med = Math.round(((med / aval.length) + Number.EPSILON) * 10) / 10;
-  console.log('MED MED', med)
+
   if (isNaN(med)) {
     return 0;
   } else {

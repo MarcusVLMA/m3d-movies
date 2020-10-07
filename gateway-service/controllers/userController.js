@@ -81,7 +81,7 @@ exports.registrationPost = async (req, res, next) => {
       }
       return;
     });
-    
+
     res.json({ user: newUser });
   }
 };
@@ -90,11 +90,20 @@ exports.registrationPost = async (req, res, next) => {
 
 // Solicitação GET para a página de edicao.
 exports.userProfileEditGet = async (req, res) => {
+  const movieMean = await UserAccess.userAvaliationMean(req.user.id, "filme");
+  const animationMean = await UserAccess.userAvaliationMean(
+    req.user.id,
+    "animacao"
+  );
+  const tvShowMean = await UserAccess.userAvaliationMean(req.user.id, "serie");
+  const mean = { filme: movieMean.mean, animacao: animationMean.mean, serie: tvShowMean.mean };
+
   res.render("userProfileEdit", {
     title: "Edição de Cadastro",
     user: req.user,
     erros: {},
     notification: false,
+    mean,
   });
 };
 
@@ -210,10 +219,10 @@ exports.gallery = async (req, res) => {
     page,
     orderBy
   );
-  
-  const userFirstName = req.user.name.substring(0,req.user.name.indexOf(" "));
 
-  const pageTitle = `Galeria de ${userFirstName.slice(0,10)}`;
+  const userFirstName = req.user.name.substring(0, req.user.name.indexOf(" "));
+
+  const pageTitle = `Galeria de ${userFirstName.slice(0, 10)}`;
   res.render("titlesList", {
     title: pageTitle,
     user: req.user,

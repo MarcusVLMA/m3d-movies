@@ -26,4 +26,7 @@ router.delete(
   titleController.deleteTitleCommentary
 );
 
+// Solicitação POST para enviar avaliacao.
+router.post('/avaliation', authenticated(), titleController.avaliationPost)
+
 module.exports = router;
