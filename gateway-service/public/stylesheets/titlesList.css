@@ -148,6 +148,7 @@ aside {
 .content {
   flex-basis: 0;
   flex-grow: 1;
+  padding: 0px 40px 0px 40px
 }
 
 .content-header {

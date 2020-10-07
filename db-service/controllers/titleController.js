@@ -2,34 +2,34 @@ const { TitleAccess } = require("../database");
 const { base64ToJson } = require("./utils");
 
 exports.getTitle = async (req, res) => {
-  
+
   const title = await TitleAccess.getTitle(req.params.id);
-  if (title){
+  if (title) {
     res.json(title);
   }
-  else{
+  else {
     res.sendStatus(404);
   }
 }
 
 exports.getTitlesPending = async (req, res) => {
-  
-  const titles = await TitleAccess.getTitlesPending(req.params.page);
-  if (titles){
+  const orderBy = req.query.orderBy;
+  const titles = await TitleAccess.getTitlesPending(req.params.page, orderBy);
+  if (titles) {
     res.json(titles);
   }
-  else{
+  else {
     res.sendStatus(404);
   }
 }
 
 exports.getTitlePending = async (req, res) => {
-  
+
   const titles = await TitleAccess.getTitlePending(req.params.id);
-  if (titles){
+  if (titles) {
     res.json(titles);
   }
-  else{
+  else {
     res.sendStatus(404);
   }
 }
@@ -41,10 +41,10 @@ exports.searchTitles = async (req, res) => {
   const orderBy = req.params.order;
 
   const titles = await TitleAccess.searchTitles(searchParams, page, orderBy);
-  if (titles){
+  if (titles) {
     res.json(titles);
   }
-  else{
+  else {
     res.sendStatus(404);
   }
 }
@@ -53,10 +53,10 @@ exports.countTitle = async (req, res) => {
   const searchParams = base64ToJson(req.params.encodedParams);
 
   const count = await TitleAccess.countTitle(searchParams);
-  if (count){
+  if (count) {
     res.json(count);
   }
-  else{
+  else {
     res.sendStatus(404);
   }
 }
@@ -76,11 +76,11 @@ exports.createTitle = async (req, res) => {
     status: req.body.status,
     vote_average: req.body.vote_average,
   });
-  
-  if (newTitle){
+
+  if (newTitle) {
     res.json(newTitle);
   }
-  else{
+  else {
     res.sendStatus(400);
   }
 }
@@ -100,11 +100,11 @@ exports.updateTitle = async (req, res) => {
     poster_path: req.body.poster_path,
     status: req.body.status,
   });
-  
-  if (updatedTitle){
+
+  if (updatedTitle) {
     res.json(updatedTitle);
   }
-  else{
+  else {
     res.sendStatus(400);
   }
 }
@@ -112,10 +112,10 @@ exports.updateTitle = async (req, res) => {
 exports.removeTitle = async (req, res) => {
 
   const removedTitle = TitleAccess.removeTitle(req.params.id);
-  if (removedTitle){
+  if (removedTitle) {
     res.json(removedTitle);
   }
-  else{
+  else {
     res.sendStatus(400);
   }
 }
@@ -129,22 +129,22 @@ exports.addCommentary = async (req, res) => {
   );
 
   console.log(newCommentary)
-  if (newCommentary){
+  if (newCommentary) {
     res.json(newCommentary);
   }
-  else{
+  else {
     res.sendStatus(400);
   }
 }
 
 exports.removeCommentary = async (req, res) => {
 
-  const removedCommentary= TitleAccess.removeCommentary(req.params.commentaryId);
+  const removedCommentary = TitleAccess.removeCommentary(req.params.commentaryId);
   console.log(removedCommentary)
-  if (removedCommentary){
+  if (removedCommentary) {
     res.json(removedCommentary);
   }
-  else{
+  else {
     res.sendStatus(400);
   }
 }
@@ -152,11 +152,11 @@ exports.removeCommentary = async (req, res) => {
 exports.titleAvaliationMean = async (req, res) => {
   try {
     const mean = TitleAccess.titleAvaliationMean(req.params.id)
-  
+
     if (mean === undefined || mean === null) {
       res.sendStatus(404)
     }
-  
+
     res.json({ mean })
   } catch (error) {
     res.sendStatus(500)
@@ -176,7 +176,7 @@ exports.avaliationPost = async (req, res) => {
       res.sendStatus(404)
     }
     res.json({ mean });
-  } catch(error) {
+  } catch (error) {
     res.sendStatus(500)
   }
 };
@@ -185,13 +185,13 @@ exports.userAvaliationGet = async (req, res) => {
   try {
     const { titleId, userId } = req.params;
     const aval = TitleAccess.userAvaliationGet(titleId, userId)
-    
+
     if (aval === undefined || aval === null) {
       res.sendStatus(404)
     }
 
     res.json({ aval })
-  } catch(error) {
+  } catch (error) {
     res.sendStatus(500)
   }
 }

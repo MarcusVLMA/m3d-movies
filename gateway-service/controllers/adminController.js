@@ -5,16 +5,16 @@ exports.requestGetEdit = async (req, res) => { //vai pegar os campos do add film
 
   const titlePending = await TitleAccess.getTitlePending(req.params.id);
   //passar todas as variveis que vou precisar de um unico id
-  if (titlePending){
+  if (titlePending) {
     res.render("titleRequest", {
-      title: "Filme" , //pegando o id do filme
+      title: "Filme", //pegando o id do filme
       user: req.user,
       titlePending: titlePending,
     });
   } else {
-      res.redirect("/admin/requests");
+    res.redirect("/admin/requests");
   }
-    
+
 };
 
 exports.requestAccept = async (req, res) => {
@@ -22,29 +22,29 @@ exports.requestAccept = async (req, res) => {
   let erros = {};
   if (await TitleAccess.countTitle({ id: req.params.id, status: "pending" })) {
     // Verifica se o título é válido
-    if (req.body.title === undefined || req.body.title.length < 4){
+    if (req.body.title === undefined || req.body.title.length < 4) {
       erros.title = "O título deve conter pelo menos 4 caractéres!";
     }
-    else if(await TitleAccess.countTitle({ title: req.body.title, status: "accepted" })){
+    else if (await TitleAccess.countTitle({ title: req.body.title, status: "accepted" })) {
       erros.title = "O título está já cadastrado!";
     }
 
     // Verifica se o genero é válido
-    const genres = ["Ação", 
-                    "Animação", 
-                    "Aventura", 
-                    "Comédia", 
-                    "Crime",
-                    "Documentário",
-                    "Drama", 
-                    "Fantasia",
-                    "aroeste – Western",
-                    "Ficção científica",
-                    "Guerra",
-                    "Romance",
-                    "Suspense",
-                    "Terror",
-                    "Tragédia/Drama"];
+    const genres = ["Ação",
+      "Animação",
+      "Aventura",
+      "Comédia",
+      "Crime",
+      "Documentário",
+      "Drama",
+      "Fantasia",
+      "aroeste – Western",
+      "Ficção científica",
+      "Guerra",
+      "Romance",
+      "Suspense",
+      "Terror",
+      "Tragédia/Drama"];
     if (req.body.genre === undefined || !genres.includes(req.body.genre)) {
       erros.genre = "Gênero inválido!";
     }
@@ -56,7 +56,7 @@ exports.requestAccept = async (req, res) => {
     }
 
     // Verifica se a descrição é válida
-    if (req.body.description === undefined || req.body.description.length < 4){
+    if (req.body.description === undefined || req.body.description.length < 4) {
       erros.description = "A descrição deve conter pelo menos 20 caractéres!";
     }
 
@@ -71,9 +71,9 @@ exports.requestAccept = async (req, res) => {
     if (req.body.release_date === undefined || !dateRegexp.test(req.body.release_date)) {
       erros.release_date = "Data inválida!";
     }
-    
-    const urlRegexp = new RegExp('^(https?:\\/\\/)?((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|((\\d{1,3}\\.){3}\\d{1,3}))(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*(\\?[;&a-z\\d%_.~+=-]*)?(\\#[-a-z\\d_]*)?$','i');
-    
+
+    const urlRegexp = new RegExp('^(https?:\\/\\/)?((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|((\\d{1,3}\\.){3}\\d{1,3}))(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*(\\?[;&a-z\\d%_.~+=-]*)?(\\#[-a-z\\d_]*)?$', 'i');
+
     // Se a url do trailer não existir define como vazia
     if (req.body.trailer_path === undefined || !urlRegexp.test(req.body.trailer_path)) {
       req.body.trailer_path = "";
@@ -87,14 +87,14 @@ exports.requestAccept = async (req, res) => {
     if (req.body.backdrop_path === undefined || !urlRegexp.test(req.body.backdrop_path)) {
       req.body.backdrop_path = "";
     }
-    
+
   }
   else {
     erros.id = "ID inválido!";
   }
-  if(Object.keys(erros).length) {
+  if (Object.keys(erros).length) {
     // Renderiza página se houver erros
-    res.status(400).json({erros: erros});
+    res.status(400).json({ erros: erros });
   }
   else {
     const acceptedTitle = await TitleAccess.updateTitle({
@@ -110,14 +110,14 @@ exports.requestAccept = async (req, res) => {
       poster_path: req.body.poster_path,
       status: "accepted",
     });
-    res.json({title: acceptedTitle});
+    res.json({ title: acceptedTitle });
   }
 };
 
 exports.requestReject = async (req, res) => {
-  if (await TitleAccess.countTitle({ id: req.params.id, status: "pending" })){
+  if (await TitleAccess.countTitle({ id: req.params.id, status: "pending" })) {
     await TitleAccess.removeTitle(req.params.id);
-    res.json({id: req.params.id});
+    res.json({ id: req.params.id });
   }
   else {
     res.sendStatus(400);
@@ -125,9 +125,10 @@ exports.requestReject = async (req, res) => {
 };
 
 exports.requests = async (req, res) => {
-  const TITLES_PER_PAGE = 15;
   const page = !parseInt(req.params.page) ? 1 : parseInt(req.params.page);
-  const titlePending = await TitleAccess.getTitlesPending(page);
+  const orderBy = req.query.orderby;
+
+  const titlePending = await TitleAccess.getTitlesPending(page, orderBy);
 
   res.render("titlesList", {
     title: "Lista Sugestões",

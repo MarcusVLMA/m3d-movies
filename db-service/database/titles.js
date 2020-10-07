@@ -126,13 +126,14 @@ function _orderTitles(first, second, orderBy) {
   }
 }
 
-async function getTitlesPending(page) {
+async function getTitlesPending(page, orderBy) {
 
   const offset = (page - 1) * TITLES_PER_PAGE;
 
   let titles = db
     .get("titles")
     .filter({ "status": "pending" })
+    .sort((first, second) => _orderTitles(first, second, orderBy))
     .value();
 
   return {
