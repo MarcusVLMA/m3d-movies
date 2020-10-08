@@ -1,5 +1,5 @@
 <p align="center">
-  <img src= "Release 2/public/images/m3d.svg" width="50%" >
+  <img src= "gateway-service/public/images/m3d.svg" width="50%" >
 </p>
 
 ### Descrição geral
