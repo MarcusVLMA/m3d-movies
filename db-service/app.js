@@ -7,6 +7,7 @@ const userRouter = require("./routes/user");
 const titleRouter = require("./routes/title");
 
 const app = express();
+app.disable("x-powered-by");
 
 app.use(logger("dev"));
 app.use(express.json());
