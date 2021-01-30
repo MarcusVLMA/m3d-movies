@@ -48,6 +48,13 @@
       "email": "c@c.com",
       "password": "$2b$10$dWgpL1Ag3EAaaXsFhqJ7V.EMt2jiL4ADGg73Zbn3HKsdmR.v4ilR6",
       "id": "1602029122697"
+    },
+    {
+      "name": "Um cara legal",
+      "role": "USER",
+      "email": "cara@user.com",
+      "password": "$2b$10$dIKKOJdNcEm11N76GveVZehWs0QT6478/b5lLBNVcGXE6bcV0m94C",
+      "id": "1602177882176"
     }
   ],
   "titles": [
@@ -11042,6 +11049,10 @@
         "1599102471891"
       ],
       "profile_id": "1600040142186"
+    },
+    {
+      "title_ids": [],
+      "profile_id": "1602177882176"
     }
   ],
   "avaliation": [
@@ -11092,6 +11103,12 @@
       "entry": 10,
       "user_id": "1602029122697",
       "type": "animacao"
+    },
+    {
+      "title_id": "1599102483979",
+      "entry": 0,
+      "user_id": "1602177882176",
+      "type": "filme"
     }
   ]
 }
